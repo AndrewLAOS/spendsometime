@@ -1,0 +1,1110 @@
+[
+  {
+    "name": "Draw a Perfect Circle",
+    "description": "Train your hand-eye coordination to draw a near-perfect circle freehand.",
+    "reason": "Tests precision, patience, and micro-adjustment awareness.",
+    "learn_url": "https://neal.fun/perfect-circle/",
+    "traits": {
+      "weirdness": 0.6,
+      "time": 0.3,
+      "type": 0.5,
+      "structure": 0.4,
+      "energy": 0.3,
+      "impressiveness": 0.6
+    }
+  },
+  {
+    "name": "Memorize a Deck of Cards (Beginner Method)",
+    "description": "Learn a simple memory palace technique to recall a shuffled deck.",
+    "reason": "Feels impossible until it suddenly works.",
+    "learn_url": "https://artofmemory.com/",
+    "traits": {
+      "weirdness": 0.8,
+      "time": 0.7,
+      "type": 0.6,
+      "structure": 0.7,
+      "energy": 0.4,
+      "impressiveness": 0.9
+    }
+  },
+  {
+    "name": "Ambidextrous Writing Trial",
+    "description": "Practice writing legibly with your non-dominant hand.",
+    "reason": "Exposes how plastic your brain actually is.",
+    "learn_url": "https://en.wikipedia.org/wiki/Ambidexterity",
+    "traits": {
+      "weirdness": 0.6,
+      "time": 0.4,
+      "type": 0.9,
+      "structure": 0.3,
+      "energy": 0.3,
+      "impressiveness": 0.6
+    }
+  },
+  {
+    "name": "Human Reaction Benchmark",
+    "description": "Measure and compare your reaction time against global averages.",
+    "reason": "Instant feedback on neurological speed.",
+    "learn_url": "https://humanbenchmark.com/tests/reactiontime",
+    "traits": {
+      "weirdness": 0.4,
+      "time": 0.2,
+      "type": 0.5,
+      "structure": 0.8,
+      "energy": 0.3,
+      "impressiveness": 0.5
+    }
+  },
+  {
+    "name": "Learn to Read Upside Down",
+    "description": "Train your brain to read inverted text smoothly.",
+    "reason": "Rewires visual processing temporarily.",
+    "learn_url": "https://en.wikipedia.org/wiki/Inverted_text",
+    "traits": {
+      "weirdness": 0.7,
+      "time": 0.5,
+      "type": 0.6,
+      "structure": 0.5,
+      "energy": 0.4,
+      "impressiveness": 0.6
+    }
+  },
+  {
+    "name": "Speed Stack Cups",
+    "description": "Learn the fundamentals of competitive cup stacking.",
+    "reason": "Looks silly until you realize it’s pure reflex training.",
+    "learn_url": "https://www.speedstacks.com/",
+    "traits": {
+      "weirdness": 0.6,
+      "time": 0.5,
+      "type": 0.9,
+      "structure": 0.6,
+      "energy": 0.8,
+      "impressiveness": 0.6
+    }
+  },
+  {
+    "name": "Learn Morse Code (Survival Speed)",
+    "description": "Memorize enough Morse code to decode short messages.",
+    "reason": "Old-school, oddly satisfying pattern recognition.",
+    "learn_url": "https://morse.withgoogle.com/learn/",
+    "traits": {
+      "weirdness": 0.7,
+      "time": 0.6,
+      "type": 0.6,
+      "structure": 0.8,
+      "energy": 0.3,
+      "impressiveness": 0.7
+    }
+  },
+  {
+    "name": "3D Shape Drawing (Perspective)",
+    "description": "Practice sketching cubes and cylinders in proper perspective.",
+    "reason": "Makes your brain think in depth, not flat shapes.",
+    "learn_url": "https://drawabox.com/",
+    "traits": {
+      "weirdness": 0.6,
+      "time": 0.6,
+      "type": 0.8,
+      "structure": 0.7,
+      "energy": 0.4,
+      "impressiveness": 0.7
+    }
+  },
+  {
+    "name": "Mental Math Lightning Drill",
+    "description": "Train yourself to solve arithmetic instantly without paper.",
+    "reason": "Sharpens working memory fast.",
+    "learn_url": "https://arithmetic.zetamac.com/",
+    "traits": {
+      "weirdness": 0.4,
+      "time": 0.4,
+      "type": 0.6,
+      "structure": 0.8,
+      "energy": 0.4,
+      "impressiveness": 0.6
+    }
+  },
+  {
+    "name": "Mirror Writing",
+    "description": "Learn to write text readable only in a mirror.",
+    "reason": "Confusing, frustrating, and strangely addictive.",
+    "learn_url": "https://en.wikipedia.org/wiki/Mirror_writing",
+    "traits": {
+      "weirdness": 0.9,
+      "time": 0.4,
+      "type": 0.9,
+      "structure": 0.3,
+      "energy": 0.3,
+      "impressiveness": 0.8
+    }
+  },
+
+  {
+    "name": "Blind Typing Accuracy Test",
+    "description": "Type a paragraph without looking once.",
+    "reason": "Reveals muscle memory gaps instantly.",
+    "learn_url": "https://monkeytype.com/",
+    "traits": {
+      "weirdness": 0.3,
+      "time": 0.2,
+      "type": 0.5,
+      "structure": 0.7,
+      "energy": 0.3,
+      "impressiveness": 0.5
+    }
+  },
+  {
+    "name": "Balance on One Foot (Eyes Closed)",
+    "description": "Train vestibular balance and micro-muscle control.",
+    "reason": "Harder than it sounds.",
+    "learn_url": "https://en.wikipedia.org/wiki/Balance_(ability)",
+    "traits": {
+      "weirdness": 0.5,
+      "time": 0.2,
+      "type": 0.9,
+      "structure": 0.2,
+      "energy": 0.4,
+      "impressiveness": 0.5
+    }
+  },
+  {
+    "name": "Learn a Card Flourish",
+    "description": "Practice a single visual card flourish.",
+    "reason": "Looks impressive fast.",
+    "learn_url": "https://www.youtube.com/results?search_query=card+flourish+beginner",
+    "traits": {
+      "weirdness": 0.7,
+      "time": 0.5,
+      "type": 0.9,
+      "structure": 0.6,
+      "energy": 0.4,
+      "impressiveness": 0.9
+    }
+  },
+  {
+    "name": "Speed Reading Test",
+    "description": "Measure and slightly improve reading speed.",
+    "reason": "Quantifiable mental upgrade.",
+    "learn_url": "https://www.readinglength.com/",
+    "traits": {
+      "weirdness": 0.4,
+      "time": 0.3,
+      "type": 0.6,
+      "structure": 0.7,
+      "energy": 0.3,
+      "impressiveness": 0.6
+    }
+  },
+  {
+    "name": "Create a Memory Palace Room",
+    "description": "Build one mental room and store information inside it.",
+    "reason": "Feels like hacking your brain.",
+    "learn_url": "https://artofmemory.com/wiki/Memory_Palace",
+    "traits": {
+      "weirdness": 0.8,
+      "time": 0.6,
+      "type": 0.6,
+      "structure": 0.6,
+      "energy": 0.3,
+      "impressiveness": 0.8
+    }
+},
+  {
+    "name": "Learn to Juggle 2 Objects",
+    "description": "Master the basic cascade with two items.",
+    "reason": "Builds timing and bilateral coordination.",
+    "learn_url": "https://www.youtube.com/watch?v=1n0nP0c9V1k",
+    "traits": {
+      "weirdness": 0.5,
+      "time": 0.3,
+      "type": 0.9,
+      "structure": 0.4,
+      "energy": 0.6,
+      "impressiveness": 0.5
+    }
+  },
+  {
+    "name": "Peripheral Vision Test",
+    "description": "Test how wide your visual awareness actually is.",
+    "reason": "Reveals hidden limits of attention.",
+    "learn_url": "https://humanbenchmark.com/tests/visualmemory",
+    "traits": {
+      "weirdness": 0.6,
+      "time": 0.2,
+      "type": 0.5,
+      "structure": 0.7,
+      "energy": 0.3,
+      "impressiveness": 0.5
+    }
+  },
+  {
+    "name": "Mental Clock Estimation",
+    "description": "Estimate the passage of time without checking a clock.",
+    "reason": "Trains internal time perception.",
+    "learn_url": "https://en.wikipedia.org/wiki/Time_perception",
+    "traits": {
+      "weirdness": 0.6,
+      "time": 0.2,
+      "type": 0.6,
+      "structure": 0.3,
+      "energy": 0.2,
+      "impressiveness": 0.4
+    }
+  },
+  {
+    "name": "Learn the NATO Phonetic Alphabet",
+    "description": "Memorize alpha bravo charlie fluently.",
+    "reason": "Unexpectedly useful and fun.",
+    "learn_url": "https://www.nato.int/cps/en/natohq/declassified_136216.htm",
+    "traits": {
+      "weirdness": 0.5,
+      "time": 0.4,
+      "type": 0.5,
+      "structure": 0.8,
+      "energy": 0.3,
+      "impressiveness": 0.6
+    }
+  },
+  {
+    "name": "Backward Alphabet Speed Test",
+    "description": "Recite the alphabet backwards as fast as possible.",
+    "reason": "Breaks autopilot thinking.",
+    "learn_url": "https://en.wikipedia.org/wiki/Alphabet_song",
+    "traits": {
+      "weirdness": 0.7,
+      "time": 0.2,
+      "type": 0.6,
+      "structure": 0.4,
+      "energy": 0.3,
+      "impressiveness": 0.5
+    }
+  },
+  {
+    "name": "Learn a Coin Roll",
+    "description": "Roll a coin across your fingers smoothly.",
+    "reason": "High dexterity payoff.",
+    "learn_url": "https://www.youtube.com/watch?v=Yq0p5Z8Gk3g",
+    "traits": {
+      "weirdness": 0.6,
+      "time": 0.5,
+      "type": 0.9,
+      "structure": 0.6,
+      "energy": 0.3,
+      "impressiveness": 0.8
+    }
+  },
+  {
+    "name": "One-Minute Breath Control",
+    "description": "Control breathing pace consciously for 60 seconds.",
+    "reason": "Instant nervous system control.",
+    "learn_url": "https://www.healthline.com/health/breathing-exercises",
+    "traits": {
+      "weirdness": 0.4,
+      "time": 0.2,
+      "type": 0.7,
+      "structure": 0.3,
+      "energy": 0.1,
+      "impressiveness": 0.4
+    }
+  },
+  {
+    "name": "Learn Binary Counting on Fingers",
+    "description": "Count to 31 using only your hands.",
+    "reason": "Turns your hands into a computer.",
+    "learn_url": "https://www.wikihow.com/Count-in-Binary-on-Your-Fingers",
+    "traits": {
+      "weirdness": 0.8,
+      "time": 0.4,
+      "type": 0.6,
+      "structure": 0.7,
+      "energy": 0.3,
+      "impressiveness": 0.8
+    }
+  },
+  {
+    "name": "Shape Rotation Visualization",
+    "description": "Mentally rotate objects without drawing them.",
+    "reason": "Boosts spatial intelligence.",
+    "learn_url": "https://en.wikipedia.org/wiki/Mental_rotation",
+    "traits": {
+      "weirdness": 0.6,
+      "time": 0.4,
+      "type": 0.6,
+      "structure": 0.6,
+      "energy": 0.3,
+      "impressiveness": 0.6
+    }
+  },
+  {
+    "name": "Learn to Snap Loudly",
+    "description": "Produce a sharp, consistent finger snap.",
+    "reason": "Surprisingly technical.",
+    "learn_url": "https://www.youtube.com/watch?v=3xR7JdYzK1A",
+    "traits": {
+      "weirdness": 0.4,
+      "time": 0.2,
+      "type": 0.9,
+      "structure": 0.2,
+      "energy": 0.3,
+      "impressiveness": 0.4
+    }
+  },
+
+  {
+    "name": "Visual Afterimage Control",
+    "description": "Create and manipulate color afterimages.",
+    "reason": "Feels like a visual glitch.",
+    "learn_url": "https://en.wikipedia.org/wiki/Afterimage",
+    "traits": {
+      "weirdness": 0.9,
+      "time": 0.3,
+      "type": 0.5,
+      "structure": 0.3,
+      "energy": 0.2,
+      "impressiveness": 0.7
+    }
+  },
+  {
+    "name": "Estimate Crowd Size",
+    "description": "Practice guessing how many people are in a space.",
+    "reason": "Real-world estimation skill.",
+    "learn_url": "https://en.wikipedia.org/wiki/Crowd_counting",
+    "traits": {
+      "weirdness": 0.5,
+      "time": 0.3,
+      "type": 0.6,
+      "structure": 0.4,
+      "energy": 0.2,
+      "impressiveness": 0.5
+    }
+  },
+  {
+    "name": "Learn to Read Roman Numerals Instantly",
+    "description": "Translate Roman numerals without pausing.",
+    "reason": "Unlocks historical fluency.",
+    "learn_url": "https://www.mathsisfun.com/roman-numerals.html",
+    "traits": {
+      "weirdness": 0.4,
+      "time": 0.4,
+      "type": 0.6,
+      "structure": 0.8,
+      "energy": 0.2,
+      "impressiveness": 0.6
+    }
+  },
+  {
+    "name": "Memory Grid Flash Test",
+    "description": "Memorize a grid of shapes in seconds.",
+    "reason": "Pure working memory training.",
+    "learn_url": "https://humanbenchmark.com/tests/memory",
+    "traits": {
+      "weirdness": 0.5,
+      "time": 0.2,
+      "type": 0.5,
+      "structure": 0.8,
+      "energy": 0.3,
+      "impressiveness": 0.5
+    }
+  },
+  {
+    "name": "Silent Counting Breath Drill",
+    "description": "Count breaths up to 50 without losing track.",
+    "reason": "Mental endurance challenge.",
+    "learn_url": "https://www.mindful.org/how-to-count-your-breaths/",
+    "traits": {
+      "weirdness": 0.5,
+      "time": 0.4,
+      "type": 0.7,
+      "structure": 0.4,
+      "energy": 0.1,
+      "impressiveness": 0.4
+    }
+  },
+  {
+    "name": "Learn to Whistle with Fingers",
+    "description": "Master the loud, piercing finger whistle technique.",
+    "reason": "Surprisingly useful and impressive.",
+    "learn_url": "https://www.wikihow.com/Whistle-With-Your-Fingers",
+    "traits": {
+      "weirdness": 0.5,
+      "time": 0.4,
+      "type": 0.9,
+      "structure": 0.5,
+      "energy": 0.4,
+      "impressiveness": 0.7
+    }
+  },
+  {
+    "name": "Learn to Solve a Rubik's Cube",
+    "description": "Master the beginner's method to solve a 3x3 cube.",
+    "reason": "Looks impossible until you learn the patterns.",
+    "learn_url": "https://www.cubeskills.com/tutorials/beginners-method",
+    "traits": {
+      "weirdness": 0.4,
+      "time": 0.7,
+      "type": 0.6,
+      "structure": 0.8,
+      "energy": 0.4,
+      "impressiveness": 0.9
+    }
+  },
+  {
+    "name": "Learn to Spin a Pen Around Your Thumb",
+    "description": "Master the basic pen spinning trick.",
+    "reason": "Satisfying fidget skill with high payoff.",
+    "learn_url": "https://www.youtube.com/watch?v=QrA_la7JIJE",
+    "traits": {
+      "weirdness": 0.6,
+      "time": 0.5,
+      "type": 0.9,
+      "structure": 0.6,
+      "energy": 0.3,
+      "impressiveness": 0.7
+    }
+  },
+  {
+    "name": "Learn to Read Palms",
+    "description": "Understand basic palmistry patterns and meanings.",
+    "reason": "Fun party trick with cultural history.",
+    "learn_url": "https://www.wikihow.com/Read-Palms",
+    "traits": {
+      "weirdness": 0.8,
+      "time": 0.5,
+      "type": 0.6,
+      "structure": 0.7,
+      "energy": 0.2,
+      "impressiveness": 0.7
+    }
+  },
+  {
+    "name": "Learn Basic Sign Language (ASL)",
+    "description": "Master the ASL alphabet and 20 common words.",
+    "reason": "Actually useful and beautiful language.",
+    "learn_url": "https://www.lifeprint.com/asl101/",
+    "traits": {
+      "weirdness": 0.3,
+      "time": 0.6,
+      "type": 0.7,
+      "structure": 0.7,
+      "energy": 0.4,
+      "impressiveness": 0.8
+    }
+  },
+  {
+    "name": "Learn to Tie 10 Different Knots",
+    "description": "Master useful knots like bowline, clove hitch, and square knot.",
+    "reason": "Practical skill that feels like a superpower.",
+    "learn_url": "https://www.animatedknots.com",
+    "traits": {
+      "weirdness": 0.4,
+      "time": 0.5,
+      "type": 0.9,
+      "structure": 0.8,
+      "energy": 0.3,
+      "impressiveness": 0.6
+    }
+  },
+  {
+    "name": "Learn to Read Sheet Music",
+    "description": "Understand basic music notation and rhythm.",
+    "reason": "Unlocks a whole new way to experience music.",
+    "learn_url": "https://www.musictheory.net/lessons",
+    "traits": {
+      "weirdness": 0.3,
+      "time": 0.6,
+      "type": 0.6,
+      "structure": 0.8,
+      "energy": 0.3,
+      "impressiveness": 0.7
+    }
+  },
+  {
+    "name": "Learn to Identify 20 Bird Calls",
+    "description": "Recognize common birds by their songs.",
+    "reason": "Makes nature walks way more interesting.",
+    "learn_url": "https://www.allaboutbirds.org/news/",
+    "traits": {
+      "weirdness": 0.6,
+      "time": 0.5,
+      "type": 0.5,
+      "structure": 0.7,
+      "energy": 0.2,
+      "impressiveness": 0.6
+    }
+  },
+  {
+    "name": "Learn to Fold a Paper Airplane That Flies Far",
+    "description": "Master aerodynamic paper plane designs.",
+    "reason": "Childhood skill that's actually complex.",
+    "learn_url": "https://www.foldnfly.com",
+    "traits": {
+      "weirdness": 0.4,
+      "time": 0.3,
+      "type": 0.8,
+      "structure": 0.6,
+      "energy": 0.3,
+      "impressiveness": 0.5
+    }
+  },
+  {
+    "name": "Learn to Calculate Tips Mentally",
+    "description": "Quickly calculate 15%, 18%, and 20% tips.",
+    "reason": "Actually useful life skill.",
+    "learn_url": "https://www.wikihow.com/Calculate-a-Tip",
+    "traits": {
+      "weirdness": 0.2,
+      "time": 0.2,
+      "type": 0.6,
+      "structure": 0.8,
+      "energy": 0.2,
+      "impressiveness": 0.4
+    }
+  },
+  {
+    "name": "Learn to Do a Handstand",
+    "description": "Master the basic handstand against a wall.",
+    "reason": "Impressive physical achievement.",
+    "learn_url": "https://www.youtube.com/watch?v=Yq0p5Z8Gk3g",
+    "traits": {
+      "weirdness": 0.5,
+      "time": 0.6,
+      "type": 0.9,
+      "structure": 0.6,
+      "energy": 0.8,
+      "impressiveness": 0.9
+    }
+  },
+  {
+    "name": "Learn to Solve Sudoku Efficiently",
+    "description": "Master techniques beyond basic elimination.",
+    "reason": "Satisfying logic puzzle skill.",
+    "learn_url": "https://www.sudoku.com/how-to-play/sudoku-rules-for-complete-beginners/",
+    "traits": {
+      "weirdness": 0.3,
+      "time": 0.4,
+      "type": 0.6,
+      "structure": 0.8,
+      "energy": 0.3,
+      "impressiveness": 0.5
+    }
+  },
+  {
+    "name": "Learn to Identify Constellations",
+    "description": "Recognize 10 major constellations in the night sky.",
+    "reason": "Connects you to ancient human knowledge.",
+    "learn_url": "https://stellarium-web.org",
+    "traits": {
+      "weirdness": 0.5,
+      "time": 0.5,
+      "type": 0.5,
+      "structure": 0.7,
+      "energy": 0.2,
+      "impressiveness": 0.7
+    }
+  },
+  {
+    "name": "Learn to Estimate Distances",
+    "description": "Practice guessing distances accurately.",
+    "reason": "Useful spatial awareness skill.",
+    "learn_url": "https://www.wikihow.com/Estimate-Distance",
+    "traits": {
+      "weirdness": 0.4,
+      "time": 0.3,
+      "type": 0.6,
+      "structure": 0.4,
+      "energy": 0.2,
+      "impressiveness": 0.4
+    }
+  },
+  {
+    "name": "Learn to Do Card Tricks",
+    "description": "Master 3 simple but impressive card tricks.",
+    "reason": "Instant party entertainment.",
+    "learn_url": "https://www.youtube.com/results?search_query=beginner+card+tricks",
+    "traits": {
+      "weirdness": 0.7,
+      "time": 0.5,
+      "type": 0.9,
+      "structure": 0.7,
+      "energy": 0.4,
+      "impressiveness": 0.9
+    }
+  },
+  {
+    "name": "Learn to Read Braille",
+    "description": "Master the Braille alphabet and basic words.",
+    "reason": "Opens up a different way of reading.",
+    "learn_url": "https://www.perkins.org/resource/braille-alphabet-card/",
+    "traits": {
+      "weirdness": 0.6,
+      "time": 0.6,
+      "type": 0.7,
+      "structure": 0.8,
+      "energy": 0.3,
+      "impressiveness": 0.8
+    }
+  },
+  {
+    "name": "Learn to Identify Clouds",
+    "description": "Recognize 10 different cloud types.",
+    "reason": "Makes sky-watching more meaningful.",
+    "learn_url": "https://scijinks.gov/clouds/",
+    "traits": {
+      "weirdness": 0.5,
+      "time": 0.4,
+      "type": 0.5,
+      "structure": 0.7,
+      "energy": 0.2,
+      "impressiveness": 0.5
+    }
+  },
+  {
+    "name": "Learn to Calculate Square Roots Mentally",
+    "description": "Estimate square roots without a calculator.",
+    "reason": "Mental math superpower.",
+    "learn_url": "https://www.wikihow.com/Find-a-Square-Root-Without-a-Calculator",
+    "traits": {
+      "weirdness": 0.5,
+      "time": 0.5,
+      "type": 0.6,
+      "structure": 0.8,
+      "energy": 0.3,
+      "impressiveness": 0.7
+    }
+  },
+  {
+    "name": "Learn to Identify Trees by Leaves",
+    "description": "Recognize 15 common tree species.",
+    "reason": "Nature connection skill.",
+    "learn_url": "https://www.arborday.org/trees/whattree/",
+    "traits": {
+      "weirdness": 0.4,
+      "time": 0.5,
+      "type": 0.5,
+      "structure": 0.7,
+      "energy": 0.2,
+      "impressiveness": 0.5
+    }
+  },
+  {
+    "name": "Learn to Do a Backflip (Safely)",
+    "description": "Master backflip with proper technique and safety.",
+    "reason": "Ultimate physical confidence builder.",
+    "learn_url": "https://www.youtube.com/results?search_query=how+to+backflip+tutorial",
+    "traits": {
+      "weirdness": 0.7,
+      "time": 0.8,
+      "type": 0.9,
+      "structure": 0.7,
+      "energy": 0.9,
+      "impressiveness": 1.0
+    }
+  },
+  {
+    "name": "Learn to Break a Board with Your Hand",
+    "description": "Master proper technique for board breaking.",
+    "reason": "Feels like a superpower.",
+    "learn_url": "https://www.wikihow.com/Break-a-Board",
+    "traits": {
+      "weirdness": 0.8,
+      "time": 0.6,
+      "type": 0.9,
+      "structure": 0.7,
+      "energy": 0.7,
+      "impressiveness": 0.9
+    }
+  },
+  {
+    "name": "Learn to Identify Poisonous Plants",
+    "description": "Recognize common toxic plants in your area.",
+    "reason": "Potentially life-saving knowledge.",
+    "learn_url": "https://www.poison.org/articles",
+    "traits": {
+      "weirdness": 0.5,
+      "time": 0.5,
+      "type": 0.5,
+      "structure": 0.8,
+      "energy": 0.2,
+      "impressiveness": 0.6
+    }
+  },
+  {
+    "name": "Learn to Read Tea Leaves",
+    "description": "Understand basic tasseography (tea leaf reading).",
+    "reason": "Quirky divination skill.",
+    "learn_url": "https://www.wikihow.com/Read-Tea-Leaves",
+    "traits": {
+      "weirdness": 0.9,
+      "time": 0.4,
+      "type": 0.6,
+      "structure": 0.5,
+      "energy": 0.2,
+      "impressiveness": 0.7
+    }
+  },
+  {
+    "name": "Learn to Estimate Time Without a Clock",
+    "description": "Develop accurate internal time sense.",
+    "reason": "Useful mindfulness skill.",
+    "learn_url": "https://www.wikihow.com/Tell-Time-Without-a-Clock",
+    "traits": {
+      "weirdness": 0.6,
+      "time": 0.3,
+      "type": 0.6,
+      "structure": 0.3,
+      "energy": 0.1,
+      "impressiveness": 0.5
+    }
+  },
+  {
+    "name": "Learn to Identify Animal Tracks",
+    "description": "Recognize 10 common animal footprints.",
+    "reason": "Makes hikes more detective-like.",
+    "learn_url": "https://www.naturetracking.com/",
+    "traits": {
+      "weirdness": 0.6,
+      "time": 0.5,
+      "type": 0.5,
+      "structure": 0.7,
+      "energy": 0.3,
+      "impressiveness": 0.6
+    }
+  },
+  {
+    "name": "Learn to Do the Moonwalk",
+    "description": "Master Michael Jackson's signature dance move.",
+    "reason": "Iconic and surprisingly technical.",
+    "learn_url": "https://www.youtube.com/watch?v=wZv62ShoStY",
+    "traits": {
+      "weirdness": 0.6,
+      "time": 0.5,
+      "type": 0.9,
+      "structure": 0.6,
+      "energy": 0.6,
+      "impressiveness": 0.9
+    }
+  },
+  {
+    "name": "Learn to Identify Edible Wild Plants",
+    "description": "Safely recognize 10 common edible wild plants.",
+    "reason": "Survival skill that's actually useful.",
+    "learn_url": "https://www.wildfooduk.com",
+    "traits": {
+      "weirdness": 0.5,
+      "time": 0.6,
+      "type": 0.5,
+      "structure": 0.8,
+      "energy": 0.3,
+      "impressiveness": 0.7
+    }
+  },
+  {
+    "name": "Learn to Calculate Days Between Dates",
+    "description": "Quickly calculate days between any two dates mentally.",
+    "reason": "Useful mental math trick.",
+    "learn_url": "https://www.timeanddate.com/date/duration.html",
+    "traits": {
+      "weirdness": 0.4,
+      "time": 0.4,
+      "type": 0.6,
+      "structure": 0.8,
+      "energy": 0.3,
+      "impressiveness": 0.6
+    }
+  },
+  {
+    "name": "Learn to Do a One-Handed Push-up",
+    "description": "Master proper one-handed push-up form.",
+    "reason": "Impressive strength demonstration.",
+    "learn_url": "https://www.youtube.com/results?search_query=one+handed+pushup+tutorial",
+    "traits": {
+      "weirdness": 0.6,
+      "time": 0.7,
+      "type": 0.9,
+      "structure": 0.6,
+      "energy": 0.8,
+      "impressiveness": 0.9
+    }
+  },
+  {
+    "name": "Learn to Identify Mushrooms (Safely)",
+    "description": "Recognize common safe and dangerous mushrooms.",
+    "reason": "Foraging skill with safety importance.",
+    "learn_url": "https://www.mushroom-appreciation.com",
+    "traits": {
+      "weirdness": 0.6,
+      "time": 0.6,
+      "type": 0.5,
+      "structure": 0.8,
+      "energy": 0.3,
+      "impressiveness": 0.6
+    }
+  },
+  {
+    "name": "Learn to Do a Cartwheel",
+    "description": "Master proper cartwheel technique.",
+    "reason": "Fun gymnastic skill.",
+    "learn_url": "https://www.wikihow.com/Do-a-Cartwheel",
+    "traits": {
+      "weirdness": 0.5,
+      "time": 0.5,
+      "type": 0.9,
+      "structure": 0.6,
+      "energy": 0.7,
+      "impressiveness": 0.7
+    }
+  },
+  {
+    "name": "Learn to Identify Stars and Planets",
+    "description": "Recognize major stars and planets in the night sky.",
+    "reason": "Astronomy basics for stargazing.",
+    "learn_url": "https://stellarium-web.org",
+    "traits": {
+      "weirdness": 0.4,
+      "time": 0.5,
+      "type": 0.5,
+      "structure": 0.7,
+      "energy": 0.2,
+      "impressiveness": 0.6
+    }
+  },
+  {
+    "name": "Learn to Calculate Percentages Mentally",
+    "description": "Quickly calculate any percentage of a number.",
+    "reason": "Essential mental math skill.",
+    "learn_url": "https://www.wikihow.com/Work-out-Percentages",
+    "traits": {
+      "weirdness": 0.2,
+      "time": 0.3,
+      "type": 0.6,
+      "structure": 0.8,
+      "energy": 0.2,
+      "impressiveness": 0.4
+    }
+  },
+  {
+    "name": "Learn to Do Sleight of Hand",
+    "description": "Master basic coin and card sleight of hand.",
+    "reason": "Impressive magic skill.",
+    "learn_url": "https://www.youtube.com/results?search_query=sleight+of+hand+tutorial",
+    "traits": {
+      "weirdness": 0.8,
+      "time": 0.7,
+      "type": 0.9,
+      "structure": 0.7,
+      "energy": 0.4,
+      "impressiveness": 0.9
+    }
+  },
+  {
+    "name": "Learn to Identify Different Types of Rocks",
+    "description": "Recognize igneous, sedimentary, and metamorphic rocks.",
+    "reason": "Geology basics for nature walks.",
+    "learn_url": "https://geology.com/rocks/",
+    "traits": {
+      "weirdness": 0.5,
+      "time": 0.5,
+      "type": 0.5,
+      "structure": 0.7,
+      "energy": 0.2,
+      "impressiveness": 0.5
+    }
+  },
+  {
+    "name": "Learn to Do a Split",
+    "description": "Achieve front or side splits with proper stretching.",
+    "reason": "Impressive flexibility goal.",
+    "learn_url": "https://www.wikihow.com/Do-the-Splits",
+    "traits": {
+      "weirdness": 0.5,
+      "time": 0.7,
+      "type": 0.9,
+      "structure": 0.6,
+      "energy": 0.5,
+      "impressiveness": 0.8
+    }
+  },
+  {
+    "name": "Learn to Identify Different Types of Clouds",
+    "description": "Recognize cumulus, stratus, cirrus, and nimbus clouds.",
+    "reason": "Weather prediction basics.",
+    "learn_url": "https://scijinks.gov/clouds/",
+    "traits": {
+      "weirdness": 0.4,
+      "time": 0.4,
+      "type": 0.5,
+      "structure": 0.7,
+      "energy": 0.2,
+      "impressiveness": 0.4
+    }
+  },
+  {
+    "name": "Learn to Calculate Square Feet",
+    "description": "Quickly calculate area in square feet.",
+    "reason": "Useful home improvement skill.",
+    "learn_url": "https://www.wikihow.com/Calculate-Square-Feet",
+    "traits": {
+      "weirdness": 0.2,
+      "time": 0.2,
+      "type": 0.6,
+      "structure": 0.8,
+      "energy": 0.2,
+      "impressiveness": 0.3
+    }
+  },
+  {
+    "name": "Learn to Do a Headstand",
+    "description": "Master proper headstand technique.",
+    "reason": "Yoga inversion skill.",
+    "learn_url": "https://www.youtube.com/results?search_query=headstand+tutorial",
+    "traits": {
+      "weirdness": 0.6,
+      "time": 0.6,
+      "type": 0.9,
+      "structure": 0.6,
+      "energy": 0.6,
+      "impressiveness": 0.8
+    }
+  },
+  {
+    "name": "Learn to Identify Different Types of Fish",
+    "description": "Recognize 15 common fish species.",
+    "reason": "Fishing and nature knowledge.",
+    "learn_url": "https://www.fishbase.org",
+    "traits": {
+      "weirdness": 0.5,
+      "time": 0.5,
+      "type": 0.5,
+      "structure": 0.7,
+      "energy": 0.2,
+      "impressiveness": 0.5
+    }
+  },
+  {
+    "name": "Learn to Do a Back Walkover",
+    "description": "Master the gymnastic back walkover.",
+    "reason": "Impressive flexibility and strength combo.",
+    "learn_url": "https://www.youtube.com/results?search_query=back+walkover+tutorial",
+    "traits": {
+      "weirdness": 0.6,
+      "time": 0.7,
+      "type": 0.9,
+      "structure": 0.6,
+      "energy": 0.7,
+      "impressiveness": 0.9
+    }
+  },
+  {
+    "name": "Learn to Identify Different Types of Insects",
+    "description": "Recognize 20 common insects.",
+    "reason": "Entomology basics.",
+    "learn_url": "https://www.insectidentification.org",
+    "traits": {
+      "weirdness": 0.5,
+      "time": 0.5,
+      "type": 0.5,
+      "structure": 0.7,
+      "energy": 0.2,
+      "impressiveness": 0.5
+    }
+  },
+  {
+    "name": "Learn to Do a Front Flip",
+    "description": "Master front flip with proper technique.",
+    "reason": "Ultimate acrobatic skill.",
+    "learn_url": "https://www.youtube.com/results?search_query=front+flip+tutorial",
+    "traits": {
+      "weirdness": 0.7,
+      "time": 0.8,
+      "type": 0.9,
+      "structure": 0.7,
+      "energy": 0.9,
+      "impressiveness": 1.0
+    }
+  },
+  {
+    "name": "Learn to Identify Different Types of Flowers",
+    "description": "Recognize 20 common flowers.",
+    "reason": "Botany basics for gardeners.",
+    "learn_url": "https://www.gardenia.net/plant",
+    "traits": {
+      "weirdness": 0.4,
+      "time": 0.5,
+      "type": 0.5,
+      "structure": 0.7,
+      "energy": 0.2,
+      "impressiveness": 0.5
+    }
+  },
+  {
+    "name": "Learn to Do a Hand Clap Behind Your Back",
+    "description": "Master the coordination trick of clapping behind your back.",
+    "reason": "Simple but impressive party trick.",
+    "learn_url": "https://www.youtube.com/results?search_query=clap+behind+back",
+    "traits": {
+      "weirdness": 0.7,
+      "time": 0.3,
+      "type": 0.9,
+      "structure": 0.4,
+      "energy": 0.4,
+      "impressiveness": 0.7
+    }
+  },
+  {
+    "name": "Learn to Identify Different Types of Birds",
+    "description": "Recognize 25 common bird species.",
+    "reason": "Birdwatching basics.",
+    "learn_url": "https://www.allaboutbirds.org/news/",
+    "traits": {
+      "weirdness": 0.4,
+      "time": 0.5,
+      "type": 0.5,
+      "structure": 0.7,
+      "energy": 0.2,
+      "impressiveness": 0.5
+    }
+  },
+  {
+    "name": "Learn to Do a One-Armed Push-up",
+    "description": "Master proper one-armed push-up form.",
+    "reason": "Ultimate strength demonstration.",
+    "learn_url": "https://www.youtube.com/results?search_query=one+arm+pushup",
+    "traits": {
+      "weirdness": 0.6,
+      "time": 0.8,
+      "type": 0.9,
+      "structure": 0.6,
+      "energy": 0.9,
+      "impressiveness": 1.0
+    }
+  },
+  {
+    "name": "Learn to Identify Different Types of Snakes",
+    "description": "Recognize 10 common snake species (venomous vs non-venomous).",
+    "reason": "Safety knowledge for outdoor activities.",
+    "learn_url": "https://www.snakesnaps.com",
+    "traits": {
+      "weirdness": 0.6,
+      "time": 0.5,
+      "type": 0.5,
+      "structure": 0.8,
+      "energy": 0.2,
+      "impressiveness": 0.6
+    }
+  },
+  {
+    "name": "Learn to Do a Muscle-Up",
+    "description": "Master the advanced pull-up to dip transition.",
+    "reason": "Ultimate calisthenics achievement.",
+    "learn_url": "https://www.youtube.com/results?search_query=muscle+up+tutorial",
+    "traits": {
+      "weirdness": 0.6,
+      "time": 0.8,
+      "type": 0.9,
+      "structure": 0.7,
+      "energy": 0.9,
+      "impressiveness": 1.0
+    }
+  }
+]

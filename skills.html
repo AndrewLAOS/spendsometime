@@ -1,0 +1,1104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Skill Matcher – SpendSomeTime</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:#f0f7ff;
+  --panel:#ffffffcc;
+  --border:#d0e4ff;
+  --accent:#ff7eb9;
+  --accent2:#58d9ff;
+  --text:#1a1a1a;
+  --muted:#555555;
+  --shadow: rgba(0,0,0,0.1);
+}
+
+* {
+  box-sizing:border-box;
+  font-family:'Inter', system-ui, sans-serif;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin:0;
+  background: var(--bg);
+  color: var(--text);
+}
+
+main {
+  max-width:900px;
+  margin:0 auto;
+  padding:3rem 1.5rem;
+}
+
+nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border);
+  padding: 1rem 2rem;
+  z-index: 1000;
+  box-shadow: 0 2px 10px var(--shadow);
+}
+
+nav .nav-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav .logo {
+  font-size: 1.3rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-decoration: none;
+}
+
+nav .nav-links {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+nav .nav-links a {
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: color 0.3s ease;
+}
+
+nav .nav-links a:hover {
+  color: var(--accent2);
+}
+
+.search-box {
+  margin: 1.5rem 0;
+  position: relative;
+}
+
+.search-box input {
+  width: 100%;
+  padding: 1rem 1rem 1rem 3rem;
+  border: 2px solid var(--border);
+  border-radius: 12px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+.search-box input:focus {
+  outline: none;
+  border-color: var(--accent2);
+}
+
+.search-box::before {
+  content: "🔍";
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.2rem;
+}
+
+.achievement-badge {
+  display: inline-block;
+  padding: 0.4rem 1rem;
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  color: white;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin: 0.5rem 0.5rem 0 0;
+  animation: popIn 0.5s ease;
+}
+
+@keyframes popIn {
+  0% { transform: scale(0); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+.random-skill-btn {
+  margin: 1rem 0;
+  padding: 0.8rem 1.5rem;
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.random-skill-btn:hover {
+  transform: scale(1.05);
+}
+
+.export-options {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.history-panel {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 1.5rem;
+  margin: 2rem 0;
+  box-shadow: 0 4px 12px var(--shadow);
+}
+
+.history-item {
+  padding: 1rem;
+  border-bottom: 1px solid var(--border);
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.history-item:hover {
+  background: #f8f9ff;
+}
+
+.history-item:last-child {
+  border-bottom: none;
+}
+
+.comparison-view {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+.comparison-card {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1rem;
+}
+
+@media (max-width: 600px) {
+  .comparison-view {
+    grid-template-columns: 1fr;
+  }
+}
+
+h1 {
+  font-size:2.8rem;
+  margin-bottom:1rem;
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+p { color: var(--muted); }
+
+.progress-bar {
+  height:10px;
+  background: var(--border);
+  border-radius: 5px;
+  overflow:hidden;
+  margin:2rem 0;
+}
+.progress-bar-inner {
+  height:100%;
+  width:0%;
+  background: var(--accent2);
+  transition: width 0.3s ease;
+}
+
+.question {
+  background:var(--panel);
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:2rem;
+  margin:2rem 0;
+  box-shadow:0 6px 20px var(--shadow);
+}
+
+.answers button {
+  display:block;
+  width:100%;
+  margin-top:.7rem;
+  padding:1rem;
+  border-radius:12px;
+  background:#ffffffee;
+  border:1px solid var(--border);
+  color:var(--text);
+  cursor:pointer;
+  font-weight:600;
+  transition: all 0.25s ease;
+  box-shadow:0 4px 12px var(--shadow);
+}
+.answers button:hover {
+  border-color:var(--accent);
+  transform:translateY(-3px) scale(1.02);
+  box-shadow:0 8px 20px var(--shadow);
+}
+
+.answers button.selected {
+  background: linear-gradient(135deg,var(--accent),var(--accent2));
+  color:white;
+  border:none;
+}
+
+.question-nav {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1.5rem;
+  gap: 1rem;
+}
+
+.question-nav button {
+  padding: 0.7rem 1.5rem;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: var(--panel);
+  color: var(--text);
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.25s ease;
+}
+
+.question-nav button:hover:not(:disabled) {
+  background: var(--accent2);
+  color: white;
+  border-color: var(--accent2);
+}
+
+.question-nav button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.question-number {
+  color: var(--muted);
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+}
+
+.match-score {
+  display: inline-block;
+  background: var(--accent2);
+  color: white;
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+#results { display:none; margin-top:2rem; }
+
+.results-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.filter-controls {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.filter-controls button {
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--panel);
+  color: var(--text);
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: all 0.25s ease;
+}
+
+.filter-controls button.active {
+  background: var(--accent2);
+  color: white;
+  border-color: var(--accent2);
+}
+
+.bookmark-btn {
+  background: transparent;
+  border: 2px solid var(--accent);
+  color: var(--accent);
+  padding: 0.4rem 0.8rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: all 0.25s ease;
+}
+
+.bookmark-btn:hover, .bookmark-btn.bookmarked {
+  background: var(--accent);
+  color: white;
+}
+
+.show-more-btn {
+  margin-top: 2rem;
+  padding: 1rem 2rem;
+  border-radius: 12px;
+  border: 2px solid var(--accent2);
+  background: transparent;
+  color: var(--accent2);
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.25s ease;
+}
+
+.show-more-btn:hover {
+  background: var(--accent2);
+  color: white;
+}
+
+.quiz-summary {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 12px var(--shadow);
+}
+
+.quiz-summary h3 {
+  margin-top: 0;
+  color: var(--accent2);
+}
+
+.summary-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.summary-stat {
+  text-align: center;
+  padding: 0.8rem;
+  background: #f8f9ff;
+  border-radius: 10px;
+}
+
+.summary-stat .value {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.summary-stat .label {
+  font-size: 0.85rem;
+  color: var(--muted);
+  margin-top: 0.3rem;
+}
+
+.skill {
+  background:var(--panel);
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:1.5rem 2rem;
+  margin-top:1.5rem;
+  box-shadow:0 6px 20px var(--shadow);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.skill:hover {
+  transform: translateY(-6px);
+  box-shadow:0 14px 36px var(--shadow);
+}
+.skill h3 { margin-top:0; color: var(--accent2); }
+.skill p { margin:0.5rem 0; color: var(--muted); }
+
+.result-actions {
+  margin-top:2rem;
+  display:flex;
+  gap:1rem;
+  flex-wrap:wrap;
+}
+.result-actions button {
+  padding:0.8rem 1.5rem;
+  border-radius:12px;
+  border:none;
+  cursor:pointer;
+  font-weight:600;
+  background: var(--accent2);
+  color:white;
+  transition: all 0.25s ease;
+}
+.result-actions button:hover {
+  background: var(--accent);
+  transform: scale(1.05);
+}
+
+@media (max-width:600px){
+  h1{font-size:2rem;}
+  .question{padding:1.5rem;}
+  .answers button{padding:0.9rem;}
+  .skill{padding:1.2rem;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-content">
+      <a href="index.html" class="logo">SpendSomeTime</a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="skills.html">Skills</a>
+      <a href="weird.html">Quick Skills</a>
+      <a href="games.html">Games</a>
+            <a href="diagram.html">All Skills</a>
+    </div>
+  </div>
+</nav>
+
+<main style="margin-top: 80px;">
+  <h1>Find Skills That Actually Fit You</h1>
+  <p>
+    This isn't a generic "learn to code" list.
+    Answer honestly and we'll match you with skills that align with
+    how you think, work, and stay motivated.
+  </p>
+
+  <div style="margin: 1.5rem 0;">
+    <button class="random-skill-btn" onclick="showRandomSkill()">🎲 Get Random Skill</button>
+  </div>
+
+  <div class="progress-bar"><div class="progress-bar-inner" id="progress"></div></div>
+
+  <div id="quiz"></div>
+  <div id="results"></div>
+</main>
+
+<script>
+const questions = [
+  { text: "When learning something new, what keeps you going?", answers:[
+      { text:"Creative freedom", traits:{creative:1}},
+      { text:"Clear progress & structure", traits:{analytical:1}},
+      { text:"Using my hands", traits:{hands_on:1}},
+      { text:"Solving tough problems", traits:{analytical:0.7}}
+    ]
+  },
+  { text: "How much time can you realistically commit?", answers:[
+      { text:"10–15 minutes a day", traits:{time_commitment:0.2}},
+      { text:"30–45 minutes", traits:{time_commitment:0.6}},
+      { text:"1+ hours", traits:{time_commitment:1}}
+    ]
+  },
+  { text: "Do you prefer working alone or with others?", answers:[
+      { text:"Mostly alone", traits:{solo:1}},
+      { text:"Mix of both", traits:{solo:0.5}},
+      { text:"With others", traits:{solo:0}}
+    ]
+  },
+  { text: "Which sounds most appealing?", answers:[
+      { text:"Making something expressive", traits:{creative:1}},
+      { text:"Optimizing or improving systems", traits:{analytical:1}},
+      { text:"Building or manipulating objects", traits:{hands_on:1}}
+    ]
+  },
+  { text: "What's your learning style?", answers:[
+      { text:"Watch tutorials and follow along", traits:{visual:1, structured:0.7}},
+      { text:"Read and experiment", traits:{analytical:0.8, solo:0.6}},
+      { text:"Jump in and figure it out", traits:{hands_on:1, creative:0.6}},
+      { text:"Practice with feedback", traits:{social:0.7, structured:0.5}}
+    ]
+  },
+  { text: "What motivates you most?", answers:[
+      { text:"Seeing tangible results", traits:{hands_on:0.8, practical:0.7}},
+      { text:"Mastering something difficult", traits:{analytical:0.9, challenge:0.8}},
+      { text:"Expressing myself creatively", traits:{creative:1, solo:0.6}},
+      { text:"Helping others or making impact", traits:{social:0.9, practical:0.8}}
+    ]
+  },
+  { text: "How do you handle mistakes?", answers:[
+      { text:"Frustrated, want to avoid them", traits:{structured:0.8, patience:0.3}},
+      { text:"Learn from them quickly", traits:{analytical:0.7, challenge:0.6}},
+      { text:"See them as part of the process", traits:{creative:0.6, patience:0.8}},
+      { text:"Ask for help when stuck", traits:{social:0.8, structured:0.6}}
+    ]
+  },
+  { text: "What environment helps you focus?", answers:[
+      { text:"Quiet, minimal distractions", traits:{solo:0.9, focus:0.8}},
+      { text:"Some background activity", traits:{social:0.4, focus:0.5}},
+      { text:"Collaborative space", traits:{social:0.9, solo:0.2}},
+      { text:"Anywhere, I adapt", traits:{flexible:0.8, focus:0.6}}
+    ]
+  },
+  { text: "What's your relationship with technology?", answers:[
+      { text:"Love learning new tools", traits:{analytical:0.8, tech:0.9}},
+      { text:"Prefer analog/hands-on", traits:{hands_on:0.9, tech:0.2}},
+      { text:"Use it when needed", traits:{practical:0.7, tech:0.5}},
+      { text:"Mix of digital and physical", traits:{flexible:0.8, tech:0.6}}
+    ]
+  },
+  { text: "How do you prefer to track progress?", answers:[
+      { text:"Detailed metrics and goals", traits:{analytical:0.9, structured:0.8}},
+      { text:"Visual portfolio or collection", traits:{creative:0.8, visual:0.7}},
+      { text:"Just keep practicing", traits:{hands_on:0.7, flexible:0.6}},
+      { text:"Share with others for feedback", traits:{social:0.8, structured:0.5}}
+    ]
+  },
+  { text: "What kind of challenges excite you?", answers:[
+      { text:"Complex puzzles and logic", traits:{analytical:1, challenge:0.9}},
+      { text:"Creative expression", traits:{creative:1, solo:0.7}},
+      { text:"Physical or manual skills", traits:{hands_on:1, practical:0.7}},
+      { text:"Social or communication skills", traits:{social:0.9, practical:0.8}}
+    ]
+  },
+  { text: "How do you like to consume information?", answers:[
+      { text:"Videos and visual guides", traits:{visual:1, structured:0.6}},
+      { text:"Reading articles and books", traits:{analytical:0.7, solo:0.8}},
+      { text:"Hands-on practice", traits:{hands_on:1, flexible:0.7}},
+      { text:"Conversations and discussions", traits:{social:0.9, flexible:0.6}}
+    ]
+  },
+  { text: "What's your ideal learning pace?", answers:[
+      { text:"Fast, move quickly", traits:{challenge:0.7, time_commitment:0.8}},
+      { text:"Steady and consistent", traits:{structured:0.7, patience:0.6}},
+      { text:"Slow, deep understanding", traits:{analytical:0.8, patience:0.9}},
+      { text:"Varied, depends on the day", traits:{flexible:0.9, creative:0.5}}
+    ]
+  },
+  { text: "What do you want to get out of learning?", answers:[
+      { text:"Career or practical benefits", traits:{practical:1, structured:0.7}},
+      { text:"Personal satisfaction", traits:{solo:0.8, creative:0.6}},
+      { text:"Social connection", traits:{social:1, flexible:0.6}},
+      { text:"Mental stimulation", traits:{analytical:0.9, challenge:0.7}}
+    ]
+  },
+  { text: "How do you feel about structured courses?", answers:[
+      { text:"Love them, give me a curriculum", traits:{structured:1, analytical:0.7}},
+      { text:"Prefer flexibility", traits:{flexible:0.9, creative:0.7}},
+      { text:"Mix of structure and freedom", traits:{structured:0.5, flexible:0.7}},
+      { text:"Learn by doing, not courses", traits:{hands_on:0.9, flexible:0.8}}
+    ]
+  },
+  { text: "What's your attention span like?", answers:[
+      { text:"Short, need quick wins", traits:{time_commitment:0.2, patience:0.3}},
+      { text:"Medium, can focus for a while", traits:{focus:0.6, time_commitment:0.5}},
+      { text:"Long, can deep dive", traits:{focus:0.9, analytical:0.7}},
+      { text:"Variable, depends on interest", traits:{flexible:0.8, creative:0.6}}
+    ]
+  },
+  { text: "How important is immediate application?", answers:[
+      { text:"Very, want to use it right away", traits:{practical:1, hands_on:0.7}},
+      { text:"Somewhat, but can wait", traits:{practical:0.6, structured:0.5}},
+      { text:"Not important, learning is the goal", traits:{analytical:0.7, creative:0.6}},
+      { text:"Depends on what I'm learning", traits:{flexible:0.8, practical:0.5}}
+    ]
+  },
+  { text: "What role does creativity play for you?", answers:[
+      { text:"Essential, everything is creative", traits:{creative:1, flexible:0.8}},
+      { text:"Important but structured", traits:{creative:0.7, structured:0.6}},
+      { text:"Less important, prefer logic", traits:{analytical:0.9, creative:0.2}},
+      { text:"Varies by activity", traits:{flexible:0.8, creative:0.5}}
+    ]
+  },
+  { text: "How do you prefer to get feedback?", answers:[
+      { text:"From others, social validation", traits:{social:0.9, structured:0.5}},
+      { text:"Self-assessment and reflection", traits:{solo:0.8, analytical:0.7}},
+      { text:"Through results and outcomes", traits:{practical:0.8, hands_on:0.7}},
+      { text:"Mix of all methods", traits:{flexible:0.8, social:0.5}}
+    ]
+  },
+  { text: "What's your relationship with failure?", answers:[
+      { text:"Avoid it, prefer safe paths", traits:{structured:0.8, challenge:0.3}},
+      { text:"Learn from it quickly", traits:{analytical:0.7, patience:0.6}},
+      { text:"Embrace it as part of growth", traits:{creative:0.7, patience:0.9}},
+      { text:"Depends on the context", traits:{flexible:0.8, challenge:0.5}}
+    ]
+  }
+];
+
+let current = 0;
+let userTraits = { creative:0, analytical:0, hands_on:0, solo:0, time_commitment:0, social:0, structured:0, flexible:0, visual:0, practical:0, challenge:0, patience:0, focus:0, tech:0 };
+let bookmarkedSkills = new Set(JSON.parse(localStorage.getItem('bookmarkedSkills')||'[]'));
+const quizEl = document.getElementById("quiz");
+const resultsEl = document.getElementById("results");
+const progressEl = document.getElementById("progress");
+
+// Load saved progress
+function loadProgress(){
+  const saved = localStorage.getItem('quizProgress');
+  if(saved){
+    const data = JSON.parse(saved);
+    userTraits = data.userTraits || userTraits;
+    current = data.current || 0;
+  }
+}
+
+// Save progress
+function saveProgress(){
+  localStorage.setItem('quizProgress', JSON.stringify({userTraits, current}));
+}
+
+function updateProgress(){
+  progressEl.style.width = `${((current+1)/questions.length)*100}%`;
+}
+
+function renderQuestion(){
+  quizEl.innerHTML="";
+  const q = questions[current];
+  const div=document.createElement("div");
+  div.className="question";
+  div.innerHTML=`
+    <div class="question-number">Question ${current+1} of ${questions.length}</div>
+    <h3>${q.text}</h3>
+  `;
+  const answers=document.createElement("div");
+  answers.className="answers";
+  q.answers.forEach(a=>{
+    const btn=document.createElement("button");
+    btn.textContent=a.text;
+    btn.onclick=()=>{
+      for(const t in a.traits){ 
+        if(!userTraits[t]) userTraits[t] = 0;
+        userTraits[t]+=a.traits[t]; 
+      }
+      saveProgress();
+      setTimeout(()=>{
+        current++;
+        current<questions.length ? renderQuestion() : finishQuiz();
+        updateProgress();
+      }, 300);
+    };
+    answers.appendChild(btn);
+  });
+  div.appendChild(answers);
+  
+  // Navigation buttons
+  const navDiv=document.createElement("div");
+  navDiv.className="question-nav";
+  const backBtn=document.createElement("button");
+  backBtn.textContent="← Back";
+  backBtn.disabled = current === 0;
+  backBtn.onclick=()=>{
+    if(current > 0){
+      current--;
+      renderQuestion();
+      updateProgress();
+    }
+  };
+  navDiv.appendChild(backBtn);
+  
+  const skipBtn=document.createElement("button");
+  skipBtn.textContent="Skip →";
+  skipBtn.onclick=()=>{
+    current++;
+    current<questions.length ? renderQuestion() : finishQuiz();
+    updateProgress();
+  };
+  navDiv.appendChild(skipBtn);
+  div.appendChild(navDiv);
+  
+  quizEl.appendChild(div);
+  updateProgress();
+}
+
+async function finishQuiz(){
+  localStorage.removeItem('quizProgress');
+  quizEl.style.display="none";
+  resultsEl.style.display="block";
+  
+  // Try to fetch skills.json, fallback to example skills
+  let skills = [];
+  try {
+    const res = await fetch("skills.json");
+    if(res.ok) skills = await res.json();
+  } catch(e) {
+    console.log("No skills.json found, using example skills");
+  }
+  
+  if(skills.length === 0){
+    skills = [
+      {name:"Digital Illustration",description:"Draw and create art digitally.",traits:{creative:1,solo:1,time_commitment:0.5},reason:"Your creativity thrives with expressive work.",learn_url:"#"},
+      {name:"3D Printing",description:"Design and print objects.",traits:{hands_on:1,analytical:0.5,time_commitment:0.6},reason:"You like building and seeing tangible results.",learn_url:"#"},
+      {name:"Puzzle Solving",description:"Logic and problem challenges.",traits:{analytical:1,solo:1,time_commitment:0.3},reason:"You enjoy analytical thinking.",learn_url:"#"},
+      {name:"Creative Writing",description:"Express ideas with words.",traits:{creative:1,solo:1,time_commitment:0.4},reason:"You love making something expressive.",learn_url:"#"},
+      {name:"Gardening",description:"Hands-on nurturing projects.",traits:{hands_on:1,solo:0.5,time_commitment:0.5},reason:"You enjoy practical work and results.",learn_url:"#"},
+      {name:"Game Development",description:"Make your own games.",traits:{creative:1,analytical:0.7,time_commitment:1},reason:"You like combining creativity and problem solving.",learn_url:"#"}
+    ];
+  }
+
+  const ranked = skills.map(s=>{
+    let score=0;
+    let matches=0;
+    for(const t in s.traits){
+      if(userTraits[t] !== undefined){
+        score+=(userTraits[t]||0)*s.traits[t];
+        matches++;
+      }
+    }
+    const matchPercent = matches > 0 ? Math.round((score/matches)*100) : 0;
+    return {...s,score,matchPercent};
+  }).sort((a,b)=>b.score-a.score);
+
+  // Quiz summary
+  const summaryDiv=document.createElement("div");
+  summaryDiv.className="quiz-summary";
+  const answeredCount = Object.keys(userTraits).filter(k=>userTraits[k]>0).length;
+  const topTrait = Object.entries(userTraits).sort((a,b)=>b[1]-a[1])[0];
+  summaryDiv.innerHTML=`
+    <h3>Your Learning Profile</h3>
+    <div class="summary-stats">
+      <div class="summary-stat">
+        <div class="value">${answeredCount}</div>
+        <div class="label">Questions Answered</div>
+      </div>
+      <div class="summary-stat">
+        <div class="value">${topTrait ? topTrait[0].charAt(0).toUpperCase()+topTrait[0].slice(1) : 'N/A'}</div>
+        <div class="label">Top Trait</div>
+      </div>
+      <div class="summary-stat">
+        <div class="value">${ranked.length}</div>
+        <div class="label">Total Matches</div>
+      </div>
+      <div class="summary-stat">
+        <div class="value">${ranked[0]?.matchPercent || 0}%</div>
+        <div class="label">Best Match</div>
+      </div>
+    </div>
+  `;
+  resultsEl.innerHTML="<h2>Your Skill Matches</h2>";
+  resultsEl.appendChild(summaryDiv);
+  
+  // Search box
+  const searchDiv = document.createElement("div");
+  searchDiv.className = "search-box";
+  const searchInput = document.createElement("input");
+  searchInput.type = "text";
+  searchInput.placeholder = "Search skills...";
+  searchInput.oninput = (e) => {
+    const query = e.target.value.toLowerCase();
+    const filtered = ranked.filter(s => 
+      s.name.toLowerCase().includes(query) || 
+      s.description.toLowerCase().includes(query)
+    );
+    displayResults(filtered.slice(0, showCount));
+  };
+  searchDiv.appendChild(searchInput);
+  resultsEl.appendChild(searchDiv);
+
+  // Filter controls
+  const headerDiv=document.createElement("div");
+  headerDiv.className="results-header";
+  const filterDiv=document.createElement("div");
+  filterDiv.className="filter-controls";
+  const sortBtn=document.createElement("button");
+  sortBtn.textContent="Best Match";
+  sortBtn.classList.add("active");
+  sortBtn.onclick=()=>{
+    filterDiv.querySelectorAll('button').forEach(b=>b.classList.remove('active'));
+    sortBtn.classList.add('active');
+    displayResults(ranked.slice(0, showCount));
+  };
+  filterDiv.appendChild(sortBtn);
+  
+  const creativeBtn=document.createElement("button");
+  creativeBtn.textContent="Most Creative";
+  creativeBtn.onclick=()=>{
+    filterDiv.querySelectorAll('button').forEach(b=>b.classList.remove('active'));
+    creativeBtn.classList.add('active');
+    const sorted = [...ranked].sort((a,b)=>(b.traits.creative||0)-(a.traits.creative||0));
+    displayResults(sorted.slice(0, showCount));
+  };
+  filterDiv.appendChild(creativeBtn);
+  
+  const practicalBtn=document.createElement("button");
+  practicalBtn.textContent="Most Practical";
+  practicalBtn.onclick=()=>{
+    filterDiv.querySelectorAll('button').forEach(b=>b.classList.remove('active'));
+    practicalBtn.classList.add('active');
+    const sorted = [...ranked].sort((a,b)=>(b.traits.practical||0)-(a.traits.practical||0));
+    displayResults(sorted.slice(0, showCount));
+  };
+  filterDiv.appendChild(practicalBtn);
+  headerDiv.appendChild(filterDiv);
+  resultsEl.appendChild(headerDiv);
+  
+  let showCount = 6;
+  const resultsContainer = document.createElement("div");
+  resultsContainer.id = "results-container";
+  resultsEl.appendChild(resultsContainer);
+  
+  function displayResults(skillsToShow){
+    resultsContainer.innerHTML="";
+    skillsToShow.forEach(s=>{
+      const div=document.createElement("div");
+      div.className="skill";
+      const isBookmarked = bookmarkedSkills.has(s.name);
+      div.innerHTML=`
+        <div style="display:flex; justify-content:space-between; align-items:start; margin-bottom:0.5rem;">
+          <h3 style="margin:0;">${s.name}</h3>
+          <button class="bookmark-btn ${isBookmarked?'bookmarked':''}" data-skill="${s.name}">
+            ${isBookmarked?'★ Bookmarked':'☆ Bookmark'}
+          </button>
+        </div>
+        <span class="match-score">${s.matchPercent}% Match</span>
+        <p>${s.description}</p>
+        <p><strong>Why it fits:</strong> ${s.reason}</p>
+        <p style="margin-top:1rem;"><a href="${s.learn_url}" target="_blank" style="color:var(--accent2); font-weight:600;">Learn more →</a></p>
+      `;
+      const bookmarkBtn = div.querySelector('.bookmark-btn');
+      bookmarkBtn.onclick=()=>{
+        if(bookmarkedSkills.has(s.name)){
+          bookmarkedSkills.delete(s.name);
+          bookmarkBtn.textContent = '☆ Bookmark';
+          bookmarkBtn.classList.remove('bookmarked');
+        } else {
+          bookmarkedSkills.add(s.name);
+          bookmarkBtn.textContent = '★ Bookmarked';
+          bookmarkBtn.classList.add('bookmarked');
+        }
+        localStorage.setItem('bookmarkedSkills', JSON.stringify([...bookmarkedSkills]));
+      };
+      resultsContainer.appendChild(div);
+    });
+  }
+  
+  displayResults(ranked.slice(0, showCount));
+  
+  if(ranked.length > showCount){
+    const showMoreBtn=document.createElement("button");
+    showMoreBtn.className="show-more-btn";
+    showMoreBtn.textContent=`Show ${Math.min(12, ranked.length-showCount)} More Results`;
+    showMoreBtn.onclick=()=>{
+      showCount = Math.min(showCount + 12, ranked.length);
+      displayResults(ranked.slice(0, showCount));
+      if(showCount >= ranked.length){
+        showMoreBtn.style.display='none';
+      } else {
+        showMoreBtn.textContent=`Show ${Math.min(12, ranked.length-showCount)} More Results`;
+      }
+    };
+    resultsEl.appendChild(showMoreBtn);
+  }
+
+  const actionsDiv = document.createElement("div");
+  actionsDiv.className="result-actions";
+  const retryBtn = document.createElement("button");
+  retryBtn.textContent="Retry Quiz";
+  retryBtn.onclick=()=>{
+    current=0;
+    userTraits = { creative:0, analytical:0, hands_on:0, solo:0, time_commitment:0, social:0, structured:0, flexible:0, visual:0, practical:0, challenge:0, patience:0, focus:0, tech:0 };
+    resultsEl.style.display="none";
+    quizEl.style.display="block";
+    renderQuestion();
+  };
+  actionsDiv.appendChild(retryBtn);
+  
+  const shareBtn=document.createElement("button");
+  shareBtn.textContent="Share Results";
+  shareBtn.onclick=()=>{
+    const topSkills = ranked.slice(0,3).map(s=>s.name).join(', ');
+    const shareText = `I just found my perfect skills: ${topSkills}! Try the quiz at ${window.location.href}`;
+    if(navigator.share){
+      navigator.share({title:'My Skill Matches', text:shareText});
+    } else {
+      navigator.clipboard.writeText(shareText).then(()=>{
+        alert('Results copied to clipboard!');
+      });
+    }
+  };
+  actionsDiv.appendChild(shareBtn);
+  
+  const bookmarksBtn=document.createElement("button");
+  bookmarksBtn.textContent=`View Bookmarks (${bookmarkedSkills.size})`;
+  bookmarksBtn.onclick=()=>{
+    const bookmarked = ranked.filter(s=>bookmarkedSkills.has(s.name));
+    if(bookmarked.length > 0){
+      resultsContainer.innerHTML="";
+      displayResults(bookmarked);
+    } else {
+      alert('No bookmarked skills yet! Click the bookmark button on any skill.');
+    }
+  };
+  actionsDiv.appendChild(bookmarksBtn);
+  
+  const challengesBtn=document.createElement("button");
+  challengesBtn.textContent="Create Challenges";
+  challengesBtn.onclick=()=>{
+    window.location.href = 'challenges.html';
+  };
+  actionsDiv.appendChild(challengesBtn);
+  
+  const exportBtn=document.createElement("button");
+  exportBtn.textContent="Export Results";
+  exportBtn.onclick=()=>exportResults(ranked);
+  actionsDiv.appendChild(exportBtn);
+  
+  const printBtn=document.createElement("button");
+  printBtn.textContent="Print Results";
+  printBtn.onclick=()=>window.print();
+  actionsDiv.appendChild(printBtn);
+
+  // Save results to history
+  saveResultsToHistory(ranked, userTraits);
+  
+  // Check for achievements
+  checkAchievements(ranked, userTraits);
+
+  resultsEl.appendChild(actionsDiv);
+}
+
+function showRandomSkill() {
+  Promise.all([
+    fetch('skills.json').then(r => r.ok ? r.json() : []).catch(() => []),
+    fetch('weird.json').then(r => r.ok ? r.json() : []).catch(() => [])
+  ]).then(([skills, weird]) => {
+    const allSkills = [...skills, ...weird];
+    if(allSkills.length === 0) {
+      alert('No skills available. Please try again later.');
+      return;
+    }
+    const random = allSkills[Math.floor(Math.random() * allSkills.length)];
+    const modal = document.createElement('div');
+    modal.className = 'modal active';
+    modal.innerHTML = `
+      <div class="modal-content">
+        <h3>🎲 Random Skill for You</h3>
+        <h2 style="color: var(--accent2); margin: 1rem 0;">${random.name}</h2>
+        <p>${random.description}</p>
+        <p><em>${random.reason}</em></p>
+        ${random.learn_url ? `<p><a href="${random.learn_url}" target="_blank" style="color: var(--accent2); font-weight: 600;">Learn more →</a></p>` : ''}
+        <div class="modal-actions">
+          <button class="btn btn-secondary" onclick="this.closest('.modal').remove()">Close</button>
+          <button class="btn btn-primary" onclick="window.location.href='challenges.html'">Create Challenge</button>
+        </div>
+      </div>
+    `;
+    document.body.appendChild(modal);
+    modal.onclick = (e) => {
+      if(e.target === modal) modal.remove();
+    };
+  });
+}
+
+function exportResults(ranked) {
+  const data = {
+    date: new Date().toISOString(),
+    topMatches: ranked.slice(0, 10).map(s => ({
+      name: s.name,
+      matchPercent: s.matchPercent,
+      description: s.description,
+      url: s.learn_url
+    }))
+  };
+  
+  const json = JSON.stringify(data, null, 2);
+  const blob = new Blob([json], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `skill-matches-${new Date().toISOString().split('T')[0]}.json`;
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
+function saveResultsToHistory(ranked, traits) {
+  const history = JSON.parse(localStorage.getItem('quizHistory') || '[]');
+  history.unshift({
+    date: new Date().toISOString(),
+    type: 'skills',
+    topMatches: ranked.slice(0, 5).map(s => s.name),
+    traits: {...traits}
+  });
+  if(history.length > 10) history.pop();
+  localStorage.setItem('quizHistory', JSON.stringify(history));
+}
+
+function checkAchievements(ranked, traits) {
+  const achievements = JSON.parse(localStorage.getItem('achievements') || '[]');
+  const newAchievements = [];
+  
+  if(ranked.length >= 50 && !achievements.includes('explorer')) {
+    newAchievements.push('explorer');
+    achievements.push('explorer');
+  }
+  if(ranked[0]?.matchPercent >= 90 && !achievements.includes('perfect_match')) {
+    newAchievements.push('perfect_match');
+    achievements.push('perfect_match');
+  }
+  if(Object.values(traits).some(v => v > 5) && !achievements.includes('dedicated')) {
+    newAchievements.push('dedicated');
+    achievements.push('dedicated');
+  }
+  
+  if(newAchievements.length > 0) {
+    localStorage.setItem('achievements', JSON.stringify(achievements));
+    showAchievements(newAchievements);
+  }
+}
+
+function showAchievements(achievements) {
+  const names = {
+    'explorer': '🌍 Explorer - Discovered 50+ skills!',
+    'perfect_match': '🎯 Perfect Match - Found a 90%+ match!',
+    'dedicated': '💪 Dedicated - High engagement in quiz!'
+  };
+  
+  achievements.forEach((ach, i) => {
+    setTimeout(() => {
+      const badge = document.createElement('div');
+      badge.className = 'achievement-badge';
+      badge.textContent = names[ach] || ach;
+      badge.style.position = 'fixed';
+      badge.style.top = `${20 + i * 60}px`;
+      badge.style.right = '20px';
+      badge.style.zIndex = '10000';
+      document.body.appendChild(badge);
+      setTimeout(() => badge.remove(), 5000);
+    }, i * 500);
+  });
+}
+
+loadProgress();
+renderQuestion();
+
+// Keyboard shortcuts
+document.addEventListener('keydown', (e) => {
+  if(e.key === 'Escape') {
+    document.querySelectorAll('.modal.active').forEach(m => m.remove());
+  }
+  if(e.key === 'Enter' && e.ctrlKey) {
+    const activeModal = document.querySelector('.modal.active');
+    if(activeModal) {
+      const form = activeModal.querySelector('form');
+      if(form) form.requestSubmit();
+    }
+  }
+});
+
+// Add search to results when available
+let searchActive = false;
+document.addEventListener('keydown', (e) => {
+  if(e.key === '/' && e.target.tagName !== 'INPUT' && e.target.tagName !== 'TEXTAREA') {
+    e.preventDefault();
+    const searchInput = document.querySelector('.search-box input');
+    if(searchInput) {
+      searchInput.focus();
+      searchActive = true;
+    }
+  }
+});
+</script>
+
+</body>
+</html>

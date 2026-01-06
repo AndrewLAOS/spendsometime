@@ -1,0 +1,740 @@
+[
+  {
+    "name": "Creative Writing",
+    "description": "Writing fiction, poetry, or essays.",
+    "reason": "You enjoy creative expression and independent work.",
+    "learn_url": "https://www.masterclass.com/articles/creative-writing-101",
+    "traits": { "creative": 0.9, "analytical": 0.3, "hands_on": 0.2, "solo": 0.9, "time_commitment": 0.6 }
+  },
+
+  {
+    "name": "Songwriting",
+    "description": "Writing lyrics and melodies.",
+    "reason": "You enjoy emotional creative output.",
+    "learn_url": "https://www.coursera.org/learn/songwriting",
+    "traits": { "creative": 0.9, "analytical": 0.4, "hands_on": 0.5, "solo": 0.7, "time_commitment": 0.7 }
+  },
+
+  {
+    "name": "Screenwriting",
+    "description": "Writing scripts for film or TV.",
+    "reason": "You enjoy storytelling with structure.",
+    "learn_url": "https://nofilmschool.com/screenwriting",
+    "traits": { "creative": 0.8, "analytical": 0.6, "hands_on": 0.3, "solo": 0.8, "time_commitment": 0.8 }
+  },
+
+  {
+    "name": "Journalism",
+    "description": "Researching and writing factual stories.",
+    "reason": "You enjoy curiosity-driven writing.",
+    "learn_url": "https://www.spj.org",
+    "traits": { "creative": 0.5, "analytical": 0.8, "hands_on": 0.4, "solo": 0.6, "time_commitment": 0.7 }
+  },
+
+  {
+    "name": "Poetry Writing",
+    "description": "Expressing ideas through poetic language.",
+    "reason": "You enjoy abstract creative expression.",
+    "learn_url": "https://www.poetryfoundation.org/learn",
+    "traits": { "creative": 1.0, "analytical": 0.3, "hands_on": 0.1, "solo": 0.9, "time_commitment": 0.5 }
+  },
+
+  {
+    "name": "Web Development",
+    "description": "Building websites using HTML, CSS, and JavaScript.",
+    "reason": "You like building things logically.",
+    "learn_url": "https://www.freecodecamp.org",
+    "traits": { "creative": 0.6, "analytical": 0.9, "hands_on": 0.8, "solo": 0.7, "time_commitment": 0.8 }
+  },
+
+  {
+    "name": "Game Development",
+    "description": "Creating playable interactive experiences.",
+    "reason": "You enjoy systems and creativity.",
+    "learn_url": "https://gamedevbeginner.com",
+    "traits": { "creative": 0.8, "analytical": 0.7, "hands_on": 0.8, "solo": 0.6, "time_commitment": 0.9 }
+  },
+
+  {
+    "name": "UI/UX Design",
+    "description": "Designing intuitive user experiences.",
+    "reason": "You think about how people interact with systems.",
+    "learn_url": "https://uxdesign.cc",
+    "traits": { "creative": 0.7, "analytical": 0.7, "hands_on": 0.6, "solo": 0.6, "time_commitment": 0.7 }
+  },
+
+  {
+    "name": "Digital Illustration",
+    "description": "Drawing digitally using tablets or software.",
+    "reason": "You enjoy visual creativity.",
+    "learn_url": "https://drawabox.com",
+    "traits": { "creative": 0.9, "analytical": 0.2, "hands_on": 0.9, "solo": 0.9, "time_commitment": 0.7 }
+  },
+
+  {
+    "name": "3D Modeling",
+    "description": "Creating 3D objects and environments.",
+    "reason": "You enjoy spatial thinking.",
+    "learn_url": "https://www.blender.org/support/tutorials/",
+    "traits": { "creative": 0.7, "analytical": 0.7, "hands_on": 0.9, "solo": 0.7, "time_commitment": 0.9 }
+  },
+
+  {
+    "name": "Animation",
+    "description": "Animating objects or characters.",
+    "reason": "You enjoy bringing things to life.",
+    "learn_url": "https://www.animatorisland.com",
+    "traits": { "creative": 0.9, "analytical": 0.4, "hands_on": 0.9, "solo": 0.6, "time_commitment": 0.9 }
+  },
+
+  {
+    "name": "Phone Photography",
+    "description": "Taking great photos with your smartphone.",
+    "reason": "You enjoy visual observation with what you have.",
+    "learn_url": "https://photographylife.com/smartphone-photography",
+    "traits": { "creative": 0.8, "analytical": 0.4, "hands_on": 0.7, "solo": 0.7, "time_commitment": 0.4 }
+  },
+
+  {
+    "name": "Video Editing",
+    "description": "Editing and assembling video content.",
+    "reason": "You enjoy storytelling with visuals.",
+    "learn_url": "https://www.premiumbeat.com/blog/video-editing-tips/",
+    "traits": { "creative": 0.8, "analytical": 0.6, "hands_on": 0.8, "solo": 0.7, "time_commitment": 0.8 }
+  },
+
+  {
+    "name": "Music Production",
+    "description": "Creating music digitally.",
+    "reason": "You enjoy sound-based creativity.",
+    "learn_url": "https://learningmusic.ableton.com",
+    "traits": { "creative": 0.9, "analytical": 0.5, "hands_on": 0.9, "solo": 0.8, "time_commitment": 0.9 }
+  },
+
+  {
+    "name": "Singing",
+    "description": "Improving vocal technique and range.",
+    "reason": "You enjoy musical expression with just your voice.",
+    "learn_url": "https://www.30daysinger.com",
+    "traits": { "creative": 0.8, "analytical": 0.4, "hands_on": 0.3, "solo": 0.8, "time_commitment": 0.6 }
+  },
+
+  {
+    "name": "Beatboxing",
+    "description": "Creating rhythms and sounds with your mouth.",
+    "reason": "You enjoy musical creativity without instruments.",
+    "learn_url": "https://www.beatboxing.com",
+    "traits": { "creative": 0.9, "analytical": 0.3, "hands_on": 0.2, "solo": 0.9, "time_commitment": 0.5 }
+  },
+
+  {
+    "name": "Chess",
+    "description": "Strategic board game mastery.",
+    "reason": "You enjoy long-term strategic thinking.",
+    "learn_url": "https://www.chess.com/lessons",
+    "traits": { "creative": 0.4, "analytical": 1.0, "hands_on": 0.1, "solo": 0.6, "time_commitment": 0.6 }
+  },
+
+  {
+    "name": "Speedcubing",
+    "description": "Solving Rubik’s cubes quickly.",
+    "reason": "You enjoy pattern recognition.",
+    "learn_url": "https://www.cubeskills.com",
+    "traits": { "creative": 0.3, "analytical": 0.7, "hands_on": 0.9, "solo": 0.8, "time_commitment": 0.5 }
+  },
+
+  {
+    "name": "Mental Math",
+    "description": "Doing calculations mentally.",
+    "reason": "You enjoy sharpening cognitive speed.",
+    "learn_url": "https://artofmemory.com/wiki/Mental_math/",
+    "traits": { "creative": 0.1, "analytical": 0.9, "hands_on": 0.0, "solo": 0.9, "time_commitment": 0.3 }
+  },
+
+  {
+    "name": "Critical Thinking",
+    "description": "Evaluating arguments logically.",
+    "reason": "You enjoy reasoning clearly.",
+    "learn_url": "https://www.futurelearn.com/subjects/critical-thinking-courses",
+    "traits": { "creative": 0.3, "analytical": 0.9, "hands_on": 0.1, "solo": 0.7, "time_commitment": 0.4 }
+  },
+
+  {
+    "name": "Public Speaking",
+    "description": "Speaking confidently to groups.",
+    "reason": "You want to improve communication.",
+    "learn_url": "https://www.toastmasters.org",
+    "traits": { "creative": 0.6, "analytical": 0.5, "hands_on": 0.4, "solo": 0.1, "time_commitment": 0.6 }
+  },
+
+  {
+    "name": "Debate",
+    "description": "Arguing logically with evidence.",
+    "reason": "You enjoy intellectual challenge.",
+    "learn_url": "https://idebate.org",
+    "traits": { "creative": 0.5, "analytical": 0.9, "hands_on": 0.2, "solo": 0.2, "time_commitment": 0.7 }
+  },
+
+  {
+    "name": "Philosophy",
+    "description": "Studying abstract ideas and ethics.",
+    "reason": "You enjoy deep thinking.",
+    "learn_url": "https://plato.stanford.edu",
+    "traits": { "creative": 0.5, "analytical": 0.8, "hands_on": 0.0, "solo": 0.9, "time_commitment": 0.6 }
+  },
+
+  {
+    "name": "Economics",
+    "description": "Understanding markets and incentives.",
+    "reason": "You enjoy systemic thinking.",
+    "learn_url": "https://www.khanacademy.org/economics-finance-domain",
+    "traits": { "creative": 0.3, "analytical": 0.9, "hands_on": 0.1, "solo": 0.7, "time_commitment": 0.6 }
+  },
+
+  {
+    "name": "Psychology",
+    "description": "Understanding human behavior.",
+    "reason": "You’re curious about people.",
+    "learn_url": "https://www.simplypsychology.org",
+    "traits": { "creative": 0.4, "analytical": 0.8, "hands_on": 0.1, "solo": 0.7, "time_commitment": 0.6 }
+  },
+
+  {
+    "name": "Memory Techniques",
+    "description": "Improving memory with systems.",
+    "reason": "You enjoy optimizing cognition.",
+    "learn_url": "https://artofmemory.com",
+    "traits": { "creative": 0.4, "analytical": 0.7, "hands_on": 0.1, "solo": 0.9, "time_commitment": 0.4 }
+  },
+
+  {
+    "name": "Speed Typing",
+    "description": "Typing quickly and accurately.",
+    "reason": "You enjoy measurable improvement.",
+    "learn_url": "https://www.keybr.com",
+    "traits": { "creative": 0.1, "analytical": 0.6, "hands_on": 0.9, "solo": 0.9, "time_commitment": 0.3 }
+  },
+
+  {
+    "name": "Calligraphy",
+    "description": "Decorative handwriting.",
+    "reason": "You enjoy slow, precise creativity.",
+    "learn_url": "https://thepostmansknock.com",
+    "traits": { "creative": 0.8, "analytical": 0.3, "hands_on": 0.9, "solo": 0.9, "time_commitment": 0.5 }
+  },
+
+  {
+    "name": "Origami",
+    "description": "Paper folding art.",
+    "reason": "You enjoy calm hands-on tasks.",
+    "learn_url": "https://origami.me",
+    "traits": { "creative": 0.7, "analytical": 0.4, "hands_on": 1.0, "solo": 0.9, "time_commitment": 0.4 }
+  },
+
+  {
+    "name": "Bodyweight Fitness",
+    "description": "Building strength using only your body weight.",
+    "reason": "You enjoy physical challenges without equipment.",
+    "learn_url": "https://www.reddit.com/r/bodyweightfitness/wiki/kb/recommended_routine",
+    "traits": { "creative": 0.2, "analytical": 0.5, "hands_on": 1.0, "solo": 0.8, "time_commitment": 0.6 }
+  },
+
+  {
+    "name": "Yoga",
+    "description": "Improving flexibility, strength, and mindfulness.",
+    "reason": "You enjoy mind-body connection.",
+    "learn_url": "https://www.yogajournal.com/poses/yoga-for-beginners/",
+    "traits": { "creative": 0.3, "analytical": 0.2, "hands_on": 0.8, "solo": 0.9, "time_commitment": 0.5 }
+  },
+
+  {
+    "name": "Stretching and Flexibility",
+    "description": "Improving range of motion and preventing injury.",
+    "reason": "You enjoy physical wellness.",
+    "learn_url": "https://www.verywellfit.com/flexibility-exercises-4158626",
+    "traits": { "creative": 0.2, "analytical": 0.3, "hands_on": 0.9, "solo": 0.9, "time_commitment": 0.3 }
+  },
+
+  {
+    "name": "Meditation",
+    "description": "Training focus and awareness.",
+    "reason": "You want mental clarity.",
+    "learn_url": "https://www.headspace.com/meditation",
+    "traits": { "creative": 0.2, "analytical": 0.2, "hands_on": 0.0, "solo": 1.0, "time_commitment": 0.3 }
+  },
+
+  {
+    "name": "Time Management",
+    "description": "Organizing time effectively.",
+    "reason": "You want control over your schedule.",
+    "learn_url": "https://todoist.com/productivity-methods",
+    "traits": { "creative": 0.2, "analytical": 0.8, "hands_on": 0.3, "solo": 0.8, "time_commitment": 0.4 }
+  },
+  {
+    "name": "Advanced Note-Taking",
+    "description": "Creating structured, effective notes for learning.",
+    "reason": "You want to retain information efficiently.",
+    "learn_url": "https://collegeinfogeek.com/how-to-take-notes/",
+    "traits": { "creative": 0.3, "analytical": 0.8, "hands_on": 0.4, "solo": 0.9, "time_commitment": 0.4 }
+  },
+  {
+    "name": "Mind Mapping",
+    "description": "Visually organizing ideas and concepts.",
+    "reason": "You think visually and creatively.",
+    "learn_url": "https://www.mindtools.com/a4wo118/mind-mapping",
+    "traits": { "creative": 0.7, "analytical": 0.6, "hands_on": 0.4, "solo": 0.8, "time_commitment": 0.3 }
+  },
+  {
+    "name": "Learning How to Learn",
+    "description": "Understanding effective learning strategies.",
+    "reason": "You want to optimize how you acquire skills.",
+    "learn_url": "https://www.coursera.org/learn/learning-how-to-learn",
+    "traits": { "creative": 0.3, "analytical": 0.9, "hands_on": 0.2, "solo": 0.8, "time_commitment": 0.4 }
+  },
+  {
+    "name": "Data Visualization",
+    "description": "Presenting data clearly using visuals.",
+    "reason": "You enjoy explaining information visually.",
+    "learn_url": "https://www.data-to-viz.com",
+    "traits": { "creative": 0.7, "analytical": 0.8, "hands_on": 0.6, "solo": 0.6, "time_commitment": 0.7 }
+  },
+  {
+    "name": "Basic Statistics",
+    "description": "Understanding averages, variance, and probability.",
+    "reason": "You enjoy analytical thinking.",
+    "learn_url": "https://www.khanacademy.org/math/statistics-probability",
+    "traits": { "creative": 0.1, "analytical": 0.9, "hands_on": 0.2, "solo": 0.8, "time_commitment": 0.6 }
+  },
+  {
+    "name": "Python Programming",
+    "description": "Writing programs in Python.",
+    "reason": "You enjoy problem-solving through code.",
+    "learn_url": "https://www.learnpython.org",
+    "traits": { "creative": 0.5, "analytical": 0.9, "hands_on": 0.7, "solo": 0.7, "time_commitment": 0.8 }
+  },
+  {
+    "name": "JavaScript Programming",
+    "description": "Building interactive web features.",
+    "reason": "You enjoy creating interactive systems.",
+    "learn_url": "https://javascript.info",
+    "traits": { "creative": 0.6, "analytical": 0.9, "hands_on": 0.8, "solo": 0.7, "time_commitment": 0.8 }
+  },
+  {
+    "name": "Version Control (Git)",
+    "description": "Tracking and managing code changes.",
+    "reason": "You like structured workflows.",
+    "learn_url": "https://git-scm.com/docs/gittutorial",
+    "traits": { "creative": 0.2, "analytical": 0.8, "hands_on": 0.6, "solo": 0.8, "time_commitment": 0.4 }
+  },
+  {
+    "name": "Cybersecurity Basics",
+    "description": "Understanding how systems are protected.",
+    "reason": "You enjoy system-level thinking.",
+    "learn_url": "https://www.cybrary.it",
+    "traits": { "creative": 0.3, "analytical": 0.9, "hands_on": 0.5, "solo": 0.7, "time_commitment": 0.7 }
+  },
+  {
+    "name": "Ethical Hacking",
+    "description": "Testing systems for vulnerabilities responsibly.",
+    "reason": "You like understanding how systems break.",
+    "learn_url": "https://www.hacksplaining.com",
+    "traits": { "creative": 0.4, "analytical": 0.9, "hands_on": 0.7, "solo": 0.7, "time_commitment": 0.8 }
+  },
+
+  {
+    "name": "Drawing",
+    "description": "Learning to draw with pencil and paper.",
+    "reason": "You enjoy visual creativity with basic materials.",
+    "learn_url": "https://drawabox.com",
+    "traits": { "creative": 0.9, "analytical": 0.3, "hands_on": 0.9, "solo": 0.9, "time_commitment": 0.6 }
+  },
+  {
+    "name": "Hand Lettering",
+    "description": "Creating beautiful letterforms by hand.",
+    "reason": "You enjoy artistic writing.",
+    "learn_url": "https://www.lettering-daily.com",
+    "traits": { "creative": 0.9, "analytical": 0.3, "hands_on": 0.9, "solo": 0.9, "time_commitment": 0.5 }
+  },
+  {
+    "name": "Sketching",
+    "description": "Quick drawing and visual note-taking.",
+    "reason": "You enjoy capturing ideas visually.",
+    "learn_url": "https://www.sketchbook.com/blog/sketching-tips",
+    "traits": { "creative": 0.8, "analytical": 0.4, "hands_on": 0.9, "solo": 0.9, "time_commitment": 0.4 }
+  },
+  {
+    "name": "CAD Design",
+    "description": "Designing precise technical models.",
+    "reason": "You enjoy precision and structure.",
+    "learn_url": "https://www.autodesk.com/solutions/cad",
+    "traits": { "creative": 0.5, "analytical": 0.9, "hands_on": 0.8, "solo": 0.7, "time_commitment": 0.8 }
+  },
+
+  {
+    "name": "Scientific Research",
+    "description": "Designing experiments and analyzing results.",
+    "reason": "You enjoy discovery and evidence-based thinking.",
+    "learn_url": "https://www.sciencebuddies.org",
+    "traits": { "creative": 0.4, "analytical": 1.0, "hands_on": 0.4, "solo": 0.6, "time_commitment": 0.8 }
+  },
+  {
+    "name": "Astronomy",
+    "description": "Studying celestial objects.",
+    "reason": "You enjoy big-picture thinking.",
+    "learn_url": "https://astronomy.com",
+    "traits": { "creative": 0.4, "analytical": 0.8, "hands_on": 0.2, "solo": 0.8, "time_commitment": 0.6 }
+  },
+  {
+    "name": "Weather Forecasting",
+    "description": "Predicting weather patterns.",
+    "reason": "You enjoy pattern analysis.",
+    "learn_url": "https://www.noaa.gov/education",
+    "traits": { "creative": 0.3, "analytical": 0.9, "hands_on": 0.3, "solo": 0.7, "time_commitment": 0.6 }
+  },
+  {
+    "name": "Geopolitics",
+    "description": "Understanding global power dynamics.",
+    "reason": "You enjoy complex systems.",
+    "learn_url": "https://www.cfr.org/backgrounders",
+    "traits": { "creative": 0.3, "analytical": 0.8, "hands_on": 0.1, "solo": 0.7, "time_commitment": 0.6 }
+  },
+  {
+    "name": "Urban Planning",
+    "description": "Designing functional cities.",
+    "reason": "You enjoy large-scale systems.",
+    "learn_url": "https://planetizen.com",
+    "traits": { "creative": 0.6, "analytical": 0.8, "hands_on": 0.4, "solo": 0.6, "time_commitment": 0.7 }
+  },
+
+  {
+    "name": "Cooking Fundamentals",
+    "description": "Preparing basic meals.",
+    "reason": "You enjoy practical skills.",
+    "learn_url": "https://www.bbcgoodfood.com/howto",
+    "traits": { "creative": 0.5, "analytical": 0.3, "hands_on": 1.0, "solo": 0.7, "time_commitment": 0.4 }
+  },
+  {
+    "name": "Baking",
+    "description": "Making breads and desserts.",
+    "reason": "You enjoy precision-based creativity.",
+    "learn_url": "https://www.kingarthurbaking.com/learn",
+    "traits": { "creative": 0.6, "analytical": 0.5, "hands_on": 1.0, "solo": 0.7, "time_commitment": 0.5 }
+  },
+  {
+    "name": "Knife Skills",
+    "description": "Using knives safely and efficiently.",
+    "reason": "You like mastering fundamentals.",
+    "learn_url": "https://www.seriouseats.com/knife-skills",
+    "traits": { "creative": 0.1, "analytical": 0.4, "hands_on": 1.0, "solo": 0.8, "time_commitment": 0.2 }
+  },
+  {
+    "name": "Meal Planning",
+    "description": "Organizing meals efficiently.",
+    "reason": "You enjoy optimization.",
+    "learn_url": "https://www.healthline.com/nutrition/meal-planning",
+    "traits": { "creative": 0.3, "analytical": 0.7, "hands_on": 0.5, "solo": 0.8, "time_commitment": 0.4 }
+  },
+
+  {
+    "name": "Personal Finance",
+    "description": "Managing money responsibly.",
+    "reason": "You want long-term stability.",
+    "learn_url": "https://www.investopedia.com/personal-finance-4427760",
+    "traits": { "creative": 0.2, "analytical": 0.9, "hands_on": 0.2, "solo": 0.9, "time_commitment": 0.4 }
+  },
+  {
+    "name": "Budgeting",
+    "description": "Tracking income and expenses.",
+    "reason": "You like control and structure.",
+    "learn_url": "https://www.nerdwallet.com/article/finance/how-to-budget",
+    "traits": { "creative": 0.1, "analytical": 0.9, "hands_on": 0.3, "solo": 0.9, "time_commitment": 0.3 }
+  },
+  {
+    "name": "Investing Basics",
+    "description": "Understanding stocks and markets.",
+    "reason": "You enjoy long-term thinking.",
+    "learn_url": "https://www.investopedia.com/investing-essentials-4689754",
+    "traits": { "creative": 0.2, "analytical": 0.9, "hands_on": 0.2, "solo": 0.8, "time_commitment": 0.6 }
+  },
+
+  {
+    "name": "Entrepreneurship",
+    "description": "Building and testing business ideas.",
+    "reason": "You like creating systems.",
+    "learn_url": "https://www.ycombinator.com/library",
+    "traits": { "creative": 0.7, "analytical": 0.8, "hands_on": 0.7, "solo": 0.5, "time_commitment": 0.9 }
+  },
+  {
+    "name": "Marketing Fundamentals",
+    "description": "Promoting products or ideas.",
+    "reason": "You enjoy persuasion and strategy.",
+    "learn_url": "https://blog.hubspot.com/marketing",
+    "traits": { "creative": 0.7, "analytical": 0.7, "hands_on": 0.5, "solo": 0.4, "time_commitment": 0.6 }
+  },
+  {
+    "name": "Copywriting",
+    "description": "Writing persuasive text.",
+    "reason": "You enjoy writing with impact.",
+    "learn_url": "https://copyblogger.com",
+    "traits": { "creative": 0.8, "analytical": 0.6, "hands_on": 0.4, "solo": 0.7, "time_commitment": 0.6 }
+  },
+  {
+    "name": "Brand Design",
+    "description": "Creating visual brand identities.",
+    "reason": "You enjoy visual storytelling.",
+    "learn_url": "https://99designs.com/blog",
+    "traits": { "creative": 0.9, "analytical": 0.4, "hands_on": 0.7, "solo": 0.6, "time_commitment": 0.7 }
+  },
+  {
+    "name": "Journaling",
+    "description": "Regular writing for reflection and growth.",
+    "reason": "You enjoy self-expression and introspection.",
+    "learn_url": "https://www.psychologytoday.com/us/basics/journaling",
+    "traits": { "creative": 0.7, "analytical": 0.5, "hands_on": 0.4, "solo": 1.0, "time_commitment": 0.3 }
+  },
+  {
+    "name": "Speed Reading",
+    "description": "Reading faster while maintaining comprehension.",
+    "reason": "You want to consume information more efficiently.",
+    "learn_url": "https://www.readinglength.com",
+    "traits": { "creative": 0.2, "analytical": 0.7, "hands_on": 0.2, "solo": 0.9, "time_commitment": 0.4 }
+  },
+  {
+    "name": "Learning a Language",
+    "description": "Mastering a new language through apps and practice.",
+    "reason": "You enjoy communication and cultural connection.",
+    "learn_url": "https://www.duolingo.com",
+    "traits": { "creative": 0.4, "analytical": 0.6, "hands_on": 0.3, "solo": 0.7, "time_commitment": 0.7 }
+  },
+  {
+    "name": "Sudoku and Logic Puzzles",
+    "description": "Solving number and logic puzzles.",
+    "reason": "You enjoy pattern recognition and problem-solving.",
+    "learn_url": "https://www.sudoku.com/how-to-play/sudoku-rules-for-complete-beginners/",
+    "traits": { "creative": 0.2, "analytical": 0.9, "hands_on": 0.2, "solo": 0.9, "time_commitment": 0.3 }
+  },
+  {
+    "name": "Crossword Puzzles",
+    "description": "Solving word puzzles and expanding vocabulary.",
+    "reason": "You enjoy wordplay and knowledge.",
+    "learn_url": "https://www.nytimes.com/crosswords",
+    "traits": { "creative": 0.3, "analytical": 0.7, "hands_on": 0.2, "solo": 0.9, "time_commitment": 0.3 }
+  },
+  {
+    "name": "Storytelling",
+    "description": "Crafting and telling engaging stories.",
+    "reason": "You enjoy narrative and communication.",
+    "learn_url": "https://www.masterclass.com/articles/how-to-tell-a-great-story",
+    "traits": { "creative": 0.9, "analytical": 0.4, "hands_on": 0.3, "solo": 0.6, "time_commitment": 0.5 }
+  },
+  {
+    "name": "Podcast Creation",
+    "description": "Recording and editing audio content.",
+    "reason": "You enjoy audio storytelling and communication.",
+    "learn_url": "https://www.buzzsprout.com/blog/how-to-start-a-podcast",
+    "traits": { "creative": 0.8, "analytical": 0.5, "hands_on": 0.6, "solo": 0.5, "time_commitment": 0.7 }
+  },
+  {
+    "name": "Basic Sewing",
+    "description": "Mending and creating with needle and thread.",
+    "reason": "You enjoy practical hands-on skills.",
+    "learn_url": "https://www.sewdaily.com/sewing-basics",
+    "traits": { "creative": 0.6, "analytical": 0.4, "hands_on": 1.0, "solo": 0.8, "time_commitment": 0.5 }
+  },
+  {
+    "name": "Knitting or Crocheting",
+    "description": "Creating fabric with yarn and needles.",
+    "reason": "You enjoy meditative, productive activities.",
+    "learn_url": "https://www.craftyarncouncil.com/learn",
+    "traits": { "creative": 0.7, "analytical": 0.4, "hands_on": 1.0, "solo": 0.9, "time_commitment": 0.5 }
+  },
+  {
+    "name": "Basic Home Repair",
+    "description": "Fixing common household issues.",
+    "reason": "You enjoy practical problem-solving.",
+    "learn_url": "https://www.familyhandyman.com",
+    "traits": { "creative": 0.4, "analytical": 0.7, "hands_on": 1.0, "solo": 0.7, "time_commitment": 0.5 }
+  },
+  {
+    "name": "Gardening Basics",
+    "description": "Growing plants in containers or small spaces.",
+    "reason": "You enjoy nurturing and seeing growth.",
+    "learn_url": "https://www.gardeners.com/how-to/container-gardening/5079.html",
+    "traits": { "creative": 0.5, "analytical": 0.4, "hands_on": 1.0, "solo": 0.8, "time_commitment": 0.4 }
+  },
+  {
+    "name": "Houseplant Care",
+    "description": "Keeping indoor plants healthy and thriving.",
+    "reason": "You enjoy bringing nature indoors.",
+    "learn_url": "https://www.houseplantjournal.com",
+    "traits": { "creative": 0.4, "analytical": 0.5, "hands_on": 0.7, "solo": 0.9, "time_commitment": 0.3 }
+  },
+  {
+    "name": "Basic First Aid",
+    "description": "Learning essential first aid and CPR techniques.",
+    "reason": "You want practical life-saving knowledge.",
+    "learn_url": "https://www.redcross.org/take-a-class",
+    "traits": { "creative": 0.2, "analytical": 0.7, "hands_on": 0.6, "solo": 0.6, "time_commitment": 0.5 }
+  },
+  {
+    "name": "Nutrition Basics",
+    "description": "Understanding healthy eating and meal planning.",
+    "reason": "You want to optimize your health.",
+    "learn_url": "https://www.nutrition.gov",
+    "traits": { "creative": 0.3, "analytical": 0.8, "hands_on": 0.5, "solo": 0.8, "time_commitment": 0.4 }
+  },
+  {
+    "name": "Sleep Optimization",
+    "description": "Improving sleep quality and habits.",
+    "reason": "You want to optimize your rest and recovery.",
+    "learn_url": "https://www.sleepfoundation.org/sleep-hygiene",
+    "traits": { "creative": 0.2, "analytical": 0.7, "hands_on": 0.2, "solo": 1.0, "time_commitment": 0.3 }
+  },
+  {
+    "name": "Basic Accounting",
+    "description": "Understanding personal finances and bookkeeping.",
+    "reason": "You want financial literacy and control.",
+    "learn_url": "https://www.accountingcoach.com",
+    "traits": { "creative": 0.1, "analytical": 0.9, "hands_on": 0.4, "solo": 0.9, "time_commitment": 0.5 }
+  },
+  {
+    "name": "Negotiation Skills",
+    "description": "Learning to negotiate effectively in daily life.",
+    "reason": "You want to improve communication and outcomes.",
+    "learn_url": "https://www.pon.harvard.edu/daily/negotiation-skills-daily/",
+    "traits": { "creative": 0.5, "analytical": 0.7, "hands_on": 0.3, "solo": 0.4, "time_commitment": 0.5 }
+  },
+  {
+    "name": "Active Listening",
+    "description": "Improving listening skills and empathy.",
+    "reason": "You want to connect better with others.",
+    "learn_url": "https://www.mindtools.com/pages/article/listening-skills.htm",
+    "traits": { "creative": 0.3, "analytical": 0.5, "hands_on": 0.2, "solo": 0.3, "time_commitment": 0.3 }
+  },
+  {
+    "name": "Conflict Resolution",
+    "description": "Resolving disagreements constructively.",
+    "reason": "You want to improve relationships and communication.",
+    "learn_url": "https://www.helpguide.org/articles/relationships-communication/conflict-resolution-skills.htm",
+    "traits": { "creative": 0.4, "analytical": 0.7, "hands_on": 0.3, "solo": 0.3, "time_commitment": 0.4 }
+  },
+  {
+    "name": "Speed Mathematics",
+    "description": "Calculating quickly using mental math tricks.",
+    "reason": "You enjoy sharpening your computational skills.",
+    "learn_url": "https://artofmemory.com/wiki/Mental_math/",
+    "traits": { "creative": 0.2, "analytical": 0.9, "hands_on": 0.1, "solo": 0.9, "time_commitment": 0.4 }
+  },
+  {
+    "name": "Basic HTML/CSS",
+    "description": "Creating simple web pages from scratch.",
+    "reason": "You enjoy building things on the web.",
+    "learn_url": "https://www.freecodecamp.org",
+    "traits": { "creative": 0.6, "analytical": 0.8, "hands_on": 0.8, "solo": 0.8, "time_commitment": 0.6 }
+  },
+  {
+    "name": "Excel/Spreadsheet Mastery",
+    "description": "Mastering formulas, functions, and data analysis.",
+    "reason": "You enjoy organizing and analyzing data.",
+    "learn_url": "https://www.excel-easy.com",
+    "traits": { "creative": 0.3, "analytical": 0.9, "hands_on": 0.7, "solo": 0.8, "time_commitment": 0.6 }
+  },
+  {
+    "name": "Email Productivity",
+    "description": "Managing email efficiently and professionally.",
+    "reason": "You want to optimize your communication workflow.",
+    "learn_url": "https://www.lifehack.org/articles/productivity/how-to-manage-your-email-inbox.html",
+    "traits": { "creative": 0.2, "analytical": 0.7, "hands_on": 0.5, "solo": 0.8, "time_commitment": 0.3 }
+  },
+  {
+    "name": "Research Skills",
+    "description": "Finding and evaluating information effectively.",
+    "reason": "You enjoy learning and verifying facts.",
+    "learn_url": "https://www.libguides.usc.edu/writingguide/research",
+    "traits": { "creative": 0.3, "analytical": 0.9, "hands_on": 0.3, "solo": 0.9, "time_commitment": 0.4 }
+  },
+  {
+    "name": "Fact-Checking",
+    "description": "Verifying information and identifying misinformation.",
+    "reason": "You value truth and critical thinking.",
+    "learn_url": "https://www.poynter.org/fact-checking/",
+    "traits": { "creative": 0.2, "analytical": 0.9, "hands_on": 0.2, "solo": 0.9, "time_commitment": 0.3 }
+  },
+  {
+    "name": "Speed Memorization",
+    "description": "Using memory techniques to remember information quickly.",
+    "reason": "You enjoy optimizing your cognitive abilities.",
+    "learn_url": "https://artofmemory.com",
+    "traits": { "creative": 0.4, "analytical": 0.7, "hands_on": 0.1, "solo": 0.9, "time_commitment": 0.4 }
+  },
+  {
+    "name": "Public Speaking (Virtual)",
+    "description": "Improving speaking skills through online practice.",
+    "reason": "You want to communicate more effectively.",
+    "learn_url": "https://www.toastmasters.org",
+    "traits": { "creative": 0.5, "analytical": 0.5, "hands_on": 0.3, "solo": 0.4, "time_commitment": 0.5 }
+  },
+  {
+    "name": "Basic Spanish",
+    "description": "Learning conversational Spanish online.",
+    "reason": "You enjoy language learning and cultural connection.",
+    "learn_url": "https://www.duolingo.com/course/es/en/Learn-Spanish",
+    "traits": { "creative": 0.4, "analytical": 0.6, "hands_on": 0.3, "solo": 0.7, "time_commitment": 0.6 }
+  },
+  {
+    "name": "Basic French",
+    "description": "Learning conversational French online.",
+    "reason": "You enjoy language learning and cultural connection.",
+    "learn_url": "https://www.duolingo.com/course/fr/en/Learn-French",
+    "traits": { "creative": 0.4, "analytical": 0.6, "hands_on": 0.3, "solo": 0.7, "time_commitment": 0.6 }
+  },
+  {
+    "name": "Basic Japanese",
+    "description": "Learning conversational Japanese online.",
+    "reason": "You enjoy language learning and cultural connection.",
+    "learn_url": "https://www.duolingo.com/course/ja/en/Learn-Japanese",
+    "traits": { "creative": 0.4, "analytical": 0.7, "hands_on": 0.3, "solo": 0.7, "time_commitment": 0.7 }
+  },
+  {
+    "name": "Basic German",
+    "description": "Learning conversational German online.",
+    "reason": "You enjoy language learning and cultural connection.",
+    "learn_url": "https://www.duolingo.com/course/de/en/Learn-German",
+    "traits": { "creative": 0.4, "analytical": 0.6, "hands_on": 0.3, "solo": 0.7, "time_commitment": 0.6 }
+  },
+  {
+    "name": "Basic Italian",
+    "description": "Learning conversational Italian online.",
+    "reason": "You enjoy language learning and cultural connection.",
+    "learn_url": "https://www.duolingo.com/course/it/en/Learn-Italian",
+    "traits": { "creative": 0.4, "analytical": 0.6, "hands_on": 0.3, "solo": 0.7, "time_commitment": 0.6 }
+  },
+  {
+    "name": "Basic Portuguese",
+    "description": "Learning conversational Portuguese online.",
+    "reason": "You enjoy language learning and cultural connection.",
+    "learn_url": "https://www.duolingo.com/course/pt/en/Learn-Portuguese",
+    "traits": { "creative": 0.4, "analytical": 0.6, "hands_on": 0.3, "solo": 0.7, "time_commitment": 0.6 }
+  },
+  {
+    "name": "Basic Chinese (Mandarin)",
+    "description": "Learning conversational Mandarin Chinese online.",
+    "reason": "You enjoy language learning and cultural connection.",
+    "learn_url": "https://www.duolingo.com/course/zh/en/Learn-Chinese",
+    "traits": { "creative": 0.4, "analytical": 0.7, "hands_on": 0.3, "solo": 0.7, "time_commitment": 0.7 }
+  },
+  {
+    "name": "Basic Korean",
+    "description": "Learning conversational Korean online.",
+    "reason": "You enjoy language learning and cultural connection.",
+    "learn_url": "https://www.duolingo.com/course/ko/en/Learn-Korean",
+    "traits": { "creative": 0.4, "analytical": 0.7, "hands_on": 0.3, "solo": 0.7, "time_commitment": 0.7 }
+  },
+  {
+    "name": "Basic Russian",
+    "description": "Learning conversational Russian online.",
+    "reason": "You enjoy language learning and cultural connection.",
+    "learn_url": "https://www.duolingo.com/course/ru/en/Learn-Russian",
+    "traits": { "creative": 0.4, "analytical": 0.7, "hands_on": 0.3, "solo": 0.7, "time_commitment": 0.7 }
+  }
+]

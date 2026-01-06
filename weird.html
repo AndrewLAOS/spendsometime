@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>SpendSomeTime — Quick Skills</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:#f0f7ff;
+  --panel:#ffffffcc;
+  --border:#d0e4ff;
+  --accent:#ff7eb9;
+  --accent2:#58d9ff;
+  --text:#1a1a1a;
+  --muted:#555555;
+  --shadow: rgba(0,0,0,0.1);
+}
+
+* { box-sizing:border-box; font-family:'Inter', system-ui, sans-serif; scroll-behavior: smooth; }
+
+body { margin:0; background: var(--bg); color: var(--text); }
+
+nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border);
+  padding: 1rem 2rem;
+  z-index: 1000;
+  box-shadow: 0 2px 10px var(--shadow);
+}
+
+nav .nav-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav .logo {
+  font-size: 1.3rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-decoration: none;
+}
+
+nav .nav-links {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+nav .nav-links a {
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: color 0.3s ease;
+}
+
+nav .nav-links a:hover {
+  color: var(--accent2);
+}
+
+main { max-width:900px; margin:0 auto; padding:3rem 1.5rem; margin-top: 80px; }
+
+.random-skill-btn {
+  margin: 1rem 0;
+  padding: 0.8rem 1.5rem;
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.random-skill-btn:hover {
+  transform: scale(1.05);
+}
+
+.search-box {
+  margin: 1.5rem 0;
+  position: relative;
+}
+
+.search-box input {
+  width: 100%;
+  padding: 1rem 1rem 1rem 3rem;
+  border: 2px solid var(--border);
+  border-radius: 12px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+.search-box input:focus {
+  outline: none;
+  border-color: var(--accent2);
+}
+
+.search-box::before {
+  content: "🔍";
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.2rem;
+}
+
+h1 {
+  font-size:2.8rem;
+  margin-bottom:1rem;
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+p { color: var(--muted); }
+
+.progress-bar { height:10px; background: var(--border); border-radius:5px; overflow:hidden; margin:2rem 0; }
+.progress-bar-inner { height:100%; width:0%; background: var(--accent2); transition: width 0.3s ease; }
+
+.question {
+  background:var(--panel);
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:2rem;
+  margin:2rem 0;
+  box-shadow:0 6px 20px var(--shadow);
+}
+
+.answers button {
+  display:block;
+  width:100%;
+  margin-top:.7rem;
+  padding:1rem;
+  border-radius:12px;
+  background:#ffffffee;
+  border:1px solid var(--border);
+  color:var(--text);
+  cursor:pointer;
+  font-weight:600;
+  transition: all 0.25s ease;
+  box-shadow:0 4px 12px var(--shadow);
+}
+.answers button:hover {
+  border-color:var(--accent);
+  transform:translateY(-3px) scale(1.02);
+  box-shadow:0 8px 20px var(--shadow);
+}
+.answers button.selected {
+  background: linear-gradient(135deg,var(--accent),var(--accent2));
+  color:white;
+  border:none;
+}
+
+.question-nav {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1.5rem;
+  gap: 1rem;
+}
+
+.question-nav button {
+  padding: 0.7rem 1.5rem;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: var(--panel);
+  color: var(--text);
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.25s ease;
+}
+
+.question-nav button:hover:not(:disabled) {
+  background: var(--accent2);
+  color: white;
+  border-color: var(--accent2);
+}
+
+.question-nav button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.question-number {
+  color: var(--muted);
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+}
+
+.match-score {
+  display: inline-block;
+  background: var(--accent2);
+  color: white;
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+#results { display:none; margin-top:2rem; }
+
+.results-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.filter-controls {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.filter-controls button {
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--panel);
+  color: var(--text);
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: all 0.25s ease;
+}
+
+.filter-controls button.active {
+  background: var(--accent2);
+  color: white;
+  border-color: var(--accent2);
+}
+
+.bookmark-btn {
+  background: transparent;
+  border: 2px solid var(--accent);
+  color: var(--accent);
+  padding: 0.4rem 0.8rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: all 0.25s ease;
+}
+
+.bookmark-btn:hover, .bookmark-btn.bookmarked {
+  background: var(--accent);
+  color: white;
+}
+
+.show-more-btn {
+  margin-top: 2rem;
+  padding: 1rem 2rem;
+  border-radius: 12px;
+  border: 2px solid var(--accent2);
+  background: transparent;
+  color: var(--accent2);
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.25s ease;
+}
+
+.show-more-btn:hover {
+  background: var(--accent2);
+  color: white;
+}
+
+.quiz-summary {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 12px var(--shadow);
+}
+
+.quiz-summary h3 {
+  margin-top: 0;
+  color: var(--accent2);
+}
+
+.summary-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.summary-stat {
+  text-align: center;
+  padding: 0.8rem;
+  background: #f8f9ff;
+  border-radius: 10px;
+}
+
+.summary-stat .value {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.summary-stat .label {
+  font-size: 0.85rem;
+  color: var(--muted);
+  margin-top: 0.3rem;
+}
+
+.skill {
+  background:var(--panel);
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:1.5rem 2rem;
+  margin-top:1.5rem;
+  box-shadow:0 6px 20px var(--shadow);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.skill:hover { transform: translateY(-6px); box-shadow:0 14px 36px var(--shadow); }
+.skill h3 { margin-top:0; color: var(--accent2); }
+.skill p { margin:0.5rem 0; color: var(--muted); }
+.skill .tags { margin-top:0.5rem; }
+.skill .tag {
+  display:inline-block;
+  background: var(--accent);
+  color:#fff;
+  font-size:0.75rem;
+  font-weight:600;
+  padding:2px 8px;
+  border-radius:12px;
+  margin-right:6px;
+  margin-top:4px;
+}
+
+.result-actions {
+  margin-top:2rem;
+  display:flex;
+  gap:1rem;
+  flex-wrap:wrap;
+}
+.result-actions button {
+  padding:0.8rem 1.5rem;
+  border-radius:12px;
+  border:none;
+  cursor:pointer;
+  font-weight:600;
+  background: var(--accent2);
+  color:white;
+  transition: all 0.25s ease;
+}
+.result-actions button:hover {
+  background: var(--accent);
+  transform: scale(1.05);
+}
+
+@media (max-width:600px){
+  h1{font-size:2rem;}
+  .question{padding:1.5rem;}
+  .answers button{padding:0.9rem;}
+  .skill{padding:1.2rem;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-content">
+     <a href="index.html" class="logo">SpendSomeTime</a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="skills.html">Skills</a>
+      <a href="weird.html">Quick Skills</a>
+      <a href="games.html">Games</a>
+            <a href="diagram.html">All Skills</a>
+    </div>
+  </div>
+</nav>
+
+<main>
+  <h1>Quick Skills to Learn</h1>
+  <p>Short, engaging skills you can master today. Answer honestly for the best matches.</p>
+
+  <div style="margin: 1.5rem 0;">
+    <button class="random-skill-btn" onclick="showRandomQuickSkill()">🎲 Get Random Quick Skill</button>
+  </div>
+
+  <div class="progress-bar"><div class="progress-bar-inner" id="progress"></div></div>
+
+  <div id="quiz"></div>
+  <div id="results"></div>
+</main>
+
+<script>
+const quizData=[
+  {q:"How crazy should the skill be?", key:"weirdness", options:[["Just a little strange",0.3],["Pretty curious",0.6],["Absolutely unhinged",1.0]]},
+  {q:"How long do you want this to take?", key:"time", options:[["5–10 minutes",0.2],["15–30 minutes",0.5],["Up to an hour",0.8]]},
+  {q:"What kind of skill?", key:"type", options:[["Physical / body",0.9],["Mental / brain",0.6],["Creative / absurd",0.8],["Skill-based",0.5]]},
+  {q:"Do you want instructions or exploration?", key:"structure", options:[["Clear steps",0.3],["Some guidance",0.6],["Figure it out myself",1.0]]},
+  {q:"Energy level?", key:"energy", options:[["Low effort",0.2],["Medium",0.6],["High energy",1.0]]},
+  {q:"Should this be impressive or just fun?", key:"impressiveness", options:[["Just fun",0.3],["A bit impressive",0.6],["Make people say very impressed",1.0]]},
+  {q:"Where do you want to practice?", key:"location", options:[["At home",0.2],["Anywhere",0.5],["Need specific space",0.8]]},
+  {q:"Do you want to use tools or just your body?", key:"tools", options:[["Just my body/mind",0.2],["Simple objects around me",0.5],["Special tools or apps",0.8]]},
+  {q:"How much do you want to challenge yourself?", key:"challenge", options:[["Easy and relaxing",0.2],["Moderate challenge",0.5],["Push my limits",0.9]]},
+  {q:"Do you prefer learning through repetition or discovery?", key:"learning_style", options:[["Practice and repeat",0.3],["Mix of both",0.6],["Explore and experiment",0.9]]},
+  {q:"What's your current mood?", key:"mood", options:[["Tired, need something calm",0.2],["Neutral, ready for anything",0.5],["Energetic, want excitement",0.9]]},
+  {q:"Do you want something you can show off?", key:"social", options:[["Just for me",0.2],["Maybe share later",0.5],["Definitely want to impress",0.9]]},
+  {q:"How much focus do you have right now?", key:"focus", options:[["Distracted, need simple",0.2],["Moderate focus",0.5],["Deep concentration ready",0.9]]},
+  {q:"Do you prefer visual, auditory, or kinesthetic learning?", key:"sensory", options:[["Visual - see it",0.3],["Auditory - hear it",0.6],["Kinesthetic - do it",0.9]]},
+  {q:"Are you looking for a one-time thing or ongoing practice?", key:"duration", options:[["One quick session",0.2],["A few days",0.5],["Ongoing skill to develop",0.8]]},
+  {q:"What's your tolerance for frustration?", key:"patience", options:[["Low - want quick wins",0.2],["Medium - some challenge OK",0.5],["High - I enjoy the struggle",0.9]]},
+  {q:"Do you want something practical or purely fun?", key:"practicality", options:[["Purely fun/weird",0.2],["Mix of both",0.5],["Actually useful",0.8]]},
+  {q:"How competitive are you feeling?", key:"competition", options:[["Not at all",0.1],["A little competitive",0.5],["Want to beat records",0.9]]},
+  {q:"Do you prefer structured or freeform activities?", key:"structure", options:[["Very structured",0.2],["Some structure",0.5],["Completely freeform",0.9]]},
+  {q:"What time of day is it?", key:"time_of_day", options:[["Morning - fresh start",0.3],["Afternoon - steady energy",0.5],["Evening - winding down",0.2]]}
+];
+
+let answers={}, index=0, allSkills=[], bookmarkedSkills=new Set(JSON.parse(localStorage.getItem('bookmarkedSkills')||'[]'));
+const quizEl=document.getElementById("quiz");
+const resultsEl=document.getElementById("results");
+const progressEl=document.getElementById("progress");
+
+// Load saved progress
+function loadProgress(){
+  const saved = localStorage.getItem('quizProgress');
+  if(saved){
+    const data = JSON.parse(saved);
+    answers = data.answers || {};
+    index = data.index || 0;
+  }
+}
+
+// Save progress
+function saveProgress(){
+  localStorage.setItem('quizProgress', JSON.stringify({answers, index}));
+}
+
+function updateProgress(){
+  progressEl.style.width=`${((index+1)/quizData.length)*100}%`;
+}
+
+function renderQuestion(){
+  quizEl.innerHTML="";
+  const q=quizData[index];
+  const div=document.createElement("div");
+  div.className="question";
+  div.innerHTML=`
+    <div class="question-number">Question ${index+1} of ${quizData.length}</div>
+    <h3>${q.q}</h3>
+  `;
+  const answersDiv=document.createElement("div");
+  answersDiv.className="answers";
+  q.options.forEach(o=>{
+    const btn=document.createElement("button");
+    btn.textContent=o[0];
+    if(answers[q.key]===o[1]) btn.classList.add("selected");
+    btn.onclick=()=>{
+      answers[q.key]=o[1];
+      [...answersDiv.children].forEach(c=>c.classList.remove("selected"));
+      btn.classList.add("selected");
+      saveProgress();
+      setTimeout(()=>nextQuestion(), 300);
+    };
+    answersDiv.appendChild(btn);
+  });
+  div.appendChild(answersDiv);
+  
+  // Navigation buttons
+  const navDiv=document.createElement("div");
+  navDiv.className="question-nav";
+  const backBtn=document.createElement("button");
+  backBtn.textContent="← Back";
+  backBtn.disabled = index === 0;
+  backBtn.onclick=()=>{
+    if(index > 0){
+      index--;
+      renderQuestion();
+      updateProgress();
+    }
+  };
+  navDiv.appendChild(backBtn);
+  
+  const skipBtn=document.createElement("button");
+  skipBtn.textContent="Skip →";
+  skipBtn.onclick=()=>{
+    nextQuestion();
+  };
+  navDiv.appendChild(skipBtn);
+  div.appendChild(navDiv);
+  
+  quizEl.appendChild(div);
+  updateProgress();
+}
+
+function nextQuestion(){
+  index++;
+  if(index<quizData.length) renderQuestion();
+  else finishQuiz();
+  updateProgress();
+}
+
+async function finishQuiz(){
+  localStorage.removeItem('quizProgress');
+  quizEl.style.display="none";
+  resultsEl.style.display="block";
+  
+  const res=await fetch("weird.json");
+  allSkills=await res.json();
+
+  const ranked = allSkills.map(s=>{
+    let score=0;
+    let matches=0;
+    for(const k in answers){
+      if(s.traits[k] !== undefined){
+        score += 1-Math.abs(answers[k]-s.traits[k]);
+        matches++;
+      }
+    }
+    const matchPercent = Math.round((score/matches)*100);
+    return {...s,score,matchPercent};
+  }).sort((a,b)=>b.score-a.score);
+
+  // Quiz summary
+  const summaryDiv=document.createElement("div");
+  summaryDiv.className="quiz-summary";
+  const answeredCount = Object.keys(answers).length;
+  const avgWeirdness = answers.weirdness ? Math.round(answers.weirdness*100) : 0;
+  const avgEnergy = answers.energy ? Math.round(answers.energy*100) : 0;
+  summaryDiv.innerHTML=`
+    <h3>Your Quiz Profile</h3>
+    <div class="summary-stats">
+      <div class="summary-stat">
+        <div class="value">${answeredCount}</div>
+        <div class="label">Questions Answered</div>
+      </div>
+      <div class="summary-stat">
+        <div class="value">${avgWeirdness}%</div>
+        <div class="label">Uniqueness Level</div>
+      </div>
+      <div class="summary-stat">
+        <div class="value">${avgEnergy}%</div>
+        <div class="label">Energy Level</div>
+      </div>
+      <div class="summary-stat">
+        <div class="value">${ranked.length}</div>
+        <div class="label">Total Matches</div>
+      </div>
+    </div>
+  `;
+  resultsEl.innerHTML="<h2>Your Quick Skill Matches</h2>";
+  resultsEl.appendChild(summaryDiv);
+  
+  // Filter controls
+  const headerDiv=document.createElement("div");
+  headerDiv.className="results-header";
+  const filterDiv=document.createElement("div");
+  filterDiv.className="filter-controls";
+  const sortBtn=document.createElement("button");
+  sortBtn.textContent="Sort by Match";
+  sortBtn.classList.add("active");
+  sortBtn.onclick=()=>{
+    filterDiv.querySelectorAll('button').forEach(b=>b.classList.remove('active'));
+    sortBtn.classList.add('active');
+    displayResults(ranked.slice(0, showCount));
+  };
+  filterDiv.appendChild(sortBtn);
+  
+  const timeBtn=document.createElement("button");
+  timeBtn.textContent="Quickest First";
+  timeBtn.onclick=()=>{
+    filterDiv.querySelectorAll('button').forEach(b=>b.classList.remove('active'));
+    timeBtn.classList.add('active');
+    const sorted = [...ranked].sort((a,b)=>(a.traits.time||0)-(b.traits.time||0));
+    displayResults(sorted.slice(0, showCount));
+  };
+  filterDiv.appendChild(timeBtn);
+  
+  const weirdBtn=document.createElement("button");
+  weirdBtn.textContent="Unique First";
+  weirdBtn.onclick=()=>{
+    filterDiv.querySelectorAll('button').forEach(b=>b.classList.remove('active'));
+    weirdBtn.classList.add('active');
+    const sorted = [...ranked].sort((a,b)=>(b.traits.weirdness||0)-(a.traits.weirdness||0));
+    displayResults(sorted.slice(0, showCount));
+  };
+  filterDiv.appendChild(weirdBtn);
+  headerDiv.appendChild(filterDiv);
+  resultsEl.appendChild(headerDiv);
+  
+  let showCount = 6;
+  const resultsContainer = document.createElement("div");
+  resultsContainer.id = "results-container";
+  resultsEl.appendChild(resultsContainer);
+  
+  function displayResults(skillsToShow){
+    resultsContainer.innerHTML="";
+    skillsToShow.forEach(s=>{
+      const div=document.createElement("div");
+      div.className="skill";
+      const isBookmarked = bookmarkedSkills.has(s.name);
+      div.innerHTML=`
+        <div style="display:flex; justify-content:space-between; align-items:start; margin-bottom:0.5rem;">
+          <h3 style="margin:0;">${s.name}</h3>
+          <button class="bookmark-btn ${isBookmarked?'bookmarked':''}" data-skill="${s.name}">
+            ${isBookmarked?'★ Bookmarked':'☆ Bookmark'}
+          </button>
+        </div>
+        <span class="match-score">${s.matchPercent}% Match</span>
+        <p>${s.description}</p>
+        <p><em>${s.reason}</em></p>
+        <div class="tags">${s.tags?.map(t=>`<span class="tag">${t}</span>`).join('')||''}</div>
+        <p style="margin-top:1rem;"><a href="${s.learn_url}" target="_blank" style="color:var(--accent2); font-weight:600;">Try it →</a></p>
+      `;
+      const bookmarkBtn = div.querySelector('.bookmark-btn');
+      bookmarkBtn.onclick=()=>{
+        if(bookmarkedSkills.has(s.name)){
+          bookmarkedSkills.delete(s.name);
+          bookmarkBtn.textContent = '☆ Bookmark';
+          bookmarkBtn.classList.remove('bookmarked');
+        } else {
+          bookmarkedSkills.add(s.name);
+          bookmarkBtn.textContent = '★ Bookmarked';
+          bookmarkBtn.classList.add('bookmarked');
+        }
+        localStorage.setItem('bookmarkedSkills', JSON.stringify([...bookmarkedSkills]));
+      };
+      resultsContainer.appendChild(div);
+    });
+  }
+  
+  displayResults(ranked.slice(0, showCount));
+  
+  if(ranked.length > showCount){
+    const showMoreBtn=document.createElement("button");
+    showMoreBtn.className="show-more-btn";
+    showMoreBtn.textContent=`Show ${Math.min(12, ranked.length-showCount)} More Results`;
+    showMoreBtn.onclick=()=>{
+      showCount = Math.min(showCount + 12, ranked.length);
+      displayResults(ranked.slice(0, showCount));
+      if(showCount >= ranked.length){
+        showMoreBtn.style.display='none';
+      } else {
+        showMoreBtn.textContent=`Show ${Math.min(12, ranked.length-showCount)} More Results`;
+      }
+    };
+    resultsEl.appendChild(showMoreBtn);
+  }
+
+  const actionsDiv=document.createElement("div");
+  actionsDiv.className="result-actions";
+  const retryBtn=document.createElement("button");
+  retryBtn.textContent="Retry Quiz";
+  retryBtn.onclick=()=>{ 
+    index=0; 
+    answers={}; 
+    resultsEl.innerHTML=""; 
+    resultsEl.style.display="none"; 
+    quizEl.style.display="block"; 
+    renderQuestion(); 
+  };
+  actionsDiv.appendChild(retryBtn);
+
+  const shareBtn=document.createElement("button");
+  shareBtn.textContent="Share Results";
+  shareBtn.onclick=()=>{ 
+    const topSkills = ranked.slice(0,3).map(s=>s.name).join(', ');
+    const shareText = `I just found my perfect quick skills: ${topSkills}! Try the quiz at ${window.location.href}`;
+    if(navigator.share){
+      navigator.share({title:'My Quick Skill Matches', text:shareText});
+    } else {
+      navigator.clipboard.writeText(shareText).then(()=>{
+        alert('Results copied to clipboard!');
+      });
+    }
+  };
+  actionsDiv.appendChild(shareBtn);
+  
+  const bookmarksBtn=document.createElement("button");
+  bookmarksBtn.textContent=`View Bookmarks (${bookmarkedSkills.size})`;
+  bookmarksBtn.onclick=()=>{
+    const bookmarked = ranked.filter(s=>bookmarkedSkills.has(s.name));
+    if(bookmarked.length > 0){
+      resultsContainer.innerHTML="";
+      displayResults(bookmarked);
+    } else {
+      alert('No bookmarked skills yet! Click the bookmark button on any skill.');
+    }
+  };
+  actionsDiv.appendChild(bookmarksBtn);
+  
+  const challengesBtn=document.createElement("button");
+  challengesBtn.textContent="Create Challenges";
+  challengesBtn.onclick=()=>{
+    window.location.href = 'challenges.html';
+  };
+  actionsDiv.appendChild(challengesBtn);
+  
+  const exportBtn=document.createElement("button");
+  exportBtn.textContent="Export Results";
+  exportBtn.onclick=()=>exportQuickSkillResults(ranked);
+  actionsDiv.appendChild(exportBtn);
+  
+  // Search box
+  const searchDiv = document.createElement("div");
+  searchDiv.className = "search-box";
+  const searchInput = document.createElement("input");
+  searchInput.type = "text";
+  searchInput.placeholder = "Search quick skills...";
+  let currentResults = ranked;
+  searchInput.oninput = (e) => {
+    const query = e.target.value.toLowerCase();
+    currentResults = ranked.filter(s => 
+      s.name.toLowerCase().includes(query) || 
+      s.description.toLowerCase().includes(query)
+    );
+    displayResults(currentResults.slice(0, showCount));
+  };
+  searchDiv.appendChild(searchInput);
+  resultsEl.insertBefore(searchDiv, headerDiv);
+
+  resultsEl.appendChild(actionsDiv);
+  
+  // Save to history
+  saveQuickSkillResultsToHistory(ranked, answers);
+}
+
+function showRandomQuickSkill() {
+  fetch('weird.json').then(r => r.json()).then(skills => {
+    if(skills.length === 0) {
+      alert('No skills available.');
+      return;
+    }
+    const random = skills[Math.floor(Math.random() * skills.length)];
+    const modal = document.createElement('div');
+    modal.className = 'modal active';
+    modal.style.cssText = 'display: flex; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1000; align-items: center; justify-content: center;';
+    modal.innerHTML = `
+      <div style="background: white; border-radius: 16px; padding: 2rem; max-width: 500px; width: 90%; box-shadow: 0 20px 60px rgba(0,0,0,0.3);">
+        <h3>🎲 Random Quick Skill</h3>
+        <h2 style="color: var(--accent2); margin: 1rem 0;">${random.name}</h2>
+        <p>${random.description}</p>
+        <p><em>${random.reason}</em></p>
+        ${random.learn_url ? `<p><a href="${random.learn_url}" target="_blank" style="color: var(--accent2); font-weight: 600;">Try it →</a></p>` : ''}
+        <div style="display: flex; gap: 1rem; justify-content: flex-end; margin-top: 1.5rem;">
+          <button class="btn btn-secondary" onclick="this.closest('div[style*=\"position: fixed\"]').remove()">Close</button>
+          <button class="btn btn-primary" onclick="window.location.href='challenges.html'">Create Challenge</button>
+        </div>
+      </div>
+    `;
+    document.body.appendChild(modal);
+    modal.onclick = (e) => {
+      if(e.target === modal) modal.remove();
+    };
+  }).catch(() => alert('Could not load skills.'));
+}
+
+function exportQuickSkillResults(ranked) {
+  const data = {
+    date: new Date().toISOString(),
+    type: 'quickskills',
+    topMatches: ranked.slice(0, 10).map(s => ({
+      name: s.name,
+      matchPercent: s.matchPercent,
+      description: s.description,
+      reason: s.reason,
+      url: s.learn_url
+    }))
+  };
+  const json = JSON.stringify(data, null, 2);
+  const blob = new Blob([json], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `quick-skills-${new Date().toISOString().split('T')[0]}.json`;
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
+function saveQuickSkillResultsToHistory(ranked, answers) {
+  const history = JSON.parse(localStorage.getItem('quizHistory') || '[]');
+  history.unshift({
+    date: new Date().toISOString(),
+    type: 'quickskills',
+    topMatches: ranked.slice(0, 5).map(s => s.name),
+    answers: {...answers}
+  });
+  if(history.length > 10) history.pop();
+  localStorage.setItem('quizHistory', JSON.stringify(history));
+}
+
+loadProgress();
+renderQuestion();
+
+// Keyboard shortcuts
+document.addEventListener('keydown', (e) => {
+  if(e.key === 'Escape') {
+    document.querySelectorAll('.modal.active, div[style*="position: fixed"]').forEach(m => m.remove());
+  }
+});
+</script>
+</body>
+</html>

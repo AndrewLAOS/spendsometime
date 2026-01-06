@@ -1,0 +1,1301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>My Challenges – SpendSomeTime</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:#f0f7ff;
+  --panel:#ffffffcc;
+  --border:#d0e4ff;
+  --accent:#ff7eb9;
+  --accent2:#58d9ff;
+  --text:#1a1a1a;
+  --muted:#555555;
+  --success:#4ade80;
+  --warning:#fbbf24;
+  --shadow: rgba(0,0,0,0.1);
+}
+
+* {
+  box-sizing:border-box;
+  font-family:'Inter', system-ui, sans-serif;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin:0;
+  background: var(--bg);
+  color: var(--text);
+}
+
+nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border);
+  padding: 1rem 2rem;
+  z-index: 1000;
+  box-shadow: 0 2px 10px var(--shadow);
+}
+
+nav .nav-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav .logo {
+  font-size: 1.3rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-decoration: none;
+}
+
+nav .nav-links {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+nav .nav-links a {
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: color 0.3s ease;
+}
+
+nav .nav-links a:hover {
+  color: var(--accent2);
+}
+
+main {
+  max-width:1000px;
+  margin:0 auto;
+  padding:3rem 1.5rem;
+  margin-top: 80px;
+}
+
+.view-toggle {
+  display: flex;
+  gap: 0.5rem;
+  margin: 1rem 0;
+  justify-content: flex-end;
+}
+
+.view-toggle button {
+  padding: 0.6rem 1.2rem;
+  border: 2px solid var(--border);
+  background: var(--panel);
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.view-toggle button.active {
+  background: var(--accent2);
+  color: white;
+  border-color: var(--accent2);
+}
+
+.calendar-view {
+  display: none;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 2rem;
+  margin: 2rem 0;
+  box-shadow: 0 6px 20px var(--shadow);
+}
+
+.calendar-view.active {
+  display: block;
+}
+
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 0.5rem;
+}
+
+.calendar-day {
+  aspect-ratio: 1;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.5rem;
+  font-size: 0.85rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: white;
+}
+
+.calendar-day.weekday {
+  font-weight: 600;
+  background: var(--bg);
+  border: none;
+}
+
+.calendar-day.has-activity {
+  background: var(--accent2);
+  color: white;
+  border-color: var(--accent2);
+  font-weight: 600;
+}
+
+.calendar-day.today {
+  border: 2px solid var(--accent);
+  font-weight: 700;
+}
+
+.progress-chart {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 2rem;
+  margin: 2rem 0;
+  box-shadow: 0 6px 20px var(--shadow);
+}
+
+.chart-bar {
+  display: flex;
+  align-items: center;
+  margin: 1rem 0;
+  gap: 1rem;
+}
+
+.chart-bar-label {
+  min-width: 150px;
+  font-weight: 600;
+  color: var(--accent2);
+}
+
+.chart-bar-fill {
+  flex: 1;
+  height: 30px;
+  background: var(--border);
+  border-radius: 15px;
+  overflow: hidden;
+  position: relative;
+}
+
+.chart-bar-progress {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent2), var(--accent));
+  border-radius: 15px;
+  transition: width 0.5s ease;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 0.5rem;
+  color: white;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.notes-section {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+}
+
+.note-item {
+  background: #f8f9ff;
+  border-radius: 8px;
+  padding: 0.8rem;
+  margin: 0.5rem 0;
+  font-size: 0.9rem;
+}
+
+.note-date {
+  font-size: 0.75rem;
+  color: var(--muted);
+  margin-bottom: 0.3rem;
+}
+
+.milestone {
+  display: inline-block;
+  padding: 0.3rem 0.8rem;
+  background: var(--success);
+  color: white;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  margin: 0.3rem 0.3rem 0 0;
+}
+
+.achievement-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+  margin: 2rem 0;
+}
+
+.achievement-card {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.5rem;
+  text-align: center;
+  box-shadow: 0 4px 12px var(--shadow);
+  transition: transform 0.3s ease;
+}
+
+.achievement-card:hover {
+  transform: translateY(-4px);
+}
+
+.achievement-card.unlocked {
+  border-color: var(--success);
+  background: linear-gradient(135deg, #ffffff, #f0fdf4);
+}
+
+.achievement-icon {
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
+}
+
+.achievement-title {
+  font-weight: 600;
+  color: var(--accent2);
+  margin-bottom: 0.5rem;
+}
+
+.achievement-desc {
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+h1 {
+  font-size:2.8rem;
+  margin-bottom:1rem;
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.stats-bar {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1rem;
+  margin: 2rem 0;
+}
+
+.stat-card {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 1.5rem;
+  text-align: center;
+  box-shadow: 0 4px 12px var(--shadow);
+}
+
+.stat-card .value {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--accent);
+  margin-bottom: 0.5rem;
+}
+
+.stat-card .label {
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.tabs {
+  display: flex;
+  gap: 0.5rem;
+  margin: 2rem 0;
+  flex-wrap: wrap;
+}
+
+.tab {
+  padding: 0.8rem 1.5rem;
+  border-radius: 10px;
+  border: 2px solid var(--border);
+  background: var(--panel);
+  color: var(--text);
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.25s ease;
+}
+
+.tab:hover {
+  border-color: var(--accent2);
+  transform: translateY(-2px);
+}
+
+.tab.active {
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  color: white;
+  border-color: transparent;
+}
+
+.challenge {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 2rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 6px 20px var(--shadow);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.challenge:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px var(--shadow);
+}
+
+.challenge.completed {
+  border-color: var(--success);
+  background: linear-gradient(135deg, #ffffff, #f0fdf4);
+}
+
+.challenge.completed::before {
+  content: "✓";
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 40px;
+  height: 40px;
+  background: var(--success);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.challenge-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.challenge-header h3 {
+  margin: 0;
+  color: var(--accent2);
+  font-size: 1.5rem;
+}
+
+.challenge-status {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.status-badge {
+  padding: 0.4rem 1rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.status-badge.active {
+  background: var(--accent2);
+  color: white;
+}
+
+.status-badge.completed {
+  background: var(--success);
+  color: white;
+}
+
+.status-badge.paused {
+  background: var(--warning);
+  color: white;
+}
+
+.progress-container {
+  margin: 1rem 0;
+}
+
+.progress-label {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.progress-bar {
+  height: 12px;
+  background: var(--border);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent2), var(--accent));
+  border-radius: 6px;
+  transition: width 0.5s ease;
+}
+
+.challenge-description {
+  color: var(--muted);
+  margin: 1rem 0;
+  line-height: 1.6;
+}
+
+.challenge-actions {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.btn {
+  padding: 0.7rem 1.5rem;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.25s ease;
+  font-size: 0.9rem;
+}
+
+.btn-primary {
+  background: var(--accent2);
+  color: white;
+}
+
+.btn-primary:hover {
+  background: var(--accent);
+  transform: scale(1.05);
+}
+
+.btn-secondary {
+  background: transparent;
+  border: 2px solid var(--border);
+  color: var(--text);
+}
+
+.btn-secondary:hover {
+  border-color: var(--accent2);
+  color: var(--accent2);
+}
+
+.btn-success {
+  background: var(--success);
+  color: white;
+}
+
+.btn-success:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(74, 222, 128, 0.3);
+}
+
+.btn-danger {
+  background: #ef4444;
+  color: white;
+}
+
+.btn-danger:hover {
+  transform: scale(1.05);
+}
+
+.streak-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: #fff3cd;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #856404;
+}
+
+.streak-indicator .fire {
+  font-size: 1.2rem;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 4rem 2rem;
+  background: var(--panel);
+  border: 2px dashed var(--border);
+  border-radius: 16px;
+  margin: 2rem 0;
+}
+
+.empty-state h3 {
+  color: var(--accent2);
+  margin-bottom: 1rem;
+}
+
+.empty-state p {
+  color: var(--muted);
+  margin-bottom: 2rem;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+  z-index: 1000;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal.active {
+  display: flex;
+}
+
+.modal-content {
+  background: white;
+  border-radius: 16px;
+  padding: 2rem;
+  max-width: 500px;
+  width: 90%;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+}
+
+.modal-content h3 {
+  margin-top: 0;
+  color: var(--accent2);
+}
+
+.modal-content input,
+.modal-content textarea,
+.modal-content select {
+  width: 100%;
+  padding: 0.8rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  margin: 0.5rem 0 1rem 0;
+  font-family: inherit;
+}
+
+.modal-content textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-end;
+  margin-top: 1.5rem;
+}
+
+.achievement-badge {
+  display: inline-block;
+  padding: 0.3rem 0.8rem;
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  color: white;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  margin: 0.3rem 0.3rem 0 0;
+}
+
+@media (max-width:600px){
+  h1{font-size:2rem;}
+  .challenge{padding:1.5rem;}
+  .challenge-header{flex-direction:column;}
+  .stats-bar{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-content">
+    <a href="index.html" class="logo">SpendSomeTime</a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="skills.html">Skills</a>
+      <a href="weird.html">Quick Skills</a>
+      <a href="games.html">Games</a>
+            <a href="diagram.html">All Skills</a>
+    </div>
+  </div>
+</nav>
+
+<main>
+  <h1>My Learning Challenges</h1>
+  <p>Turn your quiz results into actionable challenges. Track your progress and celebrate your wins!</p>
+
+  <div class="view-toggle">
+    <button class="active" data-view="list" onclick="switchView('list', event)">📋 List View</button>
+    <button data-view="calendar" onclick="switchView('calendar', event)">📅 Calendar</button>
+    <button data-view="chart" onclick="switchView('chart', event)">📊 Progress Chart</button>
+    <button data-view="achievements" onclick="switchView('achievements', event)">🏆 Achievements</button>
+  </div>
+
+  <div class="stats-bar">
+    <div class="stat-card">
+      <div class="value" id="total-challenges">0</div>
+      <div class="label">Total Challenges</div>
+    </div>
+    <div class="stat-card">
+      <div class="value" id="active-challenges">0</div>
+      <div class="label">Active</div>
+    </div>
+    <div class="stat-card">
+      <div class="value" id="completed-challenges">0</div>
+      <div class="label">Completed</div>
+    </div>
+    <div class="stat-card">
+      <div class="value" id="current-streak">0</div>
+      <div class="label">Day Streak 🔥</div>
+    </div>
+  </div>
+
+  <div class="tabs">
+    <button class="tab active" data-filter="all">All Challenges</button>
+    <button class="tab" data-filter="active">Active</button>
+    <button class="tab" data-filter="completed">Completed</button>
+    <button class="tab" data-filter="paused">Paused</button>
+  </div>
+
+  <div id="challenges-container"></div>
+
+  <div class="empty-state" id="empty-state" style="display:none;">
+    <h3>No Challenges Yet</h3>
+    <p>Start by selecting skills from your quiz results or create a custom challenge!</p>
+    <button class="btn btn-primary" onclick="openAddModal()">Create Your First Challenge</button>
+  </div>
+
+  <div id="calendar-view" class="calendar-view"></div>
+  <div id="chart-view" class="progress-chart" style="display:none;"></div>
+  <div id="achievements-view" class="achievement-grid" style="display:none;"></div>
+
+  <div style="text-align:center; margin-top:3rem;">
+    <button class="btn btn-primary" onclick="openAddModal()">+ Add New Challenge</button>
+    <button class="btn btn-secondary" onclick="loadFromQuiz()" style="margin-left:1rem;">Import from Quiz Results</button>
+    <button class="btn btn-secondary" onclick="exportProgress()" style="margin-left:1rem;">Export Progress</button>
+  </div>
+</main>
+
+<!-- Add/Edit Challenge Modal -->
+<div class="modal" id="challenge-modal">
+  <div class="modal-content">
+    <h3 id="modal-title">Create New Challenge</h3>
+    <form id="challenge-form">
+      <label>Challenge Name</label>
+      <input type="text" id="challenge-name" required placeholder="e.g., Learn Basic Spanish">
+      
+      <label>Description</label>
+      <textarea id="challenge-description" required placeholder="What will you learn? What's your goal?"></textarea>
+      
+      <label>Target Duration (days)</label>
+      <input type="number" id="challenge-duration" min="1" value="30" required>
+      
+      <label>Daily Time Commitment (minutes)</label>
+      <input type="number" id="challenge-daily-time" min="5" value="30" required>
+      
+      <label>Learning Resource URL</label>
+      <input type="url" id="challenge-url" placeholder="https://...">
+      
+      <div class="modal-actions">
+        <button type="button" class="btn btn-secondary" onclick="closeModal()">Cancel</button>
+        <button type="submit" class="btn btn-primary">Create Challenge</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- Progress Update Modal -->
+<div class="modal" id="progress-modal">
+  <div class="modal-content">
+    <h3>Update Progress</h3>
+    <form id="progress-form">
+      <label>Time Spent Today (minutes)</label>
+      <input type="number" id="progress-time" min="1" required>
+      
+      <label>What did you learn today?</label>
+      <textarea id="progress-notes" placeholder="Optional notes about your progress..."></textarea>
+      
+      <div class="modal-actions">
+        <button type="button" class="btn btn-secondary" onclick="closeProgressModal()">Cancel</button>
+        <button type="submit" class="btn btn-success">Update Progress</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script>
+let challenges = JSON.parse(localStorage.getItem('challenges') || '[]');
+let currentFilter = 'all';
+let editingChallengeId = null;
+let progressChallengeId = null;
+
+
+function getChallengeById(id) {
+  return challenges.find(c => c.id === Number(id));
+}
+
+// Initialize
+updateStats();
+renderChallenges();
+setupTabs();
+
+// Load challenges from quiz results (bookmarked skills)
+function loadFromQuiz() {
+  const bookmarked = JSON.parse(localStorage.getItem('bookmarkedSkills') || '[]');
+  if(bookmarked.length === 0) {
+    alert('No bookmarked skills found! Complete a quiz and bookmark some skills first.');
+    return;
+  }
+  
+  // Try to load from skills.json or weird.json
+  Promise.all([
+    fetch('skills.json').then(r => r.ok ? r.json() : []).catch(() => []),
+    fetch('weird.json').then(r => r.ok ? r.json() : []).catch(() => [])
+  ]).then(([skills, weird]) => {
+    const allSkills = [...skills, ...weird];
+    const bookmarkedSkills = allSkills.filter(s => bookmarked.includes(s.name));
+    
+    if(bookmarkedSkills.length === 0) {
+      alert('Could not find bookmarked skills in database.');
+      return;
+    }
+    
+    // Create challenges from bookmarked skills
+    bookmarkedSkills.forEach(skill => {
+      const challenge = {
+        id: Date.now() + Math.random(),
+        name: skill.name,
+        description: skill.description || skill.reason || 'Learn this skill!',
+        url: skill.learn_url || '',
+        duration: 30,
+        dailyTime: 30,
+        status: 'active',
+        progress: 0,
+        totalTime: 0,
+        startDate: new Date().toISOString(),
+        lastUpdate: new Date().toISOString(),
+        notes: [],
+        streak: 0
+      };
+      challenges.push(challenge);
+    });
+    
+    saveChallenges();
+    updateStats();
+    renderChallenges();
+    alert(`Created ${bookmarkedSkills.length} challenges from your bookmarked skills!`);
+  });
+}
+
+function setupTabs() {
+  document.querySelectorAll('.tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      currentFilter = tab.dataset.filter;
+      renderChallenges();
+    });
+  });
+}
+
+function updateStats() {
+  const total = challenges.length;
+  const active = challenges.filter(c => c.status === 'active').length;
+  const completed = challenges.filter(c => c.status === 'completed').length;
+  const streak = Math.max(...challenges.map(c => c.streak || 0), 0);
+  
+  document.getElementById('total-challenges').textContent = total;
+  document.getElementById('active-challenges').textContent = active;
+  document.getElementById('completed-challenges').textContent = completed;
+  document.getElementById('current-streak').textContent = streak;
+}
+
+function renderChallenges() {
+  const container = document.getElementById('challenges-container');
+  const emptyState = document.getElementById('empty-state');
+  
+  let filtered = challenges;
+  if(currentFilter !== 'all') {
+    filtered = challenges.filter(c => c.status === currentFilter);
+  }
+  
+  if(filtered.length === 0) {
+    container.innerHTML = '';
+    emptyState.style.display = challenges.length === 0 ? 'block' : 'none';
+    return;
+  }
+  
+  emptyState.style.display = 'none';
+  container.innerHTML = '';
+  
+  filtered.forEach(challenge => {
+    const div = document.createElement('div');
+    div.className = `challenge ${challenge.status === 'completed' ? 'completed' : ''}`;
+    
+    const progressPercent = Math.min(100, (challenge.progress / challenge.duration) * 100);
+    const daysRemaining = Math.max(0, challenge.duration - challenge.progress);
+    
+    div.innerHTML = `
+      <div class="challenge-header">
+        <h3>${challenge.name}</h3>
+        <div class="challenge-status">
+          ${challenge.streak > 0 ? `<span class="streak-indicator"><span class="fire">🔥</span> ${challenge.streak} day streak</span>` : ''}
+          <span class="status-badge ${challenge.status}">${challenge.status.charAt(0).toUpperCase() + challenge.status.slice(1)}</span>
+        </div>
+      </div>
+      
+      <p class="challenge-description">${challenge.description}</p>
+      
+      <div class="progress-container">
+        <div class="progress-label">
+          <span>Progress: ${challenge.progress} / ${challenge.duration} days</span>
+          <span>${daysRemaining} days remaining</span>
+        </div>
+        <div class="progress-bar">
+          <div class="progress-fill" style="width: ${progressPercent}%"></div>
+        </div>
+      </div>
+      
+      <div style="margin-top:1rem; color:var(--muted); font-size:0.9rem;">
+        Total time invested: ${Math.round(challenge.totalTime / 60)} hours ${challenge.totalTime % 60} minutes
+      </div>
+      
+      ${challenge.progress >= challenge.duration * 0.25 && challenge.progress < challenge.duration * 0.5 ? '<span class="milestone">🏁 25% Milestone</span>' : ''}
+      ${challenge.progress >= challenge.duration * 0.5 && challenge.progress < challenge.duration * 0.75 ? '<span class="milestone">🏁 50% Milestone</span>' : ''}
+      ${challenge.progress >= challenge.duration * 0.75 && challenge.progress < challenge.duration ? '<span class="milestone">🏁 75% Milestone</span>' : ''}
+      
+      ${challenge.url ? `<p style="margin-top:0.5rem;"><a href="${challenge.url}" target="_blank" style="color:var(--accent2);">Learn more →</a></p>` : ''}
+      
+      ${challenge.notes && challenge.notes.length > 0 ? `
+        <div class="notes-section">
+          <strong style="color:var(--accent2);">Recent Notes:</strong>
+          ${challenge.notes.slice(-3).reverse().map(note => `
+            <div class="note-item">
+              <div class="note-date">${new Date(note.date).toLocaleDateString()}</div>
+              <div>${note.note || `Practiced for ${note.time} minutes`}</div>
+            </div>
+          `).join('')}
+        </div>
+      ` : ''}
+      
+      <div class="challenge-actions">
+        ${challenge.status === 'active' ? `
+          <button class="btn btn-success" onclick="updateProgress('${challenge.id}')">Log Progress</button>
+          <button class="btn btn-primary" onclick="editChallenge('${challenge.id}')">Edit</button>
+          <button class="btn btn-secondary" onclick="pauseChallenge('${challenge.id}')">Pause</button>
+        ` : challenge.status === 'paused' ? `
+          <button class="btn btn-primary" onclick="resumeChallenge('${challenge.id}')">Resume</button>
+          <button class="btn btn-secondary" onclick="editChallenge('${challenge.id}')">Edit</button>
+        ` : ''}
+        <button class="btn btn-danger" onclick="deleteChallenge('${challenge.id}')">Delete</button>
+      </div>
+    `;
+    
+    container.appendChild(div);
+  });
+}
+
+function openAddModal() {
+  editingChallengeId = null;
+  document.getElementById('modal-title').textContent = 'Create New Challenge';
+  document.getElementById('challenge-form').reset();
+  document.getElementById('challenge-duration').value = 30;
+  document.getElementById('challenge-daily-time').value = 30;
+  document.getElementById('challenge-modal').classList.add('active');
+}
+
+function closeModal() {
+  document.getElementById('challenge-modal').classList.remove('active');
+  editingChallengeId = null;
+}
+
+function editChallenge(id) {
+  const challenge = getChallengeById(id);
+  if (!challenge) return;
+
+  editingChallengeId = challenge.id;
+  document.getElementById('modal-title').textContent = 'Edit Challenge';
+  document.getElementById('challenge-name').value = challenge.name;
+  document.getElementById('challenge-description').value = challenge.description;
+  document.getElementById('challenge-duration').value = challenge.duration;
+  document.getElementById('challenge-daily-time').value = challenge.dailyTime;
+  document.getElementById('challenge-url').value = challenge.url || '';
+  document.getElementById('challenge-modal').classList.add('active');
+}
+
+
+document.getElementById('challenge-form').addEventListener('submit', (e) => {
+  e.preventDefault();
+  
+  const challenge = {
+    id: editingChallengeId || (Date.now() + Math.random()),
+    name: document.getElementById('challenge-name').value,
+    description: document.getElementById('challenge-description').value,
+    duration: parseInt(document.getElementById('challenge-duration').value),
+    dailyTime: parseInt(document.getElementById('challenge-daily-time').value),
+    url: document.getElementById('challenge-url').value,
+    status: editingChallengeId ? challenges.find(c => c.id === editingChallengeId).status : 'active',
+    progress: editingChallengeId ? challenges.find(c => c.id === editingChallengeId).progress : 0,
+    totalTime: editingChallengeId ? challenges.find(c => c.id === editingChallengeId).totalTime : 0,
+    startDate: editingChallengeId ? challenges.find(c => c.id === editingChallengeId).startDate : new Date().toISOString(),
+    lastUpdate: new Date().toISOString(),
+    notes: editingChallengeId ? challenges.find(c => c.id === editingChallengeId).notes : [],
+    streak: editingChallengeId ? challenges.find(c => c.id === editingChallengeId).streak : 0
+  };
+  
+  if(editingChallengeId) {
+    const index = challenges.findIndex(c => c.id === editingChallengeId);
+    challenges[index] = challenge;
+  } else {
+    challenges.push(challenge);
+  }
+  
+  saveChallenges();
+  updateStats();
+  renderChallenges();
+  closeModal();
+});
+
+function updateProgress(id) {
+  progressChallengeId = Number(id);
+  document.getElementById('progress-form').reset();
+  document.getElementById('progress-modal').classList.add('active');
+}
+
+
+function closeProgressModal() {
+  document.getElementById('progress-modal').classList.remove('active');
+  progressChallengeId = null;
+}
+
+document.getElementById('progress-form').addEventListener('submit', (e) => {
+  e.preventDefault();
+  
+const challenge = getChallengeById(progressChallengeId);
+
+  if(!challenge) return;
+  
+  const timeSpent = parseInt(document.getElementById('progress-time').value);
+  const notes = document.getElementById('progress-notes').value;
+  const today = new Date().toISOString().split('T')[0];
+  const lastUpdate = new Date(challenge.lastUpdate).toISOString().split('T')[0];
+  
+  // Update progress
+challenge.totalTime += timeSpent;
+
+if (today !== lastUpdate) {
+  challenge.progress += 1;
+}
+
+challenge.lastUpdate = new Date().toISOString();
+
+  
+  // Update streak
+  if(today === lastUpdate) {
+    // Same day, don't increment streak
+  } else {
+    const yesterday = new Date();
+    yesterday.setDate(yesterday.getDate() - 1);
+    const yesterdayStr = yesterday.toISOString().split('T')[0];
+    
+    if(lastUpdate === yesterdayStr) {
+      challenge.streak += 1;
+    } else {
+      challenge.streak = 1;
+    }
+  }
+  
+  // Add note
+  if(notes) {
+    challenge.notes.push({
+      date: new Date().toISOString(),
+      time: timeSpent,
+      note: notes
+    });
+  }
+  
+  // Check if completed
+  if(challenge.progress >= challenge.duration) {
+    challenge.status = 'completed';
+    challenge.progress = challenge.duration;
+  }
+  
+  saveChallenges();
+  updateStats();
+  renderChallenges();
+  closeProgressModal();
+  
+  if(challenge.status === 'completed') {
+    setTimeout(() => {
+      alert(`🎉 Congratulations! You completed "${challenge.name}"!`);
+    }, 300);
+  }
+});
+
+function pauseChallenge(id) {
+  const challenge = getChallengeById(id);
+  if (!challenge) return;
+
+  challenge.status = 'paused';
+  saveChallenges();
+  updateStats();
+  renderChallenges();
+}
+
+
+
+function resumeChallenge(id) {
+  const challenge = getChallengeById(id);
+  if (!challenge) return;
+
+  challenge.status = 'active';
+  saveChallenges();
+  updateStats();
+  renderChallenges();
+}
+
+
+function deleteChallenge(id) {
+  id = Number(id);
+  if (!confirm('Are you sure you want to delete this challenge?')) return;
+
+  challenges = challenges.filter(c => c.id !== id);
+  saveChallenges();
+  updateStats();
+  renderChallenges();
+}
+
+
+function saveChallenges() {
+  localStorage.setItem('challenges', JSON.stringify(challenges));
+}
+
+function switchView(view, e) {
+  document.querySelectorAll('.view-toggle button').forEach(b => b.classList.remove('active'));
+  if(e && e.target) {
+    e.target.classList.add('active');
+  } else {
+    document.querySelector(`[data-view="${view}"]`)?.classList.add('active');
+  }
+  
+  document.getElementById('challenges-container').style.display = view === 'list' ? 'block' : 'none';
+  document.getElementById('calendar-view').classList.toggle('active', view === 'calendar');
+  document.getElementById('chart-view').style.display = view === 'chart' ? 'block' : 'none';
+  document.getElementById('achievements-view').style.display = view === 'achievements' ? 'grid' : 'none';
+  
+  if(view === 'calendar') renderCalendar();
+  if(view === 'chart') renderChart();
+  if(view === 'achievements') renderAchievements();
+}
+
+function renderCalendar() {
+  const container = document.getElementById('calendar-view');
+  const today = new Date();
+  const year = today.getFullYear();
+  const month = today.getMonth();
+  const firstDay = new Date(year, month, 1).getDay();
+  const daysInMonth = new Date(year, month + 1, 0).getDate();
+  
+  const weekdays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+  const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+  
+  let html = `
+    <div class="calendar-header">
+      <h3>${monthNames[month]} ${year}</h3>
+      <button class="btn btn-secondary" onclick="renderCalendar()">Today</button>
+    </div>
+    <div class="calendar-grid">
+  `;
+  
+  weekdays.forEach(day => {
+    html += `<div class="calendar-day weekday">${day}</div>`;
+  });
+  
+  for(let i = 0; i < firstDay; i++) {
+    html += '<div class="calendar-day"></div>';
+  }
+  
+  const activityDates = new Set();
+  challenges.forEach(c => {
+    if(c.notes && c.notes.length > 0) {
+      c.notes.forEach(note => {
+        const date = new Date(note.date).toDateString();
+        activityDates.add(date);
+      });
+    }
+  });
+  
+  for(let day = 1; day <= daysInMonth; day++) {
+    const date = new Date(year, month, day);
+    const dateStr = date.toDateString();
+    const isToday = dateStr === today.toDateString();
+    const hasActivity = activityDates.has(dateStr);
+    
+    html += `<div class="calendar-day ${isToday ? 'today' : ''} ${hasActivity ? 'has-activity' : ''}">${day}</div>`;
+  }
+  
+  html += '</div>';
+  container.innerHTML = html;
+}
+
+function renderChart() {
+  const container = document.getElementById('chart-view');
+  const activeChallenges = challenges.filter(c => c.status === 'active' || c.status === 'completed');
+  
+  if(activeChallenges.length === 0) {
+    container.innerHTML = '<p style="text-align:center; color:var(--muted);">No active challenges to chart.</p>';
+    return;
+  }
+  
+  let html = '<h3 style="margin-top:0; color:var(--accent2);">Progress Overview</h3>';
+  
+  activeChallenges.slice(0, 10).forEach(c => {
+    const progress = Math.min(100, (c.progress / c.duration) * 100);
+    html += `
+      <div class="chart-bar">
+        <div class="chart-bar-label">${c.name}</div>
+        <div class="chart-bar-fill">
+          <div class="chart-bar-progress" style="width: ${progress}%">${Math.round(progress)}%</div>
+        </div>
+      </div>
+    `;
+  });
+  
+  container.innerHTML = html;
+}
+
+function renderAchievements() {
+  const container = document.getElementById('achievements-view');
+  const achievements = [
+    { id: 'first', icon: '🎯', title: 'First Steps', desc: 'Complete your first challenge', unlocked: challenges.some(c => c.status === 'completed') },
+    { id: 'streak', icon: '🔥', title: 'On Fire', desc: 'Maintain a 7-day streak', unlocked: challenges.some(c => (c.streak || 0) >= 7) },
+    { id: 'dedicated', icon: '💪', title: 'Dedicated', desc: 'Complete 5 challenges', unlocked: challenges.filter(c => c.status === 'completed').length >= 5 },
+    { id: 'time', icon: '⏰', title: 'Time Master', desc: 'Invest 50+ hours total', unlocked: challenges.reduce((sum, c) => sum + (c.totalTime || 0), 0) >= 3000 },
+    { id: 'variety', icon: '🌈', title: 'Variety Seeker', desc: 'Have 10+ active challenges', unlocked: challenges.filter(c => c.status === 'active').length >= 10 },
+    { id: 'speed', icon: '⚡', title: 'Speed Learner', desc: 'Complete a challenge in 7 days', unlocked: challenges.some(c => {
+      if(c.status !== 'completed') return false;
+      const start = new Date(c.startDate);
+      const end = new Date(c.lastUpdate);
+      return (end - start) / (1000 * 60 * 60 * 24) <= 7;
+    }) }
+  ];
+  
+  let html = '';
+  achievements.forEach(ach => {
+    html += `
+      <div class="achievement-card ${ach.unlocked ? 'unlocked' : ''}">
+        <div class="achievement-icon">${ach.icon}</div>
+        <div class="achievement-title">${ach.title}</div>
+        <div class="achievement-desc">${ach.desc}</div>
+        ${ach.unlocked ? '<div style="margin-top:0.5rem; color:var(--success); font-weight:600;">✓ Unlocked</div>' : '<div style="margin-top:0.5rem; color:var(--muted);">Locked</div>'}
+      </div>
+    `;
+  });
+  
+  container.innerHTML = html || '<p style="text-align:center; color:var(--muted);">No achievements yet.</p>';
+}
+
+function showAchievements() {
+  switchView('achievements', {target: document.querySelector('[data-view="achievements"]')});
+}
+
+function exportProgress() {
+  const data = {
+    exportDate: new Date().toISOString(),
+    challenges: challenges.map(c => ({
+      name: c.name,
+      status: c.status,
+      progress: c.progress,
+      duration: c.duration,
+      totalTime: c.totalTime,
+      streak: c.streak,
+      startDate: c.startDate,
+      lastUpdate: c.lastUpdate
+    })),
+    stats: {
+      total: challenges.length,
+      active: challenges.filter(c => c.status === 'active').length,
+      completed: challenges.filter(c => c.status === 'completed').length,
+      totalHours: Math.round(challenges.reduce((sum, c) => sum + (c.totalTime || 0), 0) / 60)
+    }
+  };
+  
+  const json = JSON.stringify(data, null, 2);
+  const blob = new Blob([json], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `challenges-export-${new Date().toISOString().split('T')[0]}.json`;
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
+// Keyboard shortcuts
+document.addEventListener('keydown', (e) => {
+  if(e.key === 'Escape') {
+    document.querySelectorAll('.modal.active').forEach(m => m.classList.remove('active'));
+  }
+  if(e.key === 'n' && (e.ctrlKey || e.metaKey)) {
+    e.preventDefault();
+    openAddModal();
+  }
+});
+
+// Auto-save notes
+let autoSaveTimeout;
+document.addEventListener('input', (e) => {
+  if(e.target.matches('#challenge-description, #challenge-name')) {
+    clearTimeout(autoSaveTimeout);
+    autoSaveTimeout = setTimeout(() => {
+      if(editingChallengeId) {
+        const challenge = challenges.find(c => c.id === editingChallengeId);
+        if(challenge) {
+          challenge.name = document.getElementById('challenge-name').value;
+          challenge.description = document.getElementById('challenge-description').value;
+          saveChallenges();
+        }
+      }
+    }, 1000);
+  }
+});
+
+// Initialize calendar if needed
+if(challenges.length > 0) {
+  setTimeout(() => {
+    if(document.getElementById('calendar-view').classList.contains('active')) {
+      renderCalendar();
+    }
+  }, 100);
+}
+</script>
+
+</body>
+</html>
+

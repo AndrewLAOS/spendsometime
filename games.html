@@ -1,0 +1,1040 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Brain Games – SpendSomeTime</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:#f0f7ff;
+  --panel:#ffffffcc;
+  --border:#d0e4ff;
+  --accent:#ff7eb9;
+  --accent2:#58d9ff;
+  --text:#1a1a1a;
+  --muted:#555555;
+  --success:#4ade80;
+  --shadow: rgba(0,0,0,0.1);
+}
+
+* {
+  box-sizing:border-box;
+  font-family:'Inter', system-ui, sans-serif;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin:0;
+  background: var(--bg);
+  color: var(--text);
+}
+
+nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border);
+  padding: 1rem 2rem;
+  z-index: 1000;
+  box-shadow: 0 2px 10px var(--shadow);
+}
+
+nav .nav-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav .logo {
+  font-size: 1.3rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-decoration: none;
+}
+
+nav .nav-links {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+nav .nav-links a {
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: color 0.3s ease;
+}
+
+nav .nav-links a:hover {
+  color: var(--accent2);
+}
+
+main {
+  max-width:1000px;
+  margin:0 auto;
+  padding:3rem 1.5rem;
+  margin-top: 80px;
+}
+
+h1 {
+  font-size:2.8rem;
+  margin-bottom:1rem;
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.games-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin: 3rem 0;
+}
+
+.game-card {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 6px 20px var(--shadow);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  text-align: center;
+}
+
+.game-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 32px var(--shadow);
+  border-color: var(--accent2);
+}
+
+.game-icon {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+}
+
+.game-card h3 {
+  margin: 0 0 0.5rem 0;
+  color: var(--accent2);
+  font-size: 1.5rem;
+}
+
+.game-card p {
+  color: var(--muted);
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+.game-container {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 2rem;
+  margin: 2rem 0;
+  box-shadow: 0 6px 20px var(--shadow);
+  display: none;
+}
+
+.game-container.active {
+  display: block;
+}
+
+.game-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.game-stats {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.stat {
+  text-align: center;
+}
+
+.stat-value {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.stat-label {
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.reaction-game {
+  text-align: center;
+}
+
+.reaction-box {
+  width: 300px;
+  height: 300px;
+  margin: 2rem auto;
+  border-radius: 16px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: white;
+}
+
+.reaction-box.waiting {
+  background: var(--accent2);
+}
+
+.reaction-box.ready {
+  background: var(--success);
+  animation: pulse 0.5s infinite;
+}
+
+.reaction-box.too-early {
+  background: #ef4444;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+.memory-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  max-width: 500px;
+  margin: 2rem auto;
+}
+
+.memory-card {
+  aspect-ratio: 1;
+  background: var(--border);
+  border-radius: 12px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  font-weight: 700;
+  transition: all 0.3s ease;
+  border: 3px solid transparent;
+}
+
+.memory-card:hover {
+  transform: scale(1.05);
+}
+
+.memory-card.flipped {
+  background: var(--accent2);
+  color: white;
+}
+
+.memory-card.matched {
+  background: var(--success);
+  border-color: var(--success);
+  cursor: default;
+}
+
+.typing-game {
+  text-align: center;
+}
+
+.typing-text {
+  font-size: 1.5rem;
+  line-height: 2;
+  margin: 2rem 0;
+  padding: 2rem;
+  background: #f8f9ff;
+  border-radius: 12px;
+  min-height: 200px;
+}
+
+.typing-input {
+  width: 100%;
+  max-width: 600px;
+  padding: 1rem;
+  font-size: 1.2rem;
+  border: 2px solid var(--border);
+  border-radius: 12px;
+  font-family: inherit;
+}
+
+.typing-input:focus {
+  outline: none;
+  border-color: var(--accent2);
+}
+
+.char {
+  padding: 2px;
+}
+
+.char.correct {
+  background: var(--success);
+  color: white;
+}
+
+.char.incorrect {
+  background: #ef4444;
+  color: white;
+}
+
+.char.current {
+  background: var(--accent2);
+  color: white;
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.btn {
+  padding: 0.8rem 1.5rem;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.25s ease;
+  font-size: 1rem;
+  margin: 0.5rem;
+}
+
+.btn-primary {
+  background: var(--accent2);
+  color: white;
+}
+
+.btn-primary:hover {
+  background: var(--accent);
+  transform: scale(1.05);
+}
+
+.btn-secondary {
+  background: transparent;
+  border: 2px solid var(--border);
+  color: var(--text);
+}
+
+.btn-secondary:hover {
+  border-color: var(--accent2);
+  color: var(--accent2);
+}
+
+.leaderboard {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 2rem;
+  margin: 2rem 0;
+  box-shadow: 0 6px 20px var(--shadow);
+}
+
+.leaderboard-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.leaderboard-item:last-child {
+  border-bottom: none;
+}
+
+.rank {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--accent);
+  min-width: 50px;
+}
+
+@media (max-width:600px){
+  h1{font-size:2rem;}
+  .games-grid{grid-template-columns:1fr;}
+  .memory-grid{grid-template-columns:repeat(3,1fr);}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-content">
+    <a href="index.html" class="logo">SpendSomeTime</a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="skills.html">Skills</a>
+      <a href="weird.html">Quick Skills</a>
+      <a href="games.html">Games</a>
+            <a href="diagram.html">All Skills</a>
+    </div>
+  </div>
+</nav>
+
+<main>
+  <h1>Brain Training Games</h1>
+  <p>Sharpen your mind with these quick, engaging games. Track your progress and beat your records!</p>
+
+  <div class="games-grid">
+    <div class="game-card" onclick="startGame('reaction')">
+      <div class="game-icon">⚡</div>
+      <h3>Reaction Time</h3>
+      <p>Test how fast you can react to visual cues</p>
+    </div>
+    <div class="game-card" onclick="startGame('memory')">
+      <div class="game-icon">🧠</div>
+      <h3>Memory Match</h3>
+      <p>Find matching pairs and improve your memory</p>
+    </div>
+    <div class="game-card" onclick="startGame('typing')">
+      <div class="game-icon">⌨️</div>
+      <h3>Speed Typing</h3>
+      <p>Type quotes as fast and accurately as possible</p>
+    </div>
+    <div class="game-card" onclick="startGame('number')">
+      <div class="game-icon">🔢</div>
+      <h3>Number Memory</h3>
+      <p>Remember sequences of numbers</p>
+    </div>
+    <div class="game-card" onclick="startGame('sequence')">
+      <div class="game-icon">🎯</div>
+      <h3>Sequence Master</h3>
+      <p>Follow and repeat color sequences</p>
+    </div>
+    <div class="game-card" onclick="startGame('math')">
+      <div class="game-icon">➕</div>
+      <h3>Mental Math</h3>
+      <p>Solve arithmetic problems quickly</p>
+    </div>
+  </div>
+
+  <div id="reaction-game" class="game-container">
+    <div class="game-header">
+      <h2>⚡ Reaction Time Test</h2>
+      <button class="btn btn-secondary" onclick="closeGame()">← Back to Games</button>
+    </div>
+    <div class="game-stats">
+      <div class="stat">
+        <div class="stat-value" id="reaction-best">--</div>
+        <div class="stat-label">Best (ms)</div>
+      </div>
+      <div class="stat">
+        <div class="stat-value" id="reaction-avg">--</div>
+        <div class="stat-label">Average (ms)</div>
+      </div>
+      <div class="stat">
+        <div class="stat-value" id="reaction-count">0</div>
+        <div class="stat-label">Tests</div>
+      </div>
+    </div>
+    <div class="reaction-game">
+      <div class="reaction-box waiting" id="reaction-box" onclick="handleReactionClick()">
+        Click when the box turns green!
+      </div>
+      <p style="color:var(--muted); margin-top:1rem;">Wait for green, then click as fast as you can!</p>
+    </div>
+  </div>
+
+  <div id="memory-game" class="game-container">
+    <div class="game-header">
+      <h2>🧠 Memory Match</h2>
+      <button class="btn btn-secondary" onclick="closeGame()">← Back to Games</button>
+    </div>
+    <div class="game-stats">
+      <div class="stat">
+        <div class="stat-value" id="memory-moves">0</div>
+        <div class="stat-label">Moves</div>
+      </div>
+      <div class="stat">
+        <div class="stat-value" id="memory-pairs">0</div>
+        <div class="stat-label">Pairs Found</div>
+      </div>
+      <div class="stat">
+        <div class="stat-value" id="memory-best">--</div>
+        <div class="stat-label">Best Time</div>
+      </div>
+    </div>
+    <div class="memory-grid" id="memory-grid"></div>
+    <div style="text-align:center; margin-top:1rem;">
+      <button class="btn btn-primary" onclick="initMemoryGame()">New Game</button>
+    </div>
+  </div>
+
+  <div id="typing-game" class="game-container">
+    <div class="game-header">
+      <h2>⌨️ Speed Typing</h2>
+      <button class="btn btn-secondary" onclick="closeGame()">← Back to Games</button>
+    </div>
+    <div class="game-stats">
+      <div class="stat">
+        <div class="stat-value" id="typing-wpm">0</div>
+        <div class="stat-label">WPM</div>
+      </div>
+      <div class="stat">
+        <div class="stat-value" id="typing-accuracy">100%</div>
+        <div class="stat-label">Accuracy</div>
+      </div>
+      <div class="stat">
+        <div class="stat-value" id="typing-best">--</div>
+        <div class="stat-label">Best WPM</div>
+      </div>
+    </div>
+    <div class="typing-game">
+      <div class="typing-text" id="typing-text"></div>
+      <input type="text" class="typing-input" id="typing-input" placeholder="Start typing...">
+      <div style="margin-top:1rem;">
+        <button class="btn btn-primary" onclick="newTypingGame()">New Quote</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="number-game" class="game-container">
+    <div class="game-header">
+      <h2>🔢 Number Memory</h2>
+      <button class="btn btn-secondary" onclick="closeGame()">← Back to Games</button>
+    </div>
+    <div class="game-stats">
+      <div class="stat">
+        <div class="stat-value" id="number-level">1</div>
+        <div class="stat-label">Level</div>
+      </div>
+      <div class="stat">
+        <div class="stat-value" id="number-best">--</div>
+        <div class="stat-label">Best Level</div>
+      </div>
+    </div>
+    <div style="text-align:center; padding:2rem;">
+      <div id="number-display" style="font-size:3rem; font-weight:700; color:var(--accent2); margin:2rem 0; min-height:100px; display:flex; align-items:center; justify-content:center;"></div>
+      <input type="text" id="number-input" style="padding:1rem; font-size:1.5rem; border:2px solid var(--border); border-radius:12px; width:100%; max-width:400px; text-align:center;" placeholder="Enter the sequence">
+      <div style="margin-top:1rem;">
+        <button class="btn btn-primary" onclick="startNumberGame()">Start</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="sequence-game" class="game-container">
+    <div class="game-header">
+      <h2>🎯 Sequence Master</h2>
+      <button class="btn btn-secondary" onclick="closeGame()">← Back to Games</button>
+    </div>
+    <div class="game-stats">
+      <div class="stat">
+        <div class="stat-value" id="sequence-level">1</div>
+        <div class="stat-label">Level</div>
+      </div>
+      <div class="stat">
+        <div class="stat-value" id="sequence-best">--</div>
+        <div class="stat-label">Best Level</div>
+      </div>
+    </div>
+    <div style="text-align:center; padding:2rem;">
+      <div id="sequence-display" style="display:flex; gap:1rem; justify-content:center; margin:2rem 0; flex-wrap:wrap;"></div>
+      <div id="sequence-buttons" style="display:flex; gap:1rem; justify-content:center; margin:2rem 0; flex-wrap:wrap;"></div>
+      <button class="btn btn-primary" onclick="startSequenceGame()">Start</button>
+    </div>
+  </div>
+
+  <div id="math-game" class="game-container">
+    <div class="game-header">
+      <h2>➕ Mental Math</h2>
+      <button class="btn btn-secondary" onclick="closeGame()">← Back to Games</button>
+    </div>
+    <div class="game-stats">
+      <div class="stat">
+        <div class="stat-value" id="math-score">0</div>
+        <div class="stat-label">Score</div>
+      </div>
+      <div class="stat">
+        <div class="stat-value" id="math-time">60</div>
+        <div class="stat-label">Time Left</div>
+      </div>
+      <div class="stat">
+        <div class="stat-value" id="math-best">--</div>
+        <div class="stat-label">Best Score</div>
+      </div>
+    </div>
+    <div style="text-align:center; padding:2rem;">
+      <div id="math-problem" style="font-size:3rem; font-weight:700; color:var(--accent2); margin:2rem 0; min-height:100px;"></div>
+      <input type="number" id="math-answer" style="padding:1rem; font-size:1.5rem; border:2px solid var(--border); border-radius:12px; width:100%; max-width:200px; text-align:center;" placeholder="Answer">
+      <div style="margin-top:1rem;">
+        <button class="btn btn-primary" onclick="startMathGame()">Start</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="leaderboard">
+    <h3 style="color:var(--accent2); margin-top:0;">Your Records</h3>
+    <div id="leaderboard-content"></div>
+  </div>
+</main>
+
+<script>
+const quotes = [
+  "The only way to do great work is to love what you do.",
+  "Innovation distinguishes between a leader and a follower.",
+  "Life is what happens to you while you're busy making other plans.",
+  "The future belongs to those who believe in the beauty of their dreams.",
+  "It is during our darkest moments that we must focus to see the light."
+];
+
+let gameScores = JSON.parse(localStorage.getItem('gameScores') || '{}');
+
+function startGame(gameType) {
+  document.querySelectorAll('.game-container').forEach(g => g.classList.remove('active'));
+  document.getElementById(`${gameType}-game`).classList.add('active');
+  
+  if(gameType === 'reaction') initReactionGame();
+  else if(gameType === 'memory') initMemoryGame();
+  else if(gameType === 'typing') newTypingGame();
+  else if(gameType === 'number') startNumberGame();
+  else if(gameType === 'sequence') startSequenceGame();
+  else if(gameType === 'math') startMathGame();
+}
+
+function closeGame() {
+  document.querySelectorAll('.game-container').forEach(g => g.classList.remove('active'));
+  updateLeaderboard();
+}
+
+// Reaction Time Game
+let reactionTimes = [];
+let reactionStartTime = null;
+let reactionTimeout = null;
+
+function initReactionGame() {
+  const box = document.getElementById('reaction-box');
+  box.className = 'reaction-box waiting';
+  box.textContent = 'Click when the box turns green!';
+  box.onclick = handleReactionClick;
+  
+  const best = gameScores.reactionBest || null;
+  const avg = reactionTimes.length > 0 ? Math.round(reactionTimes.reduce((a,b)=>a+b,0)/reactionTimes.length) : null;
+  
+  document.getElementById('reaction-best').textContent = best ? best + 'ms' : '--';
+  document.getElementById('reaction-avg').textContent = avg ? avg + 'ms' : '--';
+  document.getElementById('reaction-count').textContent = reactionTimes.length;
+}
+
+function handleReactionClick() {
+  const box = document.getElementById('reaction-box');
+  const now = Date.now();
+  
+  if(box.classList.contains('waiting')) {
+    box.className = 'reaction-box too-early';
+    box.textContent = 'Too early! Wait for green.';
+    setTimeout(() => {
+      box.className = 'reaction-box waiting';
+      box.textContent = 'Click when the box turns green!';
+      scheduleReaction();
+    }, 1000);
+  } else if(box.classList.contains('ready')) {
+    const reactionTime = now - reactionStartTime;
+    reactionTimes.push(reactionTime);
+    
+    if(!gameScores.reactionBest || reactionTime < gameScores.reactionBest) {
+      gameScores.reactionBest = reactionTime;
+    }
+    localStorage.setItem('gameScores', JSON.stringify(gameScores));
+    
+    box.textContent = `${reactionTime}ms - Click to try again!`;
+    box.className = 'reaction-box waiting';
+    initReactionGame();
+    scheduleReaction();
+  }
+}
+
+function scheduleReaction() {
+  reactionTimeout = setTimeout(() => {
+    const box = document.getElementById('reaction-box');
+    box.className = 'reaction-box ready';
+    box.textContent = 'CLICK NOW!';
+    reactionStartTime = Date.now();
+  }, Math.random() * 3000 + 1000);
+}
+
+// Memory Game
+let memoryCards = [];
+let flippedCards = [];
+let matchedPairs = 0;
+let memoryMoves = 0;
+let memoryStartTime = null;
+
+const symbols = ['🎯', '🎨', '🎵', '🎮', '🎪', '🎭', '🎬', '🎤'];
+
+function initMemoryGame() {
+  memoryCards = [];
+  flippedCards = [];
+  matchedPairs = 0;
+  memoryMoves = 0;
+  memoryStartTime = Date.now();
+  
+  const pairs = [...symbols, ...symbols];
+  for(let i = pairs.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [pairs[i], pairs[j]] = [pairs[j], pairs[i]];
+  }
+  
+  const grid = document.getElementById('memory-grid');
+  grid.innerHTML = '';
+  
+  pairs.forEach((symbol, index) => {
+    const card = document.createElement('div');
+    card.className = 'memory-card';
+    card.dataset.symbol = symbol;
+    card.dataset.index = index;
+    card.onclick = () => flipCard(index);
+    grid.appendChild(card);
+  });
+  
+  updateMemoryStats();
+}
+
+function flipCard(index) {
+  const card = document.querySelector(`[data-index="${index}"]`);
+  if(card.classList.contains('flipped') || card.classList.contains('matched') || flippedCards.length >= 2) return;
+  
+  card.classList.add('flipped');
+  card.textContent = card.dataset.symbol;
+  flippedCards.push({index, symbol: card.dataset.symbol, element: card});
+  
+  if(flippedCards.length === 2) {
+    memoryMoves++;
+    setTimeout(checkMatch, 500);
+  }
+  
+  updateMemoryStats();
+}
+
+function checkMatch() {
+  const [card1, card2] = flippedCards;
+  
+  if(card1.symbol === card2.symbol) {
+    card1.element.classList.add('matched');
+    card2.element.classList.add('matched');
+    matchedPairs++;
+    
+    if(matchedPairs === symbols.length) {
+      const time = Math.round((Date.now() - memoryStartTime) / 1000);
+      if(!gameScores.memoryBest || time < gameScores.memoryBest) {
+        gameScores.memoryBest = time;
+      }
+      localStorage.setItem('gameScores', JSON.stringify(gameScores));
+      alert(`🎉 You won in ${time} seconds with ${memoryMoves} moves!`);
+      initMemoryGame();
+    }
+  } else {
+    card1.element.classList.remove('flipped');
+    card2.element.classList.remove('flipped');
+    card1.element.textContent = '';
+    card2.element.textContent = '';
+  }
+  
+  flippedCards = [];
+  updateMemoryStats();
+}
+
+function updateMemoryStats() {
+  document.getElementById('memory-moves').textContent = memoryMoves;
+  document.getElementById('memory-pairs').textContent = matchedPairs;
+  document.getElementById('memory-best').textContent = gameScores.memoryBest ? gameScores.memoryBest + 's' : '--';
+}
+
+// Typing Game
+let typingQuote = '';
+let typingStartTime = null;
+let typingCurrentIndex = 0;
+
+function newTypingGame() {
+  typingQuote = quotes[Math.floor(Math.random() * quotes.length)];
+  typingCurrentIndex = 0;
+  typingStartTime = null;
+  
+  const textDiv = document.getElementById('typing-text');
+  textDiv.innerHTML = typingQuote.split('').map((char, i) => 
+    `<span class="char" data-index="${i}">${char === ' ' ? '&nbsp;' : char}</span>`
+  ).join('');
+  
+  const input = document.getElementById('typing-input');
+  input.value = '';
+  input.oninput = handleTyping;
+  input.focus();
+  
+  document.getElementById('typing-wpm').textContent = '0';
+  document.getElementById('typing-accuracy').textContent = '100%';
+}
+
+function handleTyping(e) {
+  if(!typingStartTime) typingStartTime = Date.now();
+  
+  const input = e.target.value;
+  const chars = document.querySelectorAll('#typing-text .char');
+  
+  chars.forEach((char, i) => {
+    char.classList.remove('current', 'correct', 'incorrect');
+    if(i < input.length) {
+      if(input[i] === typingQuote[i]) {
+        char.classList.add('correct');
+      } else {
+        char.classList.add('incorrect');
+      }
+    } else if(i === input.length) {
+      char.classList.add('current');
+    }
+  });
+  
+  if(input === typingQuote) {
+    const time = (Date.now() - typingStartTime) / 1000 / 60;
+    const wpm = Math.round(typingQuote.length / 5 / time);
+    const correct = typingQuote.split('').filter((c, i) => input[i] === c).length;
+    const accuracy = Math.round((correct / typingQuote.length) * 100);
+    
+    if(!gameScores.typingBest || wpm > gameScores.typingBest) {
+      gameScores.typingBest = wpm;
+    }
+    localStorage.setItem('gameScores', JSON.stringify(gameScores));
+    
+    document.getElementById('typing-wpm').textContent = wpm;
+    document.getElementById('typing-accuracy').textContent = accuracy + '%';
+    alert(`🎉 Finished! ${wpm} WPM with ${accuracy}% accuracy!`);
+    newTypingGame();
+  } else {
+    const time = (Date.now() - typingStartTime) / 1000 / 60;
+    const wpm = time > 0 ? Math.round(input.length / 5 / time) : 0;
+    const correct = typingQuote.split('').filter((c, i) => input[i] === c).length;
+    const accuracy = input.length > 0 ? Math.round((correct / input.length) * 100) : 100;
+    
+    document.getElementById('typing-wpm').textContent = wpm;
+    document.getElementById('typing-accuracy').textContent = accuracy + '%';
+  }
+  
+  document.getElementById('typing-best').textContent = gameScores.typingBest ? gameScores.typingBest + ' WPM' : '--';
+}
+
+// Number Memory Game
+let numberSequence = '';
+let numberLevel = 1;
+let numberShowing = true;
+
+function startNumberGame() {
+  numberLevel = 1;
+  numberSequence = '';
+  nextNumberLevel();
+}
+
+function nextNumberLevel() {
+  numberSequence += Math.floor(Math.random() * 10);
+  document.getElementById('number-level').textContent = numberLevel;
+  document.getElementById('number-display').textContent = numberSequence;
+  document.getElementById('number-input').value = '';
+  numberShowing = true;
+  
+  setTimeout(() => {
+    document.getElementById('number-display').textContent = '?';
+    numberShowing = false;
+    document.getElementById('number-input').focus();
+  }, 2000 + numberLevel * 500);
+  
+  document.getElementById('number-input').oninput = (e) => {
+    if(!numberShowing && e.target.value === numberSequence) {
+      numberLevel++;
+      if(!gameScores.numberBest || numberLevel > gameScores.numberBest) {
+        gameScores.numberBest = numberLevel;
+      }
+      localStorage.setItem('gameScores', JSON.stringify(gameScores));
+      document.getElementById('number-best').textContent = gameScores.numberBest || '--';
+      nextNumberLevel();
+    } else if(!numberShowing && e.target.value.length === numberSequence.length && e.target.value !== numberSequence) {
+      alert(`Game Over! You reached level ${numberLevel}. The sequence was: ${numberSequence}`);
+      startNumberGame();
+    }
+  };
+  
+  document.getElementById('number-best').textContent = gameScores.numberBest || '--';
+}
+
+// Sequence Game
+let sequencePattern = [];
+let sequenceUserInput = [];
+let sequenceLevel = 1;
+let sequenceShowing = false;
+
+const sequenceColors = ['#ff7eb9', '#58d9ff', '#4ade80', '#fbbf24'];
+
+function startSequenceGame() {
+  sequenceLevel = 1;
+  sequencePattern = [];
+  sequenceUserInput = [];
+  nextSequenceLevel();
+}
+
+function nextSequenceLevel() {
+  sequencePattern.push(Math.floor(Math.random() * 4));
+  document.getElementById('sequence-level').textContent = sequenceLevel;
+  document.getElementById('sequence-best').textContent = gameScores.sequenceBest || '--';
+  
+  showSequence();
+}
+
+function showSequence() {
+  const display = document.getElementById('sequence-display');
+  display.innerHTML = '';
+  sequenceShowing = true;
+  
+  let i = 0;
+  const interval = setInterval(() => {
+    if(i < sequencePattern.length) {
+      display.innerHTML = `<div style="width:80px;height:80px;border-radius:50%;background:${sequenceColors[sequencePattern[i]]};"></div>`;
+      i++;
+    } else {
+      display.innerHTML = '';
+      clearInterval(interval);
+      sequenceShowing = false;
+      setupSequenceButtons();
+    }
+  }, 600);
+}
+
+function setupSequenceButtons() {
+  const container = document.getElementById('sequence-buttons');
+  container.innerHTML = '';
+  sequenceColors.forEach((color, i) => {
+    const btn = document.createElement('button');
+    btn.style.cssText = `width:80px;height:80px;border-radius:50%;background:${color};border:none;cursor:pointer;`;
+    btn.onclick = () => handleSequenceClick(i);
+    container.appendChild(btn);
+  });
+  sequenceUserInput = [];
+}
+
+function handleSequenceClick(colorIndex) {
+  if(sequenceShowing) return;
+  
+  sequenceUserInput.push(colorIndex);
+  const btn = event.target;
+  btn.style.transform = 'scale(0.9)';
+  setTimeout(() => btn.style.transform = 'scale(1)', 100);
+  
+  if(sequenceUserInput[sequenceUserInput.length - 1] !== sequencePattern[sequenceUserInput.length - 1]) {
+    alert(`Game Over! You reached level ${sequenceLevel}.`);
+    startSequenceGame();
+  } else if(sequenceUserInput.length === sequencePattern.length) {
+    sequenceLevel++;
+    if(!gameScores.sequenceBest || sequenceLevel > gameScores.sequenceBest) {
+      gameScores.sequenceBest = sequenceLevel;
+    }
+    localStorage.setItem('gameScores', JSON.stringify(gameScores));
+    setTimeout(nextSequenceLevel, 500);
+  }
+}
+
+// Math Game
+let mathScore = 0;
+let mathTimeLeft = 60;
+let mathInterval = null;
+let mathCurrentProblem = null;
+
+function startMathGame() {
+  mathScore = 0;
+  mathTimeLeft = 60;
+  document.getElementById('math-score').textContent = '0';
+  document.getElementById('math-time').textContent = '60';
+  document.getElementById('math-best').textContent = gameScores.mathBest ? gameScores.mathBest : '--';
+  
+  if(mathInterval) clearInterval(mathInterval);
+  mathInterval = setInterval(() => {
+    mathTimeLeft--;
+    document.getElementById('math-time').textContent = mathTimeLeft;
+    if(mathTimeLeft <= 0) {
+      clearInterval(mathInterval);
+      if(!gameScores.mathBest || mathScore > gameScores.mathBest) {
+        gameScores.mathBest = mathScore;
+      }
+      localStorage.setItem('gameScores', JSON.stringify(gameScores));
+      alert(`Time's up! Final score: ${mathScore}`);
+      startMathGame();
+    }
+  }, 1000);
+  
+  generateMathProblem();
+  document.getElementById('math-answer').oninput = (e) => {
+    if(parseInt(e.target.value) === mathCurrentProblem.answer) {
+      mathScore++;
+      document.getElementById('math-score').textContent = mathScore;
+      e.target.value = '';
+      generateMathProblem();
+    }
+  };
+  document.getElementById('math-answer').focus();
+}
+
+function generateMathProblem() {
+  const ops = ['+', '-', '*'];
+  const op = ops[Math.floor(Math.random() * ops.length)];
+  let a, b, answer;
+  
+  if(op === '+') {
+    a = Math.floor(Math.random() * 50) + 1;
+    b = Math.floor(Math.random() * 50) + 1;
+    answer = a + b;
+  } else if(op === '-') {
+    a = Math.floor(Math.random() * 50) + 25;
+    b = Math.floor(Math.random() * a) + 1;
+    answer = a - b;
+  } else {
+    a = Math.floor(Math.random() * 10) + 1;
+    b = Math.floor(Math.random() * 10) + 1;
+    answer = a * b;
+  }
+  
+  mathCurrentProblem = {a, b, op, answer};
+  document.getElementById('math-problem').textContent = `${a} ${op} ${b} = ?`;
+}
+
+function updateLeaderboard() {
+  const container = document.getElementById('leaderboard-content');
+  const scores = [
+    {name: 'Reaction Time', value: gameScores.reactionBest, unit: 'ms'},
+    {name: 'Memory Match', value: gameScores.memoryBest, unit: 's'},
+    {name: 'Typing Speed', value: gameScores.typingBest, unit: ' WPM'},
+    {name: 'Number Memory', value: gameScores.numberBest, unit: ' level'},
+    {name: 'Sequence Master', value: gameScores.sequenceBest, unit: ' level'},
+    {name: 'Mental Math', value: gameScores.mathBest, unit: ' points'}
+  ];
+  
+  container.innerHTML = scores.map((s, i) => `
+    <div class="leaderboard-item">
+      <div>
+        <span class="rank">${i + 1}</span>
+        <span style="margin-left:1rem;">${s.name}</span>
+      </div>
+      <div style="font-weight:600; color:var(--accent2);">
+        ${s.value ? s.value + s.unit : 'Not set'}
+      </div>
+    </div>
+  `).join('');
+}
+
+updateLeaderboard();
+</script>
+
+</body>
+</html>
+

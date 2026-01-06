@@ -1,0 +1,76 @@
+* {
+  box-sizing: border-box;
+  font-family: system-ui, sans-serif;
+}
+
+body {
+  margin: 0;
+  background: #020617;
+  color: #e5e7eb;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  background: #020617;
+  border-bottom: 1px solid #1e293b;
+}
+
+nav a {
+  color: #93c5fd;
+  text-decoration: none;
+  margin-left: 1rem;
+}
+
+.center {
+  text-align: center;
+  padding: 3rem 1rem;
+}
+
+.cards {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 3rem;
+  flex-wrap: wrap;
+}
+
+.card {
+  background: #020617;
+  padding: 2rem;
+  width: 260px;
+  border-radius: 14px;
+  text-decoration: none;
+  color: white;
+  border: 1px solid #1e293b;
+  transition: transform 0.2s;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+}
+
+.quiz, .game {
+  max-width: 720px;
+  margin: auto;
+  padding: 2rem;
+}
+
+button {
+  background: #2563eb;
+  border: none;
+  padding: 0.7rem 1.2rem;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 1rem;
+}
+
+.skill, .game-box {
+  background: #020617;
+  border: 1px solid #1e293b;
+  padding: 1.5rem;
+  margin-top: 1.5rem;
+  border-radius: 12px;
+}

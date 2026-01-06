@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Skill Diagram – Task Flow</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:#f0f7ff;
+  --panel:#ffffffcc;
+  --border:#d0e4ff;
+  --accent:#ff7eb9;
+  --accent2:#58d9ff;
+  --text:#1a1a1a;
+  --muted:#555555;
+  --success:#4ade80;
+  --shadow: rgba(0,0,0,0.1);
+}
+
+* {
+  box-sizing:border-box;
+  font-family:'Inter', system-ui, sans-serif;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin:0;
+  background: var(--bg);
+  color: var(--text);
+}
+
+nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border);
+  padding: 1rem 2rem;
+  z-index: 1000;
+  box-shadow: 0 2px 10px var(--shadow);
+}
+
+nav .nav-content {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav .logo {
+  font-size: 1.3rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-decoration: none;
+}
+
+nav .nav-links {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+nav .nav-links a {
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: color 0.3s ease;
+}
+
+nav .nav-links a:hover {
+  color: var(--accent2);
+}
+
+main {
+  max-width:1400px;
+  margin:0 auto;
+  padding:3rem 1.5rem;
+  margin-top: 80px;
+}
+
+h1 {
+  font-size:2.8rem;
+  margin-bottom:0.5rem;
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.header-info {
+  color: var(--muted);
+  margin-bottom: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.filter-controls {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  background: var(--panel);
+  border-radius: 12px;
+  border: 1px solid var(--border);
+}
+
+.filter-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.filter-group label {
+  font-weight: 600;
+  font-size: 0.85rem;
+  color: var(--text);
+}
+
+.filter-group input,
+.filter-group select {
+  padding: 0.6rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-size: 0.9rem;
+  transition: border-color 0.3s ease;
+}
+
+.filter-group input:focus,
+.filter-group select:focus {
+  outline: none;
+  border-color: var(--accent2);
+  box-shadow: 0 0 0 3px rgba(88, 217, 255, 0.1);
+}
+
+.filter-group input[type="search"] {
+  padding: 0.8rem 1rem;
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.skill-card {
+  background: var(--panel);
+  border-radius: 12px;
+  padding: 1.5rem;
+  border: 1px solid var(--border);
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.skill-card:hover {
+  border-color: var(--accent2);
+  box-shadow: 0 8px 24px var(--shadow);
+  transform: translateY(-4px);
+}
+
+.skill-card h3 {
+  margin: 0 0 0.8rem 0;
+  font-size: 1.3rem;
+  color: var(--text);
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.skill-card p {
+  margin: 0 0 1rem 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  flex-grow: 1;
+}
+
+.skill-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.tag {
+  display: inline-block;
+  padding: 0.3rem 0.8rem;
+  background: linear-gradient(135deg, rgba(255, 126, 185, 0.1), rgba(88, 217, 255, 0.1));
+  color: var(--accent);
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.skill-meta {
+  display: flex;
+  gap: 1rem;
+  font-size: 0.85rem;
+  color: var(--muted);
+  margin-bottom: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+  flex-wrap: wrap;
+}
+
+.skill-actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: auto;
+}
+
+.skill-link {
+  flex: 1;
+  padding: 0.7rem 1rem;
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: 600;
+  text-align: center;
+  font-size: 0.9rem;
+  transition: transform 0.2s ease;
+}
+
+.skill-link:hover {
+  transform: scale(1.05);
+}
+
+.no-results {
+  text-align: center;
+  padding: 3rem 1.5rem;
+  color: var(--muted);
+}
+
+.no-results h2 {
+  margin-bottom: 0.5rem;
+}
+
+.stats-bar {
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 2rem;
+  padding: 1rem 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+  flex-wrap: wrap;
+}
+
+.stats-bar strong {
+  color: var(--text);
+}
+
+.export-import {
+  display: flex;
+  gap: 1rem;
+}
+
+.export-btn, .import-btn {
+  padding: 0.8rem 1.5rem;
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: transform 0.2s ease;
+}
+
+.export-btn:hover, .import-btn:hover {
+  transform: scale(1.05);
+}
+
+#importFile {
+  display: none;
+}
+
+@media (max-width: 900px) {
+  .filter-controls {
+    grid-template-columns: 1fr;
+  }
+  
+  h1 {
+    font-size: 2rem;
+  }
+  
+  .header-info {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .skills-grid {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1.5rem;
+  }
+}
+</style>
+</head>
+<body>
+  <nav>
+    <div class="nav-content">
+     <a href="index.html" class="logo">SpendSomeTime</a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="skills.html">Skills</a>
+      <a href="weird.html">Quick Skills</a>
+      <a href="games.html">Games</a>
+            <a href="diagram.html">All Skills</a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <h1>Skill Diagram</h1>
+    <div class="header-info">
+      <p>Explore all your skills and track your learning journey</p>
+      <div class="export-import">
+        <button class="export-btn" onclick="exportSkills()">📥 Export List</button>
+        <button class="import-btn" onclick="document.getElementById('importFile').click()">📤 Import List</button>
+        <input id="importFile" type="file" accept=".json">
+      </div>
+    </div>
+
+    <div class="stats-bar">
+      <div>Total: <strong id="totalCount">0</strong></div>
+      <div>Showing: <strong id="displayCount">0</strong></div>
+      <div>Tags: <strong id="tagCount">0</strong></div>
+    </div>
+
+    <div class="filter-controls">
+      <div class="filter-group">
+        <label for="searchInput">Search</label>
+        <input id="searchInput" type="search" placeholder="Search by name, description...">
+      </div>
+      <div class="filter-group">
+        <label for="tagFilter">Filter by Tag</label>
+        <select id="tagFilter">
+          <option value="">All Tags</option>
+        </select>
+      </div>
+      <div class="filter-group">
+        <label for="sourceFilter">Filter by Source</label>
+        <select id="sourceFilter">
+          <option value="">All Sources</option>
+          <option value="skills">Skills Only</option>
+          <option value="weird">Weird Only</option>
+        </select>
+      </div>
+      <div class="filter-group">
+        <label for="sortBy">Sort By</label>
+        <select id="sortBy">
+          <option value="name">Name (A-Z)</option>
+          <option value="name-desc">Name (Z-A)</option>
+          <option value="tags">Most Tags</option>
+        </select>
+      </div>
+    </div>
+
+    <div id="skillsContainer" class="skills-grid"></div>
+    
+    <div id="noResults" class="no-results" style="display:none;">
+      <h2>No skills found</h2>
+      <p>Try adjusting your filters or search terms</p>
+    </div>
+  </main>
+
+  <script>
+    let allSkills = [];
+    let filteredSkills = [];
+    
+    const searchInput = document.getElementById('searchInput');
+    const tagFilter = document.getElementById('tagFilter');
+    const sourceFilter = document.getElementById('sourceFilter');
+    const sortBy = document.getElementById('sortBy');
+    const container = document.getElementById('skillsContainer');
+    const noResults = document.getElementById('noResults');
+    const importFile = document.getElementById('importFile');
+
+    // Load data
+    Promise.all([
+      fetch('skills.json').then(r => r.json()).catch(() => []),
+      fetch('weird.json').then(r => r.json()).catch(() => [])
+    ]).then(([skills, weird]) => {
+      // Mark source
+      const skillsWithSource = (skills || []).map(s => ({...s, _source: 'skills'}));
+      const weirdWithSource = (weird || []).map(w => ({...w, _source: 'weird'}));
+      allSkills = skillsWithSource.concat(weirdWithSource);
+      
+      buildFilters();
+      render();
+    });
+
+    function buildFilters() {
+      const tags = new Set();
+      allSkills.forEach(s => {
+        (s.tags || []).forEach(t => tags.add(t));
+      });
+      
+      tagFilter.innerHTML = '<option value="">All Tags</option>';
+      Array.from(tags).sort().forEach(t => {
+        const opt = document.createElement('option');
+        opt.value = t;
+        opt.textContent = t;
+        tagFilter.appendChild(opt);
+      });
+      
+      document.getElementById('tagCount').textContent = tags.size;
+      document.getElementById('totalCount').textContent = allSkills.length;
+    }
+
+    function applyFilters() {
+      const query = (searchInput.value || '').toLowerCase();
+      const tag = tagFilter.value;
+      const source = sourceFilter.value;
+      const sort = sortBy.value;
+
+      filteredSkills = allSkills.filter(s => {
+        const matchSearch = !query || 
+          (s.name && s.name.toLowerCase().includes(query)) ||
+          (s.description && s.description.toLowerCase().includes(query)) ||
+          (s.tags && s.tags.some(t => t.toLowerCase().includes(query)));
+        
+        const matchTag = !tag || (s.tags && s.tags.includes(tag));
+        const matchSource = !source || s._source === source;
+        
+        return matchSearch && matchTag && matchSource;
+      });
+
+      // Sort
+      if (sort === 'name') {
+        filteredSkills.sort((a, b) => (a.name || '').localeCompare(b.name || ''));
+      } else if (sort === 'name-desc') {
+        filteredSkills.sort((a, b) => (b.name || '').localeCompare(a.name || ''));
+      } else if (sort === 'tags') {
+        filteredSkills.sort((a, b) => (b.tags?.length || 0) - (a.tags?.length || 0));
+      }
+
+      document.getElementById('displayCount').textContent = filteredSkills.length;
+    }
+
+    function render() {
+      applyFilters();
+      container.innerHTML = '';
+
+      if (filteredSkills.length === 0) {
+        noResults.style.display = 'block';
+        return;
+      }
+
+      noResults.style.display = 'none';
+      filteredSkills.forEach(skill => {
+        const card = document.createElement('div');
+        card.className = 'skill-card';
+        card.innerHTML = `
+          <h3>${skill.name || 'Untitled'}</h3>
+          <p>${(skill.description || 'No description').slice(0, 200)}</p>
+          ${skill.tags && skill.tags.length ? `
+            <div class="skill-tags">
+              ${skill.tags.map(t => `<span class="tag">${t}</span>`).join('')}
+            </div>
+          ` : ''}
+          <div class="skill-meta">
+            <span>Source: ${skill._source === 'weird' ? '🌀 Weird' : '✨ Skills'}</span>
+            ${skill.tags ? `<span>${skill.tags.length} tags</span>` : ''}
+          </div>
+          <div class="skill-actions">
+            ${skill.learn_url || skill.url ? `
+              <a href="${skill.learn_url || skill.url}" target="_blank" class="skill-link">Learn →</a>
+            ` : ''}
+          </div>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    searchInput.addEventListener('input', render);
+    tagFilter.addEventListener('change', render);
+    sourceFilter.addEventListener('change', render);
+    sortBy.addEventListener('change', render);
+
+    function exportSkills() {
+      const data = filteredSkills.map(s => ({
+        name: s.name,
+        description: s.description,
+        tags: s.tags,
+        url: s.learn_url || s.url,
+        source: s._source
+      }));
+      const blob = new Blob([JSON.stringify(data, null, 2)], {type: 'application/json'});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `skills-${new Date().toISOString().split('T')[0]}.json`;
+      a.click();
+      URL.revokeObjectURL(url);
+    }
+
+    importFile.addEventListener('change', e => {
+      const file = e.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = ev => {
+        try {
+          const imported = JSON.parse(ev.target.result);
+          if (Array.isArray(imported)) {
+            allSkills = allSkills.concat(
+              imported.map(s => ({...s, _source: 'imported'}))
+            );
+            buildFilters();
+            render();
+            alert(`Imported ${imported.length} skills`);
+          }
+        } catch (err) {
+          alert('Invalid JSON file');
+        }
+      };
+      reader.readAsText(file);
+    });
+  </script>
+</body>
+</html>
