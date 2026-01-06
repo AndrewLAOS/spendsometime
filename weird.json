@@ -1106,5 +1106,250 @@
       "energy": 0.9,
       "impressiveness": 1.0
     }
+    },
+    {
+    "name": "30-Second Shadow Drawing",
+    "description": "Rapidly sketch an object's shadow to capture silhouette.",
+    "reason": "Boosts observation speed and simplification skills.",
+    "learn_url": "https://drawabox.com/",
+    "traits": { "weirdness": 0.4, "time": 0.1, "type": 0.5, "structure": 0.3, "energy": 0.2, "impressiveness": 0.3 }
+  },
+  {
+    "name": "Left-Hand Doodle",
+    "description": "Create a detailed doodle using only your non-dominant hand.",
+    "reason": "Challenges motor control and creativity.",
+    "learn_url": "https://en.wikipedia.org/wiki/Ambidexterity",
+    "traits": { "weirdness": 0.6, "time": 0.2, "type": 0.7, "structure": 0.2, "energy": 0.2, "impressiveness": 0.4 }
+  },
+  {
+    "name": "30-Second Memory Grid",
+    "description": "Flash a 4x4 grid for 5 seconds and recall positions.",
+    "reason": "Sharp working memory challenge.",
+    "learn_url": "https://humanbenchmark.com/tests/memory",
+    "traits": { "weirdness": 0.5, "time": 0.1, "type": 0.6, "structure": 0.6, "energy": 0.2, "impressiveness": 0.4 }
+  },
+  {
+    "name": "Mirror Letter Practice",
+    "description": "Write letters so that they read correctly in a mirror.",
+    "reason": "Builds visual-motor adaptation.",
+    "learn_url": "https://en.wikipedia.org/wiki/Mirror_writing",
+    "traits": { "weirdness": 0.8, "time": 0.3, "type": 0.8, "structure": 0.3, "energy": 0.2, "impressiveness": 0.6 }
+  },
+  {
+    "name": "Coin Balance on Finger",
+    "description": "Balance a coin on a fingertip for one minute.",
+    "reason": "Tiny-motor control and focus exercise.",
+    "learn_url": "https://www.wikihow.com/Balance-a-Coin",
+    "traits": { "weirdness": 0.4, "time": 0.1, "type": 0.9, "structure": 0.2, "energy": 0.1, "impressiveness": 0.3 }
+  },
+  {
+    "name": "Thumb Piano Short Piece",
+    "description": "Play a simple melody on a kalimba.",
+    "reason": "Quick musical motor skill.",
+    "learn_url": "https://www.kalimba.org/",
+    "traits": { "weirdness": 0.5, "time": 0.2, "type": 0.7, "structure": 0.4, "energy": 0.2, "impressiveness": 0.4 }
+  },
+  {
+    "name": "20-Second Breath Count",
+    "description": "Count 20 steady breaths without losing rhythm.",
+    "reason": "Calms nervous system and trains attention.",
+    "learn_url": "https://www.mindful.org/",
+    "traits": { "weirdness": 0.3, "time": 0.1, "type": 0.6, "structure": 0.2, "energy": 0.1, "impressiveness": 0.2 }
+  },
+  {
+    "name": "Finger Snap Clap",
+    "description": "Practice a loud, crisp finger snap until consistent.",
+    "reason": "Fine motor control and rhythmic skill.",
+    "learn_url": "https://www.youtube.com/",
+    "traits": { "weirdness": 0.4, "time": 0.2, "type": 0.9, "structure": 0.2, "energy": 0.3, "impressiveness": 0.5 }
+  },
+  {
+    "name": "One-Minute Silent Counting",
+    "description": "Count silently up to 60 without losing track.",
+    "reason": "Mental endurance test.",
+    "learn_url": "https://www.wikihow.com/Count-Your-Breaths",
+    "traits": { "weirdness": 0.4, "time": 0.2, "type": 0.6, "structure": 0.3, "energy": 0.1, "impressiveness": 0.3 }
+  },
+  {
+    "name": "Fast Finger Tapping",
+    "description": "Tap alternating fingers rapidly for 30 seconds.",
+    "reason": "Hand speed and coordination drill.",
+    "learn_url": "https://www.humanbenchmark.com/",
+    "traits": { "weirdness": 0.3, "time": 0.1, "type": 0.8, "structure": 0.2, "energy": 0.4, "impressiveness": 0.3 }
+  },
+  {
+    "name": "Lateral Reading Drill",
+    "description": "Skim and extract key facts from 3 sources in 2 minutes.",
+    "reason": "Information triage and speed reading practice.",
+    "learn_url": "https://www.washington.edu/",
+    "traits": { "weirdness": 0.3, "time": 0.2, "type": 0.6, "structure": 0.7, "energy": 0.2, "impressiveness": 0.4 }
+  },
+  {
+    "name": "One-Minute Hand Mirror Drawing",
+    "description": "Copy a small image by looking only at its mirror.",
+    "reason": "Spatial inversion practice.",
+    "learn_url": "https://drawabox.com/",
+    "traits": { "weirdness": 0.7, "time": 0.2, "type": 0.8, "structure": 0.3, "energy": 0.3, "impressiveness": 0.5 }
+  },
+  {
+    "name": "Quick Morse Decoding",
+    "description": "Decode short Morse snippets by ear.",
+    "reason": "Pattern recognition and auditory decoding.",
+    "learn_url": "https://morse.withgoogle.com/learn/",
+    "traits": { "weirdness": 0.6, "time": 0.3, "type": 0.6, "structure": 0.8, "energy": 0.2, "impressiveness": 0.6 }
+  },
+  {
+    "name": "Fast Palindrome Check",
+    "description": "Spot whether a short phrase is a palindrome quickly.",
+    "reason": "Linguistic pattern spotting.",
+    "learn_url": "https://en.wikipedia.org/wiki/Palindrome",
+    "traits": { "weirdness": 0.3, "time": 0.1, "type": 0.5, "structure": 0.6, "energy": 0.1, "impressiveness": 0.3 }
+  },
+  {
+    "name": "Snap-Count Rhythm",
+    "description": "Keep a 4-beat snap pattern for 30 seconds.",
+    "reason": "Rhythmic stability practice.",
+    "learn_url": "https://www.musicnotes.com/",
+    "traits": { "weirdness": 0.4, "time": 0.1, "type": 0.8, "structure": 0.3, "energy": 0.3, "impressiveness": 0.3 }
+  },
+  {
+    "name": "One-Handed Knot",
+    "description": "Tie a simple knot using only one hand.",
+    "reason": "Dexterity under constraint.",
+    "learn_url": "https://www.animatedknots.com/",
+    "traits": { "weirdness": 0.6, "time": 0.3, "type": 0.9, "structure": 0.5, "energy": 0.2, "impressiveness": 0.5 }
+  },
+  {
+    "name": "Quick Tongue Twister",
+    "description": "Say a tricky tongue twister three times fast.",
+    "reason": "Articulation and speed practice.",
+    "learn_url": "https://en.wikipedia.org/wiki/Tongue_twister",
+    "traits": { "weirdness": 0.4, "time": 0.1, "type": 0.6, "structure": 0.2, "energy": 0.3, "impressiveness": 0.3 }
+  },
+  {
+    "name": "Fast Opposite-Hand Drawing",
+    "description": "Draw a simple object with the opposite hand in 45 seconds.",
+    "reason": "Promotes neuroplasticity and control.",
+    "learn_url": "https://en.wikipedia.org/wiki/Ambidexterity",
+    "traits": { "weirdness": 0.6, "time": 0.2, "type": 0.8, "structure": 0.3, "energy": 0.2, "impressiveness": 0.5 }
+  },
+  {
+    "name": "30-Second Memory Phrase",
+    "description": "Memorize and repeat a 10-word phrase after 30 seconds.",
+    "reason": "Short-term recall training.",
+    "learn_url": "https://artofmemory.com/",
+    "traits": { "weirdness": 0.4, "time": 0.1, "type": 0.5, "structure": 0.7, "energy": 0.1, "impressiveness": 0.4 }
+  },
+  {
+    "name": "Quick Breath Counting",
+    "description": "Breathe and count while maintaining steady cadence.",
+    "reason": "Focus and calm practice.",
+    "learn_url": "https://www.mindful.org/",
+    "traits": { "weirdness": 0.3, "time": 0.1, "type": 0.6, "structure": 0.2, "energy": 0.1, "impressiveness": 0.2 }
+  },
+  {
+    "name": "Finger Weaving Sample",
+    "description": "Create a short woven band using fingers.",
+    "reason": "Hand coordination and patterning.",
+    "learn_url": "https://www.craftsy.com/",
+    "traits": { "weirdness": 0.5, "time": 0.3, "type": 0.8, "structure": 0.5, "energy": 0.2, "impressiveness": 0.4 }
+  },
+  {
+    "name": "Ten-Second Lookaway Recall",
+    "description": "Study a small scene for 5 seconds, look away 10, then recall.",
+    "reason": "Observation and visual memory drill.",
+    "learn_url": "https://www.humanbenchmark.com/",
+    "traits": { "weirdness": 0.4, "time": 0.2, "type": 0.5, "structure": 0.6, "energy": 0.1, "impressiveness": 0.3 }
+  },
+  {
+    "name": "Quick Morse Tap",
+    "description": "Tap a short Morse pattern and decode it.",
+    "reason": "Auditory pattern recognition.",
+    "learn_url": "https://morse.withgoogle.com/learn/",
+    "traits": { "weirdness": 0.6, "time": 0.2, "type": 0.6, "structure": 0.8, "energy": 0.2, "impressiveness": 0.5 }
+  },
+  {
+    "name": "Rapid Shadow Matching",
+    "description": "Match objects to their shadows quickly.",
+    "reason": "Shape recognition speed drill.",
+    "learn_url": "https://www.psychologytoday.com/",
+    "traits": { "weirdness": 0.5, "time": 0.2, "type": 0.6, "structure": 0.4, "energy": 0.2, "impressiveness": 0.3 }
+  },
+  {
+    "name": "20-Second Balance",
+    "description": "Balance on one leg with eyes open for 20 seconds.",
+    "reason": "Vestibular control and focus.",
+    "learn_url": "https://www.wikihow.com/Balance-on-One-Foot",
+    "traits": { "weirdness": 0.4, "time": 0.1, "type": 0.9, "structure": 0.2, "energy": 0.3, "impressiveness": 0.4 }
+  },
+  {
+    "name": "Quick Pattern Mirror",
+    "description": "Copy a pattern mirrored across a centerline in 30s.",
+    "reason": "Spatial transformation practice.",
+    "learn_url": "https://drawabox.com/",
+    "traits": { "weirdness": 0.6, "time": 0.2, "type": 0.8, "structure": 0.4, "energy": 0.2, "impressiveness": 0.5 }
+  },
+  {
+    "name": "Fast Coin Flip Prediction",
+    "description": "Try to predict coin flips; track accuracy for 20 trials.",
+    "reason": "Probabilistic intuition practice.",
+    "learn_url": "https://en.wikipedia.org/wiki/Coin_toss",
+    "traits": { "weirdness": 0.3, "time": 0.3, "type": 0.5, "structure": 0.2, "energy": 0.1, "impressiveness": 0.2 }
+  },
+  {
+    "name": "One-Minute Quiet Observation",
+    "description": "Observe a scene silently and list five details afterward.",
+    "reason": "Attention and noticing exercise.",
+    "learn_url": "https://www.mindful.org/",
+    "traits": { "weirdness": 0.3, "time": 0.2, "type": 0.4, "structure": 0.6, "energy": 0.1, "impressiveness": 0.2 }
+  },
+  {
+    "name": "Quick Hand-Back Clap",
+    "description": "Clap hands behind back rapidly for 10 claps.",
+    "reason": "Coordination and rhythm drill.",
+    "learn_url": "https://www.youtube.com/",
+    "traits": { "weirdness": 0.6, "time": 0.1, "type": 0.9, "structure": 0.3, "energy": 0.4, "impressiveness": 0.4 }
+  },
+  {
+    "name": "Rapid Color Recall",
+    "description": "Look at a color palette for 3 seconds and reproduce a target hue.",
+    "reason": "Color memory practice.",
+    "learn_url": "https://www.sessions.edu/",
+    "traits": { "weirdness": 0.4, "time": 0.1, "type": 0.6, "structure": 0.4, "energy": 0.1, "impressiveness": 0.3 }
+  },
+  {
+    "name": "One-Minute Handwriting Speed",
+    "description": "Write a legible paragraph quickly in 60 seconds.",
+    "reason": "Speed and legibility training.",
+    "learn_url": "https://www.handwritingworksheets.com/",
+    "traits": { "weirdness": 0.3, "time": 0.2, "type": 0.5, "structure": 0.4, "energy": 0.2, "impressiveness": 0.3 }
+  },
+  {
+    "name": "Quick Opposite Direction Walk",
+    "description": "Walk a short path backwards safely and steadily.",
+    "reason": "Balance and spatial awareness.",
+    "learn_url": "https://www.wikihow.com/Walk-Backwards",
+    "traits": { "weirdness": 0.5, "time": 0.2, "type": 0.8, "structure": 0.2, "energy": 0.3, "impressiveness": 0.4 }
+  },
+  {
+    "name": "Two-Minute Silent Story",
+    "description": "Create a short mental story silently and recall three details.",
+    "reason": "Imagery and memory practice.",
+    "learn_url": "https://artofmemory.com/",
+    "traits": { "weirdness": 0.4, "time": 0.2, "type": 0.5, "structure": 0.6, "energy": 0.1, "impressiveness": 0.3 }
+  },
+  {
+    "name": "Quick Mirror Face Copy",
+    "description": "Mimic a facial expression seen in a mirror for 30 seconds.",
+    "reason": "Facial control and empathy exercise.",
+    "learn_url": "https://www.psychologytoday.com/",
+    "traits": { "weirdness": 0.5, "time": 0.1, "type": 0.7, "structure": 0.2, "energy": 0.2, "impressiveness": 0.4 }
+  },
+  {
+    "name": "Quick Pattern Fold",
+    "description": "Fold a paper pattern precisely in under a minute.",
+    "reason": "Precision and sequencing practice.",
+    "learn_url": "https://origami.me/",
+    "traits": { "weirdness": 0.4, "time": 0.2, "type": 0.7, "structure": 0.6, "energy": 0.1, "impressiveness": 0.3 }
   }
 ]

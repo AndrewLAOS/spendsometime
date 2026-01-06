@@ -736,5 +736,229 @@
     "reason": "You enjoy language learning and cultural connection.",
     "learn_url": "https://www.duolingo.com/course/ru/en/Learn-Russian",
     "traits": { "creative": 0.4, "analytical": 0.7, "hands_on": 0.3, "solo": 0.7, "time_commitment": 0.7 }
+  },
+  {
+    "name": "Photo Editing (Lightroom)",
+    "description": "Basic to intermediate photo editing and color correction.",
+    "reason": "Enhance photos for sharing or portfolio use.",
+    "learn_url": "https://www.adobe.com/products/photoshop-lightroom.html",
+    "traits": { "creative": 0.8, "analytical": 0.4, "hands_on": 0.6, "solo": 0.8, "time_commitment": 0.5 }
+  },
+  {
+    "name": "Mobile App Basics",
+    "description": "Understand how mobile apps are structured and built.",
+    "reason": "Start building simple mobile tools.",
+    "learn_url": "https://developer.android.com/" ,
+    "traits": { "creative": 0.6, "analytical": 0.8, "hands_on": 0.7, "solo": 0.6, "time_commitment": 0.8 }
+  },
+  {
+    "name": "SEO Basics",
+    "description": "Learn fundamental search engine optimization techniques.",
+    "reason": "Improve content discoverability online.",
+    "learn_url": "https://moz.com/learn/seo",
+    "traits": { "creative": 0.5, "analytical": 0.7, "hands_on": 0.4, "solo": 0.6, "time_commitment": 0.4 }
+  },
+  {
+    "name": "Google Sheets Advanced",
+    "description": "Use formulas, pivot tables, and automation in Sheets.",
+    "reason": "Work smarter with data.",
+    "learn_url": "https://support.google.com/docs/",
+    "traits": { "creative": 0.2, "analytical": 0.9, "hands_on": 0.6, "solo": 0.8, "time_commitment": 0.5 }
+  },
+  {
+    "name": "Presentation Design",
+    "description": "Create clear, persuasive slide decks.",
+    "reason": "Communicate ideas effectively.",
+    "learn_url": "https://www.canva.com/",
+    "traits": { "creative": 0.8, "analytical": 0.4, "hands_on": 0.5, "solo": 0.6, "time_commitment": 0.4 }
+  },
+  {
+    "name": "Public Relations Basics",
+    "description": "Understand media, messaging, and outreach fundamentals.",
+    "reason": "Share projects with broader audiences.",
+    "learn_url": "https://www.prsa.org/",
+    "traits": { "creative": 0.6, "analytical": 0.6, "hands_on": 0.3, "solo": 0.3, "time_commitment": 0.5 }
+  },
+  {
+    "name": "Podcast Editing",
+    "description": "Edit audio for clarity, pacing, and quality.",
+    "reason": "Publish polished audio content.",
+    "learn_url": "https://www.audacityteam.org/",
+    "traits": { "creative": 0.7, "analytical": 0.5, "hands_on": 0.6, "solo": 0.7, "time_commitment": 0.6 }
+  },
+  {
+    "name": "Basic Arduino",
+    "description": "Program microcontrollers and simple circuits.",
+    "reason": "Build physical computing projects.",
+    "learn_url": "https://www.arduino.cc/",
+    "traits": { "creative": 0.6, "analytical": 0.8, "hands_on": 0.9, "solo": 0.7, "time_commitment": 0.7 }
+  },
+  {
+    "name": "Product Photography",
+    "description": "Photograph small products with good lighting and composition.",
+    "reason": "Make items look professional online.",
+    "learn_url": "https://photographylife.com/",
+    "traits": { "creative": 0.7, "analytical": 0.4, "hands_on": 0.6, "solo": 0.7, "time_commitment": 0.4 }
+  },
+  {
+    "name": "Email Marketing",
+    "description": "Create effective email campaigns and measure results.",
+    "reason": "Reach audiences directly.",
+    "learn_url": "https://mailchimp.com/resources/",
+    "traits": { "creative": 0.6, "analytical": 0.7, "hands_on": 0.4, "solo": 0.6, "time_commitment": 0.5 }
+  },
+  {
+    "name": "UX Research",
+    "description": "Conduct user interviews, testing, and analysis.",
+    "reason": "Design better experiences based on data.",
+    "learn_url": "https://www.nngroup.com/articles/",
+    "traits": { "creative": 0.5, "analytical": 0.9, "hands_on": 0.3, "solo": 0.4, "time_commitment": 0.7 }
+  },
+  {
+    "name": "3D Printing Basics",
+    "description": "Model, slice, and print simple 3D objects.",
+    "reason": "Turn digital ideas into physical objects.",
+    "learn_url": "https://ultimaker.com/learn",
+    "traits": { "creative": 0.7, "analytical": 0.6, "hands_on": 0.9, "solo": 0.7, "time_commitment": 0.6 }
+  },
+  {
+    "name": "Arduino Robotics",
+    "description": "Build simple robots with sensors and actuators.",
+    "reason": "Combine code and hardware for movement.",
+    "learn_url": "https://www.arduino.cc/education/",
+    "traits": { "creative": 0.7, "analytical": 0.8, "hands_on": 0.9, "solo": 0.6, "time_commitment": 0.8 }
+  },
+  {
+    "name": "Social Media Strategy",
+    "description": "Plan content, measure performance, and grow an audience.",
+    "reason": "Make social channels more effective.",
+    "learn_url": "https://buffer.com/library",
+    "traits": { "creative": 0.7, "analytical": 0.6, "hands_on": 0.4, "solo": 0.4, "time_commitment": 0.6 }
+  },
+  {
+    "name": "Basic Video Lighting",
+    "description": "Use lights to shape subjects and create mood.",
+    "reason": "Improve video production quality.",
+    "learn_url": "https://www.videomaker.com/",
+    "traits": { "creative": 0.7, "analytical": 0.3, "hands_on": 0.7, "solo": 0.7, "time_commitment": 0.4 }
+  },
+  {
+    "name": "CAD Parametric Modeling",
+    "description": "Design parts using parametric CAD tools.",
+    "reason": "Create precise, modifiable models.",
+    "learn_url": "https://www.autodesk.com/",
+    "traits": { "creative": 0.5, "analytical": 0.9, "hands_on": 0.8, "solo": 0.6, "time_commitment": 0.8 }
+  },
+  {
+    "name": "Data Cleaning",
+    "description": "Prepare messy datasets for analysis.",
+    "reason": "Quality data leads to reliable insights.",
+    "learn_url": "https://pandas.pydata.org/",
+    "traits": { "creative": 0.2, "analytical": 0.95, "hands_on": 0.6, "solo": 0.9, "time_commitment": 0.6 }
+  },
+  {
+    "name": "Interviewing Techniques",
+    "description": "Run effective interviews for hiring or research.",
+    "reason": "Improve information gathering and hiring outcomes.",
+    "learn_url": "https://hbr.org/",
+    "traits": { "creative": 0.4, "analytical": 0.7, "hands_on": 0.3, "solo": 0.2, "time_commitment": 0.4 }
+  },
+  {
+    "name": "Color Theory",
+    "description": "Understand color relationships and application.",
+    "reason": "Make visually cohesive designs.",
+    "learn_url": "https://www.sessions.edu/color-calculator/",
+    "traits": { "creative": 0.9, "analytical": 0.4, "hands_on": 0.3, "solo": 0.6, "time_commitment": 0.3 }
+  },
+  {
+    "name": "Brand Messaging",
+    "description": "Craft a consistent voice and message for a brand.",
+    "reason": "Help projects communicate clearly.",
+    "learn_url": "https://www.brandingstrategyinsider.com/",
+    "traits": { "creative": 0.7, "analytical": 0.6, "hands_on": 0.3, "solo": 0.5, "time_commitment": 0.5 }
+  },
+  {
+    "name": "Event Planning Basics",
+    "description": "Plan small events, logistics, and schedules.",
+    "reason": "Run smooth, memorable gatherings.",
+    "learn_url": "https://www.eventbrite.com/blog",
+    "traits": { "creative": 0.6, "analytical": 0.7, "hands_on": 0.6, "solo": 0.2, "time_commitment": 0.6 }
+  },
+  {
+    "name": "Research Paper Writing",
+    "description": "Structure, write, and cite an academic paper.",
+    "reason": "Share evidence-backed findings.",
+    "learn_url": "https://owl.purdue.edu/",
+    "traits": { "creative": 0.4, "analytical": 0.95, "hands_on": 0.2, "solo": 0.9, "time_commitment": 0.9 }
+  },
+  {
+    "name": "Voiceover Performance",
+    "description": "Deliver engaging spoken-word recordings.",
+    "reason": "Add personality to audio projects.",
+    "learn_url": "https://www.voices.com/",
+    "traits": { "creative": 0.8, "analytical": 0.3, "hands_on": 0.4, "solo": 0.7, "time_commitment": 0.5 }
+  },
+  {
+    "name": "Photo Composition",
+    "description": "Use framing, balance, and depth to improve photos.",
+    "reason": "Make images more compelling.",
+    "learn_url": "https://www.photographytalk.com/",
+    "traits": { "creative": 0.8, "analytical": 0.4, "hands_on": 0.6, "solo": 0.8, "time_commitment": 0.4 }
+  },
+  {
+    "name": "Basic Welding",
+    "description": "Learn welded joints and safety basics.",
+    "reason": "Open up metal fabrication projects.",
+    "learn_url": "https://www.millerwelds.com/resources/education",
+    "traits": { "creative": 0.3, "analytical": 0.6, "hands_on": 1.0, "solo": 0.7, "time_commitment": 0.8 }
+  },
+  {
+    "name": "Intro to SQL",
+    "description": "Query databases to extract and summarize data.",
+    "reason": "Powerful tool for many data tasks.",
+    "learn_url": "https://www.sqlbolt.com/",
+    "traits": { "creative": 0.2, "analytical": 0.95, "hands_on": 0.6, "solo": 0.9, "time_commitment": 0.6 }
+  },
+  {
+    "name": "Home Barista Skills",
+    "description": "Pull better espresso shots and steam milk well.",
+    "reason": "Improve daily coffee rituals.",
+    "learn_url": "https://www.baristahustle.com/",
+    "traits": { "creative": 0.6, "analytical": 0.4, "hands_on": 0.9, "solo": 0.8, "time_commitment": 0.4 }
+  },
+  {
+    "name": "Basic Auto Maintenance",
+    "description": "Change oil, check fluids, and basic diagnostics.",
+    "reason": "Save money and increase vehicle knowledge.",
+    "learn_url": "https://www.familyhandyman.com/",
+    "traits": { "creative": 0.2, "analytical": 0.6, "hands_on": 1.0, "solo": 0.8, "time_commitment": 0.5 }
+  },
+  {
+    "name": "Intro to Blockchain",
+    "description": "Understand decentralization, ledgers, and tokens.",
+    "reason": "Grasp core crypto concepts.",
+    "learn_url": "https://www.coindesk.com/learn/",
+    "traits": { "creative": 0.3, "analytical": 0.9, "hands_on": 0.3, "solo": 0.7, "time_commitment": 0.6 }
+  },
+  {
+    "name": "Basic Call Handling",
+    "description": "Professional phone etiquette and note-taking.",
+    "reason": "Improve customer interactions.",
+    "learn_url": "https://www.callcentrehelper.com/",
+    "traits": { "creative": 0.2, "analytical": 0.5, "hands_on": 0.2, "solo": 0.1, "time_commitment": 0.2 }
+  },
+  {
+    "name": "Indoor Gardening",
+    "description": "Grow herbs and small plants inside effectively.",
+    "reason": "Bring green into small spaces.",
+    "learn_url": "https://www.gardeners.com/",
+    "traits": { "creative": 0.5, "analytical": 0.4, "hands_on": 0.8, "solo": 0.9, "time_commitment": 0.3 }
+  },
+  {
+    "name": "Basic Carpentry",
+    "description": "Measure, cut, and assemble simple wood projects.",
+    "reason": "Build functional household items.",
+    "learn_url": "https://www.familyhandyman.com/",
+    "traits": { "creative": 0.5, "analytical": 0.5, "hands_on": 1.0, "solo": 0.7, "time_commitment": 0.7 }
   }
 ]
