@@ -368,21 +368,42 @@ p { color: var(--muted); }
   .answers button{padding:0.9rem;}
   .skill{padding:1.2rem;}
 }
+footer {
+  background: rgba(255, 255, 255, 0.95);
+  border-top: 1px solid var(--border);
+  padding: 2rem 1.5rem;
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.9rem;
+  margin-top: 4rem;
+}
+
+footer a {
+  color: var(--accent2);
+  text-decoration: none;
+  font-weight: 600;
+  text-align: center;
+  border-style: justify;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
 </style>
 </head>
 <body>
 
 <nav>
   <div class="nav-content">
-     <a href="index.html" class="logo">SpendSomeTime</a>
+    <a href="index.html" class="logo">SpendSomeTime</a>
     <div class="nav-links">
       <a href="index.html">Home</a>
       <a href="skills.html">Skills</a>
-        <a href="challenges.html">Track Challenges</a>
+      <a href="challenges.html">Track Challenges</a>
       <a href="weird.html">Quick Skills</a>
       <a href="games.html">Games</a>
-            <a href="diagram.html">All Skills</a>
-    </div>
+      <a href="diagram.html">All Skills</a>
+  </div>
   </div>
 </nav>
 
@@ -807,5 +828,9 @@ document.addEventListener('keydown', (e) => {
   }
 });
 </script>
+<footer>
+  © 2026 SpendSomeTime: Use your time with purpose — <a href="privacy-policy.html">Privacy Policy</a>
+</footer>
+
 </body>
 </html>

@@ -960,5 +960,174 @@
     "reason": "Build functional household items.",
     "learn_url": "https://www.familyhandyman.com/",
     "traits": { "creative": 0.5, "analytical": 0.5, "hands_on": 1.0, "solo": 0.7, "time_commitment": 0.7 }
+  },
+  {
+    "name": "Podcast Scriptwriting",
+    "description": "Writing scripts and outlines for engaging podcast episodes.",
+    "reason": "You enjoy audio storytelling with structured planning.",
+    "learn_url": "https://www.coursera.org/learn/podcast-scriptwriting",
+    "traits": { "creative": 0.8, "analytical": 0.6, "hands_on": 0.4, "solo": 0.7, "time_commitment": 0.7 }
+  },
+  {
+    "name": "Stop Motion Animation",
+    "description": "Animating objects frame by frame using photography.",
+    "reason": "You enjoy hands-on creative animation.",
+    "learn_url": "https://www.skillshare.com/browse/stop-motion-animation",
+    "traits": { "creative": 0.9, "analytical": 0.5, "hands_on": 1.0, "solo": 0.6, "time_commitment": 0.9 }
+  },
+  {
+    "name": "Voice Acting",
+    "description": "Performing characters and narratives using your voice.",
+    "reason": "You enjoy expressive performance without visual constraints.",
+    "learn_url": "https://www.voices.com/learn/voice-over",
+    "traits": { "creative": 0.9, "analytical": 0.4, "hands_on": 0.3, "solo": 0.7, "time_commitment": 0.6 }
+  },
+  {
+    "name": "3D Printing",
+    "description": "Creating physical objects from digital designs.",
+    "reason": "You enjoy tangible creation and tech integration.",
+    "learn_url": "https://all3dp.com/2/3d-printing-basics-tutorial/",
+    "traits": { "creative": 0.7, "analytical": 0.8, "hands_on": 1.0, "solo": 0.6, "time_commitment": 0.8 }
+  },
+  {
+    "name": "Digital Music Sampling",
+    "description": "Using samples to create new music tracks.",
+    "reason": "You enjoy innovative music production techniques.",
+    "learn_url": "https://www.coursera.org/learn/music-production",
+    "traits": { "creative": 0.9, "analytical": 0.6, "hands_on": 0.8, "solo": 0.7, "time_commitment": 0.8 }
+  },
+  {
+    "name": "Astrophotography",
+    "description": "Capturing images of celestial objects.",
+    "reason": "You enjoy combining science and visual art.",
+    "learn_url": "https://www.skyatnightmagazine.com/astrophotography",
+    "traits": { "creative": 0.8, "analytical": 0.7, "hands_on": 0.7, "solo": 0.8, "time_commitment": 0.7 }
+  },
+  {
+    "name": "Augmented Reality Design",
+    "description": "Creating interactive AR experiences.",
+    "reason": "You enjoy merging creativity with cutting-edge tech.",
+    "learn_url": "https://learn.unity.com/course/augmented-reality",
+    "traits": { "creative": 0.8, "analytical": 0.8, "hands_on": 0.9, "solo": 0.6, "time_commitment": 0.9 }
+  },
+  {
+    "name": "Data Science with Python",
+    "description": "Analyzing and visualizing data using Python.",
+    "reason": "You enjoy turning raw data into insights.",
+    "learn_url": "https://www.datacamp.com/courses/data-science-for-python",
+    "traits": { "creative": 0.5, "analytical": 1.0, "hands_on": 0.8, "solo": 0.7, "time_commitment": 0.9 }
+  },
+  {
+    "name": "AI Prompt Engineering",
+    "description": "Creating effective prompts for AI tools.",
+    "reason": "You enjoy problem-solving and innovative communication with AI.",
+    "learn_url": "https://www.deeplearning.ai/ai-prompting",
+    "traits": { "creative": 0.7, "analytical": 0.8, "hands_on": 0.3, "solo": 0.8, "time_commitment": 0.5 }
+  },
+  {
+    "name": "Digital Painting",
+    "description": "Creating full-color artwork digitally.",
+    "reason": "You enjoy advanced visual creativity with software tools.",
+    "learn_url": "https://www.ctrlpaint.com/library",
+    "traits": { "creative": 1.0, "analytical": 0.3, "hands_on": 0.9, "solo": 0.9, "time_commitment": 0.8 }
+  },
+  {
+    "name": "Augmented Reality Gaming",
+    "description": "Designing interactive AR games.",
+    "reason": "You enjoy merging game design and immersive tech.",
+    "learn_url": "https://www.unrealengine.com/en-US/augmented-reality",
+    "traits": { "creative": 0.9, "analytical": 0.7, "hands_on": 0.9, "solo": 0.6, "time_commitment": 0.9 }
+  },
+  {
+    "name": "Digital Storyboarding",
+    "description": "Planning visual narratives digitally.",
+    "reason": "You enjoy pre-visualizing creative projects.",
+    "learn_url": "https://www.skillshare.com/classes/Digital-Storyboarding",
+    "traits": { "creative": 0.9, "analytical": 0.6, "hands_on": 0.6, "solo": 0.8, "time_commitment": 0.6 }
+  },
+  {
+    "name": "Creative Coding",
+    "description": "Using code to generate art and interactive visuals.",
+    "reason": "You enjoy blending logic and creativity.",
+    "learn_url": "https://www.processing.org",
+    "traits": { "creative": 0.9, "analytical": 0.8, "hands_on": 0.7, "solo": 0.7, "time_commitment": 0.8 }
+  },
+  {
+    "name": "Mathematical Art",
+    "description": "Creating art using math principles and geometry.",
+    "reason": "You enjoy combining logic and visual aesthetics.",
+    "learn_url": "https://www.mathartfun.com",
+    "traits": { "creative": 0.8, "analytical": 0.9, "hands_on": 0.7, "solo": 0.8, "time_commitment": 0.6 }
+  },
+  {
+    "name": "DIY Electronics",
+    "description": "Building gadgets and circuits.",
+    "reason": "You enjoy hands-on problem-solving and tech creation.",
+    "learn_url": "https://www.instructables.com/circuits/",
+    "traits": { "creative": 0.7, "analytical": 0.8, "hands_on": 1.0, "solo": 0.7, "time_commitment": 0.8 }
+  },
+  {
+    "name": "Robotics",
+    "description": "Designing and programming robots.",
+    "reason": "You enjoy integrating mechanics, coding, and creativity.",
+    "learn_url": "https://www.roboticseducation.org/",
+    "traits": { "creative": 0.8, "analytical": 0.9, "hands_on": 1.0, "solo": 0.6, "time_commitment": 0.9 }
+  },
+  {
+    "name": "Mobile App Design",
+    "description": "Designing apps for smartphones with UX principles.",
+    "reason": "You enjoy practical design and user-focused creation.",
+    "learn_url": "https://www.interaction-design.org/courses/mobile-ux-design",
+    "traits": { "creative": 0.8, "analytical": 0.7, "hands_on": 0.7, "solo": 0.7, "time_commitment": 0.7 }
+  },
+  {
+    "name": "Stop Motion Puppetry",
+    "description": "Using puppets and miniatures for animated storytelling.",
+    "reason": "You enjoy tactile creativity and storytelling.",
+    "learn_url": "https://www.skillshare.com/classes/Stop-Motion-Puppetry",
+    "traits": { "creative": 0.9, "analytical": 0.5, "hands_on": 1.0, "solo": 0.6, "time_commitment": 0.9 }
+  },
+  {
+    "name": "Urban Sketching",
+    "description": "Drawing city scenes and street life.",
+    "reason": "You enjoy capturing real-world environments artistically.",
+    "learn_url": "https://urbansketchers.org",
+    "traits": { "creative": 0.8, "analytical": 0.4, "hands_on": 0.9, "solo": 0.8, "time_commitment": 0.5 }
+  },
+  {
+    "name": "Podcast Interviewing",
+    "description": "Conducting engaging interviews for audio content.",
+    "reason": "You enjoy communication and storytelling with people.",
+    "learn_url": "https://www.thepodcasthost.com/planning/interview-techniques/",
+    "traits": { "creative": 0.7, "analytical": 0.6, "hands_on": 0.5, "solo": 0.4, "time_commitment": 0.6 }
+  },
+  {
+    "name": "Miniature Painting",
+    "description": "Painting small-scale figurines or models.",
+    "reason": "You enjoy detailed, focused art projects.",
+    "learn_url": "https://www.games-workshop.com/en-US/Painting-Guides",
+    "traits": { "creative": 0.9, "analytical": 0.5, "hands_on": 1.0, "solo": 0.9, "time_commitment": 0.7 }
+  },
+  {
+    "name": "Interactive Fiction",
+    "description": "Creating text-based games and stories.",
+    "reason": "You enjoy combining writing and logic for interactive experiences.",
+    "learn_url": "https://ifdb.org",
+    "traits": { "creative": 0.9, "analytical": 0.6, "hands_on": 0.4, "solo": 0.8, "time_commitment": 0.7 }
+  },
+  {
+    "name": "DIY Mechanical Gadgets",
+    "description": "Building moving machines and devices.",
+    "reason": "You enjoy engineering and hands-on creativity.",
+    "learn_url": "https://www.instructables.com/howto/mechanical+gadgets/",
+    "traits": { "creative": 0.8, "analytical": 0.9, "hands_on": 1.0, "solo": 0.7, "time_commitment": 0.9 }
+  },
+  {
+    "name": "Virtual Reality Experiences",
+    "description": "Designing immersive VR worlds and interactions.",
+    "reason": "You enjoy next-level immersive storytelling.",
+    "learn_url": "https://www.udemy.com/course/virtual-reality-development/",
+    "traits": { "creative": 0.9, "analytical": 0.8, "hands_on": 0.9, "solo": 0.6, "time_commitment": 0.9 }
   }
 ]
+

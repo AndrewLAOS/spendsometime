@@ -451,20 +451,42 @@ p { color: var(--muted); }
   .answers button{padding:0.9rem;}
   .skill{padding:1.2rem;}
 }
+footer {
+  background: rgba(255, 255, 255, 0.95);
+  border-top: 1px solid var(--border);
+  padding: 2rem 1.5rem;
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.9rem;
+  margin-top: 4rem;
+}
+
+footer a {
+  color: var(--accent2);
+  text-decoration: none;
+  font-weight: 600;
+  text-align: center;
+  border-style: justify;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
 </style>
 </head>
 <body>
 
 <nav>
   <div class="nav-content">
-      <a href="index.html" class="logo">SpendSomeTime</a>
+    <a href="index.html" class="logo">SpendSomeTime</a>
     <div class="nav-links">
       <a href="index.html">Home</a>
       <a href="skills.html">Skills</a>
-        <a href="challenges.html">Track Challenges</a>
+      <a href="challenges.html">Track Challenges</a>
       <a href="weird.html">Quick Skills</a>
       <a href="games.html">Games</a>
-            <a href="diagram.html">All Skills</a>
+      <a href="diagram.html">All Skills</a>
+ 
     </div>
   </div>
 </nav>
@@ -630,7 +652,7 @@ const questions = [
 
 let current = 0;
 let userTraits = { creative:0, analytical:0, hands_on:0, solo:0, time_commitment:0, social:0, structured:0, flexible:0, visual:0, practical:0, challenge:0, patience:0, focus:0, tech:0 };
-let bookmarkedSkills = new Set(JSON.parse(localStorage.getItem('bookmarkedSkills')||'[]'));
+let bookmarkedSkills = new Set();
 const quizEl = document.getElementById("quiz");
 const resultsEl = document.getElementById("results");
 const progressEl = document.getElementById("progress");
@@ -858,7 +880,7 @@ async function finishQuiz(){
         <p style="margin-top:1rem;"><a href="${s.learn_url}" target="_blank" style="color:var(--accent2); font-weight:600;">Learn more →</a></p>
       `;
       const bookmarkBtn = div.querySelector('.bookmark-btn');
-      bookmarkBtn.onclick=()=>{
+      bookmarkBtn.onclick=async ()=>{
         if(bookmarkedSkills.has(s.name)){
           bookmarkedSkills.delete(s.name);
           bookmarkBtn.textContent = '☆ Bookmark';
@@ -868,7 +890,13 @@ async function finishQuiz(){
           bookmarkBtn.textContent = '★ Bookmarked';
           bookmarkBtn.classList.add('bookmarked');
         }
-        localStorage.setItem('bookmarkedSkills', JSON.stringify([...bookmarkedSkills]));
+        // Save to Firebase or localStorage
+        const bookmarksArray = [...bookmarkedSkills];
+        if (window.saveBookmarks) {
+          await window.saveBookmarks(bookmarksArray);
+        } else {
+          localStorage.setItem('bookmarkedSkills', JSON.stringify(bookmarksArray));
+        }
       };
       resultsContainer.appendChild(div);
     });
@@ -1100,6 +1128,29 @@ document.addEventListener('keydown', (e) => {
   }
 });
 </script>
+
+
+<div class="loading-overlay" id="loading-overlay" style="display:none;">
+  <div class="loading"></div>
+</div>
+
+<script type="module">
+import './shared-auth.js';
+import { getBookmarks, saveBookmarks } from './shared-auth.js';
+
+// Load bookmarks on page load
+(async () => {
+  const bookmarks = await getBookmarks();
+  bookmarkedSkills = new Set(bookmarks);
+  
+  // Make saveBookmarks available globally
+  window.saveBookmarks = saveBookmarks;
+})();
+</script>
+
+<footer>
+  © 2026 SpendSomeTime: Use your time with purpose — <a href="privacy-policy.html">Privacy Policy</a>
+</footer>
 
 </body>
 </html>

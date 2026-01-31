@@ -2,7 +2,28 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>SpendSomeTime</title>
+<title>Spend Some Time | Learn Skills, Track Challenges & Beat Boredom</title>
+
+
+<meta name="description" content="Spend Some Time helps you replace endless scrolling with meaningful skills, challenges, and brain games. Learn new skills, track progress, and use your time with purpose.">
+
+
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-W69283V9G5"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-W69283V9G5');
+</script>
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
@@ -303,13 +324,25 @@ section {
 }
 
 footer {
+  background: rgba(255, 255, 255, 0.95);
+  border-top: 1px solid var(--border);
+  padding: 2rem 1.5rem;
   text-align: center;
   color: var(--muted);
-  padding: 3rem 1.5rem;
-  border-top: 1px solid var(--border);
-  font-size: 0.95rem;
-  background: #ffffff;
-  box-shadow: 0 -4px 12px var(--shadow);
+  font-size: 0.9rem;
+  margin-top: 4rem;
+}
+
+footer a {
+  color: var(--accent2);
+  text-decoration: none;
+  font-weight: 600;
+  text-align: center;
+  border-style: justify;
+}
+
+footer a:hover {
+  text-decoration: underline;
 }
 
 @media (max-width: 600px) {
@@ -327,21 +360,21 @@ footer {
     <div class="nav-links">
       <a href="index.html">Home</a>
       <a href="skills.html">Skills</a>
-          <a href="challenges.html">Track Challenges</a>
+      <a href="challenges.html">Track Challenges</a>
       <a href="weird.html">Quick Skills</a>
       <a href="games.html">Games</a>
-            <a href="diagram.html">All Skills</a>
+      <a href="diagram.html">All Skills</a>
     </div>
   </div>
 </nav>
 
 <header>
-  <h1>SpendSomeTime</h1>
+<h1>Spend Some Time Intentionally</h1>
   <p>
     Most people don’t waste time because they want to.  
     They waste it because they don’t know what else to do.
     <br><br>
-    SpendSomeTime replaces endless scrolling with intentional, engaging alternatives —  
+    SpendSomeTime replaces endless scrolling with intentional, engaging alternatives including 
     skills you can build, challenges you can try, and games that actually stimulate your brain.
   </p>
 
@@ -402,9 +435,9 @@ footer {
   <div class="card fade-in">
     <h2>What this isn't</h2>
     <p>
-      This is not a planner.  
-      Not a motivation app.  
-      Not a lecture about productivity.
+      A boring productivity app that nags you to "stop wasting time."
+      Not another to-do list that buries you in tasks.  
+      Not a bland learning platform that feels like homework.
       <br><br>
       SpendSomeTime doesn't tell you to "stop scrolling."  
       It gives you something better to do instead.
@@ -475,7 +508,7 @@ document.querySelectorAll('.fade-in').forEach(el => {
 </script>
 
 <footer>
-  © 2026 SpendSomeTime: Use your time on purpose.
+ © 2026 Spend Some Time: Learn skills, track challenges, and use your time with purpose. — <a href="privacy-policy.html">Privacy Policy</a>
 </footer>
 
 </body>

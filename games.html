@@ -372,6 +372,27 @@ h1 {
   .games-grid{grid-template-columns:1fr;}
   .memory-grid{grid-template-columns:repeat(3,1fr);}
 }
+footer {
+  background: rgba(255, 255, 255, 0.95);
+  border-top: 1px solid var(--border);
+  padding: 2rem 1.5rem;
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.9rem;
+  margin-top: 4rem;
+}
+
+footer a {
+  color: var(--accent2);
+  text-decoration: none;
+  font-weight: 600;
+  text-align: center;
+  border-style: justify;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
 </style>
 </head>
 <body>
@@ -1035,6 +1056,10 @@ function updateLeaderboard() {
 
 updateLeaderboard();
 </script>
+
+<footer>
+  © 2026 SpendSomeTime: Use your time with purpose— <a href="privacy-policy.html">Privacy Policy</a>
+</footer>
 
 </body>
 </html>

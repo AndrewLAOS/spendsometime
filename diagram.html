@@ -308,22 +308,43 @@ h1 {
     gap: 1.5rem;
   }
 }
+footer {
+  background: rgba(255, 255, 255, 0.95);
+  border-top: 1px solid var(--border);
+  padding: 2rem 1.5rem;
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.9rem;
+  margin-top: 4rem;
+}
+
+footer a {
+  color: var(--accent2);
+  text-decoration: none;
+  font-weight: 600;
+  text-align: center;
+  border-style: justify;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
 </style>
 </head>
 <body>
-  <nav>
-    <div class="nav-content">
-     <a href="index.html" class="logo">SpendSomeTime</a>
+<nav>
+  <div class="nav-content">
+    <a href="index.html" class="logo">SpendSomeTime</a>
     <div class="nav-links">
       <a href="index.html">Home</a>
       <a href="skills.html">Skills</a>
-        <a href="challenges.html">Track Challenges</a>
+      <a href="challenges.html">Track Challenges</a>
       <a href="weird.html">Quick Skills</a>
       <a href="games.html">Games</a>
-            <a href="diagram.html">All Skills</a>
-      </div>
+      <a href="diagram.html">All Skills</a>
     </div>
-  </nav>
+  </div>
+</nav>
 
   <main>
     <h1>Skill Diagram</h1>
@@ -358,7 +379,7 @@ h1 {
         <select id="sourceFilter">
           <option value="">All Sources</option>
           <option value="skills">Skills Only</option>
-          <option value="weird">Weird Only</option>
+          <option value="weird">Quick Skills Only</option>
         </select>
       </div>
       <div class="filter-group">
@@ -475,7 +496,7 @@ h1 {
             </div>
           ` : ''}
           <div class="skill-meta">
-            <span>Source: ${skill._source === 'weird' ? '🌀 Weird' : '✨ Skills'}</span>
+            <span>Source: ${skill._source === 'weird' ? '🌀 Quick Skills' : '✨ Skills'}</span>
             ${skill.tags ? `<span>${skill.tags.length} tags</span>` : ''}
           </div>
           <div class="skill-actions">
@@ -532,5 +553,9 @@ h1 {
       reader.readAsText(file);
     });
   </script>
+  <footer>
+    © 2026 SpendSomeTime: USe your time with purpose — <a href="privacy-policy.html">Privacy Policy</a>
+  </footer>
+
 </body>
 </html>
