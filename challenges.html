@@ -8,6 +8,7 @@
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
 <link rel="manifest" href="/site.webmanifest">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
@@ -852,6 +853,7 @@ footer a:hover {
     <button class="btn btn-primary" onclick="openAddModal()">+ Add New Challenge</button>
     <button class="btn btn-secondary" onclick="loadFromQuiz()" style="margin-left:1rem;">Import from Quiz Results</button>
     <button class="btn btn-secondary" onclick="exportProgress()" style="margin-left:1rem;">Export Progress</button>
+    <button class="btn btn-secondary" onclick="shareToday()" style="margin-left:1rem;" id="shareBtn">Share today’s challenge</button>
   </div>
 </main>
 
@@ -882,6 +884,7 @@ footer a:hover {
     </form>
   </div>
 </div>
+
 
 <!-- Progress Update Modal -->
 <div class="modal" id="progress-modal">
@@ -926,6 +929,7 @@ function loadFromQuiz() {
     return;
   }
   
+
   // Try to load from skills.json or weird.json
   Promise.all([
     fetch('skills.json').then(r => r.ok ? r.json() : []).catch(() => []),
@@ -1472,6 +1476,22 @@ if(challenges.length > 0) {
     }
   }, 100);
 }
+function shareToday() {
+  const shareText = `I just completed today’s learning challenge on SpendSomeTime.org 🧠✨
+Do something better than scrolling.`;
+
+  if (navigator.share) {
+    navigator.share({
+      title: "SpendSomeTime",
+      text: shareText,
+      url: window.location.href
+    });
+  } else {
+    navigator.clipboard.writeText(shareText + " " + window.location.href);
+    alert("Link copied!");
+  }
+}
+
 </script>
 <footer>
   © 2026 SpendSomeTime: Use your time with purpose. — <a href="privacy-policy.html">Privacy Policy</a>
