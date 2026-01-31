@@ -155,20 +155,6 @@
     }
   },
   {
-    "name": "Balance on One Foot (Eyes Closed)",
-    "description": "Train vestibular balance and micro-muscle control.",
-    "reason": "Harder than it sounds.",
-    "learn_url": "https://en.wikipedia.org/wiki/Balance_(ability)",
-    "traits": {
-      "weirdness": 0.5,
-      "time": 0.2,
-      "type": 0.9,
-      "structure": 0.2,
-      "energy": 0.4,
-      "impressiveness": 0.5
-    }
-  },
-  {
     "name": "Learn a Card Flourish",
     "description": "Practice a single visual card flourish.",
     "reason": "Looks impressive fast.",
@@ -211,8 +197,8 @@
     }
 },
   {
-    "name": "Learn to Juggle 2 Objects",
-    "description": "Master the basic cascade with two items.",
+    "name": "Learn to Juggle",
+    "description": "Master the famous trick.",
     "reason": "Builds timing and bilateral coordination.",
     "learn_url": "https://www.youtube.com/watch?v=1n0nP0c9V1k",
     "traits": {
@@ -323,20 +309,6 @@
     }
   },
   {
-    "name": "Shape Rotation Visualization",
-    "description": "Mentally rotate objects without drawing them.",
-    "reason": "Boosts spatial intelligence.",
-    "learn_url": "https://en.wikipedia.org/wiki/Mental_rotation",
-    "traits": {
-      "weirdness": 0.6,
-      "time": 0.4,
-      "type": 0.6,
-      "structure": 0.6,
-      "energy": 0.3,
-      "impressiveness": 0.6
-    }
-  },
-  {
     "name": "Learn to Snap Loudly",
     "description": "Produce a sharp, consistent finger snap.",
     "reason": "Surprisingly technical.",
@@ -348,21 +320,6 @@
       "structure": 0.2,
       "energy": 0.3,
       "impressiveness": 0.4
-    }
-  },
-
-  {
-    "name": "Visual Afterimage Control",
-    "description": "Create and manipulate color afterimages.",
-    "reason": "Feels like a visual glitch.",
-    "learn_url": "https://en.wikipedia.org/wiki/Afterimage",
-    "traits": {
-      "weirdness": 0.9,
-      "time": 0.3,
-      "type": 0.5,
-      "structure": 0.3,
-      "energy": 0.2,
-      "impressiveness": 0.7
     }
   },
   {
@@ -391,34 +348,6 @@
       "structure": 0.8,
       "energy": 0.2,
       "impressiveness": 0.6
-    }
-  },
-  {
-    "name": "Memory Grid Flash Test",
-    "description": "Memorize a grid of shapes in seconds.",
-    "reason": "Pure working memory training.",
-    "learn_url": "https://humanbenchmark.com/tests/memory",
-    "traits": {
-      "weirdness": 0.5,
-      "time": 0.2,
-      "type": 0.5,
-      "structure": 0.8,
-      "energy": 0.3,
-      "impressiveness": 0.5
-    }
-  },
-  {
-    "name": "Silent Counting Breath Drill",
-    "description": "Count breaths up to 50 without losing track.",
-    "reason": "Mental endurance challenge.",
-    "learn_url": "https://www.mindful.org/how-to-count-your-breaths/",
-    "traits": {
-      "weirdness": 0.5,
-      "time": 0.4,
-      "type": 0.7,
-      "structure": 0.4,
-      "energy": 0.1,
-      "impressiveness": 0.4
     }
   },
   {
@@ -460,20 +389,6 @@
       "type": 0.9,
       "structure": 0.6,
       "energy": 0.3,
-      "impressiveness": 0.7
-    }
-  },
-  {
-    "name": "Learn to Read Palms",
-    "description": "Understand basic palmistry patterns and meanings.",
-    "reason": "Fun party trick with cultural history.",
-    "learn_url": "https://www.wikihow.com/Read-Palms",
-    "traits": {
-      "weirdness": 0.8,
-      "time": 0.5,
-      "type": 0.6,
-      "structure": 0.7,
-      "energy": 0.2,
       "impressiveness": 0.7
     }
   },
@@ -702,20 +617,6 @@
     }
   },
   {
-    "name": "Learn to Break a Board with Your Hand",
-    "description": "Master proper technique for board breaking.",
-    "reason": "Feels like a superpower.",
-    "learn_url": "https://www.wikihow.com/Break-a-Board",
-    "traits": {
-      "weirdness": 0.8,
-      "time": 0.6,
-      "type": 0.9,
-      "structure": 0.7,
-      "energy": 0.7,
-      "impressiveness": 0.9
-    }
-  },
-  {
     "name": "Learn to Identify Poisonous Plants",
     "description": "Recognize common toxic plants in your area.",
     "reason": "Potentially life-saving knowledge.",
@@ -727,20 +628,6 @@
       "structure": 0.8,
       "energy": 0.2,
       "impressiveness": 0.6
-    }
-  },
-  {
-    "name": "Learn to Read Tea Leaves",
-    "description": "Understand basic tasseography (tea leaf reading).",
-    "reason": "Quirky divination skill.",
-    "learn_url": "https://www.wikihow.com/Read-Tea-Leaves",
-    "traits": {
-      "weirdness": 0.9,
-      "time": 0.4,
-      "type": 0.6,
-      "structure": 0.5,
-      "energy": 0.2,
-      "impressiveness": 0.7
     }
   },
   {
@@ -786,34 +673,6 @@
     }
   },
   {
-    "name": "Learn to Identify Edible Wild Plants",
-    "description": "Safely recognize 10 common edible wild plants.",
-    "reason": "Survival skill that's actually useful.",
-    "learn_url": "https://www.wildfooduk.com",
-    "traits": {
-      "weirdness": 0.5,
-      "time": 0.6,
-      "type": 0.5,
-      "structure": 0.8,
-      "energy": 0.3,
-      "impressiveness": 0.7
-    }
-  },
-  {
-    "name": "Learn to Calculate Days Between Dates",
-    "description": "Quickly calculate days between any two dates mentally.",
-    "reason": "Useful mental math trick.",
-    "learn_url": "https://www.timeanddate.com/date/duration.html",
-    "traits": {
-      "weirdness": 0.4,
-      "time": 0.4,
-      "type": 0.6,
-      "structure": 0.8,
-      "energy": 0.3,
-      "impressiveness": 0.6
-    }
-  },
-  {
     "name": "Learn to Do a One-Handed Push-up",
     "description": "Master proper one-handed push-up form.",
     "reason": "Impressive strength demonstration.",
@@ -825,20 +684,6 @@
       "structure": 0.6,
       "energy": 0.8,
       "impressiveness": 0.9
-    }
-  },
-  {
-    "name": "Learn to Identify Mushrooms (Safely)",
-    "description": "Recognize common safe and dangerous mushrooms.",
-    "reason": "Foraging skill with safety importance.",
-    "learn_url": "https://www.mushroom-appreciation.com",
-    "traits": {
-      "weirdness": 0.6,
-      "time": 0.6,
-      "type": 0.5,
-      "structure": 0.8,
-      "energy": 0.3,
-      "impressiveness": 0.6
     }
   },
   {
@@ -898,20 +743,6 @@
     }
   },
   {
-    "name": "Learn to Identify Different Types of Rocks",
-    "description": "Recognize igneous, sedimentary, and metamorphic rocks.",
-    "reason": "Geology basics for nature walks.",
-    "learn_url": "https://geology.com/rocks/",
-    "traits": {
-      "weirdness": 0.5,
-      "time": 0.5,
-      "type": 0.5,
-      "structure": 0.7,
-      "energy": 0.2,
-      "impressiveness": 0.5
-    }
-  },
-  {
     "name": "Learn to Do a Split",
     "description": "Achieve front or side splits with proper stretching.",
     "reason": "Impressive flexibility goal.",
@@ -923,20 +754,6 @@
       "structure": 0.6,
       "energy": 0.5,
       "impressiveness": 0.8
-    }
-  },
-  {
-    "name": "Learn to Identify Different Types of Clouds",
-    "description": "Recognize cumulus, stratus, cirrus, and nimbus clouds.",
-    "reason": "Weather prediction basics.",
-    "learn_url": "https://scijinks.gov/clouds/",
-    "traits": {
-      "weirdness": 0.4,
-      "time": 0.4,
-      "type": 0.5,
-      "structure": 0.7,
-      "energy": 0.2,
-      "impressiveness": 0.4
     }
   },
   {
@@ -968,48 +785,6 @@
     }
   },
   {
-    "name": "Learn to Identify Different Types of Fish",
-    "description": "Recognize 15 common fish species.",
-    "reason": "Fishing and nature knowledge.",
-    "learn_url": "https://www.fishbase.org",
-    "traits": {
-      "weirdness": 0.5,
-      "time": 0.5,
-      "type": 0.5,
-      "structure": 0.7,
-      "energy": 0.2,
-      "impressiveness": 0.5
-    }
-  },
-  {
-    "name": "Learn to Do a Back Walkover",
-    "description": "Master the gymnastic back walkover.",
-    "reason": "Impressive flexibility and strength combo.",
-    "learn_url": "https://www.youtube.com/results?search_query=back+walkover+tutorial",
-    "traits": {
-      "weirdness": 0.6,
-      "time": 0.7,
-      "type": 0.9,
-      "structure": 0.6,
-      "energy": 0.7,
-      "impressiveness": 0.9
-    }
-  },
-  {
-    "name": "Learn to Identify Different Types of Insects",
-    "description": "Recognize 20 common insects.",
-    "reason": "Entomology basics.",
-    "learn_url": "https://www.insectidentification.org",
-    "traits": {
-      "weirdness": 0.5,
-      "time": 0.5,
-      "type": 0.5,
-      "structure": 0.7,
-      "energy": 0.2,
-      "impressiveness": 0.5
-    }
-  },
-  {
     "name": "Learn to Do a Front Flip",
     "description": "Master front flip with proper technique.",
     "reason": "Ultimate acrobatic skill.",
@@ -1021,34 +796,6 @@
       "structure": 0.7,
       "energy": 0.9,
       "impressiveness": 1.0
-    }
-  },
-  {
-    "name": "Learn to Identify Different Types of Flowers",
-    "description": "Recognize 20 common flowers.",
-    "reason": "Botany basics for gardeners.",
-    "learn_url": "https://www.gardenia.net/plant",
-    "traits": {
-      "weirdness": 0.4,
-      "time": 0.5,
-      "type": 0.5,
-      "structure": 0.7,
-      "energy": 0.2,
-      "impressiveness": 0.5
-    }
-  },
-  {
-    "name": "Learn to Do a Hand Clap Behind Your Back",
-    "description": "Master the coordination trick of clapping behind your back.",
-    "reason": "Simple but impressive party trick.",
-    "learn_url": "https://www.youtube.com/results?search_query=clap+behind+back",
-    "traits": {
-      "weirdness": 0.7,
-      "time": 0.3,
-      "type": 0.9,
-      "structure": 0.4,
-      "energy": 0.4,
-      "impressiveness": 0.7
     }
   },
   {
@@ -1080,20 +827,6 @@
     }
   },
   {
-    "name": "Learn to Identify Different Types of Snakes",
-    "description": "Recognize 10 common snake species (venomous vs non-venomous).",
-    "reason": "Safety knowledge for outdoor activities.",
-    "learn_url": "https://www.snakesnaps.com",
-    "traits": {
-      "weirdness": 0.6,
-      "time": 0.5,
-      "type": 0.5,
-      "structure": 0.8,
-      "energy": 0.2,
-      "impressiveness": 0.6
-    }
-  },
-  {
     "name": "Learn to Do a Muscle-Up",
     "description": "Master the advanced pull-up to dip transition.",
     "reason": "Ultimate calisthenics achievement.",
@@ -1122,39 +855,11 @@
     "traits": { "weirdness": 0.6, "time": 0.2, "type": 0.7, "structure": 0.2, "energy": 0.2, "impressiveness": 0.4 }
   },
   {
-    "name": "30-Second Memory Grid",
-    "description": "Flash a 4x4 grid for 5 seconds and recall positions.",
-    "reason": "Sharp working memory challenge.",
-    "learn_url": "https://humanbenchmark.com/tests/memory",
-    "traits": { "weirdness": 0.5, "time": 0.1, "type": 0.6, "structure": 0.6, "energy": 0.2, "impressiveness": 0.4 }
-  },
-  {
-    "name": "Mirror Letter Practice",
-    "description": "Write letters so that they read correctly in a mirror.",
-    "reason": "Builds visual-motor adaptation.",
-    "learn_url": "https://en.wikipedia.org/wiki/Mirror_writing",
-    "traits": { "weirdness": 0.8, "time": 0.3, "type": 0.8, "structure": 0.3, "energy": 0.2, "impressiveness": 0.6 }
-  },
-  {
     "name": "Coin Balance on Finger",
     "description": "Balance a coin on a fingertip for one minute.",
     "reason": "Tiny-motor control and focus exercise.",
     "learn_url": "https://www.wikihow.com/Balance-a-Coin",
     "traits": { "weirdness": 0.4, "time": 0.1, "type": 0.9, "structure": 0.2, "energy": 0.1, "impressiveness": 0.3 }
-  },
-  {
-    "name": "Thumb Piano Short Piece",
-    "description": "Play a simple melody on a kalimba.",
-    "reason": "Quick musical motor skill.",
-    "learn_url": "https://www.kalimba.org/",
-    "traits": { "weirdness": 0.5, "time": 0.2, "type": 0.7, "structure": 0.4, "energy": 0.2, "impressiveness": 0.4 }
-  },
-  {
-    "name": "20-Second Breath Count",
-    "description": "Count 20 steady breaths without losing rhythm.",
-    "reason": "Calms nervous system and trains attention.",
-    "learn_url": "https://www.mindful.org/",
-    "traits": { "weirdness": 0.3, "time": 0.1, "type": 0.6, "structure": 0.2, "energy": 0.1, "impressiveness": 0.2 }
   },
   {
     "name": "Finger Snap Clap",
@@ -1164,25 +869,11 @@
     "traits": { "weirdness": 0.4, "time": 0.2, "type": 0.9, "structure": 0.2, "energy": 0.3, "impressiveness": 0.5 }
   },
   {
-    "name": "One-Minute Silent Counting",
-    "description": "Count silently up to 60 without losing track.",
-    "reason": "Mental endurance test.",
-    "learn_url": "https://www.wikihow.com/Count-Your-Breaths",
-    "traits": { "weirdness": 0.4, "time": 0.2, "type": 0.6, "structure": 0.3, "energy": 0.1, "impressiveness": 0.3 }
-  },
-  {
     "name": "Fast Finger Tapping",
     "description": "Tap alternating fingers rapidly for 30 seconds.",
     "reason": "Hand speed and coordination drill.",
     "learn_url": "https://www.humanbenchmark.com/",
     "traits": { "weirdness": 0.3, "time": 0.1, "type": 0.8, "structure": 0.2, "energy": 0.4, "impressiveness": 0.3 }
-  },
-  {
-    "name": "Lateral Reading Drill",
-    "description": "Skim and extract key facts from 3 sources in 2 minutes.",
-    "reason": "Information triage and speed reading practice.",
-    "learn_url": "https://www.washington.edu/",
-    "traits": { "weirdness": 0.3, "time": 0.2, "type": 0.6, "structure": 0.7, "energy": 0.2, "impressiveness": 0.4 }
   },
   {
     "name": "One-Minute Hand Mirror Drawing",
@@ -1234,13 +925,6 @@
     "traits": { "weirdness": 0.6, "time": 0.2, "type": 0.8, "structure": 0.3, "energy": 0.2, "impressiveness": 0.5 }
   },
   {
-    "name": "30-Second Memory Phrase",
-    "description": "Memorize and repeat a 10-word phrase after 30 seconds.",
-    "reason": "Short-term recall training.",
-    "learn_url": "https://artofmemory.com/",
-    "traits": { "weirdness": 0.4, "time": 0.1, "type": 0.5, "structure": 0.7, "energy": 0.1, "impressiveness": 0.4 }
-  },
-  {
     "name": "Quick Breath Counting",
     "description": "Breathe and count while maintaining steady cadence.",
     "reason": "Focus and calm practice.",
@@ -1255,13 +939,6 @@
     "traits": { "weirdness": 0.5, "time": 0.3, "type": 0.8, "structure": 0.5, "energy": 0.2, "impressiveness": 0.4 }
   },
   {
-    "name": "Ten-Second Lookaway Recall",
-    "description": "Study a small scene for 5 seconds, look away 10, then recall.",
-    "reason": "Observation and visual memory drill.",
-    "learn_url": "https://www.humanbenchmark.com/",
-    "traits": { "weirdness": 0.4, "time": 0.2, "type": 0.5, "structure": 0.6, "energy": 0.1, "impressiveness": 0.3 }
-  },
-  {
     "name": "Quick Morse Tap",
     "description": "Tap a short Morse pattern and decode it.",
     "reason": "Auditory pattern recognition.",
@@ -1274,20 +951,6 @@
     "reason": "Shape recognition speed drill.",
     "learn_url": "https://www.psychologytoday.com/",
     "traits": { "weirdness": 0.5, "time": 0.2, "type": 0.6, "structure": 0.4, "energy": 0.2, "impressiveness": 0.3 }
-  },
-  {
-    "name": "20-Second Balance",
-    "description": "Balance on one leg with eyes open for 20 seconds.",
-    "reason": "Vestibular control and focus.",
-    "learn_url": "https://www.wikihow.com/Balance-on-One-Foot",
-    "traits": { "weirdness": 0.4, "time": 0.1, "type": 0.9, "structure": 0.2, "energy": 0.3, "impressiveness": 0.4 }
-  },
-  {
-    "name": "Quick Pattern Mirror",
-    "description": "Copy a pattern mirrored across a centerline in 30s.",
-    "reason": "Spatial transformation practice.",
-    "learn_url": "https://drawabox.com/",
-    "traits": { "weirdness": 0.6, "time": 0.2, "type": 0.8, "structure": 0.4, "energy": 0.2, "impressiveness": 0.5 }
   },
   {
     "name": "Fast Coin Flip Prediction",
@@ -1325,31 +988,116 @@
     "traits": { "weirdness": 0.3, "time": 0.2, "type": 0.5, "structure": 0.4, "energy": 0.2, "impressiveness": 0.3 }
   },
   {
-    "name": "Quick Opposite Direction Walk",
-    "description": "Walk a short path backwards safely and steadily.",
-    "reason": "Balance and spatial awareness.",
-    "learn_url": "https://www.wikihow.com/Walk-Backwards",
-    "traits": { "weirdness": 0.5, "time": 0.2, "type": 0.8, "structure": 0.2, "energy": 0.3, "impressiveness": 0.4 }
-  },
-  {
-    "name": "Two-Minute Silent Story",
-    "description": "Create a short mental story silently and recall three details.",
-    "reason": "Imagery and memory practice.",
-    "learn_url": "https://artofmemory.com/",
-    "traits": { "weirdness": 0.4, "time": 0.2, "type": 0.5, "structure": 0.6, "energy": 0.1, "impressiveness": 0.3 }
-  },
-  {
-    "name": "Quick Mirror Face Copy",
-    "description": "Mimic a facial expression seen in a mirror for 30 seconds.",
-    "reason": "Facial control and empathy exercise.",
-    "learn_url": "https://www.psychologytoday.com/",
-    "traits": { "weirdness": 0.5, "time": 0.1, "type": 0.7, "structure": 0.2, "energy": 0.2, "impressiveness": 0.4 }
-  },
-  {
     "name": "Quick Pattern Fold",
     "description": "Fold a paper pattern precisely in under a minute.",
     "reason": "Precision and sequencing practice.",
     "learn_url": "https://origami.me/",
     "traits": { "weirdness": 0.4, "time": 0.2, "type": 0.7, "structure": 0.6, "energy": 0.1, "impressiveness": 0.3 }
+  },
+  {
+    "name": "Learn to Snap a Card",
+    "description": "Snap a playing card across the table with precision.",
+    "reason": "High dexterity and focus exercise.",
+    "learn_url": "https://www.youtube.com/results?search_query=card+snap+tutorial",
+    "traits": { "weirdness": 0.5, "time": 0.3, "type": 0.8, "structure": 0.5, "energy": 0.4, "impressiveness": 0.7 }
+  },
+  {
+    "name": "Palm Flip Challenge",
+    "description": "Flip a small object (coin or bottle cap) from your palm onto a surface accurately.",
+    "reason": "Enhances hand-eye coordination and timing.",
+    "learn_url": "https://www.wikihow.com/Flip-a-Coin",
+    "traits": { "weirdness": 0.4, "time": 0.2, "type": 0.7, "structure": 0.4, "energy": 0.4, "impressiveness": 0.6 }
+  },
+  {
+    "name": "Silent Object Catch",
+    "description": "Catch a small object without making any sound.",
+    "reason": "Tests precision and control.",
+    "learn_url": "https://www.wikihow.com/Improve-Hand-Eye-Coordination",
+    "traits": { "weirdness": 0.5, "time": 0.2, "type": 0.8, "structure": 0.3, "energy": 0.3, "impressiveness": 0.6 }
+  },
+  {
+    "name": "Rapid Eye Movement Drill",
+    "description": "Move eyes quickly between points to train focus shifts.",
+    "reason": "Improves visual attention and tracking.",
+    "learn_url": "https://www.healthline.com/health/eye-exercises",
+    "traits": { "weirdness": 0.6, "time": 0.1, "type": 0.7, "structure": 0.5, "energy": 0.2, "impressiveness": 0.5 }
+  },
+  {
+    "name": "Single-Letter Typing Race",
+    "description": "Type the alphabet as fast as possible with only one finger.",
+    "reason": "Enhances finger agility and patience.",
+    "learn_url": "https://www.typing.com/student/games",
+    "traits": { "weirdness": 0.5, "time": 0.2, "type": 0.8, "structure": 0.4, "energy": 0.3, "impressiveness": 0.5 }
+  },
+  {
+    "name": "Rapid Origami Fold",
+    "description": "Fold a simple origami figure in under a minute.",
+    "reason": "Sharpens fine motor skills and focus.",
+    "learn_url": "https://www.origamiway.com/easy-origami.shtml",
+    "traits": { "weirdness": 0.6, "time": 0.2, "type": 0.7, "structure": 0.6, "energy": 0.3, "impressiveness": 0.6 }
+  },
+  {
+    "name": "Finger Drumming Beat",
+    "description": "Tap a simple drum beat on a table using only your fingers.",
+    "reason": "Rhythm, speed, and coordination practice.",
+    "learn_url": "https://www.youtube.com/results?search_query=finger+drumming+tutorial",
+    "traits": { "weirdness": 0.4, "time": 0.2, "type": 0.8, "structure": 0.3, "energy": 0.5, "impressiveness": 0.6 }
+  },
+  {
+    "name": "Instant Mirror Gesture",
+    "description": "Mimic someone’s gestures in real-time perfectly.",
+    "reason": "Sharpens attention to micro-movements and reflexes.",
+    "learn_url": "https://www.wikihow.com/Improve-Observation-Skills",
+    "traits": { "weirdness": 0.7, "time": 0.3, "type": 0.8, "structure": 0.4, "energy": 0.4, "impressiveness": 0.7 }
+  },
+  {
+    "name": "One-Handed Bottle Cap Twist",
+    "description": "Open a bottle using only one hand without spilling.",
+    "reason": "Dexterity and practical coordination skill.",
+    "learn_url": "https://www.youtube.com/results?search_query=one+hand+bottle+cap+trick",
+    "traits": { "weirdness": 0.5, "time": 0.2, "type": 0.9, "structure": 0.4, "energy": 0.4, "impressiveness": 0.7 }
+  },
+  {
+    "name": "Quick Shadow Tracing",
+    "description": "Trace an object’s shadow in under 60 seconds.",
+    "reason": "Sharpens speed drawing and observation.",
+    "learn_url": "https://drawabox.com/",
+    "traits": { "weirdness": 0.5, "time": 0.2, "type": 0.6, "structure": 0.3, "energy": 0.2, "impressiveness": 0.5 }
+  },
+  {
+    "name": "Fast Palms-Up Balance",
+    "description": "Balance a small stack of objects on your palms.",
+    "reason": "Fine motor control and stability training.",
+    "learn_url": "https://www.wikihow.com/Improve-Hand-Eye-Coordination",
+    "traits": { "weirdness": 0.5, "time": 0.2, "type": 0.9, "structure": 0.5, "energy": 0.3, "impressiveness": 0.6 }
+  },
+  {
+    "name": "Quick Color Recognition Drill",
+    "description": "Name the colors of random objects as fast as possible.",
+    "reason": "Cognitive speed and focus practice.",
+    "learn_url": "https://www.mindtools.com/pages/article/newHTE_00.htm",
+    "traits": { "weirdness": 0.3, "time": 0.1, "type": 0.6, "structure": 0.3, "energy": 0.2, "impressiveness": 0.4 }
+  },
+  {
+    "name": "Finger Walking Challenge",
+    "description": "Walk fingers across a surface like tiny legs as quickly as possible.",
+    "reason": "Improves dexterity and control.",
+    "learn_url": "https://www.wikihow.com/Improve-Hand-Eye-Coordination",
+    "traits": { "weirdness": 0.6, "time": 0.2, "type": 0.8, "structure": 0.3, "energy": 0.4, "impressiveness": 0.5 }
+  },
+  {
+    "name": "Object Flip with Backhand",
+    "description": "Flip a small object across a table using a backhand motion.",
+    "reason": "Tests precision and timing.",
+    "learn_url": "https://www.wikihow.com/Flip-a-Coin",
+    "traits": { "weirdness": 0.5, "time": 0.2, "type": 0.8, "structure": 0.4, "energy": 0.3, "impressiveness": 0.6 }
+  },
+  {
+    "name": "Rapid Mini-Doodles",
+    "description": "Draw 10 tiny objects in 5 minutes.",
+    "reason": "Quickens visual thinking and drawing speed.",
+    "learn_url": "https://drawabox.com/",
+    "traits": { "weirdness": 0.5, "time": 0.3, "type": 0.7, "structure": 0.3, "energy": 0.3, "impressiveness": 0.5 }
   }
 ]
+
