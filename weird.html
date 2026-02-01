@@ -395,6 +395,66 @@ footer a {
 footer a:hover {
   text-decoration: underline;
 }
+/* Mobile-first overrides */
+@media (max-width: 768px) {
+  header h1 {
+    font-size: 2.5rem;
+  }
+  header p {
+    font-size: 1rem;
+    max-width: 90%;
+  }
+  .actions {
+    flex-direction: column;
+    gap: 0.8rem;
+    align-items: center;
+  }
+  a.button {
+    width: 90%;
+    max-width: 250px;
+  }
+  .stats-banner, .quick-actions {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    padding: 1rem;
+  }
+  .card {
+    padding: 1.5rem;
+  }
+  .card h2 { font-size: 1.4rem; }
+  .card p { font-size: 0.95rem; }
+  footer {
+    padding: 1rem;
+    font-size: 0.85rem;
+  }
+  nav .nav-links {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+}
+@media (max-width: 600px) {
+  header {
+    padding: 2rem 1rem;
+  }
+  .scroll-indicator {
+    bottom: 1rem;
+    font-size: 1.5rem;
+  }
+}
+.stats-banner, .quick-actions {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 2rem;
+}
+
+@media (max-width: 600px) {
+  .stats-banner, .quick-actions {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    padding: 1rem;
+  }
+}
 </style>
 </head>
 <body>

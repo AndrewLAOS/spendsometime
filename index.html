@@ -408,6 +408,26 @@ footer a:hover {
     padding: 1rem;
   }
 }
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.image-button img {
+  width: 180px;  /* adjust size */
+  max-width: 90vw; /* responsive on phones */
+  border-radius: 16px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.image-button img:hover {
+  transform: translateY(-4px) scale(1.23);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.2);
+}
 
 </style>
 </head>
@@ -437,13 +457,24 @@ footer a:hover {
     skills you can build, challenges you can try, and games that actually stimulate your brain.
   </p>
 
-  <div class="actions">
-    <a class="button" href="skills.html">Find Skills That Fit You</a>
-    <a class="button" href="games.html">Play Games</a>
-    <a class="button" href="weird.html">Quick Skills</a>
-    <a class="button" href="challenges.html">Track My Challenges</a>
-    <a class="button" href="diagram.html">All Skills</a>
-  </div>
+<div class="actions">
+  <a class="image-button" href="skills.html">
+    <img src="images/skill.png" alt="Find Skills That Fit You">
+  </a>
+  <a class="image-button" href="games.html">
+    <img src="images/games.png" alt="Play Games">
+  </a>
+  <a class="image-button" href="weird.html">
+    <img src="images/quick.png" alt="Quick Skills">
+  </a>
+  <a class="image-button" href="challenges.html">
+    <img src="images/challenges.png" alt="Track My Challenges">
+  </a>
+  <a class="image-button" href="diagram.html">
+    <img src="images/diagram.png" alt="All Skills">
+  </a>
+</div>
+
   
   <div class="scroll-indicator">↓</div>
 </header>
