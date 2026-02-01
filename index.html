@@ -435,6 +435,42 @@ footer a:hover {
   transform: translateY(-8px) scale(1.23);
   box-shadow: 0 12px 30px rgba(0,0,0,0.2);
 }
+.notify-btn {
+  width: 100%;
+  max-width: 420px;
+  padding: 14px 18px;
+  margin: 20px auto;
+  display: block;
+
+  background: linear-gradient(135deg, #ff7eb9, #6e95ff);
+  color: #06261a;
+
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 14px;
+
+  cursor: pointer;
+  box-shadow: 0 14px 30px #58d9ff33;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, opacity 0.15s ease;
+}
+
+.notify-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 20px 40px var(--accent2);
+  --accent: #ff7eb9;
+  --accent2: #58d9ff; 
+}
+
+.notify-btn:active {
+  transform: scale(0.98);
+}
+
+.notify-btn:disabled {
+  opacity: 0.5;
+  cursor: default;
+  box-shadow: none;
+}
 
 </style>
 </head>
@@ -505,6 +541,26 @@ footer a:hover {
       <span class="label">Hours Invested</span>
     </div>
   </div>
+<button class="notify-btn" onclick="enableNotifications()">
+  Enable Practice Reminders
+</button>
+
+
+<script>
+function enableNotifications() {
+  if (!("Notification" in window)) {
+    alert("Notifications not supported");
+    return;
+  }
+
+  Notification.requestPermission().then(permission => {
+    if (permission === "granted") {
+      navigator.serviceWorker.register("sw.js");
+      alert("Reminders enabled 💪");
+    }
+  });
+}
+</script>
 
   <div class="quick-actions fade-in">
     <a href="skills.html" class="quick-action-card">

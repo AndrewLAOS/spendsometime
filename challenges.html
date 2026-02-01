@@ -842,6 +842,54 @@ footer a:hover {
     padding: 1rem;
   }
 }
+#lesson-complete-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.75);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+}
+
+.lesson-complete-card {
+  background: white;
+  padding: 2.5rem 3rem;
+  border-radius: 24px;
+  text-align: center;
+  animation: slamIn 0.45s cubic-bezier(.2,1.5,.4,1);
+  box-shadow: 0 25px 60px rgba(0,0,0,0.3);
+}
+
+.lesson-emoji {
+  font-size: 72px;
+  margin-bottom: 0.75rem;
+  animation: wobble 1s infinite ease-in-out;
+}
+
+.lesson-sub {
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+@keyframes slamIn {
+  from {
+    transform: scale(0.4) rotate(-8deg);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1) rotate(0);
+    opacity: 1;
+  }
+}
+
+@keyframes wobble {
+  0% { transform: rotate(-8deg); }
+  50% { transform: rotate(8deg); }
+  100% { transform: rotate(-8deg); }
+}
+
 </style>
 </head>
 <body>
@@ -1271,11 +1319,11 @@ const challenge = getChallengeById(progressChallengeId);
   renderChallenges();
   closeProgressModal();
   
-  if (challenge.status === 'completed') {
-    setTimeout(() => {
-      alert(`🎉 Congratulations! You completed "${challenge.name}"!`);
-    }, 300);
-  }
+if (challenge.status === 'completed') {
+  setTimeout(() => {
+    showLessonCompleteAnimation(challenge.name);
+  }, 300);
+}
 });
 
 function pauseChallenge(id) {
@@ -1551,11 +1599,47 @@ Do something better than scrolling.`;
     alert("Link copied!");
   }
 }
+function showLessonCompleteAnimation(challengeName) {
+  const messages = [
+    "BRO ACTUALLY FINISHED 😭",
+    "You did something productive.",
+    "Skill unlocked: +1 brain cell",
+    "Mom would be proud.",
+    "Scrolling avoided successfully.",
+    "This is character development."
+  ];
+
+  const emojis = ["🧠", "🔥", "🏆", "⚡", "📚", "🐸"];
+
+  const overlay = document.getElementById("lesson-complete-overlay");
+  const text = document.getElementById("lesson-complete-text");
+  const emoji = document.getElementById("lesson-emoji");
+
+  text.textContent =
+    messages[Math.floor(Math.random() * messages.length)] +
+    `\n“${challengeName}”`;
+
+  emoji.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+
+  overlay.style.display = "flex";
+
+  setTimeout(() => {
+    overlay.style.display = "none";
+  }, 2500);
+}
 
 </script>
 <footer>
   © 2026 SpendSomeTime: Use your time with purpose. — <a href="privacy-policy.html">Privacy Policy</a>
 </footer>
+<div id="lesson-complete-overlay">
+  <div class="lesson-complete-card">
+    <div class="lesson-emoji" id="lesson-emoji">🧠</div>
+    <h2 id="lesson-complete-text"></h2>
+    <p class="lesson-sub">Productivity just happened.</p>
+  </div>
+</div>
+
 </body>
 </html>
 

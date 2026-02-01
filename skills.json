@@ -1128,6 +1128,167 @@
     "reason": "You enjoy next-level immersive storytelling.",
     "learn_url": "https://www.udemy.com/course/virtual-reality-development/",
     "traits": { "creative": 0.9, "analytical": 0.8, "hands_on": 0.9, "solo": 0.6, "time_commitment": 0.9 }
+  },
+    {
+    "name": "Basic Video Animation",
+    "description": "Create simple animated videos and motion graphics.",
+    "reason": "You enjoy visual storytelling through motion.",
+    "learn_url": "https://www.animaker.com/learn",
+    "traits": { "creative": 0.8, "analytical": 0.4, "hands_on": 0.7, "solo": 0.7, "time_commitment": 0.6 }
+  },
+  {
+    "name": "Podcast Marketing",
+    "description": "Grow listeners and engagement for audio shows.",
+    "reason": "You enjoy expanding audience reach.",
+    "learn_url": "https://www.podbean.com/podcast-marketing",
+    "traits": { "creative": 0.7, "analytical": 0.7, "hands_on": 0.5, "solo": 0.5, "time_commitment": 0.6 }
+  },
+  {
+    "name": "Digital Collage",
+    "description": "Combine images into creative compositions.",
+    "reason": "You enjoy visual remixing and art.",
+    "learn_url": "https://www.skillshare.com/browse/digital-collage",
+    "traits": { "creative": 0.9, "analytical": 0.3, "hands_on": 0.8, "solo": 0.8, "time_commitment": 0.5 }
+  },
+  {
+    "name": "Podcast Cover Art Design",
+    "description": "Design eye-catching visuals for audio shows.",
+    "reason": "You enjoy visual branding.",
+    "learn_url": "https://www.canva.com/create/podcast-cover-art/",
+    "traits": { "creative": 0.8, "analytical": 0.4, "hands_on": 0.6, "solo": 0.7, "time_commitment": 0.4 }
+  },
+  {
+    "name": "Beat Making",
+    "description": "Create music beats and rhythms digitally.",
+    "reason": "You enjoy experimental music creation.",
+    "learn_url": "https://www.musictech.net/tutorials/beat-making/",
+    "traits": { "creative": 0.9, "analytical": 0.4, "hands_on": 0.8, "solo": 0.8, "time_commitment": 0.7 }
+  },
+  {
+    "name": "Data Storytelling",
+    "description": "Tell stories using numbers and visuals.",
+    "reason": "You enjoy translating data into meaning.",
+    "learn_url": "https://www.storytellingwithdata.com",
+    "traits": { "creative": 0.7, "analytical": 0.9, "hands_on": 0.6, "solo": 0.6, "time_commitment": 0.7 }
+  },
+  {
+    "name": "Intro to Machine Learning",
+    "description": "Learn basic machine learning concepts.",
+    "reason": "You enjoy advanced tech and data.",
+    "learn_url": "https://www.coursera.org/learn/machine-learning",
+    "traits": { "creative": 0.5, "analytical": 1.0, "hands_on": 0.8, "solo": 0.8, "time_commitment": 0.9 }
+  },
+  {
+    "name": "Sound Design Basics",
+    "description": "Create and manipulate sound effects.",
+    "reason": "You enjoy audio experimentation.",
+    "learn_url": "https://www.soundonsound.com/techniques",
+    "traits": { "creative": 0.8, "analytical": 0.5, "hands_on": 0.7, "solo": 0.8, "time_commitment": 0.6 }
+  },
+  {
+    "name": "Creative Writing Prompts",
+    "description": "Use prompts to spark writing ideas.",
+    "reason": "You enjoy frequent writing practice.",
+    "learn_url": "https://writers.com/writing-prompts",
+    "traits": { "creative": 0.9, "analytical": 0.4, "hands_on": 0.3, "solo": 1.0, "time_commitment": 0.3 }
+  },
+  {
+    "name": "Photojournalism",
+    "description": "Tell real stories through photography.",
+    "reason": "You enjoy visual reporting.",
+    "learn_url": "https://www.nppa.org",
+    "traits": { "creative": 0.7, "analytical": 0.8, "hands_on": 0.8, "solo": 0.6, "time_commitment": 0.7 }
+  },
+  {
+    "name": "UX Writing",
+    "description": "Write user-friendly microcopy and UI text.",
+    "reason": "You enjoy clear communication.",
+    "learn_url": "https://www.uxwritinghub.com",
+    "traits": { "creative": 0.7, "analytical": 0.7, "hands_on": 0.4, "solo": 0.8, "time_commitment": 0.5 }
+  },
+  {
+    "name": "Synthesizer Basics",
+    "description": "Learn how synthesizers produce sound.",
+    "reason": "You enjoy sound synthesis and music tech.",
+    "learn_url": "https://synthesizeracademy.com",
+    "traits": { "creative": 0.8, "analytical": 0.6, "hands_on": 0.7, "solo": 0.8, "time_commitment": 0.6 }
+  },
+  {
+    "name": "Fashion Illustration",
+    "description": "Draw clothing and character designs.",
+    "reason": "You enjoy visual style and design.",
+    "learn_url": "https://www.skillshare.com/browse/fashion-illustration",
+    "traits": { "creative": 0.9, "analytical": 0.3, "hands_on": 0.8, "solo": 0.8, "time_commitment": 0.6 }
+  },
+  {
+    "name": "Book Cover Design",
+    "description": "Design covers for books or stories.",
+    "reason": "You enjoy visual interpretation of writing.",
+    "learn_url": "https://99designs.com/blog/book-cover-design",
+    "traits": { "creative": 0.9, "analytical": 0.4, "hands_on": 0.7, "solo": 0.7, "time_commitment": 0.6 }
+  },
+  {
+    "name": "Mobile Photography",
+    "description": "Shoot high-quality photos using a phone.",
+    "reason": "You enjoy photography with available tools.",
+    "learn_url": "https://www.photographylife.com/mobile-photography-tips",
+    "traits": { "creative": 0.8, "analytical": 0.4, "hands_on": 0.7, "solo": 0.8, "time_commitment": 0.5 }
+  },
+  {
+    "name": "Music Composition Theory",
+    "description": "Learn the building blocks of composing music.",
+    "reason": "You enjoy deep music understanding.",
+    "learn_url": "https://www.openculture.com/free-music-theory-lessons",
+    "traits": { "creative": 0.8, "analytical": 0.6, "hands_on": 0.4, "solo": 0.9, "time_commitment": 0.8 }
+  },
+  {
+    "name": "Data Journalism",
+    "description": "Use data to tell news stories.",
+    "reason": "You enjoy data and reporting combined.",
+    "learn_url": "https://datajournalism.com",
+    "traits": { "creative": 0.6, "analytical": 0.9, "hands_on": 0.5, "solo": 0.6, "time_commitment": 0.7 }
+  },
+  {
+    "name": "Remote Work Productivity",
+    "description": "Learn habits for remote working well.",
+    "reason": "You want better work-life balance.",
+    "learn_url": "https://www.todoist.com/productivity-methods/remote-work",
+    "traits": { "creative": 0.4, "analytical": 0.8, "hands_on": 0.3, "solo": 0.9, "time_commitment": 0.4 }
+  },
+  {
+    "name": "Mini Podcast Production",
+    "description": "Produce short-form podcasts.",
+    "reason": "You enjoy concise audio storytelling.",
+    "learn_url": "https://www.buzzsprout.com/blog/short-podcast",
+    "traits": { "creative": 0.8, "analytical": 0.5, "hands_on": 0.6, "solo": 0.7, "time_commitment": 0.6 }
+  },
+  {
+    "name": "Digital Scrapbooking",
+    "description": "Create digital memory pages and collages.",
+    "reason": "You enjoy preserving memories with style.",
+    "learn_url": "https://www.canva.com/digital-scrapbook-ideas/",
+    "traits": { "creative": 0.9, "analytical": 0.3, "hands_on": 0.7, "solo": 0.8, "time_commitment": 0.4 }
+  },
+  {
+    "name": "Creative Brief Writing",
+    "description": "Draft effective creative briefs for projects.",
+    "reason": "You enjoy planning creative work.",
+    "learn_url": "https://www.smartsheet.com/creative-brief-template",
+    "traits": { "creative": 0.7, "analytical": 0.6, "hands_on": 0.4, "solo": 0.8, "time_commitment": 0.5 }
+  },
+  {
+    "name": "Children’s Book Illustration",
+    "description": "Draw playful scenes for kids’ books.",
+    "reason": "You enjoy creative illustration for young audiences.",
+    "learn_url": "https://www.skillshare.com/browse/children-illustration",
+    "traits": { "creative": 0.9, "analytical": 0.3, "hands_on": 0.8, "solo": 0.8, "time_commitment": 0.7 }
+  },
+  {
+    "name": "AR Storytelling",
+    "description": "Write narrative experiences for augmented reality.",
+    "reason": "You enjoy branching creative storytelling with tech.",
+    "learn_url": "https://learn.unity.com/course/ar-storytelling",
+    "traits": { "creative": 0.9, "analytical": 0.7, "hands_on": 0.8, "solo": 0.7, "time_commitment": 0.8 }
   }
 ]
 

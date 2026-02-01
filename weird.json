@@ -672,6 +672,118 @@
       "impressiveness": 0.9
     }
   },
+    {
+    "name": "Pop a Coin Out of Your Ear",
+    "description": "Classic magic trick to pull a coin from behind your ear.",
+    "reason": "Fun, simple, and always makes people laugh.",
+    "learn_url": "https://www.youtube.com/watch?v=JdOAY2WxzHs",
+    "traits": {
+      "weirdness": 0.7,
+      "time": 0.3,
+      "type": 0.9,
+      "structure": 0.6,
+      "energy": 0.5,
+      "impressiveness": 0.85
+    }
+  },
+   {
+    "name": "Do the Robot Dance",
+    "description": "Learn the classic robotic dance moves for fun parties.",
+    "reason": "Always gets laughs and looks cool.",
+    "learn_url": "https://www.youtube.com/watch?v=OeZl7tE2Pq8",
+    "traits": {
+      "weirdness": 0.7,
+      "time": 0.5,
+      "type": 0.9,
+      "structure": 0.6,
+      "energy": 0.8,
+      "impressiveness": 0.85
+    }
+  },
+  {
+    "name": "Catch a Card Behind Your Back",
+    "description": "Learn to grab a playing card thrown behind you.",
+    "reason": "Impressive coordination and a cool magic trick.",
+    "learn_url": "https://www.youtube.com/watch?v=r2Y5k-5FZcA",
+    "traits": {
+      "weirdness": 0.6,
+      "time": 0.5,
+      "type": 0.9,
+      "structure": 0.7,
+      "energy": 0.7,
+      "impressiveness": 0.9
+    }
+  },
+  {
+    "name": "Snap a Towel to Pop a Bottle Cap",
+    "description": "Quickly pop a bottle cap using a towel for flair.",
+    "reason": "Looks dramatic and impressive.",
+    "learn_url": "https://www.youtube.com/watch?v=JYH6g1iQXzI",
+    "traits": {
+      "weirdness": 0.5,
+      "time": 0.3,
+      "type": 0.8,
+      "structure": 0.5,
+      "energy": 0.7,
+      "impressiveness": 0.85
+    }
+  },
+    {
+    "name": "Stack Dice in a Tower",
+    "description": "Learn to balance dice in a perfect stack.",
+    "reason": "Requires patience and precision.",
+    "learn_url": "https://www.youtube.com/watch?v=6QF3JgSXvF4",
+    "traits": {
+      "weirdness": 0.7,
+      "time": 0.6,
+      "type": 0.8,
+      "structure": 0.9,
+      "energy": 0.3,
+      "impressiveness": 0.85
+    }
+  },
+   {
+    "name": "Do the Worm Dance",
+    "description": "Learn the classic dance move that ripples along the floor.",
+    "reason": "Fun, energetic, and eye-catching.",
+    "learn_url": "https://www.youtube.com/watch?v=czcY8D2i6Gc",
+    "traits": {
+      "weirdness": 0.8,
+      "time": 0.5,
+      "type": 0.9,
+      "structure": 0.6,
+      "energy": 0.9,
+      "impressiveness": 0.85
+    }
+  },
+  {
+    "name": "Pull a Coin From Thin Air",
+    "description": "Learn a magic trick that makes a coin appear mysteriously.",
+    "reason": "Simple magic that wows people.",
+    "learn_url": "https://www.youtube.com/watch?v=RjRz8qNc7YU",
+    "traits": {
+      "weirdness": 0.6,
+      "time": 0.5,
+      "type": 0.9,
+      "structure": 0.8,
+      "energy": 0.5,
+      "impressiveness": 0.9
+    }
+  },
+  {
+    "name": "Do a Jump Rope Trick",
+    "description": "Learn fancy jump rope moves for fun and fitness.",
+    "reason": "Energetic and impressive when performed well.",
+    "learn_url": "https://www.youtube.com/watch?v=jD8s4rQv2RU",
+    "traits": {
+      "weirdness": 0.4,
+      "time": 0.6,
+      "type": 0.9,
+      "structure": 0.7,
+      "energy": 0.9,
+      "impressiveness": 0.85
+    }
+  },
   {
     "name": "Learn to Do a One-Handed Push-up",
     "description": "Master proper one-handed push-up form.",
@@ -1098,6 +1210,442 @@
     "reason": "Quickens visual thinking and drawing speed.",
     "learn_url": "https://drawabox.com/",
     "traits": { "weirdness": 0.5, "time": 0.3, "type": 0.7, "structure": 0.3, "energy": 0.3, "impressiveness": 0.5 }
+},
+  {
+    "name": "Make a Shadow Puppet",
+    "description": "Learn to create animals and shapes using just your hands and light.",
+    "reason": "Classic and creative party skill.",
+    "learn_url": "https://www.youtube.com/watch?v=3n0M0j9q-lE",
+    "traits": {
+      "weirdness": 0.5,
+      "time": 0.3,
+      "type": 0.9,
+      "structure": 0.6,
+      "energy": 0.5,
+      "impressiveness": 0.75
+    }
+  },
+   {
+    "name": "Fold a T-Shirt in 2 Seconds",
+    "description": "Learn the magic folding trick to fold any shirt instantly.",
+    "reason": "Practical, satisfying, and mind-blowingly fast.",
+    "learn_url": "https://www.youtube.com/watch?v=Z0L3pRe5kRo",
+    "traits": {
+      "weirdness": 0.4,
+      "time": 0.2,
+      "type": 0.9,
+      "structure": 0.7,
+      "energy": 0.4,
+      "impressiveness": 0.8
+    }
+  },
+  {
+    "name": "Bounce a Ping Pong Ball on a Paddle",
+    "description": "Keep a ping pong ball bouncing on a paddle as long as possible.",
+    "reason": "Fun hand-eye coordination game.",
+    "learn_url": "https://www.youtube.com/watch?v=5k3cwnp4n1Q",
+    "traits": {
+      "weirdness": 0.5,
+      "time": 0.5,
+      "type": 0.8,
+      "structure": 0.7,
+      "energy": 0.7,
+      "impressiveness": 0.8
+    }
+  },
+  {
+    "name": "Do a Clap With One Hand",
+    "description": "Learn the weird and satisfying single-hand clap.",
+    "reason": "Strange but impressive skill.",
+    "learn_url": "https://www.wikihow.com/Clap-With-One-Hand",
+    "traits": {
+      "weirdness": 0.9,
+      "time": 0.1,
+      "type": 0.6,
+      "structure": 0.3,
+      "energy": 0.5,
+      "impressiveness": 0.7
+    }
+  },
+  {
+    "name": "Stack Coins Into a Tower",
+    "description": "Balance coins perfectly to make a tall tower.",
+    "reason": "Requires precision and patience, very satisfying.",
+    "learn_url": "https://www.wikihow.com/Stack-Coins",
+    "traits": {
+      "weirdness": 0.6,
+      "time": 0.6,
+      "type": 0.8,
+      "structure": 0.9,
+      "energy": 0.3,
+      "impressiveness": 0.85
+    }
+  },
+  {
+    "name": "Bounce a Ball Off Multiple Surfaces",
+    "description": "Learn to bounce a ball off walls, tables, and floors to land in a target.",
+    "reason": "Advanced trick shot for dexterity and creativity.",
+    "learn_url": "https://www.youtube.com/watch?v=LjE3GzjF6Wc",
+    "traits": {
+      "weirdness": 0.5,
+      "time": 0.6,
+      "type": 0.9,
+      "structure": 0.8,
+      "energy": 0.7,
+      "impressiveness": 0.9
+    }
+  },
+  {
+    "name": "Flip a Card Into the Air and Catch It",
+    "description": "Learn to toss a card high and catch it gracefully.",
+    "reason": "Party trick that looks skillful and elegant.",
+    "learn_url": "https://www.youtube.com/watch?v=Jg4fF1A2Hk8",
+    "traits": {
+      "weirdness": 0.5,
+      "time": 0.5,
+      "type": 0.9,
+      "structure": 0.7,
+      "energy": 0.6,
+      "impressiveness": 0.85
+    }
+  },
+  {
+    "name": "Do a Finger Snap That Echoes",
+    "description": "Snap your fingers so loudly it can be heard across a room.",
+    "reason": "Fun attention-grabber.",
+    "learn_url": "https://www.youtube.com/watch?v=G88tU0Qj0rQ",
+    "traits": {
+      "weirdness": 0.4,
+      "time": 0.2,
+      "type": 0.7,
+      "structure": 0.3,
+      "energy": 0.6,
+      "impressiveness": 0.7
+    }
+  },
+  {
+    "name": "Do a Quick Shoulder Pop Dance Move",
+    "description": "Learn the classic dance isolation trick.",
+    "reason": "Looks cool and rhythmic.",
+    "learn_url": "https://www.youtube.com/watch?v=oOgYJ9r-7bc",
+    "traits": {
+      "weirdness": 0.5,
+      "time": 0.4,
+      "type": 0.9,
+      "structure": 0.6,
+      "energy": 0.8,
+      "impressiveness": 0.8
+    }
+  },
+  {
+    "name": "Balance a Pencil on Its Tip",
+    "description": "Use patience and subtle movements to balance a pencil vertically.",
+    "reason": "Simple, fun, and strangely satisfying.",
+    "learn_url": "https://www.wikihow.com/Balance-Pencils",
+    "traits": {
+      "weirdness": 0.7,
+      "time": 0.5,
+      "type": 0.8,
+      "structure": 0.7,
+      "energy": 0.3,
+      "impressiveness": 0.8
+    }
+  },
+  {
+    "name": "Toss a Ring and Catch It on a Bottle",
+    "description": "Classic dexterity challenge of landing a ring on a bottle neck.",
+    "reason": "Fun game skill, great for parties.",
+    "learn_url": "https://www.youtube.com/watch?v=Z3j6_zr6B64",
+    "traits": {
+      "weirdness": 0.6,
+      "time": 0.4,
+      "type": 0.9,
+      "structure": 0.8,
+      "energy": 0.6,
+      "impressiveness": 0.85
+    }
+  },
+  {
+    "name": "Snap a Towel to Make a Loud Pop",
+    "description": "Learn a controlled towel snap for fun and surprise.",
+    "reason": "Looks dramatic and funny.",
+    "learn_url": "https://www.youtube.com/watch?v=YJTp-Py7y08",
+    "traits": {
+      "weirdness": 0.7,
+      "time": 0.2,
+      "type": 0.8,
+      "structure": 0.5,
+      "energy": 0.7,
+      "impressiveness": 0.8
+    }
+  },
+  {
+    "name": "Do a Quick Hand Flip With a Coin",
+    "description": "Flip a coin from one hand to another behind your back.",
+    "reason": "Impresses with dexterity and control.",
+    "learn_url": "https://www.youtube.com/watch?v=RjRz8qNc7YU",
+    "traits": {
+      "weirdness": 0.6,
+      "time": 0.4,
+      "type": 0.9,
+      "structure": 0.8,
+      "energy": 0.6,
+      "impressiveness": 0.85
+    }
+  },
+  {
+    "name": "Flip a Pencil Into Your Hand",
+    "description": "Learn the trick to toss a pencil and catch it skillfully.",
+    "reason": "Simple dexterity trick that impresses friends.",
+    "learn_url": "https://www.youtube.com/watch?v=K0GJuwpJXHU",
+    "traits": {
+      "weirdness": 0.5,
+      "time": 0.2,
+      "type": 0.8,
+      "structure": 0.6,
+      "energy": 0.5,
+      "impressiveness": 0.8
+    }
+  },
+  {
+    "name": "Balance a Book on Your Head While Walking",
+    "description": "Improve posture and balance with this old-school challenge.",
+    "reason": "Funny, quirky, and slightly challenging.",
+    "learn_url": "https://www.wikihow.com/Balance-a-Book-on-Your-Head",
+    "traits": {
+      "weirdness": 0.7,
+      "time": 0.3,
+      "type": 0.7,
+      "structure": 0.6,
+      "energy": 0.4,
+      "impressiveness": 0.7
+    }
+  },
+  {
+    "name": "Snap a Straw With Your Fingers",
+    "description": "Learn to snap a plastic straw to surprise your friends.",
+    "reason": "Odd, quick, and satisfying to perform.",
+    "learn_url": "https://www.youtube.com/watch?v=nZGqCK0a3F4",
+    "traits": {
+      "weirdness": 0.8,
+      "time": 0.2,
+      "type": 0.6,
+      "structure": 0.3,
+      "energy": 0.6,
+      "impressiveness": 0.65
+    }
+  },
+  {
+    "name": "Flip a Coin Into a Glass",
+    "description": "Perfect your accuracy to land a coin in a cup from a distance.",
+    "reason": "Fun challenge to show off precision.",
+    "learn_url": "https://www.youtube.com/watch?v=dUX6tckUOMk",
+    "traits": {
+      "weirdness": 0.4,
+      "time": 0.3,
+      "type": 0.8,
+      "structure": 0.7,
+      "energy": 0.5,
+      "impressiveness": 0.8
+    }
+  },
+  {
+    "name": "Whip a Towel Like a Pro",
+    "description": "Learn a controlled towel whip for flair or comedy.",
+    "reason": "Looks funny and dramatic at the same time.",
+    "learn_url": "https://www.youtube.com/watch?v=YJTp-Py7y08",
+    "traits": {
+      "weirdness": 0.7,
+      "time": 0.3,
+      "type": 0.8,
+      "structure": 0.6,
+      "energy": 0.7,
+      "impressiveness": 0.75
+    }
+  },
+  {
+    "name": "Bounce a Ping Pong Ball Into a Cup",
+    "description": "Learn the technique to make the perfect bounce shot.",
+    "reason": "Party challenge skill that looks tricky.",
+    "learn_url": "https://www.youtube.com/watch?v=28YbYqJw2X8",
+    "traits": {
+      "weirdness": 0.5,
+      "time": 0.4,
+      "type": 0.8,
+      "structure": 0.7,
+      "energy": 0.6,
+      "impressiveness": 0.8
+    }
+  },
+  {
+    "name": "Pop a Balloon With Just Your Hand",
+    "description": "Learn the quickest way to pop a balloon without tools.",
+    "reason": "Fun, surprising, and energetic.",
+    "learn_url": "https://www.wikihow.com/Pop-a-Balloon",
+    "traits": {
+      "weirdness": 0.5,
+      "time": 0.2,
+      "type": 0.6,
+      "structure": 0.4,
+      "energy": 0.9,
+      "impressiveness": 0.75
+    }
+  },
+  {
+    "name": "Make a Pen Spin on a Table",
+    "description": "Learn to spin a pen like a fidget trick.",
+    "reason": "Simple, cool, and satisfying.",
+    "learn_url": "https://www.youtube.com/watch?v=heJFxMtdA50",
+    "traits": {
+      "weirdness": 0.4,
+      "time": 0.2,
+      "type": 0.8,
+      "structure": 0.5,
+      "energy": 0.4,
+      "impressiveness": 0.7
+    }
+  },
+  {
+    "name": "Do a Quick Hand Flip",
+    "description": "Learn a one-handed flip to catch small objects.",
+    "reason": "Looks tricky and athletic.",
+    "learn_url": "https://www.youtube.com/watch?v=HuR9bwZg7n8",
+    "traits": {
+      "weirdness": 0.6,
+      "time": 0.4,
+      "type": 0.8,
+      "structure": 0.6,
+      "energy": 0.7,
+      "impressiveness": 0.85
+    }
+  },
+  {
+    "name": "Stack Plastic Cups Into a Pyramid",
+    "description": "Learn to stack cups quickly into a perfect pyramid.",
+    "reason": "Fun, competitive, and visually satisfying.",
+    "learn_url": "https://www.youtube.com/watch?v=O8smz9sWiw0",
+    "traits": {
+      "weirdness": 0.5,
+      "time": 0.4,
+      "type": 0.8,
+      "structure": 0.9,
+      "energy": 0.6,
+      "impressiveness": 0.8
+    }
+  },
+  {
+    "name": "Catch a Paper Airplane Behind Your Back",
+    "description": "Develop precision to catch a flying plane without looking.",
+    "reason": "Fun dexterity trick that surprises people.",
+    "learn_url": "https://www.wikihow.com/Catch-a-Paper-Airplane",
+    "traits": {
+      "weirdness": 0.6,
+      "time": 0.3,
+      "type": 0.8,
+      "structure": 0.7,
+      "energy": 0.6,
+      "impressiveness": 0.8
+    }
+  },
+  {
+    "name": "Bounce a Ball Off the Wall Into a Cup",
+    "description": "Learn the angle tricks to score a bounce shot.",
+    "reason": "Fun challenge that looks skillful.",
+    "learn_url": "https://www.youtube.com/watch?v=LmgLptgVxIE",
+    "traits": {
+      "weirdness": 0.5,
+      "time": 0.3,
+      "type": 0.8,
+      "structure": 0.7,
+      "energy": 0.6,
+      "impressiveness": 0.8
+    }
+  },
+  {
+    "name": "Do a Hand Shadow of a Bird",
+    "description": "Create a flying bird shape with your hands and a light.",
+    "reason": "Cute, fun, and surprisingly impressive.",
+    "learn_url": "https://www.wikihow.com/Make-Hand-Shadow-Puppets",
+    "traits": {
+      "weirdness": 0.6,
+      "time": 0.3,
+      "type": 0.9,
+      "structure": 0.5,
+      "energy": 0.5,
+      "impressiveness": 0.75
+    }
+  },
+  {
+    "name": "Stack Dice on Edge",
+    "description": "Learn to balance dice on their edges without falling.",
+    "reason": "High dexterity challenge that wows.",
+    "learn_url": "https://www.youtube.com/watch?v=6QF3JgSXvF4",
+    "traits": {
+      "weirdness": 0.7,
+      "time": 0.5,
+      "type": 0.9,
+      "structure": 0.9,
+      "energy": 0.4,
+      "impressiveness": 0.85
+    }
+  },
+  {
+    "name": "Flip a Bottle With Your Foot",
+    "description": "Land a bottle flip using just your foot for style.",
+    "reason": "Fun twist on a viral trick.",
+    "learn_url": "https://www.youtube.com/watch?v=fdx2ynFjR6g",
+    "traits": {
+      "weirdness": 0.7,
+      "time": 0.3,
+      "type": 0.8,
+      "structure": 0.6,
+      "energy": 0.8,
+      "impressiveness": 0.8
+    }
+  },
+  {
+    "name": "Bounce a Pen Into a Cup",
+    "description": "Learn a precise technique to land a pen upright in a cup.",
+    "reason": "Fun challenge and dexterity skill.",
+    "learn_url": "https://www.youtube.com/watch?v=heJFxMtdA50",
+    "traits": {
+      "weirdness": 0.5,
+      "time": 0.3,
+      "type": 0.8,
+      "structure": 0.7,
+      "energy": 0.6,
+      "impressiveness": 0.8
+    }
+  },
+  {
+    "name": "Toss a Paper Ball Into a Trash Can From Afar",
+    "description": "Master the classic office trick shot.",
+    "reason": "Simple, funny, and surprisingly satisfying.",
+    "learn_url": "https://www.youtube.com/watch?v=xVff7Khu6yY",
+    "traits": {
+      "weirdness": 0.3,
+      "time": 0.2,
+      "type": 0.8,
+      "structure": 0.7,
+      "energy": 0.5,
+      "impressiveness": 0.8
+    }
+  },
+  {
+    "name": "Do a Finger Balance Trick",
+    "description": "Balance objects on your fingers without them falling.",
+    "reason": "Quirky and impressive at parties.",
+    "learn_url": "https://www.wikihow.com/Balance-Objects",
+    "traits": {
+      "weirdness": 0.6,
+      "time": 0.3,
+      "type": 0.9,
+      "structure": 0.8,
+      "energy": 0.5,
+      "impressiveness": 0.85
+    }
   }
 ]
+
+
 
