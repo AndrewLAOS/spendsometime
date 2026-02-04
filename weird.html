@@ -203,6 +203,45 @@ p { color: var(--muted); }
   font-size: 0.9rem;
   margin-bottom: 0.5rem;
 }
+/* Footer styling */
+footer {
+  background: var(--bg2); /* slightly darker background than main */
+  color: var(--text-muted); /* muted text color */
+  padding: 2rem 1rem;
+  text-align: center;
+  font-size: 0.9rem;
+  border-top: 1px solid var(--border);
+  line-height: 1.6;
+}
+
+/* Footer links */
+footer a {
+  color: var(--accent2);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+footer a:hover {
+  color: var(--accent2-dark); /* slightly darker accent on hover */
+  text-decoration: underline;
+}
+
+/* Small footer text or copyright */
+footer small {
+  display: block;
+  margin-top: 0.5rem;
+  color: var(--text-muted);
+  font-size: 0.8rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  footer {
+    font-size: 0.85rem;
+    padding: 1.5rem 1rem;
+  }
+}
 
 .match-score {
   display: inline-block;
@@ -990,8 +1029,15 @@ document.addEventListener('keydown', (e) => {
 });
 </script>
 <footer>
-  © 2026 SpendSomeTime: Use your time with purpose — <a href="privacy-policy.html">Privacy Policy</a>
+  <div class="footer-content">
+    <p>© 2026 SpendSomeTime: Use your time with purpose</p>
+    <div class="footer-links">
+      <a href="privacy-policy.html">Privacy Policy</a>
+      <a href="mailto:contact@spendsometime.org">Contact Us</a>
+    </div>
+  </div>
 </footer>
+
 
 </body>
 </html>
