@@ -11,6 +11,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
 <style>
 :root {
   --bg:#f0f7ff;
@@ -889,6 +891,95 @@ footer a:hover {
   50% { transform: rotate(8deg); }
   100% { transform: rotate(-8deg); }
 }
+#lesson-complete-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.75);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.lesson-complete-card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 2rem;
+  width: 320px;
+  max-width: 90%;
+  text-align: center;
+  transform: scale(0);
+  opacity: 0;
+  font-family: sans-serif;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+.lesson-emoji {
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
+  display: inline-block;
+  transform: rotate(0deg);
+}
+
+#lesson-complete-text {
+  font-size: 1.2rem;
+  margin: 0.5rem 0;
+}
+
+.lesson-sub {
+  font-size: 0.9rem;
+  color: #555;
+}
+.lesson-complete-card {
+  transform-origin: center;
+  perspective: 800px;
+}
+
+.main-icon {
+  font-size: 48px;
+  margin-bottom: 12px;
+  display: inline-block;
+}
+
+.icon-burst {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.burst-icon {
+  position: absolute;
+  font-size: 20px;
+  opacity: 0;
+}
+.duo-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: #58cc02; /* Duolingo green */
+  color: white;
+  font-size: 36px;
+  font-weight: 900;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 12px;
+}
+
+.sparkles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.sparkle {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #58cc02;
+  opacity: 0;
+}
 
 </style>
 </head>
@@ -1319,11 +1410,11 @@ const challenge = getChallengeById(progressChallengeId);
   renderChallenges();
   closeProgressModal();
   
-if (challenge.status === 'completed') {
-  setTimeout(() => {
-    showLessonCompleteAnimation(challenge.name);
-  }, 300);
-}
+// 🔹 Trigger animation EVERY time progress is logged
+setTimeout(() => {
+  showLessonCompleteAnimation(challenge.name);
+}, 300);
+
 });
 
 function pauseChallenge(id) {
@@ -1584,49 +1675,150 @@ if(challenges.length > 0) {
     }
   }, 100);
 }
-function shareToday() {
+let shareLocked = false;
+
+async function shareToday() {
+  if (shareLocked) return;
+  shareLocked = true;
+
   const shareText = `I just completed today’s learning challenge on SpendSomeTime.org 🧠✨
 Do something better than scrolling.`;
 
-  if (navigator.share) {
-    navigator.share({
-      title: "SpendSomeTime",
-      text: shareText,
-      url: window.location.href
-    });
-  } else {
-    navigator.clipboard.writeText(shareText + " " + window.location.href);
-    alert("Link copied!");
+  try {
+    if (navigator.share) {
+      await navigator.share({
+        title: "SpendSomeTime",
+        text: shareText,
+        url: window.location.href
+      });
+    } else {
+      await navigator.clipboard.writeText(
+        shareText + " " + window.location.href
+      );
+      alert("Link copied!");
+    }
+  } catch (err) {
+    console.warn("Share cancelled or failed:", err);
   }
+
+  // unlock after a short delay
+  setTimeout(() => {
+    shareLocked = false;
+  }, 1000);
 }
 function showLessonCompleteAnimation(challengeName) {
   const messages = [
     "BRO ACTUALLY FINISHED 😭",
-    "You did something productive.",
-    "Skill unlocked: +1 brain cell",
-    "Mom would be proud.",
+    "Productivity detected.",
+    "Skill unlocked.",
+    "This is character development.",
     "Scrolling avoided successfully.",
-    "This is character development."
+    "Rare W achieved."
   ];
 
-  const emojis = ["🧠", "🔥", "🏆", "⚡", "📚", "🐸"];
+  const burstIcons = ["🔥", "⚡", "🧠", "🏆", "✨"];
 
   const overlay = document.getElementById("lesson-complete-overlay");
+  const card = overlay.querySelector(".lesson-complete-card");
   const text = document.getElementById("lesson-complete-text");
-  const emoji = document.getElementById("lesson-emoji");
+  const mainIcon = document.getElementById("main-icon");
+  const burst = document.getElementById("icon-burst");
+
+  overlay.style.display = "flex";
+  burst.innerHTML = "";
 
   text.textContent =
     messages[Math.floor(Math.random() * messages.length)] +
-    `\n“${challengeName}”`;
+    `\n"${challengeName}"`;
 
-  emoji.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+  gsap.set(card, {
+    opacity: 0,
+    y: 80,
+    rotateX: -25,
+    scale: 0.8
+  });
 
-  overlay.style.display = "flex";
+  gsap.set(mainIcon, { scale: 0, rotate: -90 });
 
-  setTimeout(() => {
-    overlay.style.display = "none";
-  }, 2500);
+  // Create burst icons
+  for (let i = 0; i < 12; i++) {
+    const el = document.createElement("div");
+    el.className = "burst-icon";
+    el.textContent = burstIcons[Math.floor(Math.random() * burstIcons.length)];
+    burst.appendChild(el);
+
+    gsap.set(el, {
+      x: 0,
+      y: 0,
+      scale: 0.6
+    });
+  }
+
+  const tl = gsap.timeline({
+    onComplete: () =>
+      setTimeout(() => {
+        gsap.to(card, {
+          y: -40,
+          opacity: 0,
+          scale: 0.9,
+          duration: 0.3,
+          ease: "power2.in",
+          onComplete: () => (overlay.style.display = "none")
+        });
+      }, 900)
+  });
+
+  // Card entrance
+  tl.to(card, {
+    opacity: 1,
+    y: 0,
+    rotateX: 0,
+    scale: 1,
+    duration: 0.6,
+    ease: "back.out(1.6)"
+  });
+
+  // Icon pop + spin
+  tl.to(mainIcon, {
+    scale: 1,
+    rotate: 0,
+    duration: 0.4,
+    ease: "elastic.out(1.4, 0.6)"
+  }, "-=0.3");
+
+  // Screen punch
+  tl.fromTo(card, {
+    x: -4
+  }, {
+    x: 4,
+    duration: 0.1,
+    repeat: 5,
+    yoyo: true,
+    ease: "power1.inOut"
+  }, "-=0.2");
+
+  // Burst animation
+  tl.to(".burst-icon", {
+    opacity: 1,
+    x: () => gsap.utils.random(-80, 80),
+    y: () => gsap.utils.random(-80, 80),
+    rotation: () => gsap.utils.random(-180, 180),
+    scale: 1,
+    duration: 0.6,
+    ease: "power3.out",
+    stagger: 0.03
+  }, "-=0.3");
+
+  // Text snap-in
+  tl.from(text, {
+    y: 20,
+    opacity: 0,
+    duration: 0.3,
+    ease: "power2.out"
+  }, "-=0.4");
 }
+
+
 
 </script>
 <footer>
@@ -1634,9 +1826,14 @@ function showLessonCompleteAnimation(challengeName) {
 </footer>
 <div id="lesson-complete-overlay">
   <div class="lesson-complete-card">
-    <div class="lesson-emoji" id="lesson-emoji">🧠</div>
-    <h2 id="lesson-complete-text"></h2>
-    <p class="lesson-sub">Productivity just happened.</p>
+    <p class="lesson-sub">Your lesson is complete!</p>
+    <div class="icon-burst" id="icon-burst"></div>
+<i class="main-icon lucide lucide-trophy" id="main-icon"></i>
+<div class="duo-icon">
+  ✓
+</div>
+<div class="sparkles" id="sparkles"></div>
+<p id="lesson-complete-text"></p>
   </div>
 </div>
 

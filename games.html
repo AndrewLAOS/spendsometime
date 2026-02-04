@@ -459,6 +459,139 @@ footer a:hover {
     padding: 1rem;
   }
 }
+/* ==============================
+   Screen Time Game Styles
+   ============================== */
+
+#screentime-game {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem 1rem;
+  max-width: 700px;
+  margin: 0 auto;
+  color: var(--text);
+  font-family: 'Poppins', sans-serif;
+}
+
+#screentime-game.active {
+  display: flex;
+}
+
+#screentime-game .game-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+
+#screentime-game h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+#screentime-game p {
+  font-size: 1.1rem;
+  color: var(--muted);
+  text-align: center;
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+
+#screentime-game label {
+  font-weight: 600;
+  margin-top: 1rem;
+}
+
+#screenSlider {
+  width: 100%;
+  margin: 1rem 0;
+  accent-color: var(--accent);
+}
+
+#screenPeriod {
+  padding: 0.5rem 1rem;
+  border-radius: 12px;
+  border: 2px solid var(--border);
+  margin-left: 0.5rem;
+  font-weight: 600;
+}
+
+#screenHours {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--accent2);
+  margin-bottom: 2rem;
+}
+
+#lifeStats {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+  max-width: 500px;
+}
+
+.stat.dramatic {
+  background: var(--card-bg);
+  border-radius: 16px;
+  padding: 1rem 1.5rem;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: default;
+}
+
+.stat.dramatic:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+}
+
+.stat-value {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--accent);
+  margin-bottom: 0.3rem;
+}
+
+.stat-label {
+  font-size: 1rem;
+  color: var(--text);
+  font-weight: 600;
+}
+
+/* Add subtle animations for emotional impact */
+@keyframes countUp {
+  0% { opacity: 0; transform: translateY(20px);}
+  100% { opacity: 1; transform: translateY(0);}
+}
+
+.stat.dramatic {
+  animation: countUp 0.5s ease forwards;
+}
+
+/* Responsive tweaks */
+@media (max-width: 500px) {
+  #screenHours {
+    font-size: 1.3rem;
+  }
+
+  .stat-value {
+    font-size: 1.5rem;
+  }
+
+  .stat-label {
+    font-size: 0.9rem;
+  }
+}
+.screentime.png{
+  width:1004px;
+  }
 </style>
 </head>
 <body>
@@ -513,6 +646,15 @@ footer a:hover {
       <p>Solve arithmetic problems quickly</p>
     </div>
   </div>
+  <div class="game-card" onclick="startGame('screentime')">
+  <img src="screentime.png" class="game-icon" style="width:104px;">
+  <h3>Where Did My Time Go?</h3>
+  <p>Turn screen time into life stats</p>
+</div>
+<div id="leaderboard">
+  <h2>Leaderboard</h2>
+  <div id="leaderboard-content"></div>
+</div>
 
   <div id="reaction-game" class="game-container">
     <div class="game-header">
@@ -668,10 +810,34 @@ footer a:hover {
     </div>
   </div>
 
-  <div class="leaderboard">
-    <h3 style="color:var(--accent2); margin-top:0;">Your Records</h3>
-    <div id="leaderboard-content"></div>
+
+
+<div id="screentime-game" class="game-container">
+  <div class="game-header">
+    <h2>📱 Where Did My Time Go?</h2>
+    <button class="btn btn-secondary" onclick="closeGame()">← Back</button>
   </div>
+
+  <p style="color:var(--muted); max-width:600px;">
+    Estimate how much time you spent on your phone during a period.
+    We’ll show what else that time could’ve become.
+  </p>
+<label>Period</label>
+<select id="screenPeriod" onchange="updateScreenTime()">
+  <option value="1">1 Day</option>
+  <option value="7" selected>1 Week</option>
+  <option value="30">1 Month</option>
+</select>
+
+  <label>Screen time (hours)</label>
+  <input type="range" min="0" max="10" step="0.25" value="3"
+         id="screenSlider" oninput="updateScreenTime()">
+
+  <div class="stat-value" id="screenHours">3 hours</div>
+
+  <div id="lifeStats" class="stats-banner"></div>
+</div>
+
 </main>
 
 <script>
@@ -915,6 +1081,78 @@ function handleTyping(e) {
   
   document.getElementById('typing-best').textContent = gameScores.typingBest ? gameScores.typingBest + ' WPM' : '--';
 }
+function updateScreenTime() {
+  const dailyHours = Number(document.getElementById("screenSlider").value);
+  const periodDays = Number(document.getElementById("screenPeriod")?.value || 7);
+  const totalHours = dailyHours * periodDays;
+
+  document.getElementById("screenHours").textContent = `${totalHours.toFixed(1)} hours in ${periodDays} day(s)`;
+
+  // Full list of potential life-impact activities
+  const allStats = [
+    { label: "Books You Could Have Read 📚", value: Math.floor(totalHours / 6.5), min: 1 },
+    { label: "Miles You Could Have Walked 🚶‍♂️", value: Math.floor(totalHours * 2), min: 1 },
+    { label: "Skills You Could Have Learned 🛠️", value: Math.floor(totalHours / 2), min: 1 },
+    { label: "Creative Projects 🎨", value: Math.floor(totalHours / 1), min: 1 },
+    { label: "Sleep Recovered 😴", value: Math.floor(totalHours / 1), min: 1 },
+    { label: "Hours in Nature 🌳", value: Math.floor(totalHours * 1), min: 1 },
+    { label: "Coding / Side Projects 💻", value: Math.floor(totalHours * 0.7), min: 1 },
+    { label: "Volunteering / Helping Others 🤝", value: Math.floor(totalHours * 0.5), min: 1 },
+    { label: "Meditation / Mindfulness 🧘", value: Math.floor(totalHours * 0.5), min: 1 },
+    { label: "Social Time / Friends 👫", value: Math.floor(totalHours * 0.5), min: 1 },
+    { label: "Exercise / Workouts 💪", value: Math.floor(totalHours * 0.75), min: 1 },
+    { label: "Music Practice 🎵", value: Math.floor(totalHours * 0.6), min: 1 },
+    { label: "Learn a Language 🌍", value: Math.floor(totalHours * 0.4), min: 1 },
+    { label: "Write Stories / Journal ✍️", value: Math.floor(totalHours * 0.5), min: 1 },
+    { label: "Cooking / Baking 🍳", value: Math.floor(totalHours * 0.6), min: 1 },
+    { label: "Art / Drawing 🎨", value: Math.floor(totalHours * 0.5), min: 1 },
+    { label: "DIY / Building Projects 🏗️", value: Math.floor(totalHours * 0.5), min: 1 },
+    { label: "Photography 📸", value: Math.floor(totalHours * 0.4), min: 1 },
+    { label: "Gardening 🌱", value: Math.floor(totalHours * 0.5), min: 1 },
+    { label: "Board Games / Puzzles 🧩", value: Math.floor(totalHours * 0.4), min: 1 },
+    { label: "Podcasts / Learning 🎧", value: Math.floor(totalHours * 0.6), min: 1 },
+    { label: "Community Events 🎉", value: Math.floor(totalHours * 0.3), min: 1 },
+  ];
+
+  // Filter out stats below threshold
+  const validStats = allStats.filter(stat => stat.value >= stat.min);
+
+  // Randomize order for variety
+  validStats.sort(() => Math.random() - 0.5);
+
+  // Only show top N stats
+  const maxVisible = 6;
+  const statsToShow = validStats.slice(0, maxVisible);
+
+  const container = document.getElementById("lifeStats");
+  container.innerHTML = "";
+
+  statsToShow.forEach(stat => {
+    const div = document.createElement("div");
+    div.className = "stat dramatic";
+    div.innerHTML = `
+      <div class="stat-value">0</div>
+      <div class="stat-label">${stat.label}</div>
+    `;
+    container.appendChild(div);
+
+    // Animate number from 0 → value
+    const valueDiv = div.querySelector(".stat-value");
+    let current = 0;
+    const increment = Math.ceil(stat.value / 50);
+    const interval = setInterval(() => {
+      current += increment;
+      if(current >= stat.value) {
+        current = stat.value;
+        clearInterval(interval);
+      }
+      valueDiv.textContent = current;
+    }, 15);
+  });
+}
+
+
+
 
 // Number Memory Game
 let numberSequence = '';
