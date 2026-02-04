@@ -538,6 +538,111 @@ footer a:hover {
     padding: 1rem;
   }
 }
+.close-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: transparent;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: var(--muted);
+}
+/* Modal backdrop */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+  z-index: 1000;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 0.3s ease forwards;
+}
+
+/* Activate modal */
+.modal.active {
+  display: flex;
+}
+
+/* Modal content box */
+.modal > div {
+  background: var(--bg); /* matches site background (usually white or dark mode) */
+  color: var(--text);
+  border-radius: 16px;
+  padding: 2rem;
+  max-width: 500px;
+  width: 90%;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+  text-align: left;
+  transform: translateY(-20px);
+  opacity: 0;
+  animation: slideDown 0.3s ease forwards;
+}
+
+/* Buttons inside modal */
+.modal .btn {
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.15s ease, background 0.15s ease;
+}
+
+.modal .btn:hover {
+  transform: translateY(-2px);
+}
+
+/* Primary button style */
+.modal .btn-primary {
+  background: var(--accent2);
+  color: white;
+  border: none;
+}
+
+/* Secondary button style */
+.modal .btn-secondary {
+  background: var(--bg2);
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+
+/* Headings */
+.modal h2 {
+  font-size: 1.6rem;
+  margin: 1rem 0;
+}
+
+.modal h3 {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Links inside modal */
+.modal a {
+  text-decoration: none;
+  color: var(--accent2);
+  font-weight: 600;
+}
+
+.modal a:hover {
+  text-decoration: underline;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+@keyframes slideDown {
+  from {transform: translateY(-20px); opacity: 0;}
+  to {transform: translateY(0); opacity: 1;}
+}
+
 </style>
 </head>
 <body>
@@ -1054,27 +1159,24 @@ async function finishQuiz(){
 }
 
 function showRandomSkill() {
-  Promise.all([
-    fetch('skills.json').then(r => r.ok ? r.json() : []).catch(() => []),
-    fetch('weird.json').then(r => r.ok ? r.json() : []).catch(() => [])
-  ]).then(([skills, weird]) => {
-    const allSkills = [...skills, ...weird];
-    if(allSkills.length === 0) {
-      alert('No skills available. Please try again later.');
+  fetch('skills.json').then(r => r.json()).then(skills => {
+    if(skills.length === 0) {
+      alert('No skills available.');
       return;
     }
-    const random = allSkills[Math.floor(Math.random() * allSkills.length)];
+    const random = skills[Math.floor(Math.random() * skills.length)];
     const modal = document.createElement('div');
     modal.className = 'modal active';
+    modal.style.cssText = 'display: flex; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1000; align-items: center; justify-content: center;';
     modal.innerHTML = `
-      <div class="modal-content">
-        <h3>🎲 Random Skill for You</h3>
+      <div style="background: white; border-radius: 16px; padding: 2rem; max-width: 500px; width: 90%; box-shadow: 0 20px 60px rgba(0,0,0,0.3);">
+        <h3>🎲 Random Skill</h3>
         <h2 style="color: var(--accent2); margin: 1rem 0;">${random.name}</h2>
         <p>${random.description}</p>
         <p><em>${random.reason}</em></p>
-        ${random.learn_url ? `<p><a href="${random.learn_url}" target="_blank" style="color: var(--accent2); font-weight: 600;">Learn more →</a></p>` : ''}
-        <div class="modal-actions">
-          <button class="btn btn-secondary" onclick="this.closest('.modal').remove()">Close</button>
+        ${random.learn_url ? `<p><a href="${random.learn_url}" target="_blank" style="color: var(--accent2); font-weight: 600;">Try it →</a></p>` : ''}
+        <div style="display: flex; gap: 1rem; justify-content: flex-end; margin-top: 1.5rem;">
+<button class="btn btn-secondary" onclick="this.closest('.modal').remove()">Close</button>
           <button class="btn btn-primary" onclick="window.location.href='challenges.html'">Create Challenge</button>
         </div>
       </div>
@@ -1200,18 +1302,6 @@ document.addEventListener('keydown', (e) => {
   <div class="loading"></div>
 </div>
 
-<script type="module">
-import './shared-auth.js';
-import { getBookmarks, saveBookmarks } from './shared-auth.js';
-
-// Load bookmarks on page load
-(async () => {
-  const bookmarks = await getBookmarks();
-  bookmarkedSkills = new Set(bookmarks);
-  
-  // Make saveBookmarks available globally
-  window.saveBookmarks = saveBookmarks;
-})();
 </script>
 
 <footer>
