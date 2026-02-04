@@ -46,6 +46,7 @@ nav {
   padding: 1rem 2rem;
   z-index: 1000;
   box-shadow: 0 2px 10px var(--shadow);
+
 }
 
 nav .nav-content {
@@ -592,6 +593,15 @@ footer a:hover {
 .screentime.png{
   width:1004px;
   }
+  html {
+  scroll-behavior: smooth; /* ensures smooth scrolling */
+}
+
+.game-container {
+  display: none; /* hide games initially */
+  margin-top: 2rem;
+}
+
 </style>
 </head>
 <body>
@@ -651,10 +661,7 @@ footer a:hover {
   <h3>Where Did My Time Go?</h3>
   <p>Turn screen time into life stats</p>
 </div>
-<div id="leaderboard">
-  <h2>Leaderboard</h2>
-  <div id="leaderboard-content"></div>
-</div>
+
 
   <div id="reaction-game" class="game-container">
     <div class="game-header">
@@ -837,10 +844,15 @@ footer a:hover {
 
   <div id="lifeStats" class="stats-banner"></div>
 </div>
-
+<div id="leaderboard">
+  <h2>Leaderboard</h2>
+  <div id="leaderboard-content"></div>
+</div>
 </main>
 
 <script>
+
+
 const quotes = [
   "The only way to do great work is to love what you do.",
   "Innovation distinguishes between a leader and a follower.",
@@ -851,16 +863,30 @@ const quotes = [
 
 let gameScores = JSON.parse(localStorage.getItem('gameScores') || '{}');
 
-function startGame(gameType) {
-  document.querySelectorAll('.game-container').forEach(g => g.classList.remove('active'));
-  document.getElementById(`${gameType}-game`).classList.add('active');
-  
-  if(gameType === 'reaction') initReactionGame();
-  else if(gameType === 'memory') initMemoryGame();
-  else if(gameType === 'typing') newTypingGame();
-  else if(gameType === 'number') startNumberGame();
-  else if(gameType === 'sequence') startSequenceGame();
-  else if(gameType === 'math') startMathGame();
+ function startGame(gameType) {
+  // Hide all games
+  document.querySelectorAll('.game-container').forEach(g => {
+    g.classList.remove('active');
+    g.style.display = 'none';
+  });
+
+  // Show the selected game
+  const game = document.getElementById(`${gameType}-game`);
+  if (game) {
+    game.classList.add('active');
+    game.style.display = 'block';
+    // Smooth scroll to the game container
+    game.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  // Initialize the specific game
+  if (gameType === 'reaction') initReactionGame();
+  else if (gameType === 'memory') initMemoryGame();
+  else if (gameType === 'typing') newTypingGame();
+  else if (gameType === 'number') startNumberGame();
+  else if (gameType === 'sequence') startSequenceGame();
+  else if (gameType === 'math') startMathGame();
+  else if (gameType === 'screentime') updateScreenTime();
 }
 
 function closeGame() {
