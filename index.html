@@ -31,6 +31,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<script src="gamification.js" defer></script>
 <style>
 :root {
   --bg: #f0f7ff;
@@ -248,9 +249,10 @@ header {
   align-items: center;
   text-align: center;
   padding: 3rem 1.5rem;
-  background: linear-gradient(to bottom right, #d0f0ff, #fff0f8);
+  background: linear-gradient(135deg, var(--bg), var(--panel));
   position: relative;
   overflow: hidden;
+  color: var(--text);
 }
 
 h1 {
@@ -259,7 +261,9 @@ h1 {
   margin-bottom: 1rem;
   background: var(--gradient);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
+  color: transparent;
 }
 
 p {
@@ -442,8 +446,8 @@ footer a:hover {
   margin: 20px auto;
   display: block;
 
-  background: linear-gradient(135deg, #ff7eb9, #6e95ff);
-  color: #06261a;
+  background: var(--gradient);
+  color: #ffffff;
 
   font-size: 1rem;
   font-weight: 600;
@@ -451,7 +455,7 @@ footer a:hover {
   border-radius: 14px;
 
   cursor: pointer;
-  box-shadow: 0 14px 30px #58d9ff33;
+  box-shadow: 0 14px 30px rgba(88, 217, 255, 0.2);
   transition: transform 0.15s ease, box-shadow 0.15s ease, opacity 0.15s ease;
 }
 
@@ -486,6 +490,10 @@ footer a:hover {
       <a href="weird.html">Quick Skills</a>
       <a href="games.html">Games</a>
       <a href="diagram.html">All Skills</a>
+    </div>
+    <div id="nav-stats" style="display: flex; gap: 1rem; align-items: center; font-size: 0.9rem; font-weight: 600;">
+      <span style="color: var(--accent2);">⭐ <span id="nav-xp">0</span> XP</span>
+      <span id="nav-streak" style="color: var(--accent); display: none;">🔥 <span id="streak-days">0</span> days</span>
     </div>
   </div>
 </nav>
@@ -539,6 +547,10 @@ footer a:hover {
     <div class="stat-item">
       <span class="number" id="total-time">0</span>
       <span class="label">Hours Invested</span>
+    </div>
+    <div class="stat-item">
+      <span class="number" id="total-xp">0</span>
+      <span class="label">XP Earned ⭐</span>
     </div>
   </div>
 <button class="notify-btn" onclick="enableNotifications()">
@@ -629,13 +641,27 @@ function updateStats() {
   const totalTime = challenges.reduce((sum, c) => sum + (c.totalTime || 0), 0);
   const hours = Math.round(totalTime / 60);
   
+  // Get XP from gamification system (if available)
+  if (typeof GameSystem !== 'undefined') {
+    const totalXP = GameSystem.getTotalXP();
+    document.getElementById('total-xp').textContent = totalXP;
+  }
+  
   document.getElementById('total-skills').textContent = bookmarked.length || challenges.length;
   document.getElementById('active-challenges').textContent = active;
   document.getElementById('completed-challenges').textContent = completed;
   document.getElementById('total-time').textContent = hours;
 }
 
-updateStats();
+// Call updateStats immediately if GameSystem exists, otherwise wait for it
+if (typeof GameSystem !== 'undefined') {
+  updateStats();
+}
+
+// Listen for when GameSystem is ready and update stats
+window.addEventListener('gamificationReady', updateStats);
+window.addEventListener('gamificationUpdate', updateStats);
+window.addEventListener('xpGained', updateStats);
 
 // Fade in on scroll
 const observerOptions = {
@@ -658,6 +684,7 @@ document.querySelectorAll('.fade-in').forEach(el => {
   el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
   observer.observe(el);
 });
+
 </script>
 
 <footer>

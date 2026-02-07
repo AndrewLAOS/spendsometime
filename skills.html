@@ -11,6 +11,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<script src="gamification.js" defer></script>
 <style>
 :root {
   --bg:#f0f7ff;
@@ -657,7 +658,10 @@ footer a:hover {
       <a href="weird.html">Quick Skills</a>
       <a href="games.html">Games</a>
       <a href="diagram.html">All Skills</a>
- 
+    </div>
+    <div id="nav-stats" style="display: flex; gap: 1rem; align-items: center; font-size: 0.9rem; font-weight: 600;">
+      <span style="color: var(--accent2);">⭐ <span id="nav-xp">0</span> XP</span>
+      <span id="nav-streak" style="color: var(--accent); display: none;">🔥 <span id="streak-days">0</span> days</span>
     </div>
   </div>
 </nav>
@@ -910,6 +914,9 @@ async function finishQuiz(){
   localStorage.removeItem('quizProgress');
   quizEl.style.display="none";
   resultsEl.style.display="block";
+  
+  // 🎮 Award XP for completing the quiz
+  GameSystem.awardXP(GameSystem.rewards.completeQuiz, 'completeQuiz');
   
   // Try to fetch skills.json, fallback to example skills
   let skills = [];

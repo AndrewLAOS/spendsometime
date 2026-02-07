@@ -1,0 +1,138 @@
+[
+  {
+    "id": "default",
+    "name": "Crisp Blue",
+    "description": "Clean, professional look with cool blues and pinks",
+    "xpCost": 0,
+    "isPremium": false,
+    "cssVariables": {
+      "bg": "#f0f7ff",
+      "panel": "#ffffffcc",
+      "border": "#d0e4ff",
+      "accent": "#ff7eb9",
+      "accent2": "#58d9ff",
+      "text": "#1a1a1a",
+      "muted": "#555555"
+    },
+    "background": "linear-gradient(135deg, #d0f0ff, #fff0f8)"
+  },
+  {
+    "id": "midnight",
+    "name": "Midnight Mode",
+    "description": "Dark theme for nighttime learning",
+    "xpCost": 50,
+    "isPremium": true,
+    "cssVariables": {
+      "bg": "#0f1419",
+      "panel": "#1a1f2e",
+      "border": "#2d3748",
+      "accent": "#ff6b9d",
+      "accent2": "#00d4ff",
+      "text": "#e2e8f0",
+      "muted": "#a0aec0"
+    },
+    "background": "#0f1419"
+  },
+  {
+    "id": "forest",
+    "name": "Forest Vibes",
+    "description": "Calming greens and earthy tones",
+    "xpCost": 75,
+    "isPremium": true,
+    "cssVariables": {
+      "bg": "#ecf5e8",
+      "panel": "#f1faf0cc",
+      "border": "#c7e8bd",
+      "accent": "#2d6a4f",
+      "accent2": "#52b788",
+      "text": "#1b4332",
+      "muted": "#555b4e"
+    },
+    "background": "linear-gradient(135deg, #d8f3dc, #e8f5e9)"
+  },
+  {
+    "id": "sunset",
+    "name": "Sunset Dreams",
+    "description": "Warm oranges and purples for creative focus",
+    "xpCost": 90,
+    "isPremium": true,
+    "cssVariables": {
+      "bg": "#fff5f0",
+      "panel": "#fffbf7cc",
+      "border": "#ffd9b3",
+      "accent": "#ff6b35",
+      "accent2": "#f7931e",
+      "text": "#5a2e2e",
+      "muted": "#8b5a3c"
+    },
+    "background": "linear-gradient(135deg, #ffe4b3, #ffd699)"
+  },
+  {
+    "id": "ocean",
+    "name": "Ocean Breeze",
+    "description": "Fresh aquatic blues and teals",
+    "xpCost": 100,
+    "isPremium": true,
+    "cssVariables": {
+      "bg": "#e6f7ff",
+      "panel": "#f0fbfccc",
+      "border": "#b3e5fc",
+      "accent": "#0277bd",
+      "accent2": "#00bcd4",
+      "text": "#004d73",
+      "muted": "#37474f"
+    },
+    "background": "linear-gradient(135deg, #b3e5fc, #80deea)"
+  },
+  {
+    "id": "lavender",
+    "name": "Lavender Dreams",
+    "description": "Soft purples and pinks for relaxed learning",
+    "xpCost": 80,
+    "isPremium": true,
+    "cssVariables": {
+      "bg": "#f8f1ff",
+      "panel": "#faf5ffcc",
+      "border": "#e1bee7",
+      "accent": "#ba68c8",
+      "accent2": "#ce93d8",
+      "text": "#4a148c",
+      "muted": "#7b1fa2"
+    },
+    "background": "linear-gradient(135deg, #e1bee7, #f3e5f5)"
+  },
+  {
+    "id": "retro",
+    "name": "Retro Vibes",
+    "description": "Nostalgic 80s inspired bright colors",
+    "xpCost": 120,
+    "isPremium": true,
+    "cssVariables": {
+      "bg": "#fff0f5",
+      "panel": "#ffeef7cc",
+      "border": "#ffb3d9",
+      "accent": "#ff006e",
+      "accent2": "#ffbe0b",
+      "text": "#3a0042",
+      "muted": "#6b0042"
+    },
+    "background": "linear-gradient(135deg, #ffb3d9, #ffd60a)"
+  },
+  {
+    "id": "zen",
+    "name": "Zen Garden",
+    "description": "Minimalist grays and soft whites",
+    "xpCost": 60,
+    "isPremium": true,
+    "cssVariables": {
+      "bg": "#fafafa",
+      "panel": "#ffffffee",
+      "border": "#eeeeee",
+      "accent": "#757575",
+      "accent2": "#9e9e9e",
+      "text": "#212121",
+      "muted": "#757575"
+    },
+    "background": "#fafafa"
+  }
+]

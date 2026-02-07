@@ -11,6 +11,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<script src="gamification.js" defer></script>
 <style>
 :root {
   --bg:#f0f7ff;
@@ -601,6 +602,10 @@ footer a:hover {
   display: none; /* hide games initially */
   margin-top: 2rem;
 }
+nav .nav-links a[href="index.html"] {
+  font-weight: 2100; /* makes it bold */
+  color: #000000; /* optional: highlight it */
+}
 
 </style>
 </head>
@@ -616,6 +621,10 @@ footer a:hover {
       <a href="weird.html">Quick Skills</a>
       <a href="games.html">Games</a>
       <a href="diagram.html">All Skills</a>
+    </div>
+    <div id="nav-stats" style="display: flex; gap: 1rem; align-items: center; font-size: 0.9rem; font-weight: 600;">
+      <span style="color: var(--accent2);">⭐ <span id="nav-xp">0</span> XP</span>
+      <span id="nav-streak" style="color: var(--accent); display: none;">🔥 <span id="streak-days">0</span> days</span>
     </div>
   </div>
 </nav>
@@ -1017,7 +1026,15 @@ function checkMatch() {
         gameScores.memoryBest = time;
       }
       localStorage.setItem('gameScores', JSON.stringify(gameScores));
-      alert(`🎉 You won in ${time} seconds with ${memoryMoves} moves!`);
+      
+      // Award XP for winning memory game
+      if (typeof GameSystem !== 'undefined') {
+        GameSystem.awardXP(GameSystem.rewards.winGame, 'winGame');
+        showGameWinCelebration('Memory Match', `${time}s - ${memoryMoves} moves! 🎮`);
+      } else {
+        alert(`🎉 You won in ${time} seconds with ${memoryMoves} moves!`);
+      }
+      
       initMemoryGame();
     }
   } else {
@@ -1385,6 +1402,93 @@ function updateLeaderboard() {
 }
 
 updateLeaderboard();
+
+// Game win celebration notification
+function showGameWinCelebration(gameName, stats) {
+  if (!document.body) return; // Safety check
+  
+  const celebration = document.createElement('div');
+  celebration.style.cssText = `
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: linear-gradient(135deg, #ff7eb9, #58d9ff);
+    color: white;
+    padding: 3rem;
+    border-radius: 16px;
+    text-align: center;
+    z-index: 10001;
+    max-width: 90%;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    animation: popIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+  `;
+  celebration.innerHTML = `
+    <div style="font-size: 3em; margin-bottom: 1rem;">🎮</div>
+    <div style="font-size: 2.5em; font-weight: 700; margin-bottom: 0.5rem;">${gameName} Won!</div>
+    <div style="font-size: 1.1em; opacity: 0.95;">${stats}</div>
+    <div style="font-size: 1.3em; margin-top: 1rem; font-weight: 600;">+${GameSystem.rewards.winGame} XP 🎉</div>
+  `;
+  document.body.appendChild(celebration);
+  
+  createGameParticles(15);
+  
+  setTimeout(() => {
+    celebration.style.animation = 'popIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) reverse';
+    setTimeout(() => celebration.remove(), 600);
+  }, 3500);
+}
+
+// Create celebration particles
+function createGameParticles(count) {
+  for (let i = 0; i < count; i++) {
+    const particle = document.createElement('div');
+    particle.style.position = 'fixed';
+    particle.style.pointerEvents = 'none';
+    particle.style.fontSize = '1.5rem';
+    particle.style.left = (Math.random() * 100) + 'vw';
+    particle.style.top = '50vh';
+    particle.style.zIndex = '10000';
+    particle.textContent = ['🎮', '🎯', '⭐', '✨', '🏆'][Math.floor(Math.random() * 5)];
+    
+    document.body.appendChild(particle);
+    
+    const duration = 1500 + Math.random() * 500;
+    const yDistance = 200 + Math.random() * 200;
+    const xDistance = (Math.random() - 0.5) * 200;
+    
+    particle.animate([
+      { transform: 'translateY(0) translateX(0) scale(1)', opacity: 1 },
+      { transform: `translateY(-${yDistance}px) translateX(${xDistance}px) scale(0)`, opacity: 0 }
+    ], {
+      duration: duration,
+      easing: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+      fill: 'forwards'
+    });
+    
+    setTimeout(() => particle.remove(), duration);
+  }
+}
+
+// Add @keyframes for popIn animation
+if (!document.querySelector('style[data-game-animations]')) {
+  const style = document.createElement('style');
+  style.setAttribute('data-game-animations', 'true');
+  style.textContent = `
+    @keyframes popIn {
+      from {
+        transform: translate(-50%, -50%) scale(0);
+        opacity: 0;
+      }
+      to {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
+      }
+    }
+  `;
+  document.head.appendChild(style);
+}
+
 </script>
 
 <footer>
