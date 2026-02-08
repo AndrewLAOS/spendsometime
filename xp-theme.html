@@ -1,0 +1,1924 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>XP & Rewards – SpendSomeTime</title>
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<script src="gamification.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"></script>
+<script src="https://unpkg.com/gsap@3/dist/gsap.min.js"></script>
+
+
+<style>
+:root {
+  --accent: #ff7eb9;
+  --accent2: #58d9ff;
+  --bg: #f0f7ff;
+  --panel: #ffffffcc;
+  --border: #d0e4ff;
+  --text: #1a1a1a;
+  --muted: #555555;
+  --success: #4ade80;
+  --shadow: rgba(0,0,0,0.1);
+  --gradient: linear-gradient(135deg, var(--accent), var(--accent2));
+}
+
+* {
+  box-sizing: border-box;
+  font-family: 'Inter', system-ui, sans-serif;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+}
+
+nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border);
+  padding: 1rem 2rem;
+  z-index: 1000;
+  box-shadow: 0 2px 10px var(--shadow);
+}
+
+nav .nav-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav .logo {
+  font-size: 1.3rem;
+  font-weight: 700;
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-decoration: none;
+}
+
+nav .nav-links {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+nav .nav-links a {
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: color 0.3s ease;
+}
+
+nav .nav-links a:hover {
+  color: var(--accent2);
+}
+
+#nav-stats {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  font-weight: 600;
+  color: var(--accent2);
+}
+
+main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 8rem 2rem 4rem;
+}
+
+h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin: 2rem 0 0.5rem;
+  text-align: center;
+}
+
+h2 {
+  font-size: 1.8rem;
+  color: var(--accent2);
+  margin: 2rem 0 1rem;
+}
+
+h3 {
+  font-size: 1.2rem;
+  color: var(--text);
+  margin: 1.5rem 0 1rem;
+}
+
+p {
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+/* ===== XP HERO SECTION ===== */
+.xp-hero {
+  text-align: center;
+  margin: 2rem 0 3rem;
+  padding: 3rem 2rem;
+  background: var(--panel);
+  border: 2px solid var(--border);
+  border-radius: 24px;
+  box-shadow: 0 8px 24px var(--shadow);
+}
+
+.xp-hero-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin: 0 0 1rem;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.xp-hero-subtitle {
+  color: var(--muted);
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+}
+
+/* ===== LEVEL SYSTEM ===== */
+.level-display {
+  background: linear-gradient(135deg, rgba(255, 126, 185, 0.1), rgba(88, 217, 255, 0.1));
+  border: 2px solid var(--border);
+  border-radius: 20px;
+  padding: 2.5rem;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.level-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: var(--gradient);
+  color: white;
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin: 0 auto 1rem;
+  box-shadow: 0 8px 24px rgba(255, 126, 185, 0.3);
+  position: relative;
+}
+
+.level-badge::before {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  background: var(--gradient);
+  opacity: 0;
+  animation: pulse-ring 2s ease-in-out infinite;
+}
+
+.level-info h2 {
+  margin: 0 0 0.5rem;
+}
+
+.level-description {
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+/* ===== XP PROGRESS BAR ===== */
+.xp-progress-section {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 16px var(--shadow);
+}
+
+.xp-progress-bar {
+  height: 32px;
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 16px;
+  overflow: hidden;
+  margin-bottom: 1rem;
+  position: relative;
+}
+
+.xp-progress-fill {
+  height: 100%;
+  background: var(--gradient);
+  width: 0%;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 700;
+  font-size: 0.9rem;
+  transition: width 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+  box-shadow: 0 0 20px rgba(88, 217, 255, 0.4);
+}
+
+.xp-progress-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.xp-current {
+  font-size: 1.3rem;
+  font-weight: 700;
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.xp-next-level {
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+/* ===== STATS GRID ===== */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+.stat-card {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 2rem;
+  text-align: center;
+  box-shadow: 0 4px 16px var(--shadow);
+  transition: all 0.3s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 32px var(--shadow);
+  border-color: var(--accent2);
+}
+
+.stat-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.stat-value {
+  font-size: 2.5rem;
+  font-weight: 700;
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 0.5rem;
+}
+
+.stat-label {
+  color: var(--muted);
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+/* ===== STREAK DISPLAY ===== */
+.streak-card {
+  background: linear-gradient(135deg, rgba(255, 126, 185, 0.1), rgba(88, 217, 255, 0.1));
+  border: 2px solid var(--border);
+  border-radius: 20px;
+  padding: 2rem;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.streak-number {
+  font-size: 3.5rem;
+  font-weight: 700;
+  color: #ff6b35;
+}
+
+.streak-label {
+  color: var(--muted);
+  margin-top: 0.5rem;
+  font-size: 1rem;
+}
+
+.streak-message {
+  color: var(--success);
+  margin-top: 1rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+/* ===== ACHIEVEMENTS SECTION ===== */
+.achievements-section {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 2.5rem;
+  margin-bottom: 3rem;
+  box-shadow: 0 4px 16px var(--shadow);
+}
+
+.achievements-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.achievement-card {
+  background: white;
+  border: 2px solid var(--border);
+  border-radius: 16px;
+  padding: 1.5rem;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.achievement-card:hover:not(.locked) {
+  transform: scale(1.08) translateY(-8px);
+  box-shadow: 0 12px 32px var(--shadow);
+  border-color: var(--accent2);
+}
+
+.achievement-card.locked {
+  opacity: 0.6;
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.achievement-icon {
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
+  animation: float 3s ease-in-out infinite;
+}
+
+.achievement-card.locked .achievement-icon {
+  filter: grayscale(100%);
+}
+
+.achievement-name {
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: var(--text);
+  margin-bottom: 0.25rem;
+}
+
+.achievement-desc {
+  font-size: 0.75rem;
+  color: var(--muted);
+  line-height: 1.4;
+}
+
+.achievement-card.unlocked {
+  background: linear-gradient(135deg, rgba(74, 222, 128, 0.1), rgba(74, 222, 128, 0.05));
+  border-color: var(--success);
+  box-shadow: 0 0 16px rgba(74, 222, 128, 0.2);
+}
+
+.achievement-unlock-date {
+  font-size: 0.7rem;
+  color: var(--success);
+  margin-top: 0.5rem;
+  font-weight: 600;
+}
+
+/* ===== THEME SHOWCASE ===== */
+.themes-section {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 2.5rem;
+  margin-bottom: 3rem;
+  box-shadow: 0 4px 16px var(--shadow);
+}
+
+.themes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.theme-card {
+  background: white;
+  border: 2px solid var(--border);
+  border-radius: 16px;
+  padding: 1.5rem;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.theme-card:hover:not(.theme-card.locked) {
+  transform: scale(1.05) translateY(-6px);
+  box-shadow: 0 12px 32px var(--shadow);
+  border-color: var(--accent2);
+}
+
+.theme-card.locked {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.theme-preview {
+  width: 100%;
+  height: 70px;
+  border-radius: 12px;
+  margin-bottom: 1rem;
+  box-shadow: 0 4px 12px var(--shadow);
+}
+
+.theme-name {
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 0.5rem;
+}
+
+.theme-cost {
+  font-size: 0.85rem;
+  color: var(--accent);
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+}
+
+.theme-status {
+  background: var(--accent2);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.theme-card.unlocked .theme-status {
+  background: var(--success);
+}
+
+.theme-card.active {
+  border-color: var(--accent);
+  box-shadow: 0 0 16px var(--accent2);
+  background: linear-gradient(135deg, rgba(88, 217, 255, 0.1), rgba(255, 126, 185, 0.1));
+}
+
+.active-badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: var(--accent);
+  color: white;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+}
+
+/* ===== ACTION BUTTONS ===== */
+.action-buttons {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1rem;
+  margin: 2rem 0;
+}
+
+.btn {
+  padding: 1rem 1.5rem;
+  background: var(--gradient);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 6px 20px var(--shadow);
+  white-space: nowrap;
+}
+
+.btn:hover:not(:disabled) {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px var(--shadow);
+}
+
+.btn:active:not(:disabled) {
+  transform: scale(0.98);
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn-secondary {
+  background: var(--panel);
+  color: var(--text);
+  border: 2px solid var(--border);
+  box-shadow: 0 4px 12px var(--shadow);
+}
+
+.btn-secondary:hover:not(:disabled) {
+  border-color: var(--accent2);
+  background: rgba(88, 217, 255, 0.05);
+}
+
+/* ===== MODAL ===== */
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 2000;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+}
+
+.modal.active {
+  display: flex;
+}
+
+.modal-content {
+  background: white;
+  border-radius: 24px;
+  padding: 2.5rem;
+  max-width: 900px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  animation: slideUp 0.3s ease;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.modal-header h2 {
+  margin: 0;
+}
+
+.modal-close {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: var(--muted);
+  transition: color 0.3s ease;
+}
+
+.modal-close:hover {
+  color: var(--text);
+}
+
+.theme-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 1.5rem;
+  margin: 1.5rem 0;
+}
+
+/* ===== MILESTONES ===== */
+.milestones-section {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 2.5rem;
+  margin-bottom: 3rem;
+  box-shadow: 0 4px 16px var(--shadow);
+}
+
+.milestone-list {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 1.5rem;
+}
+
+.milestone-item {
+  flex: 1;
+  min-width: 100px;
+  text-align: center;
+  padding: 1.5rem;
+  background: white;
+  border: 2px solid var(--border);
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+.milestone-item.achieved {
+  background: linear-gradient(135deg, rgba(74, 222, 128, 0.1), rgba(74, 222, 128, 0.05));
+  border-color: var(--success);
+}
+
+.milestone-item:hover.achieved {
+  transform: scale(1.05);
+}
+
+.milestone-xp {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--accent2);
+}
+
+.milestone-item.achieved .milestone-xp {
+  color: var(--success);
+}
+
+.milestone-check {
+  font-size: 1.3rem;
+  margin-top: 0.5rem;
+}
+
+/* ===== HISTORY ===== */
+.history-section {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 2.5rem;
+  margin-bottom: 3rem;
+  box-shadow: 0 4px 16px var(--shadow);
+}
+
+.history-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.history-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.25rem;
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+.history-item:hover {
+  transform: translateX(4px);
+  border-color: var(--accent2);
+  background: rgba(88, 217, 255, 0.03);
+}
+
+.history-source {
+  font-weight: 600;
+  color: var(--text);
+}
+
+.history-amount {
+  font-size: 1.1rem;
+  font-weight: 700;
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.history-date {
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.8; }
+}
+
+@keyframes pulse-ring {
+  0% { transform: scale(1); opacity: 1; }
+  100% { transform: scale(1.3); opacity: 0; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+}
+
+@keyframes slideUp {
+  from { transform: translateY(30px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes slideInUp {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes confetti {
+  to { transform: translateY(-100vh) rotate(720deg); opacity: 0; }
+}
+
+/* ===== XP REWARD TOAST ===== */
+.xp-toast {
+  position: fixed;
+  bottom: 50%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--gradient);
+  color: white;
+  padding: 1.5rem 2.5rem;
+  border-radius: 20px;
+  font-weight: 700;
+  font-size: 1.3rem;
+  z-index: 10000;
+  pointer-events: none;
+  box-shadow: 0 12px 40px var(--shadow);
+  animation: slideInUp 0.5s ease;
+}
+
+.achievement-toast {
+  position: fixed;
+  top: 80px;
+  right: 20px;
+  background: var(--gradient);
+  color: white;
+  padding: 1.25rem 1.75rem;
+  border-radius: 16px;
+  font-weight: 600;
+  z-index: 10000;
+  pointer-events: none;
+  box-shadow: 0 12px 40px var(--shadow);
+}
+
+/* ===== FOOTER ===== */
+footer {
+  background: rgba(255, 255, 255, 0.95);
+  border-top: 1px solid var(--border);
+  padding: 2rem 1.5rem;
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.9rem;
+  margin-top: 4rem;
+}
+
+footer a {
+  color: var(--accent2);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+/* ===== QUESTS SECTION ===== */
+.quests-section {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 2.5rem;
+  margin-bottom: 3rem;
+  box-shadow: 0 4px 16px var(--shadow);
+}
+
+.quests-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.quest-card {
+  background: white;
+  border: 2px solid var(--border);
+  border-radius: 16px;
+  padding: 2rem;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.quest-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 32px var(--shadow);
+  border-color: var(--accent2);
+}
+
+.quest-icon {
+  font-size: 3.5rem;
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.quest-title {
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+}
+
+.quest-desc {
+  font-size: 0.85rem;
+  color: var(--muted);
+  margin-bottom: 1rem;
+  line-height: 1.4;
+}
+
+.quest-xp-reward {
+  font-size: 1.3rem;
+  font-weight: 700;
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 0.75rem;
+}
+
+.quest-difficulty {
+  display: inline-block;
+  padding: 0.4rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  background: var(--accent2);
+  color: white;
+}
+
+.quest-difficulty.hard {
+  background: #ef4444;
+}
+
+.quest-link {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.6rem 1.2rem;
+  background: var(--gradient);
+  color: white;
+  text-decoration: none;
+  border-radius: 12px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+}
+
+.quest-link:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 20px var(--shadow);
+}
+
+/* ===== BREAKDOWN SECTION ===== */
+.breakdown-section {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 2.5rem;
+  margin-bottom: 3rem;
+  box-shadow: 0 4px 16px var(--shadow);
+}
+
+.breakdown-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.breakdown-item {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.5rem;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.breakdown-item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px var(--shadow);
+  border-color: var(--accent2);
+}
+
+.breakdown-label {
+  font-size: 0.9rem;
+  color: var(--muted);
+  margin-bottom: 0.5rem;
+}
+
+.breakdown-xp {
+  font-size: 2.2rem;
+  font-weight: 700;
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 0.5rem;
+}
+
+.breakdown-percent {
+  font-size: 0.85rem;
+  color: var(--accent2);
+  font-weight: 600;
+}
+
+/* ===== NEXT ACHIEVEMENT SECTION ===== */
+.next-achievement-section {
+  background: linear-gradient(135deg, rgba(255, 126, 185, 0.1), rgba(88, 217, 255, 0.1));
+  border: 2px solid var(--border);
+  border-radius: 20px;
+  padding: 2.5rem;
+  margin-bottom: 3rem;
+  box-shadow: 0 4px 16px var(--shadow);
+  text-align: center;
+}
+
+.next-achievement-card {
+  background: white;
+  border: 2px solid var(--border);
+  border-radius: 16px;
+  padding: 2rem;
+  margin-top: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.next-achievement-card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 12px 32px var(--shadow);
+  border-color: var(--accent2);
+}
+
+.next-achievement-icon {
+  font-size: 3.5rem;
+  margin-bottom: 1rem;
+  display: block;
+  animation: float 3s ease-in-out infinite;
+}
+
+.next-achievement-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--accent2);
+  margin-bottom: 0.5rem;
+}
+
+.next-achievement-desc {
+  color: var(--muted);
+  margin-bottom: 1.5rem;
+  font-size: 0.95rem;
+}
+
+.achievement-progress-bar {
+  height: 12px;
+  background: var(--border);
+  border-radius: 6px;
+  overflow: hidden;
+  margin-bottom: 0.75rem;
+}
+
+.achievement-progress-fill {
+  height: 100%;
+  background: var(--gradient);
+  border-radius: 6px;
+  transition: width 0.6s ease;
+  box-shadow: 0 2px 8px var(--shadow);
+}
+
+.achievement-progress-text {
+  font-size: 0.85rem;
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.achievement-locked-msg {
+  color: var(--muted);
+  font-style: italic;
+  font-size: 0.95rem;
+  padding: 1.5rem;
+  background: #f8f9ff;
+  border-radius: 12px;
+  margin-top: 1.5rem;
+}
+
+/* ===== RANK SECTION ===== */
+.rank-section {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 2.5rem;
+  margin-bottom: 3rem;
+  box-shadow: 0 4px 16px var(--shadow);
+}
+
+.rank-display {
+  background: linear-gradient(135deg, rgba(88, 217, 255, 0.1), rgba(255, 126, 185, 0.1));
+  border: 2px solid var(--border);
+  border-radius: 16px;
+  padding: 2rem;
+  margin-top: 1.5rem;
+  text-align: center;
+}
+
+.rank-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: var(--gradient);
+  color: white;
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 8px 24px var(--shadow);
+  position: relative;
+}
+
+.rank-badge::before {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  background: var(--gradient);
+  opacity: 0;
+  animation: pulse-ring 2s ease-in-out infinite;
+}
+
+.rank-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--accent2);
+  margin-bottom: 0.5rem;
+}
+
+.rank-percentile {
+  color: var(--muted);
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.rank-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.rank-stat {
+  padding: 1rem;
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+
+.rank-stat-label {
+  font-size: 0.8rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+.rank-stat-value {
+  font-size: 1.8rem;
+  font-weight: 700;
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.rank-tiers {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 0.5rem;
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 2px solid var(--border);
+}
+
+.tier-badge {
+  flex: 1;
+  text-align: center;
+  padding: 1rem;
+  border-radius: 12px;
+  background: white;
+  border: 2px solid var(--border);
+  font-weight: 600;
+  font-size: 0.85rem;
+  transition: all 0.3s ease;
+  opacity: 0.5;
+}
+
+.tier-badge.active {
+  opacity: 1;
+  border-color: var(--accent);
+  background: linear-gradient(135deg, rgba(255, 126, 185, 0.1), rgba(88, 217, 255, 0.1));
+  transform: scale(1.05);
+}
+
+.tier-icon {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.tier-name {
+  font-size: 0.8rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.tier-xp {
+  font-size: 0.75rem;
+  color: var(--accent2);
+  margin-top: 0.5rem;
+  font-weight: 700;
+}
+
+/* ===== MILESTONES IMPROVED ===== */
+.milestone-item {
+  min-width: 100px;
+  text-align: center;
+  padding: 1.5rem;
+  background: white;
+  border: 2px solid var(--border);
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.milestone-item.achieved {
+  background: linear-gradient(135deg, rgba(74, 222, 128, 0.1), rgba(74, 222, 128, 0.05));
+  border-color: var(--success);
+  box-shadow: 0 0 16px rgba(74, 222, 128, 0.2);
+}
+
+.milestone-item:hover.achieved {
+  transform: scale(1.08);
+}
+
+.milestone-item:hover:not(.achieved) {
+  border-color: var(--accent2);
+  transform: translateY(-4px);
+}
+
+.milestone-xp {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--accent2);
+}
+
+.milestone-item.achieved .milestone-xp {
+  color: var(--success);
+}
+
+.milestone-check {
+  font-size: 1.5rem;
+  margin-top: 0.5rem;
+}
+
+.milestone-label {
+  font-size: 0.75rem;
+  color: var(--muted);
+  margin-top: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: 600;
+}
+
+/* ===== THEME ACTION ===== */
+.theme-action {
+  margin: 3rem 0;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  nav .nav-links {
+    gap: 0.75rem;
+  }
+
+  main {
+    padding: 7rem 1rem 3rem;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  .xp-hero {
+    padding: 2rem 1.5rem;
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .achievements-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .themes-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .modal-content {
+    padding: 1.5rem;
+    max-width: 95vw;
+  }
+
+  .milestone-list {
+    flex-direction: column;
+  }
+
+  .milestone-item {
+    min-width: unset;
+  }
+}
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  .xp-hero-title {
+    font-size: 1.8rem;
+  }
+
+  .level-badge {
+    width: 90px;
+    height: 90px;
+    font-size: 2rem;
+  }
+
+  .stat-value {
+    font-size: 1.8rem;
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .achievements-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .themes-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .action-buttons {
+    grid-template-columns: 1fr;
+  }
+
+  .milestone-list {
+    flex-direction: column;
+  }
+
+  .history-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+}
+.stats-grid, .achievements-grid, .themes-grid, .quests-grid, .breakdown-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1rem;
+}
+
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-content">
+    <a href="index.html" class="logo">SpendSomeTime</a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="skills.html">Skills</a>
+      <a href="challenges.html">Track Challenges</a>
+      <a href="weird.html">Quick Skills</a>
+      <a href="games.html">Games</a>
+      <a href="diagram.html">All Skills</a>
+            <a href="xp-theme.html">Level and XP</a>
+
+    </div>
+    <div id="nav-stats">
+      <span id="nav-xp">0</span> XP | <span id="nav-streak" style="display: none;">🔥 <span id="streak-days">0</span></span>
+    </div>
+  </div>
+</nav>
+
+<main>
+  <h1>✨ Your XP & Rewards</h1>
+  
+  <!-- XP Hero Section -->
+  <div class="xp-hero">
+    <div class="xp-hero-title" id="hero-title">0 XP</div>
+    <p class="xp-hero-subtitle">Keep learning to unlock amazing themes and achievements!</p>
+  </div>
+
+  <!-- Level Display -->
+  <div class="level-display">
+    <div class="level-badge" id="level-badge">1</div>
+    <div class="level-info">
+      <h2>Level <span id="level-number">1</span></h2>
+      <p class="level-description" id="level-description">Beginner learner - You're just getting started!</p>
+    </div>
+  </div>
+
+  <!-- XP Progress Bar -->
+  <div class="xp-progress-section">
+    <h3>Progress to Next Level</h3>
+    <div class="xp-progress-bar">
+      <div class="xp-progress-fill" id="progress-fill"></div>
+    </div>
+    <div class="xp-progress-info">
+      <span class="xp-current" id="xp-current">0 / 100</span>
+      <span class="xp-next-level">100 XP to Level 2</span>
+    </div>
+  </div>
+
+  <!-- Stats Grid -->
+  <h2>Your Statistics</h2>
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="stat-icon">🎯</div>
+      <div class="stat-value" id="total-xp">0</div>
+      <div class="stat-label">Total XP Earned</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-icon">🏆</div>
+      <div class="stat-value" id="achievements-count">0</div>
+      <div class="stat-label">Achievements</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-icon">🎨</div>
+      <div class="stat-value" id="themes-count">1</div>
+      <div class="stat-label">Themes Unlocked</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-icon">📊</div>
+      <div class="stat-value" id="history-count">0</div>
+      <div class="stat-label">Activities</div>
+    </div>
+  </div>
+
+  <!-- Streak Card -->
+  <div class="streak-card">
+    <div class="streak-number" id="streak-number">0</div>
+    <div class="streak-label">Current Streak 🔥</div>
+    <div class="streak-message" id="streak-message">Start practicing today to build your streak!</div>
+  </div>
+
+  <!-- Achievements Section -->
+  <div class="achievements-section">
+    <h2>🎖️ Achievements</h2>
+    <p>Unlock achievements by reaching goals and building streaks</p>
+    <div class="achievements-grid" id="achievements-grid">
+      <!-- Populated by JS -->
+    </div>
+  </div>
+
+
+
+  <!-- Daily Quests Section -->
+  <div class="quests-section">
+    <h2>⚡ Daily Quests</h2>
+    <p>Complete challenges and quizzes to earn XP. More difficulty = More rewards</p>
+    <div class="quests-grid" id="quests-grid">
+      <!-- Populated by JS -->
+    </div>
+  </div>
+
+
+  <!-- Next Achievement Progress -->
+  <div class="next-achievement-section">
+    <h2>🎯 Next Achievement to Unlock</h2>
+    <div id="next-achievement-card">
+      <!-- Populated by JS -->
+    </div>
+  </div>
+
+  <!-- Rank & Leaderboard -->
+  <div class="rank-section">
+    <h2>🏆 Your Rank</h2>
+    <div class="rank-display" id="rank-display">
+      <!-- Populated by JS -->
+    </div>
+  </div>
+
+  <!-- Theme Selector Button -->
+  <div class="theme-action" style="text-align: center; margin: 3rem 0;">
+    <button class="btn btn-secondary" onclick="openThemeModal()" style="font-size: 3.1rem;">🎨 Customize Theme</button>
+  </div>
+
+  <!-- Recent XP History -->
+  <div class="history-section">
+    <h2>📜 Recent Activity</h2>
+    <p>Your learning journey in detail</p>
+    <div class="history-list" id="history-list">
+      <p style="text-align: center; color: var(--muted);">No activity yet. Start learning on <a href="challenges.html" style="color: var(--accent2); font-weight: 600;">Challenges</a> or <a href="skills.html" style="color: var(--accent2); font-weight: 600;">Skills</a>!</p>
+    </div>
+  </div>
+</main>
+
+<!-- Theme Selector Modal -->
+<div class="modal" id="theme-modal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h2>🎨 Select Your Theme</h2>
+      <button class="modal-close" onclick="closeThemeModal()">×</button>
+    </div>
+    <p>Choose a theme to customize your SpendSomeTime experience</p>
+    <div class="theme-grid" id="theme-grid-modal">
+      <!-- Populated by JS -->
+    </div>
+  </div>
+</div>
+
+<footer>
+  <p>SpendSomeTime © 2026 | <a href="privacy-policy.html">Privacy Policy</a> | Spend some time learning instead of scrolling 🧠✨</p>
+</footer>
+
+<script>
+// Note: GameSystem is initialized by gamification.js. Wait for its ready event before using it.
+
+// Format date to readable string
+function formatDate(dateString) {
+  const date = new Date(dateString);
+  const today = new Date();
+  const daysAgo = Math.floor((today - date) / (1000 * 60 * 60 * 24));
+  
+  if (daysAgo === 0) return 'Today';
+  if (daysAgo === 1) return 'Yesterday';
+  if (daysAgo < 7) return `${daysAgo} days ago`;
+  return date.toLocaleDateString();
+}
+
+// Update UI display
+function updateDisplay() {
+  const totalXP = GameSystem.getTotalXP();
+  const currentLevel = GameSystem.getCurrentLevel();
+  const nextLevel = GameSystem.getNextLevel();
+  const xpForNextLevel = Math.max(1, nextLevel.xp - currentLevel.xp); // Avoid 0 divisor at max level
+  const xpInCurrentLevel = totalXP - currentLevel.xp;
+  const progressPercent = Math.max(0, Math.min(100, (xpInCurrentLevel / xpForNextLevel) * 100));
+
+  // Update hero title
+  document.getElementById('hero-title').textContent = `${totalXP} XP`;
+
+  // Update level
+  document.getElementById('level-badge').textContent = currentLevel.index + 1;
+  document.getElementById('level-number').textContent = currentLevel.index + 1;
+  document.getElementById('level-description').textContent = currentLevel.desc;
+
+  // Update progress bar
+  const progressFill = document.getElementById('progress-fill');
+  progressFill.style.width = progressPercent + '%';
+  progressFill.textContent = Math.round(progressPercent) + '%';
+  document.getElementById('xp-current').textContent = `${xpInCurrentLevel} / ${xpForNextLevel}`;
+  document.querySelector('.xp-next-level').textContent = `${nextLevel.xp} XP to ${nextLevel.name}`;
+
+  // Update stats
+  document.getElementById('total-xp').textContent = totalXP;
+  document.getElementById('achievements-count').textContent = GameSystem.getAchievements().length;
+  document.getElementById('themes-count').textContent = GameSystem.getUnlockedThemes().length;
+
+  const userData = GameSystem.getUserData();
+  const historyCount = (userData?.xpHistory || []).length;
+  document.getElementById('history-count').textContent = historyCount;
+
+  // Update streak
+  const streakInfo = GameSystem.getStreakInfo();
+  document.getElementById('streak-number').textContent = streakInfo.current;
+  if (streakInfo.current > 0) {
+    document.getElementById('streak-message').textContent = `Amazing! Keep it up! Multiplier: ${streakInfo.multiplier.toFixed(1)}x`;
+  } else {
+    document.getElementById('streak-message').textContent = 'Start practicing today to build your streak!';
+  }
+
+  // NOTE: Nav stats are updated by gamification.js's initializeNavStats() function
+  // to avoid duplication and ensure consistency across all pages
+
+  renderAchievements();
+  renderHistory();
+  renderThemes();
+  renderQuests();
+  renderRank();
+  renderNextAchievement();
+}
+
+// Render achievements
+function renderAchievements() {
+  const grid = document.getElementById('achievements-grid');
+  const userData = GameSystem.getUserData();
+  
+  grid.innerHTML = Object.values(GameSystem.achievements).map(achievement => {
+    const isUnlocked = userData?.unlockedAchievements?.includes(achievement.id);
+    const unlockDate = userData?.achievementUnlockTimes?.[achievement.id];
+    
+    return `
+      <div class="achievement-card ${isUnlocked ? 'unlocked' : 'locked'}" 
+           title="${achievement.desc}">
+        <div class="achievement-icon">${getAchievementIcon(achievement)}</div>
+        <div class="achievement-name">${achievement.name}</div>
+        <div class="achievement-desc">${achievement.desc}</div>
+        ${isUnlocked && unlockDate ? `<div class="achievement-unlock-date">${formatDate(unlockDate)}</div>` : ''}
+      </div>
+    `;
+  }).join('');
+}
+
+// Get achievement icon based on type
+function getAchievementIcon(achievement) {
+  if (achievement.id === 'firstSteps') return '🚀';
+  if (achievement.id === 'earlyBird') return '🌅';
+  if (achievement.id === 'grinder') return '⚡';
+  if (achievement.id === 'legend') return '👑';
+  if (achievement.id.includes('streak')) return '🔥';
+  if (achievement.id.includes('collector')) return '🎨';
+  return '⭐'; // Default icon
+}
+
+// Theme handler attachment guard
+let themeHandlersAttached = false;
+
+// Render themes into the modal (we removed the visible gallery to avoid duplicates)
+function renderThemes() {
+  const modalGrid = document.getElementById('theme-grid-modal');
+  const themes = ThemeManager.getAllThemes() || [];
+  if (!modalGrid || !themes.length) return;
+
+  const activeTheme = GameSystem.getActiveTheme();
+  const unlockedThemes = GameSystem.getUnlockedThemes();
+
+  const html = themes.map(theme => {
+    const isUnlocked = unlockedThemes.includes(theme.id);
+    const isActive = activeTheme === theme.id;
+
+    return `
+      <div class="theme-card ${!isUnlocked ? 'locked' : ''} ${isActive ? 'active' : ''}"
+           data-id="${theme.id}"
+           data-cost="${theme.xpCost}">
+        ${isActive ? `<div class="active-badge">✓</div>` : ''}
+        <div class="theme-preview"
+             style="background: linear-gradient(135deg, ${theme.cssVariables.accent}, ${theme.cssVariables.accent2})"></div>
+        <div class="theme-name">${theme.name}</div>
+        <div class="theme-cost">${theme.xpCost} XP</div>
+        <div class="theme-status">
+          ${isUnlocked ? (isActive ? '✓ Active' : 'Unlocked') : 'Locked'}
+        </div>
+      </div>
+    `;
+  }).join('');
+
+  modalGrid.innerHTML = html;
+  attachThemeClickHandlers();
+}
+
+// Attach a single delegated click handler to the modal to avoid duplicate handlers
+function attachThemeClickHandlers() {
+  if (themeHandlersAttached) return;
+  const modalGrid = document.getElementById('theme-grid-modal');
+  if (!modalGrid) return;
+
+  modalGrid.addEventListener('click', (e) => {
+    const card = e.target.closest('.theme-card');
+    if (!card) return;
+    const id = card.dataset.id;
+    const cost = Number(card.dataset.cost || 0);
+
+    if (GameSystem.isThemeUnlocked(id)) {
+      ThemeManager.applyTheme(id);
+      renderThemes();
+      showThemeToast(id);
+    } else {
+      const result = GameSystem.unlockTheme(id, cost);
+      if (result) {
+        ThemeManager.applyTheme(id);
+        renderThemes();
+        updateDisplay();
+        showThemeToast(id);
+      } else {
+        showToast('Not enough XP to unlock this theme', 'info');
+      }
+    }
+  });
+
+  themeHandlersAttached = true;
+}
+
+// Daily quests data and handlers
+let dailyQuests = [
+  { id: 'q1', title: 'Practice 10 minutes', desc: 'Spend at least 10 minutes studying today', xp: 5, difficulty: 'easy' },
+  { id: 'q2', title: 'Complete a quiz', desc: 'Finish a short quiz to test your knowledge', xp: 15, difficulty: 'medium' },
+  { id: 'q3', title: 'Reflect on learning', desc: 'Write a short reflection after practice', xp: 8, difficulty: 'easy' }
+];
+let questsCompleted = JSON.parse(localStorage.getItem('questsCompleted') || '[]');
+
+function renderQuests() {
+  const grid = document.getElementById('quests-grid');
+  if (!grid) return;
+
+  grid.innerHTML = dailyQuests.map(q => {
+    const done = questsCompleted.includes(q.id);
+    return `
+      <div class="quest-card ${done ? 'completed' : ''}" data-id="${q.id}">
+        <div class="quest-icon">⚡</div>
+        <div class="quest-title">${q.title}</div>
+        <div class="quest-desc">${q.desc}</div>
+        <div class="quest-xp-reward">${q.xp} XP</div>
+        <div class="quest-difficulty ${q.difficulty === 'hard' ? 'hard' : ''}">${q.difficulty}</div>
+        <div style="margin-top:1rem;">
+          <button class="btn btn-primary" data-action="complete" ${done ? 'disabled' : ''}>${done ? 'Completed' : 'Complete'}</button>
+        </div>
+      </div>
+    `;
+  }).join('');
+
+  // Delegated click handler for quest completion
+  const handlerId = 'quests-delegated';
+  if (!document.getElementById(handlerId)) {
+    const marker = document.createElement('div');
+    marker.id = handlerId;
+    marker.style.display = 'none';
+    document.body.appendChild(marker);
+
+    grid.addEventListener('click', (e) => {
+      const btn = e.target.closest('button[data-action="complete"]');
+      if (!btn) return;
+      const card = btn.closest('.quest-card');
+      if (!card) return;
+      const id = card.dataset.id;
+      completeQuest(id);
+    });
+  }
+}
+
+function completeQuest(id) {
+  const quest = dailyQuests.find(q => q.id === id);
+  if (!quest) return;
+  if (questsCompleted.includes(id)) return;
+
+  // Award XP safely via GameSystem
+  GameSystem.awardXP(quest.xp, 'dailyQuest:' + id);
+  questsCompleted.push(id);
+  localStorage.setItem('questsCompleted', JSON.stringify(questsCompleted));
+  showXPToast(quest.xp, 'Daily Quest');
+  updateDisplay();
+}
+
+// Render rank/leaderboard summary (client-only approximation)
+function renderRank() {
+  const container = document.getElementById('rank-display');
+  if (!container) return;
+  const totalXP = GameSystem.getTotalXP();
+  const level = GameSystem.getCurrentLevel();
+  const next = GameSystem.getNextLevel();
+  const xpThis = totalXP - level.xp;
+  const xpToNext = Math.max(1, next.xp - level.xp);
+  const progress = Math.round((xpThis / xpToNext) * 100);
+  const percentile = Math.min(99, Math.round((level.index / (GameSystem.levels.length - 1)) * 100));
+
+  container.innerHTML = `
+    <div class="rank-badge">${level.index + 1}</div>
+    <div class="rank-title">${level.name}</div>
+    <div class="rank-percentile">Top ${100 - percentile}% of learners (approx)</div>
+    <div class="rank-stats">
+      <div class="rank-stat">
+        <div class="rank-stat-label">Total XP</div>
+        <div class="rank-stat-value">${totalXP}</div>
+      </div>
+      <div class="rank-stat">
+        <div class="rank-stat-label">Level Progress</div>
+        <div class="rank-stat-value">${progress}%</div>
+      </div>
+      <div class="rank-stat">
+        <div class="rank-stat-label">Next Level</div>
+        <div class="rank-stat-value">${next.name} (${next.xp} XP)</div>
+      </div>
+    </div>
+  `;
+}
+
+// Next achievement card
+function renderNextAchievement() {
+  const container = document.getElementById('next-achievement-card');
+  if (!container) return;
+  const next = GameSystem.getNextAchievement();
+  const totalXP = GameSystem.getTotalXP();
+  if (!next) {
+    container.innerHTML = '<div class="next-achievement-card">All achievements unlocked — amazing!</div>';
+    return;
+  }
+
+  let progressPercent = 0;
+  if (next.xp) {
+    progressPercent = Math.min(100, Math.round((totalXP / next.xp) * 100));
+  } else if (next.streak) {
+    const streak = GameSystem.getStreakInfo().current;
+    progressPercent = Math.min(100, Math.round((streak / next.streak) * 100));
+  }
+
+  container.innerHTML = `
+    <div class="next-achievement-card">
+      <div class="next-achievement-icon">${getAchievementIcon(next)}</div>
+      <div class="next-achievement-title">${next.name}</div>
+      <div class="next-achievement-desc">${next.desc}</div>
+      <div class="achievement-progress-bar"><div class="achievement-progress-fill" style="width:${progressPercent}%"></div></div>
+      <div class="achievement-progress-text">${progressPercent}% complete</div>
+    </div>
+  `;
+}
+
+// Render history
+function renderHistory() {
+  const list = document.getElementById('history-list');
+  const userData = GameSystem.getUserData();
+  const history = (userData?.xpHistory || []).slice().reverse().slice(0, 10);
+
+  if (history.length === 0) {
+    list.innerHTML = '<p style="text-align: center; color: var(--muted);">No activity yet. Start earning XP!</p>';
+    return;
+  }
+
+  list.innerHTML = history.map(entry => `
+    <div class="history-item">
+      <div>
+        <div class="history-source">${entry.source}</div>
+        <div class="history-date">${formatDate(entry.timestamp)}</div>
+      </div>
+      <div class="history-amount">+${entry.amount} XP</div>
+    </div>
+  `).join('');
+}
+
+// Demo XP gain function
+function gainXPDemo(amount, source) {
+  GameSystem.awardXP(amount, source);
+  showXPToast(amount, source);
+  updateDisplay();
+}
+
+// Show XP toast
+function showXPToast(amount, source) {
+  const toast = document.createElement('div');
+  toast.className = 'xp-toast';
+  toast.innerHTML = `+${amount} XP<br><small>${source}</small>`;
+  document.body.appendChild(toast);
+
+  createCelebrationParticles(8);
+
+  if (window.gsap) {
+    gsap.to(toast, {
+      y: -150,
+      opacity: 0,
+      duration: 3,
+      delay: 1,
+      ease: 'power2.in',
+      onComplete: () => toast.remove()
+    });
+  } else {
+    setTimeout(() => toast.remove(), 2000);
+  }
+}
+
+// Create celebration particles
+function createCelebrationParticles(count) {
+  const emojis = ['⭐', '✨', '🎉', '🎊', '💫', '🚀', '🏆'];
+  for (let i = 0; i < count; i++) {
+    const p = document.createElement('div');
+    p.style.position = 'fixed';
+    p.style.pointerEvents = 'none';
+    p.style.left = (Math.random() * 100) + 'vw';
+    p.style.top = '60vh';
+    p.style.fontSize = '2rem';
+    p.style.zIndex = '9999';
+    p.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+    document.body.appendChild(p);
+
+    const duration = 2000 + Math.random() * 1000;
+    const yDist = 300 + Math.random() * 300;
+    const xDist = (Math.random() - 0.5) * 400;
+
+    if (window.gsap) {
+      gsap.to(p, {
+        y: -yDist,
+        x: xDist,
+        opacity: 0,
+        scale: 0,
+        duration: duration / 1000,
+        ease: 'power2.out',
+        onComplete: () => p.remove()
+      });
+    } else {
+      setTimeout(() => p.remove(), duration);
+    }
+  }
+}
+
+// Show theme toast
+function showThemeToast(themeId) {
+  const theme = ThemeManager.getTheme(themeId);
+  const toast = document.createElement('div');
+  toast.className = 'achievement-toast';
+  toast.innerHTML = `✓ Theme Applied: ${theme.name}`;
+  document.body.appendChild(toast);
+
+  setTimeout(() => toast.remove(), 2000);
+}
+
+// Show generic toast
+function showToast(message, type = 'info') {
+  const toast = document.createElement('div');
+  toast.className = `achievement-toast ${type}`;
+  toast.innerHTML = message;
+  toast.style.top = '20px';
+  document.body.appendChild(toast);
+
+  setTimeout(() => toast.remove(), 2000);
+}
+
+// Modal functions
+function openThemeModal() {
+  const modal = document.getElementById('theme-modal');
+  if (modal) modal.classList.add('active');
+}
+
+function closeThemeModal() {
+  const modal = document.getElementById('theme-modal');
+  if (modal) modal.classList.remove('active');
+}
+
+// Initialize the page when GameSystem is ready
+function initializePageDisplay() {
+  // Set up modal click listener
+  const modal = document.getElementById('theme-modal');
+  if (modal) {
+    modal.addEventListener('click', (e) => {
+      if (e.target.id === 'theme-modal') {
+        closeThemeModal();
+      }
+    });
+  }
+  
+  // Initial render
+  updateDisplay();
+
+  // Listen for gamification events to keep UI in sync
+  window.addEventListener('xpGained', () => updateDisplay());
+  window.addEventListener('gamificationUpdate', () => updateDisplay());
+  window.addEventListener('themeChanged', () => renderThemes());
+}
+
+// Wait for GameSystem to be ready before initializing the page
+if (typeof GameSystem !== 'undefined' && GameSystem.getUserData()) {
+  // GameSystem already loaded
+  setTimeout(initializePageDisplay, 50);
+} else {
+  // Wait for GameSystem to initialize
+  window.addEventListener('gamificationReady', initializePageDisplay);
+}
+</script>
+
+</body>
+</html>

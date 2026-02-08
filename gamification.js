@@ -7,24 +7,27 @@ const GameSystem = {
   // Default user data structure
   defaultUserData: {
     totalXP: 0,
-    unlockedThemes: ['default'], // 'default' theme always unlocked
+    unlockedThemes: ['default'],
     activeTheme: 'default',
-    xpHistory: [], // Track XP gains for analytics
+    xpHistory: [],
     currentStreak: 0,
     longestStreak: 0,
     lastActivityDate: null,
-    unlockedAchievements: [],
-    milestones: [50, 100, 250, 500, 1000, 2500, 5000] // XP milestones for celebration
+    unlockedAchievements: [], // Array of achievement IDs
+    achievementUnlockTimes: {}, // Track when achievements were unlocked to prevent re-triggering
+milestones: [50, 100, 250, 500, 1000, 2500, 5000],
+passedMilestones: []
+
   },
 
-  // Reward amounts for different actions
+  // Reward amounts for different actions (SINGLE SOURCE OF TRUTH)
   rewards: {
-    logOfflineSession: 10,    // Logging focus/offline time
-    completeChallenge: 25,    // Completing a challenge
-    logReflection: 5,         // Quick reflection or micro win
-    completeQuiz: 15,         // Completing a skill quiz
-    winGame: 20,              // Winning a brain game
-    themeUnlock: 10,          // Bonus for successfully unlocking a theme
+    logOfflineSession: 10,
+    completeChallenge: 25,
+    logReflection: 5,
+    completeQuiz: 15,
+    winGame: 20,
+    themeUnlock: 10,
   },
 
   // Achievement definitions
@@ -38,6 +41,10 @@ const GameSystem = {
     collectorMaster: { id: 'collectorMaster', name: '🌈 Master Collector', desc: 'Unlock 5 themes', theme: 5 },
   },
 
+  // Debouncing: prevent XP farming from rapid refreshes/navigation
+  _lastXPAwardTime: 0,
+  _xpDebounceMs: 500, // Minimum ms between XP awards for same action
+
   /**
    * Initialize gamification system
    * @returns {Object} User gamification data
@@ -47,6 +54,10 @@ const GameSystem = {
     if (!userData) {
       userData = { ...this.defaultUserData };
       this.saveUserData(userData);
+    }
+    // Initialize achievement timestamps if missing (migration)
+    if (!userData.achievementUnlockTimes) {
+      userData.achievementUnlockTimes = {};
     }
     // Dispatch event to notify that GameSystem is ready
     setTimeout(() => {
@@ -66,7 +77,7 @@ const GameSystem = {
   },
 
   /**
-   * Save user's gamification data to localStorage
+   * Save user's gamification data to localStorage (SINGLE SOURCE OF TRUTH)
    * @param {Object} userData - User data to save
    */
   saveUserData(userData) {
@@ -76,12 +87,20 @@ const GameSystem = {
   },
 
   /**
-   * Award XP to user (never takes XP, only adds)
+   * Award XP to user with debouncing to prevent farming
    * @param {number} amount - XP to award
    * @param {string} source - Source of XP (for analytics)
-   * @returns {Object} Updated user data
+   * @returns {Object} Updated user data or null if debounced
    */
   awardXP(amount, source = 'unknown') {
+    const now = Date.now();
+    // FARMING PREVENTION: Check if we're awarding too frequently
+    if (now - this._lastXPAwardTime < this._xpDebounceMs) {
+      console.log('XP award debounced - too frequent');
+      return null; // Debounced, don't award
+    }
+    this._lastXPAwardTime = now;
+
     const userData = this.getUserData() || this.defaultUserData;
     userData.totalXP += amount;
 
@@ -95,19 +114,20 @@ const GameSystem = {
     // Update streak
     this.updateStreak(userData);
 
-    // Check for achievements
+    // Check for NEWLY unlocked achievements (only)
     const newAchievements = this.checkAchievements(userData);
 
     this.saveUserData(userData);
     
-    // Dispatch event for UI animations
+    // SEPARATE VISUAL FEEDBACK FROM STATE: Dispatch event with new achievements
+    // Only achievements unlocked in THIS call are included
     window.dispatchEvent(new CustomEvent('xpGained', { 
       detail: { 
         amount, 
         source, 
         newTotal: userData.totalXP,
         streakMultiplier: this.getStreakMultiplier(userData),
-        newAchievements 
+        newAchievements  // Only newly unlocked ones
       } 
     }));
 
@@ -118,25 +138,23 @@ const GameSystem = {
   },
 
   /**
-   * Update user's daily streak
+   * Update user's daily streak (IDEMPOTENT: safe to call multiple times)
    * @param {Object} userData - User data to update
    */
   updateStreak(userData) {
     const today = new Date().toDateString();
     const lastDate = userData.lastActivityDate ? new Date(userData.lastActivityDate).toDateString() : null;
     
+    // Only update if date changed (prevent multiple updates same day)
     if (lastDate !== today) {
       const yesterday = new Date(Date.now() - 86400000).toDateString();
       
       if (lastDate === yesterday) {
-        // Streak continues
         userData.currentStreak += 1;
       } else {
-        // Streak broken or first activity
         userData.currentStreak = 1;
       }
       
-      // Update longest streak
       if (userData.currentStreak > userData.longestStreak) {
         userData.longestStreak = userData.currentStreak;
       }
@@ -159,16 +177,21 @@ const GameSystem = {
   },
 
   /**
-   * Check for achievement unlocks
+   * Check for achievement unlocks - only returns NEWLY unlocked achievements
+   * CRITICAL: Each achievement is shown only once per unlock
    * @param {Object} userData - User data
-   * @returns {Array} Newly unlocked achievements
+   * @returns {Array} Newly unlocked achievements (empty if none new)
    */
   checkAchievements(userData) {
     const newAchievements = [];
     userData.unlockedAchievements = userData.unlockedAchievements || [];
+    userData.achievementUnlockTimes = userData.achievementUnlockTimes || {};
 
     Object.values(this.achievements).forEach(achievement => {
-      if (userData.unlockedAchievements.includes(achievement.id)) return;
+      // GUARD: Skip if already unlocked
+      if (userData.unlockedAchievements.includes(achievement.id)) {
+        return;
+      }
 
       let unlocked = false;
 
@@ -182,6 +205,8 @@ const GameSystem = {
 
       if (unlocked) {
         userData.unlockedAchievements.push(achievement.id);
+        // PERSISTENCE: Record the exact time achievement was unlocked
+        userData.achievementUnlockTimes[achievement.id] = new Date().toISOString();
         newAchievements.push(achievement);
       }
     });
@@ -195,13 +220,11 @@ const GameSystem = {
    */
   checkMilestone(userData) {
     userData.milestones = userData.milestones || [50, 100, 250, 500, 1000, 2500, 5000];
+    userData.passedMilestones = userData.passedMilestones || [];
     
     userData.milestones.forEach(milestone => {
-      if (userData.totalXP >= milestone && !userData.passedMilestones) {
-        userData.passedMilestones = userData.passedMilestones || [];
-      }
+      // Only trigger once per milestone
       if (userData.totalXP >= milestone && !userData.passedMilestones.includes(milestone)) {
-        userData.passedMilestones = userData.passedMilestones || [];
         userData.passedMilestones.push(milestone);
         
         window.dispatchEvent(new CustomEvent('milestoneCelebration', {
@@ -362,15 +385,55 @@ const GameSystem = {
       }
     }
     return null;
+  },
+
+  // Level System - CENTRALIZED
+  levels: [
+    { xp: 0, name: 'Beginner', desc: 'You\'re just getting started!' },
+    { xp: 100, name: 'Learner', desc: 'You\'re building momentum!' },
+    { xp: 250, name: 'Scholar', desc: 'Knowledge is power!' },
+    { xp: 500, name: 'Master', desc: 'You\'re becoming an expert!' },
+    { xp: 1000, name: 'Sage', desc: 'True mastery has been achieved!' },
+    { xp: 2500, name: 'Legend', desc: 'You are a legend!' },
+    { xp: 5000, name: 'Mythical', desc: 'Beyond legendary!' }
+  ],
+
+  /**
+   * Get current level based on XP
+   * @param {number} xp - XP amount (optional, uses current if not provided)
+   * @returns {Object} Level object with index, xp, name, desc
+   */
+  getCurrentLevel(xp = null) {
+    const totalXP = xp !== null ? xp : this.getTotalXP();
+    for (let i = this.levels.length - 1; i >= 0; i--) {
+      if (totalXP >= this.levels[i].xp) {
+        return { index: i, ...this.levels[i] };
+      }
+    }
+    return { index: 0, ...this.levels[0] };
+  },
+
+  /**
+   * Get next level
+   * @returns {Object} Next level object
+   */
+  getNextLevel() {
+    const currentLevel = this.getCurrentLevel();
+    if (currentLevel.index < this.levels.length - 1) {
+      return this.levels[currentLevel.index + 1];
+    }
+    return currentLevel;
   }
 
 };
 
 /**
  * Theme Manager - Loads themes from JSON and applies them
+ * IDEMPOTENT: Safe to call applyTheme multiple times without re-rendering
  */
 const ThemeManager = {
   themes: [],
+  _currentAppliedTheme: null, // Track currently applied theme to prevent redundant applications
 
   /**
    * Load themes from themes.json
@@ -405,12 +468,18 @@ const ThemeManager = {
   },
 
   /**
-   * Apply theme to document
+   * Apply theme to document (IDEMPOTENT: Safe to call repeatedly)
+   * GUARD: Skips if same theme is already applied
    * @param {string} themeId - Theme ID to apply
    */
   applyTheme(themeId) {
     const theme = this.getTheme(themeId);
     if (!theme) return;
+
+    // GUARD: Skip if this theme is already applied (prevent redundant DOM updates)
+    if (this._currentAppliedTheme === themeId) {
+      return;
+    }
 
     const root = document.documentElement;
 
@@ -424,16 +493,23 @@ const ThemeManager = {
       document.body.style.background = theme.background;
     }
 
-    // Add theme class
-    document.body.classList.remove(...this.themes.map(t => `theme-${t.id}`));
+    // Remove old theme class
+    if (this._currentAppliedTheme) {
+      document.body.classList.remove(`theme-${this._currentAppliedTheme}`);
+    }
+    
+    // Add new theme class
     document.body.classList.add(`theme-${themeId}`);
 
-    // Save active theme
+    // Track what we applied (prevents re-application)
+    this._currentAppliedTheme = themeId;
+
+    // Save active theme (update GameSystem state)
     GameSystem.setActiveTheme(themeId);
   },
 
   /**
-   * Apply the user's currently active theme
+   * Apply the user's currently active theme (IDEMPOTENT)
    */
   applyActiveTheme() {
     const activeThemeId = GameSystem.getActiveTheme();
@@ -460,6 +536,7 @@ if (document.readyState === 'loading') {
 
 /**
  * Initialize navigation stats display and keep it updated
+ * Updates nav XP/streak display across all pages
  */
 function initializeNavStats() {
   function updateNavStats() {
@@ -467,15 +544,21 @@ function initializeNavStats() {
     const navStreakEl = document.getElementById('nav-streak');
     const streakDaysEl = document.getElementById('streak-days');
     
-    if (!navXpEl) return; // Nav stats not on this page
+    // GUARD: Only update if nav stats exist on this page
+    if (!navXpEl) return; 
     
     const userData = GameSystem.getUserData();
     if (userData) {
       navXpEl.textContent = userData.totalXP;
-      
-      if (userData.currentStreak > 0) {
-        navStreakEl.style.display = 'inline';
-        streakDaysEl.textContent = userData.currentStreak;
+
+      // Only update streak elements if they exist on the page
+      if (navStreakEl && streakDaysEl) {
+        if (userData.currentStreak > 0) {
+          navStreakEl.style.display = 'inline';
+          streakDaysEl.textContent = userData.currentStreak;
+        } else {
+          navStreakEl.style.display = 'none';
+        }
       }
     }
   }
@@ -483,9 +566,39 @@ function initializeNavStats() {
   // Update immediately
   updateNavStats();
   
-  // Update on gamification events
+  // Update on gamification events (DEBOUNCED by GameSystem.awardXP)
   window.addEventListener('gamificationUpdate', updateNavStats);
   window.addEventListener('xpGained', updateNavStats);
   window.addEventListener('gamificationReady', updateNavStats);
 }
+
+// Listen for progress events from other pages (e.g., challenges page)
+// and award XP centrally. This avoids duplicating award logic on each page.
+document.addEventListener('challengeProgress', (e) => {
+  try {
+    const d = e.detail || {};
+    const timeSpent = Number(d.timeSpent) || 0; // minutes
+    const progressIncreased = !!d.progressIncreased;
+    const completed = !!d.completed;
+
+    // Calculate XP: small reward per minutes, larger bonus for completing a challenge
+    // Safe defaults to avoid large awards from bogus inputs
+    const cappedMinutes = Math.min(Math.max(0, timeSpent), 300); // cap 300 minutes
+    const xpFromTime = Math.round(cappedMinutes / 5); // 1 XP per ~5 minutes
+
+    let xp = xpFromTime;
+    if (progressIncreased) xp += 2; // small bonus for making daily progress
+    if (completed) xp += GameSystem.rewards.completeChallenge || 25; // completion bonus
+
+    // Apply streak multiplier
+    const userData = GameSystem.getUserData() || {};
+    const multiplier = GameSystem.getStreakMultiplier(userData) || 1.0;
+    xp = Math.max(1, Math.round(xp * multiplier));
+
+    // Award via centralized method (has internal debounce to reduce farming)
+    GameSystem.awardXP(xp, 'challengeProgress');
+  } catch (err) {
+    console.warn('challengeProgress handler error', err);
+  }
+});
 

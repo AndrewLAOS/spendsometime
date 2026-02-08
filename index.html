@@ -49,8 +49,8 @@
   box-sizing: border-box;
   font-family: 'Inter', system-ui, sans-serif;
   scroll-behavior: smooth;
-  transition: all 0.3s ease;
 }
+
 
 body {
   margin: 0;
@@ -79,9 +79,9 @@ nav .nav-content {
 }
 
 nav .logo {
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   font-weight: 700;
-  background: var(--gradient);
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -98,8 +98,8 @@ nav .nav-links a {
   color: var(--text);
   text-decoration: none;
   font-weight: 600;
+  font-size: 0.9rem;
   transition: color 0.3s ease;
-  font-size: 0.95rem;
 }
 
 nav .nav-links a:hover {
@@ -406,11 +406,6 @@ footer a:hover {
     font-size: 1.5rem;
   }
 }
-.stats-banner, .quick-actions {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 2rem;
-}
 
 @media (max-width: 600px) {
   .stats-banner, .quick-actions {
@@ -482,16 +477,17 @@ footer a:hover {
 
 <nav>
   <div class="nav-content">
-    <a href="index.html" class="logo">SpendSomeTime</a>
-    <div class="nav-links">
-      <a href="index.html">Home</a>
-      <a href="skills.html">Skills</a>
-      <a href="challenges.html">Track Challenges</a>
-      <a href="weird.html">Quick Skills</a>
-      <a href="games.html">Games</a>
-      <a href="diagram.html">All Skills</a>
+  <a href="index.html" class="logo">SpendSomeTime</a>
+  <div class="nav-links">
+  <a href="index.html">Home</a>
+<a href="skills.html">Skills</a>
+<a href="challenges.html">Track Challenges</a>
+<a href="weird.html">Quick Skills</a>
+<a href="games.html">Games</a>
+<a href="diagram.html">All Skills</a>
+            <a href="xp-theme.html">Level and XP</a>
     </div>
-    <div id="nav-stats" style="display: flex; gap: 1rem; align-items: center; font-size: 0.9rem; font-weight: 600;">
+   <div id="nav-stats">
       <span style="color: var(--accent2);">⭐ <span id="nav-xp">0</span> XP</span>
       <span id="nav-streak" style="color: var(--accent); display: none;">🔥 <span id="streak-days">0</span> days</span>
     </div>

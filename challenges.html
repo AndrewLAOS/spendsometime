@@ -280,50 +280,7 @@ main {
   }
 }
 
-.achievement-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 1rem;
-  margin: 2rem 0;
-}
-
-.achievement-card {
-  background: var(--panel);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 1.5rem;
-  text-align: center;
-  box-shadow: 0 4px 12px var(--shadow);
-  transition: transform 0.3s ease, border-color 0.3s ease;
-  opacity: 0.6;
-}
-
-.achievement-card:hover {
-  transform: translateY(-4px);
-}
-
-.achievement-card.unlocked {
-  opacity: 1;
-  border-color: var(--success);
-  background: linear-gradient(135deg, #ffffff, #f0fdf4);
-  box-shadow: 0 8px 20px rgba(74, 222, 128, 0.2);
-}
-
-.achievement-icon {
-  font-size: 3rem;
-  margin-bottom: 0.5rem;
-}
-
-.achievement-title {
-  font-weight: 600;
-  color: var(--accent2);
-  margin-bottom: 0.5rem;
-}
-
-.achievement-desc {
-  font-size: 0.85rem;
-  color: var(--muted);
-}
+/* Achievements UI removed */
 
 h1 {
   font-size:2.8rem;
@@ -747,236 +704,7 @@ h1 {
   margin: 0.3rem 0.3rem 0 0;
 }
 
-/* XP and Theme Styles */
-.xp-section {
-  display: flex;
-  gap: 1.5rem;
-  align-items: center;
-  padding: 1rem 1.5rem;
-  background: linear-gradient(135deg, var(--accent), var(--accent2));
-  border-radius: 12px;
-  color: white;
-  margin-bottom: 1.5rem;
-  box-shadow: 0 4px 16px var(--shadow);
-}
-
-.xp-display {
-  display: flex;
-  gap: 0.5rem;
-  align-items: center;
-  font-weight: 700;
-  font-size: 1.3rem;
-  margin-right: auto;
-}
-
-.xp-display-icon {
-  font-size: 1.8rem;
-  animation: pulse 0.6s ease-in-out;
-}
-
-.theme-selector-btn {
-  padding: 0.6rem 1.2rem;
-  background: white;
-  color: var(--accent2);
-  border: none;
-  border-radius: 8px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.theme-selector-btn:hover {
-  transform: scale(1.05);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-}
-
-.theme-modal {
-  display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.5);
-  z-index: 2000;
-  align-items: center;
-  justify-content: center;
-}
-
-.theme-modal.active {
-  display: flex;
-}
-
-.theme-modal-content {
-  background: var(--panel);
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  padding: 2rem;
-  max-width: 600px;
-  width: 90%;
-  max-height: 80vh;
-  overflow-y: auto;
-  box-shadow: 0 20px 60px var(--shadow);
-  position: relative;
-}
-
-.theme-modal-content h2 {
-  margin-top: 0;
-  color: var(--accent2);
-}
-
-.theme-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 1rem;
-  margin: 1.5rem 0;
-}
-
-.theme-card {
-  background: var(--panel);
-  border: 2px solid var(--border);
-  border-radius: 12px;
-  padding: 1.5rem;
-  text-align: center;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  position: relative;
-  min-height: 180px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.theme-card:hover:not(.theme-card.locked) {
-  border-color: var(--accent2);
-  transform: translateY(-4px);
-  box-shadow: 0 8px 24px var(--shadow);
-}
-
-.theme-card.active {
-  border-color: var(--accent);
-  background: linear-gradient(135deg, rgba(88, 217, 255, 0.1), rgba(255, 126, 185, 0.1));
-  box-shadow: 0 0 0 3px var(--accent2);
-}
-
-.theme-card.locked {
-  opacity: 0.6;
-  cursor: not-allowed;
-}
-
-.theme-card .theme-preview {
-  width: 60px;
-  height: 60px;
-  border-radius: 8px;
-  margin-bottom: 0.8rem;
-  box-shadow: 0 2px 8px var(--shadow);
-}
-
-.theme-card .theme-name {
-  font-weight: 600;
-  color: var(--text);
-  margin-bottom: 0.3rem;
-}
-
-.theme-card .theme-cost {
-  font-size: 0.85rem;
-  color: var(--muted);
-  margin-bottom: 0.5rem;
-}
-
-.theme-card .theme-status {
-  font-size: 0.75rem;
-  font-weight: 600;
-  padding: 0.3rem 0.8rem;
-  border-radius: 12px;
-  background: var(--accent2);
-  color: white;
-}
-
-.theme-card.locked .theme-status {
-  background: #ccc;
-  color: #666;
-}
-
-.unlock-btn {
-  width: 100%;
-  padding: 0.7rem;
-  background: linear-gradient(135deg, var(--accent), var(--accent2));
-  color: white;
-  border: none;
-  border-radius: 8px;
-  font-weight: 600;
-  cursor: pointer;
-  margin-top: 0.8rem;
-  transition: all 0.3s ease;
-}
-
-.unlock-btn:hover {
-  transform: scale(1.05);
-  box-shadow: 0 4px 12px var(--shadow);
-}
-
-.unlock-btn:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-}
-
-.theme-modal-close {
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-  background: none;
-  border: none;
-  font-size: 1.5rem;
-  cursor: pointer;
-  color: var(--muted);
-  transition: color 0.3s ease;
-}
-
-.theme-modal-close:hover {
-  color: var(--text);
-}
-
-.xp-toast {
-  position: fixed;
-  bottom: 2rem;
-  right: 2rem;
-  background: linear-gradient(135deg, var(--accent), var(--accent2));
-  color: white;
-  padding: 1rem 1.5rem;
-  border-radius: 12px;
-  box-shadow: 0 8px 24px var(--shadow);
-  animation: slideInUp 0.5s ease;
-  z-index: 3000;
-}
-
-@keyframes slideInUp {
-  from {
-    transform: translateY(100px);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
-@keyframes pulse {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.2); }
-}
-
-@keyframes popIn {
-  from {
-    transform: translate(-50%, -50%) scale(0);
-    opacity: 0;
-  }
-  to {
-    transform: translate(-50%, -50%) scale(1);
-    opacity: 1;
-  }
-}
+/* Theme, XP and toast styles removed */
 
 footer {
   background: rgba(255, 255, 255, 0.95);
@@ -1227,7 +955,12 @@ footer a:hover {
       <a href="weird.html">Quick Skills</a>
       <a href="games.html">Games</a>
             <a href="diagram.html">All Skills</a>
+              <a href="xp-theme.html">Level and XP</a>
     </div>
+      <div id="nav-stats" style="margin-left:1rem; font-weight:700; color:var(--accent2);">
+        <span id="nav-xp">0</span> XP
+        <span id="nav-streak" style="display:none; margin-left:0.6rem;">🔥 <span id="streak-days">0</span></span>
+      </div>
   </div>
 </nav>
 
@@ -1235,20 +968,11 @@ footer a:hover {
   <h1>My Learning Challenges</h1>
   <p>Turn your quiz results into actionable challenges. Track your progress and celebrate your wins!</p>
 
-  <!-- XP Display Section -->
-  <div class="xp-section">
-    <div class="xp-display">
-      <span class="xp-display-icon">⭐</span>
-      <span id="xp-total">0 XP</span>
-    </div>
-    <button class="theme-selector-btn" onclick="openThemeSelector()">🎨 Themes</button>
-  </div>
-
   <div class="view-toggle">
     <button class="active" data-view="list" onclick="switchView('list', event)">📋 List View</button>
     <button data-view="calendar" onclick="switchView('calendar', event)">📅 Calendar</button>
     <button data-view="chart" onclick="switchView('chart', event)">📊 Progress Chart</button>
-    <button data-view="achievements" onclick="switchView('achievements', event)">🏆 Achievements</button>
+    <!-- Achievements removed -->
   </div>
 
   <div class="stats-bar">
@@ -1287,7 +1011,7 @@ footer a:hover {
 
   <div id="calendar-view" class="calendar-view"></div>
   <div id="chart-view" class="progress-chart" style="display:none;"></div>
-  <div id="achievements-view" class="achievement-grid" style="display:none;"></div>
+  <!-- Achievements view removed -->
 
   <div style="text-align:center; margin-top:3rem;">
     <button class="btn btn-primary" onclick="openAddModal()">+ Add New Challenge</button>
@@ -1345,15 +1069,7 @@ footer a:hover {
   </div>
 </div>
 
-<!-- Theme Selector Modal -->
-<div class="theme-modal" id="theme-modal">
-  <div class="theme-modal-content">
-    <button class="theme-modal-close" onclick="closeThemeSelector()">✕</button>
-    <h2>Select Your Theme</h2>
-    <p>Choose a theme to customize your SpendSomeTime experience</p>
-    <div class="theme-grid" id="theme-grid"></div>
-  </div>
-</div>
+
 
 <script>
 let challenges = JSON.parse(localStorage.getItem('challenges') || '[]');
@@ -1442,11 +1158,7 @@ function updateStats() {
   document.getElementById('completed-challenges').textContent = completed;
   document.getElementById('current-streak').textContent = streak;
   
-  // Update XP display (safely check if GameSystem is available)
-  if (typeof GameSystem !== 'undefined') {
-    const totalXP = GameSystem.getTotalXP();
-    document.getElementById('xp-total').textContent = totalXP + ' XP';
-  }
+  // Gamification removed from this page — XP display not shown here
 }
 
 function renderChallenges() {
@@ -1610,11 +1322,24 @@ function closeProgressModal() {
 document.getElementById('progress-form').addEventListener('submit', (e) => {
   e.preventDefault();
   
-const challenge = getChallengeById(progressChallengeId);
+  const challenge = getChallengeById(progressChallengeId);
 
-  if(!challenge) return;
-  
-  const timeSpent = parseInt(document.getElementById('progress-time').value);
+  if (!challenge) return;
+
+  // Anti-cheat: rate limit rapid logging per challenge (5 minutes)
+  const now = Date.now();
+  const lastLog = challenge.lastProgressTime ? new Date(challenge.lastProgressTime).getTime() : 0;
+  const minInterval = 5 * 60 * 1000; // 5 minutes
+  if (now - lastLog < minInterval) {
+    alert('Please wait a few minutes before logging progress again for this challenge.');
+    return;
+  }
+
+  let timeSpent = parseInt(document.getElementById('progress-time').value);
+  if (isNaN(timeSpent) || timeSpent <= 0) timeSpent = 0;
+  // Cap reported time per submission to prevent abuse
+  const maxPerEntry = 300; // 300 minutes (5 hours)
+  if (timeSpent > maxPerEntry) timeSpent = maxPerEntry;
   const notes = document.getElementById('progress-notes').value;
   const today = new Date().toISOString().split('T')[0];
   const lastUpdate = new Date(challenge.lastUpdate).toISOString().split('T')[0];
@@ -1662,23 +1387,29 @@ const challenge = getChallengeById(progressChallengeId);
     challenge.progress = challenge.duration;
   }
   
-  // 🎮 Award XP for logging progress
-  GameSystem.awardXP(GameSystem.rewards.logOfflineSession, 'logOfflineSession');
-  
-  // 🎮 Award bonus XP if challenge is completed
-  if (challenge.status === 'completed') {
-    GameSystem.awardXP(GameSystem.rewards.completeChallenge, 'completeChallenge');
-  }
+  // Gamification calls removed: XP awarding handled globally (not on this page)
+
+  // Record when this progress was logged (rate-limiting)
+  challenge.lastProgressTime = new Date().toISOString();
   
   saveChallenges();
   updateStats();
   renderChallenges();
+  // Notify central gamification system about this progress so it can award XP
+  try {
+    document.dispatchEvent(new CustomEvent('challengeProgress', {
+      detail: {
+        challengeId: challenge.id,
+        timeSpent,
+        progressIncreased: (today !== lastUpdate),
+        completed: challenge.status === 'completed'
+      }
+    }));
+  } catch (err) {
+    console.warn('Failed to dispatch challengeProgress event', err);
+  }
+
   closeProgressModal();
-  
-// 🔹 Trigger animation EVERY time progress is logged
-setTimeout(() => {
-  showLessonCompleteAnimation(challenge.name);
-}, 300);
 
 });
 
@@ -1731,11 +1462,9 @@ function switchView(view, e) {
   document.getElementById('challenges-container').style.display = view === 'list' ? 'block' : 'none';
   document.getElementById('calendar-view').classList.toggle('active', view === 'calendar');
   document.getElementById('chart-view').style.display = view === 'chart' ? 'block' : 'none';
-  document.getElementById('achievements-view').style.display = view === 'achievements' ? 'grid' : 'none';
   
   if(view === 'calendar') renderCalendar();
   if(view === 'chart') renderChart();
-  if(view === 'achievements') renderAchievements();
 }
 
 function renderCalendar() {
@@ -1826,51 +1555,7 @@ function renderChart() {
   container.innerHTML = html;
 }
 
-function renderAchievements() {
-  const container = document.getElementById('achievements-view');
-  
-  // Calculate stats
-  const totalHours = Math.floor(challenges.reduce((sum, c) => sum + (c.totalTime || 0), 0) / 60);
-  const completedCount = challenges.filter(c => c.status === 'completed').length;
-  const activeCount = challenges.filter(c => c.status === 'active').length;
-  const maxStreak = Math.max(...challenges.map(c => (c.streak || 0)), 0);
-  
-  const achievements = [
-    { id: 'first', icon: '🎯', title: 'First Steps', desc: 'Complete your first challenge', unlocked: completedCount >= 1 },
-    { id: 'streak', icon: '🔥', title: 'On Fire', desc: 'Maintain a 7-day streak', unlocked: maxStreak >= 7 },
-    { id: 'dedicated', icon: '💪', title: 'Dedicated', desc: 'Complete 5 challenges', unlocked: completedCount >= 5 },
-    { id: 'time', icon: '⏰', title: 'Time Master', desc: 'Invest 50+ hours total', unlocked: totalHours >= 50 },
-    { id: 'variety', icon: '🌈', title: 'Variety Seeker', desc: 'Have 10+ active challenges', unlocked: activeCount >= 10 },
-    { id: 'speed', icon: '⚡', title: 'Speed Learner', desc: 'Complete a challenge in 7 days', unlocked: challenges.some(c => {
-      if (c.status !== 'completed') return false;
-      const start = new Date(c.startDate);
-      const end = new Date(c.lastUpdate);
-      const daysDiff = (end - start) / (1000 * 60 * 60 * 24);
-      return daysDiff <= 7;
-    }) }
-  ];
-  
-  let html = '';
-  const unlockedCount = achievements.filter(a => a.unlocked).length;
-  html += `<div style="grid-column:1/-1; text-align:center; margin-bottom:1rem;"><h3 style="color:var(--accent2); margin:0;">${unlockedCount} / ${achievements.length} Achievements Unlocked</h3></div>`;
-  
-  achievements.forEach(ach => {
-    html += `
-      <div class="achievement-card ${ach.unlocked ? 'unlocked' : ''}">
-        <div class="achievement-icon">${ach.icon}</div>
-        <div class="achievement-title">${ach.title}</div>
-        <div class="achievement-desc">${ach.desc}</div>
-        ${ach.unlocked ? '<div style="margin-top:0.5rem; color:var(--success); font-weight:600;">✓ Unlocked</div>' : '<div style="margin-top:0.5rem; color:var(--muted); font-size:0.85rem;">🔒 Locked</div>'}
-      </div>
-    `;
-  });
-  
-  container.innerHTML = html || '<p style="text-align:center; color:var(--muted);">No achievements yet.</p>';
-}
-
-function showAchievements() {
-  switchView('achievements', {target: document.querySelector('[data-view="achievements"]')});
-}
+/* Achievements UI and logic removed from challenges page */
 
 function exportProgress() {
   const data = {
@@ -1981,7 +1666,6 @@ function showLessonCompleteAnimation(challengeName) {
     "Rare W achieved."
   ];
 
-  const burstIcons = ["🔥", "⚡", "🧠", "🏆", "✨"];
 
   const overlay = document.getElementById("lesson-complete-overlay");
   const card = overlay.querySelector(".lesson-complete-card");
@@ -2083,416 +1767,8 @@ function showLessonCompleteAnimation(challengeName) {
   }, "-=0.4");
 }
 
-// ===== THEME MANAGEMENT =====
 
-/**
- * Open the theme selector modal and populate with themes
- */
-async function openThemeSelector() {
-  const modal = document.getElementById('theme-modal');
-  const themeGrid = document.getElementById('theme-grid');
-  
-  // Clear existing themes
-  themeGrid.innerHTML = '';
-  
-  // Get all themes from ThemeManager
-  const themes = ThemeManager.getAllThemes();
-  const unlockedThemes = GameSystem.getUnlockedThemes();
-  const activeTheme = GameSystem.getActiveTheme();
-  
-  themes.forEach(theme => {
-    const isUnlocked = unlockedThemes.includes(theme.id);
-    const isActive = activeTheme === theme.id;
-    
-    const card = document.createElement('div');
-    card.className = `theme-card ${isActive ? 'active' : ''} ${!isUnlocked ? 'locked' : ''}`;
-    
-    // Create preview box with theme colors
-    const preview = document.createElement('div');
-    preview.className = 'theme-preview';
-    if (theme.cssVariables && theme.cssVariables.accent2) {
-      preview.style.background = `linear-gradient(135deg, ${theme.cssVariables.accent}, ${theme.cssVariables.accent2})`;
-    }
-    
-    const name = document.createElement('div');
-    name.className = 'theme-name';
-    name.textContent = theme.name;
-    
-    const desc = document.createElement('div');
-    desc.className = 'theme-cost';
-    desc.textContent = isUnlocked ? '✓ Unlocked' : `${theme.xpCost} XP`;
-    
-    const status = document.createElement('div');
-    status.className = 'theme-status';
-    status.textContent = isActive ? '🎯 Active' : (isUnlocked ? '✓ Unlocked' : '🔒 Locked');
-    
-    card.appendChild(preview);
-    card.appendChild(name);
-    card.appendChild(desc);
-    card.appendChild(status);
-    
-    // Add click handler
-    if (isUnlocked) {
-      card.style.cursor = 'pointer';
-      card.addEventListener('click', () => {
-        applyTheme(theme.id);
-        updateThemeGrid();
-      });
-    } else {
-      // Add unlock button
-      const unlockBtn = document.createElement('button');
-      unlockBtn.className = 'unlock-btn';
-      const currentXP = GameSystem.getTotalXP();
-      const canAfford = currentXP >= theme.xpCost;
-      unlockBtn.disabled = !canAfford;
-      unlockBtn.textContent = canAfford ? 'Unlock' : `Need ${theme.xpCost - currentXP} more XP`;
-      unlockBtn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        unlockTheme(theme.id, theme.xpCost);
-      });
-      card.appendChild(unlockBtn);
-    }
-    
-    themeGrid.appendChild(card);
-  });
-  
-  modal.classList.add('active');
-}
-
-/**
- * Close the theme selector modal
- */
-function closeThemeSelector() {
-  const modal = document.getElementById('theme-modal');
-  modal.classList.remove('active');
-}
-
-/**
- * Update the theme grid (refresh visuals after theme change/unlock)
- */
-function updateThemeGrid() {
-  const activeTheme = GameSystem.getActiveTheme();
-  document.querySelectorAll('.theme-card').forEach(card => {
-    card.classList.remove('active');
-  });
-  
-  // Mark active theme - find it by checking the first matching theme
-  const themeCards = document.querySelectorAll('.theme-card');
-  const activeIndex = Array.from(themeCards).findIndex(card => 
-    card.querySelector('.theme-name').textContent === 
-    ThemeManager.themes.find(t => t.id === activeTheme)?.name
-  );
-  if (activeIndex >= 0) {
-    themeCards[activeIndex].classList.add('active');
-  }
-}
-
-/**
- * Apply a theme without unlocking it (must be unlocked first)
- */
-function applyTheme(themeId) {
-  if (GameSystem.setActiveTheme(themeId)) {
-    ThemeManager.applyTheme(themeId);
-    showThemeUnlockedToast(ThemeManager.getTheme(themeId)?.name || 'Theme');
-    updateThemeGrid();
-    updateStats(); // Update XP display if any rewards changed
-  }
-}
-
-/**
- * Unlock a theme by spending XP
- */
-function unlockTheme(themeId, cost) {
-  const result = GameSystem.unlockTheme(themeId, cost);
-  
-  if (result) {
-    // Success! Show celebration
-    const theme = ThemeManager.getTheme(themeId);
-    showThemeUnlockedCelebration(theme.name);
-    
-    // Apply the newly unlocked theme
-    ThemeManager.applyTheme(themeId);
-    GameSystem.setActiveTheme(themeId);
-    
-    // Update UI
-    updateStats();
-    openThemeSelector(); // Refresh the modal
-  } else {
-    // Failed - probably not enough XP
-    const userData = GameSystem.getUserData();
-    const theme = ThemeManager.getTheme(themeId);
-    const needed = theme.xpCost - userData.totalXP;
-    alert(`You need ${needed} more XP to unlock "${theme.name}"`);
-  }
-}
-
-/**
- * Show a toast notification when theme is switched
- */
-function showThemeUnlockedToast(themeName) {
-  // Remove any existing toasts
-  document.querySelectorAll('.xp-toast').forEach(t => t.remove());
-  
-  const toast = document.createElement('div');
-  toast.className = 'xp-toast';
-  toast.innerHTML = `<strong>${themeName}</strong> theme activated! 🎨`;
-  document.body.appendChild(toast);
-  
-  setTimeout(() => {
-    toast.style.animation = 'slideInUp 0.3s ease reverse';
-    setTimeout(() => toast.remove(), 300);
-  }, 2000);
-}
-
-/**
- * Show celebration animation when theme is unlocked
- */
-function showThemeUnlockedCelebration(themeName) {
-  // Remove any existing celebration
-  const existing = document.getElementById('theme-celebration');
-  if (existing) existing.remove();
-  
-  const celebration = document.createElement('div');
-  celebration.id = 'theme-celebration';
-  celebration.style.cssText = `
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: linear-gradient(135deg, var(--accent), var(--accent2));
-    color: white;
-    padding: 2rem 3rem;
-    border-radius: 20px;
-    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-    z-index: 3001;
-    text-align: center;
-    animation: slideInUp 0.6s ease;
-    font-weight: 700;
-    font-size: 1.3rem;
-  `;
-  celebration.innerHTML = `🎉 Unlocked: <strong>${themeName}</strong>`;
-  document.body.appendChild(celebration);
-  
-  setTimeout(() => {
-    celebration.style.animation = 'slideInUp 0.3s ease reverse';
-    setTimeout(() => celebration.remove(), 300);
-  }, 2500);
-}
-
-// ===== GAMIFICATION EVENT LISTENERS =====
-// (Event listeners are now handled in the enhanced notification functions above)
-
-
-// Listen for theme change events
-window.addEventListener('themeChanged', (e) => {
-  const theme = ThemeManager.getTheme(e.detail.themeId);
-  if (theme) {
-    showThemeUnlockedToast(theme.name);
-  }
-});
-
-// Listen for gamification updates and refresh XP display
-window.addEventListener('gamificationUpdate', () => {
-  updateStats();
-});
-
-/**
- * Show XP gain toast notification
- */
-function showXPToast(amount, source) {
-  // Remove any existing XP toasts
-  document.querySelectorAll('.xp-toast').forEach(t => t.remove());
-  
-  const sourceText = {
-    'logOfflineSession': '🎯 Logged a session',
-    'completeChallenge': '✅ Completed challenge',
-    'logReflection': '💭 Micro win logged',
-    'completeQuiz': '🧠 Quiz completed',
-    'winGame': '🎮 Game won'
-  }[source] || '⭐ XP earned';
-  
-  // Get streak info for display
-  const streakInfo = typeof GameSystem !== 'undefined' ? GameSystem.getStreakInfo() : null;
-  const streakDisplay = streakInfo && streakInfo.current > 0 
-    ? `🔥 ${streakInfo.current}-day streak (${(streakInfo.multiplier * 100).toFixed(0)}% bonus)`
-    : '';
-  
-  const toast = document.createElement('div');
-  toast.className = 'xp-toast';
-  toast.innerHTML = `
-    <div style="font-weight: 700; font-size: 1.1em; margin-bottom: 0.25rem;">+${amount} XP</div>
-    <div style="font-size: 0.9em;">${sourceText}</div>
-    ${streakDisplay ? `<div style="font-size: 0.85em; margin-top: 0.25rem;" >${streakDisplay}</div>` : ''}
-  `;
-  document.body.appendChild(toast);
-  
-  // Celebration effect with confetti-like particles
-  if (amount >= 20) {
-    createCelebrationParticles(8);
-  }
-  
-  setTimeout(() => {
-    toast.style.animation = 'slideInUp 0.3s ease reverse';
-    setTimeout(() => toast.remove(), 300);
-  }, 3000);
-}
-
-// Create celebration particles for big XP gains
-function createCelebrationParticles(count) {
-  const colors = ['#ff7eb9', '#58d9ff', '#4ade80', '#fbbf24'];
-  
-  for (let i = 0; i < count; i++) {
-    const particle = document.createElement('div');
-    particle.style.position = 'fixed';
-    particle.style.pointerEvents = 'none';
-    particle.style.fontSize = '1.5rem';
-    particle.style.left = (Math.random() * 100) + 'vw';
-    particle.style.top = '50vh';
-    particle.style.zIndex = '9999';
-    particle.textContent = ['⭐', '✨', '🎉', '🎊', '💫'][Math.floor(Math.random() * 5)];
-    
-    document.body.appendChild(particle);
-    
-    // Animate upward and fade
-    const duration = 1500 + Math.random() * 500;
-    const yDistance = 200 + Math.random() * 200;
-    const xDistance = (Math.random() - 0.5) * 200;
-    
-    particle.animate([
-      { transform: 'translateY(0) translateX(0) scale(1)', opacity: 1 },
-      { transform: `translateY(-${yDistance}px) translateX(${xDistance}px) scale(0)`, opacity: 0 }
-    ], {
-      duration: duration,
-      easing: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)',
-      fill: 'forwards'
-    });
-    
-    setTimeout(() => particle.remove(), duration);
-  }
-}
-
-// Event listeners for enhanced gamification
-window.addEventListener('xpGained', (e) => {
-  const { amount, source, newAchievements } = e.detail;
-  
-  showXPToast(amount, source);
-  
-  // Show achievement notifications
-  if (newAchievements && newAchievements.length > 0) {
-    setTimeout(() => {
-      newAchievements.forEach(achievement => {
-        showAchievementNotification(achievement);
-      });
-    }, 500);
-  }
-  
-  // Update XP display
-  if (typeof GameSystem !== 'undefined') {
-    updateStats();
-  }
-});
-
-window.addEventListener('milestoneCelebration', (e) => {
-  const { milestone } = e.detail;
-  showMilestoneCelebration(milestone);
-});
-
-window.addEventListener('themeUnlocked', (e) => {
-  const { themeId } = e.detail;
-  showThemeUnlockCelebration(themeId);
-});
-
-// Show achievement notification
-function showAchievementNotification(achievement) {
-  const notification = document.createElement('div');
-  notification.style.cssText = `
-    position: fixed;
-    top: 100px;
-    right: 20px;
-    background: linear-gradient(135deg, #ff7eb9, #58d9ff);
-    color: white;
-    padding: 1.5rem;
-    border-radius: 12px;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.2);
-    z-index: 10000;
-    max-width: 300px;
-    animation: slideInUp 0.5s ease, slideInUp 0.5s ease reverse 4.5s forwards;
-    font-weight: 600;
-  `;
-  notification.innerHTML = `
-    <div style="font-size: 1.3em; margin-bottom: 0.5rem;">${achievement.name}</div>
-    <div style="font-size: 0.9em; opacity: 0.9;">${achievement.desc}</div>
-  `;
-  document.body.appendChild(notification);
-  
-  createCelebrationParticles(12);
-  
-  setTimeout(() => notification.remove(), 5000);
-}
-
-// Show milestone celebration
-function showMilestoneCelebration(milestone) {
-  const celebration = document.createElement('div');
-  celebration.style.cssText = `
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: linear-gradient(135deg, #fbbf24, #ff7eb9);
-    color: white;
-    padding: 3rem;
-    border-radius: 16px;
-    text-align: center;
-    z-index: 10001;
-    max-width: 90%;
-    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-    animation: popIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
-  `;
-  celebration.innerHTML = `
-    <div style="font-size: 3em; margin-bottom: 1rem;">🏆</div>
-    <div style="font-size: 2.5em; font-weight: 700; margin-bottom: 0.5rem;">${milestone} XP Milestone!</div>
-    <div style="font-size: 1.1em; opacity: 0.95;">You're on fire! 🔥</div>
-  `;
-  document.body.appendChild(celebration);
-  
-  createCelebrationParticles(20);
-  
-  setTimeout(() => {
-    celebration.style.animation = 'popIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) reverse';
-    setTimeout(() => celebration.remove(), 600);
-  }, 3000);
-}
-
-// Show theme unlock celebration
-function showThemeUnlockCelebration(themeId) {
-  const celebration = document.createElement('div');
-  celebration.style.cssText = `
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background: linear-gradient(135deg, #58d9ff, #4ade80);
-    color: white;
-    padding: 1.5rem;
-    border-radius: 12px;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.2);
-    z-index: 10000;
-    max-width: 280px;
-    animation: slideInUp 0.5s ease, slideInUp 0.5s ease reverse 4.5s forwards;
-    font-weight: 600;
-    text-align: center;
-  `;
-  celebration.innerHTML = `
-    <div style="font-size: 1.5em; margin-bottom: 0.5rem;">🎨 New Theme Unlocked!</div>
-    <div style="font-size: 0.95em;">Check it out in preferences! ✨</div>
-  `;
-  document.body.appendChild(celebration);
-  
-  createCelebrationParticles(10);
-  
-  setTimeout(() => celebration.remove(), 5000);
-}
-
-
+/* Gamification-related notification and theme celebration functions removed from this page */
 </script>
 
 <div id="lesson-complete-overlay">
