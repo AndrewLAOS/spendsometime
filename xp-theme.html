@@ -1527,6 +1527,12 @@ function formatDate(dateString) {
 
 // Update UI display
 function updateDisplay() {
+  // Safety check: ensure GameSystem and required methods exist
+  if (typeof GameSystem === 'undefined' || typeof GameSystem.getTotalXPEarned !== 'function') {
+    console.warn('GameSystem not ready yet');
+    return; // Exit early, will retry when gamificationReady fires
+  }
+  
   const totalXPEarned = GameSystem.getTotalXPEarned();
   const spendableXP = GameSystem.getSpendableXP();
   const currentLevel = GameSystem.getCurrentLevel();
@@ -1582,6 +1588,8 @@ document.getElementById('hero-title').textContent = `${totalXPEarned} XP`;
 
 // Render achievements
 function renderAchievements() {
+  if (typeof GameSystem === 'undefined') return; // Exit early if GameSystem not ready
+  
   const grid = document.getElementById('achievements-grid');
   const userData = GameSystem.getUserData();
   
@@ -1617,6 +1625,7 @@ let themeHandlersAttached = false;
 
 // Render themes into the modal (we removed the visible gallery to avoid duplicates)
 function renderThemes() {
+  if (typeof GameSystem === 'undefined') return; // Exit early if GameSystem not ready
   const modalGrid = document.getElementById('theme-grid-modal');
   const themes = ThemeManager.getAllThemes() || [];
   if (!modalGrid || !themes.length) return;
@@ -1904,6 +1913,7 @@ startCountdown();
 
 // Render rank/leaderboard summary (client-only approximation)
 function renderRank() {
+  if (typeof GameSystem === 'undefined') return; // Exit early if GameSystem not ready
   const container = document.getElementById('rank-display');
   if (!container) return;
   const totalXPEarned = GameSystem.getTotalXPEarned();
@@ -1938,6 +1948,7 @@ function renderRank() {
 
 // Next achievement card
 function renderNextAchievement() {
+  if (typeof GameSystem === 'undefined') return; // Exit early if GameSystem not ready
   const container = document.getElementById('next-achievement-card');
   if (!container) return;
   const next = GameSystem.getNextAchievement();
@@ -2087,33 +2098,51 @@ function closeThemeModal() {
 
 // Initialize the page when GameSystem is ready
 function initializePageDisplay() {
-  // Set up modal click listener
-  const modal = document.getElementById('theme-modal');
-  if (modal) {
-    modal.addEventListener('click', (e) => {
-      if (e.target.id === 'theme-modal') {
-        closeThemeModal();
-      }
-    });
-  }
-  
-  // Initial render
-  updateDisplay();
+  try {
+    // Set up modal click listener
+    const modal = document.getElementById('theme-modal');
+    if (modal) {
+      modal.addEventListener('click', (e) => {
+        if (e.target.id === 'theme-modal') {
+          closeThemeModal();
+        }
+      });
+    }
+    
+    // Initial render
+    updateDisplay();
 
-  // Listen for gamification events to keep UI in sync
-  window.addEventListener('xpGained', () => updateDisplay());
-  window.addEventListener('gamificationUpdate', () => updateDisplay());
-  window.addEventListener('themeChanged', () => renderThemes());
+    // Listen for gamification events to keep UI in sync
+    window.addEventListener('xpGained', () => updateDisplay());
+    window.addEventListener('gamificationUpdate', () => updateDisplay());
+    window.addEventListener('themeChanged', () => renderThemes());
+  } catch (error) {
+    console.error('Error initializing page display:', error);
+    // Try again in a moment
+    setTimeout(initializePageDisplay, 500);
+  }
 }
 
 // Wait for GameSystem to be ready before initializing the page
-if (typeof GameSystem !== 'undefined' && GameSystem.getUserData()) {
-  // GameSystem already loaded
-  setTimeout(initializePageDisplay, 50);
-} else {
-  // Wait for GameSystem to initialize
-  window.addEventListener('gamificationReady', initializePageDisplay);
+function waitForGameSystem(attempts = 0) {
+  if (typeof GameSystem !== 'undefined' && 
+      typeof GameSystem.getTotalXPEarned === 'function' &&
+      typeof GameSystem.getSpendableXP === 'function' &&
+      GameSystem.getUserData()) {
+    // GameSystem fully loaded and initialized
+    setTimeout(initializePageDisplay, 50);
+  } else if (attempts < 10) {
+    // Retry checking for GameSystem (max 10 attempts before giving up)
+    setTimeout(() => waitForGameSystem(attempts + 1), 100);
+  } else {
+    // Fallback: wait for the gamificationReady event
+    console.warn('GameSystem check timeout, waiting for gamificationReady event');
+    window.addEventListener('gamificationReady', initializePageDisplay);
+  }
 }
+
+// Start checking for GameSystem immediately
+waitForGameSystem();
 </script>
 
 </body>
