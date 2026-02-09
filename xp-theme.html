@@ -1513,6 +1513,15 @@ footer a:hover {
 <script>
 // Note: GameSystem is initialized by gamification.js. Wait for its ready event before using it.
 
+// IMMEDIATE: Register fallback listener for gamificationReady event
+// This must be done synchronously before any other code, in case the event fires early
+window.addEventListener('gamificationReady', () => {
+  console.log('gamificationReady event received via fallback listener');
+  if (typeof initializePageDisplay === 'function') {
+    initializePageDisplay();
+  }
+});
+
 // Format date to readable string
 function formatDate(dateString) {
   const date = new Date(dateString);
@@ -2099,6 +2108,7 @@ function closeThemeModal() {
 // Initialize the page when GameSystem is ready
 function initializePageDisplay() {
   try {
+    console.log('initializePageDisplay called, GameSystem._initialized:', GameSystem._initialized);
     // Set up modal click listener
     const modal = document.getElementById('theme-modal');
     if (modal) {
@@ -2126,17 +2136,18 @@ function initializePageDisplay() {
 // Wait for GameSystem to be ready before initializing the page
 function waitForGameSystem(attempts = 0) {
   if (typeof GameSystem !== 'undefined' && 
+      GameSystem._initialized === true &&
       typeof GameSystem.getTotalXPEarned === 'function' &&
-      typeof GameSystem.getSpendableXP === 'function' &&
-      GameSystem.getUserData()) {
+      typeof GameSystem.getSpendableXP === 'function') {
     // GameSystem fully loaded and initialized
+    console.log('GameSystem ready after', attempts, 'attempts');
     setTimeout(initializePageDisplay, 50);
   } else if (attempts < 10) {
     // Retry checking for GameSystem (max 10 attempts before giving up)
     setTimeout(() => waitForGameSystem(attempts + 1), 100);
   } else {
     // Fallback: wait for the gamificationReady event
-    console.warn('GameSystem check timeout, waiting for gamificationReady event');
+    console.warn('GameSystem check timeout after 1000ms, waiting for gamificationReady event');
     window.addEventListener('gamificationReady', initializePageDisplay);
   }
 }

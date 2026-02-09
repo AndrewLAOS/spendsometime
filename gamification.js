@@ -4,6 +4,9 @@
  */
 
 const GameSystem = {
+  // Initialization tracking
+  _initialized: false,
+  
   // Default user data structure
   defaultUserData: {
     totalXP: 0, // Spendable XP (decreases when spending on themes)
@@ -59,6 +62,10 @@ const GameSystem = {
     if (!userData.achievementUnlockTimes) {
       userData.achievementUnlockTimes = {};
     }
+    
+    // Mark as initialized BEFORE dispatching events
+    this._initialized = true;
+    
     // Dispatch event to notify that GameSystem is ready
     setTimeout(() => {
       window.dispatchEvent(new CustomEvent('gamificationReady', { detail: userData }));
@@ -535,23 +542,6 @@ const ThemeManager = {
   }
 };
 
-// Initialize on page load - enhanced to auto-apply theme
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', () => {
-    GameSystem.init();
-    ThemeManager.loadThemes().then(() => {
-      ThemeManager.applyActiveTheme();
-    });
-    initializeNavStats();
-  });
-} else {
-  GameSystem.init();
-  ThemeManager.loadThemes().then(() => {
-    ThemeManager.applyActiveTheme();
-  });
-  initializeNavStats();
-}
-
 /**
  * Initialize navigation stats display and keep it updated
  * Updates nav XP/streak display across all pages
@@ -588,6 +578,39 @@ function initializeNavStats() {
   window.addEventListener('gamificationUpdate', updateNavStats);
   window.addEventListener('xpGained', updateNavStats);
   window.addEventListener('gamificationReady', updateNavStats);
+}
+
+// Initialize on page load - enhanced to auto-apply theme
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', () => {
+    try {
+      GameSystem.init();
+      ThemeManager.loadThemes().then(() => {
+        ThemeManager.applyActiveTheme();
+      }).catch(err => console.error('Theme loading failed:', err));
+    } catch (e) {
+      console.error('GameSystem initialization error:', e);
+    }
+    try {
+      initializeNavStats();
+    } catch (e) {
+      console.warn('initializeNavStats error (nav stats may not exist on this page):', e);
+    }
+  });
+} else {
+  try {
+    GameSystem.init();
+    ThemeManager.loadThemes().then(() => {
+      ThemeManager.applyActiveTheme();
+    }).catch(err => console.error('Theme loading failed:', err));
+  } catch (e) {
+    console.error('GameSystem initialization error:', e);
+  }
+  try {
+    initializeNavStats();
+  } catch (e) {
+    console.warn('initializeNavStats error (nav stats may not exist on this page):', e);
+  }
 }
 
 // Listen for progress events from other pages (e.g., challenges page)
