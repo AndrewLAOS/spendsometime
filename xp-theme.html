@@ -1323,6 +1323,29 @@ footer a:hover {
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   gap: 1rem;
 }
+.quest-card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.quest-card:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+.quest-card.completed {
+  opacity: 0.6;
+  filter: grayscale(0.4);
+}
+
+.quest-card.legendary {
+  border: 2px solid gold;
+  animation: glow 2s infinite alternate;
+}
+
+@keyframes glow {
+  from { box-shadow: 0 0 8px gold; }
+  to { box-shadow: 0 0 18px gold; }
+}
 
 </style>
 </head>
@@ -1341,8 +1364,9 @@ footer a:hover {
             <a href="xp-theme.html">Level and XP</a>
 
     </div>
-    <div id="nav-stats">
-      <span id="nav-xp">0</span> XP | <span id="nav-streak" style="display: none;">🔥 <span id="streak-days">0</span></span>
+   <div id="nav-stats">
+      <span style="color: var(--accent2);">⭐ <span id="nav-xp">0</span> XP</span>
+      <span id="nav-streak" style="color: var(--accent); display: none;">🔥 <span id="streak-days">0</span> days</span>
     </div>
   </div>
 </nav>
@@ -1377,13 +1401,20 @@ footer a:hover {
     </div>
   </div>
 
-  <!-- Stats Grid -->
+  <!-- Stats Grid: Total vs Spendable XP Sections -->
   <h2>Your Statistics</h2>
   <div class="stats-grid">
     <div class="stat-card">
       <div class="stat-icon">🎯</div>
-      <div class="stat-value" id="total-xp">0</div>
+      <div class="stat-value" id="total-xp-earned">0</div>
       <div class="stat-label">Total XP Earned</div>
+      <div style="font-size: 0.75rem; color: var(--muted); margin-top: 0.5rem;">All-time earnings</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-icon">💰</div>
+      <div class="stat-value" id="spendable-xp">0</div>
+      <div class="stat-label">Spendable XP</div>
+      <div style="font-size: 0.75rem; color: var(--muted); margin-top: 0.5rem;">Available to spend</div>
     </div>
     <div class="stat-card">
       <div class="stat-icon">🏆</div>
@@ -1496,15 +1527,16 @@ function formatDate(dateString) {
 
 // Update UI display
 function updateDisplay() {
-  const totalXP = GameSystem.getTotalXP();
+  const totalXPEarned = GameSystem.getTotalXPEarned();
+  const spendableXP = GameSystem.getSpendableXP();
   const currentLevel = GameSystem.getCurrentLevel();
   const nextLevel = GameSystem.getNextLevel();
   const xpForNextLevel = Math.max(1, nextLevel.xp - currentLevel.xp); // Avoid 0 divisor at max level
-  const xpInCurrentLevel = totalXP - currentLevel.xp;
+  const xpInCurrentLevel = totalXPEarned - currentLevel.xp;
   const progressPercent = Math.max(0, Math.min(100, (xpInCurrentLevel / xpForNextLevel) * 100));
 
   // Update hero title
-  document.getElementById('hero-title').textContent = `${totalXP} XP`;
+document.getElementById('hero-title').textContent = `${totalXPEarned} XP`;
 
   // Update level
   document.getElementById('level-badge').textContent = currentLevel.index + 1;
@@ -1519,7 +1551,8 @@ function updateDisplay() {
   document.querySelector('.xp-next-level').textContent = `${nextLevel.xp} XP to ${nextLevel.name}`;
 
   // Update stats
-  document.getElementById('total-xp').textContent = totalXP;
+  document.getElementById('total-xp-earned').textContent = totalXPEarned;
+  document.getElementById('spendable-xp').textContent = spendableXP;
   document.getElementById('achievements-count').textContent = GameSystem.getAchievements().length;
   document.getElementById('themes-count').textContent = GameSystem.getUnlockedThemes().length;
 
@@ -1647,74 +1680,237 @@ function attachThemeClickHandlers() {
   themeHandlersAttached = true;
 }
 
-// Daily quests data and handlers
-let dailyQuests = [
-  { id: 'q1', title: 'Practice 10 minutes', desc: 'Spend at least 10 minutes studying today', xp: 5, difficulty: 'easy' },
-  { id: 'q2', title: 'Complete a quiz', desc: 'Finish a short quiz to test your knowledge', xp: 15, difficulty: 'medium' },
-  { id: 'q3', title: 'Reflect on learning', desc: 'Write a short reflection after practice', xp: 8, difficulty: 'easy' }
+/*********************************
+ * DAILY QUEST SYSTEM — ADVANCED
+ *********************************/
+
+/* ---------- TIME UTILS ---------- */
+
+function todayKey() {
+  return new Date().toISOString().split('T')[0];
+}
+
+function secondsUntilMidnight() {
+  const now = new Date();
+  const midnight = new Date();
+  midnight.setHours(24, 0, 0, 0);
+  return Math.floor((midnight - now) / 1000);
+}
+
+function shuffle(arr) {
+  return [...arr].sort(() => Math.random() - 0.5);
+}
+
+/* ---------- QUEST POOL ---------- */
+
+const QUEST_POOL = [
+  // Easy
+  { id: 'time10', title: 'Warm Up', desc: 'Practice 10 minutes', xp: 5, difficulty: 'easy', type: 'time', target: 10 },
+  { id: 'log', title: 'Log It', desc: 'Log any progress', xp: 8, difficulty: 'easy', type: 'action', target: 'log' },
+
+  // Medium
+  { id: 'time25', title: 'Focus Mode', desc: 'Practice 25 minutes', xp: 15, difficulty: 'medium', type: 'time', target: 25 },
+  { id: 'challenge', title: 'Challenger', desc: 'Complete a challenge', xp: 20, difficulty: 'medium', type: 'action', target: 'challenge' },
+
+  // Hard
+  { id: 'time45', title: 'Deep Work', desc: 'Practice 45 minutes', xp: 35, difficulty: 'hard', type: 'time', target: 45 },
+
+  // 🌟 Legendary
+  {
+    id: 'legendary60',
+    title: 'Legendary Grind',
+    desc: 'Practice for 60 minutes',
+    xp: 75,
+    difficulty: 'legendary',
+    type: 'time',
+    target: 60,
+    legendary: true
+  }
 ];
-let questsCompleted = JSON.parse(localStorage.getItem('questsCompleted') || '[]');
+
+/* ---------- LOAD DAILY QUESTS ---------- */
+
+function loadDailyQuests() {
+  const key = 'dailyQuests-' + todayKey();
+  const saved = localStorage.getItem(key);
+  if (saved) return JSON.parse(saved);
+
+  const selected = shuffle(QUEST_POOL).slice(0, 3);
+
+  // 25% chance to add a legendary quest
+  if (Math.random() < 0.25) {
+    const legendary = QUEST_POOL.find(q => q.legendary);
+    if (legendary) selected.push(legendary);
+  }
+
+  localStorage.setItem(key, JSON.stringify(selected));
+  return selected;
+}
+
+let dailyQuests = loadDailyQuests();
+
+/* ---------- STATE ---------- */
+
+let questsCompleted = JSON.parse(localStorage.getItem('questsCompleted-' + todayKey()) || '[]');
+let questProgress = JSON.parse(localStorage.getItem('questProgress-' + todayKey()) || '{}');
+
+/* ---------- CHECK QUEST ---------- */
+
+function isQuestComplete(q) {
+  if (questsCompleted.includes(q.id)) return false;
+
+  if (q.type === 'time') return (questProgress.time || 0) >= q.target;
+  if (q.type === 'action') return questProgress[q.target] === true;
+  return false;
+}
+
+/* ---------- BONUS XP ---------- */
+
+function allQuestsCompleted() {
+  return dailyQuests.every(q => questsCompleted.includes(q.id));
+}
+
+function grantDailyBonus() {
+  if (localStorage.getItem('dailyBonus-' + todayKey())) return;
+
+  const bonusXP = 25;
+  GameSystem.awardXP(bonusXP, 'dailyBonus');
+  showXPToast(bonusXP, 'Daily Bonus 🎁');
+
+  localStorage.setItem('dailyBonus-' + todayKey(), 'true');
+}
+
+/* ---------- RENDER ---------- */
 
 function renderQuests() {
   const grid = document.getElementById('quests-grid');
   if (!grid) return;
+questProgress = JSON.parse(
+  localStorage.getItem('questProgress-' + todayKey()) || '{}'
+);
 
   grid.innerHTML = dailyQuests.map(q => {
     const done = questsCompleted.includes(q.id);
+    const ready = isQuestComplete(q);
+
     return `
-      <div class="quest-card ${done ? 'completed' : ''}" data-id="${q.id}">
-        <div class="quest-icon">⚡</div>
+      <div class="quest-card ${q.legendary ? 'legendary' : ''} ${done ? 'completed' : ''}">
+        <div class="quest-icon">${q.legendary ? '🌟' : '⚡' }</div>
         <div class="quest-title">${q.title}</div>
         <div class="quest-desc">${q.desc}</div>
-        <div class="quest-xp-reward">${q.xp} XP</div>
-        <div class="quest-difficulty ${q.difficulty === 'hard' ? 'hard' : ''}">${q.difficulty}</div>
-        <div style="margin-top:1rem;">
-          <button class="btn btn-primary" data-action="complete" ${done ? 'disabled' : ''}>${done ? 'Completed' : 'Complete'}</button>
-        </div>
+        <div class="quest-xp">${q.xp} XP</div>
+
+        <button class="btn btn-primary quest-btn"
+          data-id="${q.id}"
+          ${!ready || done ? 'disabled' : ''}>
+          ${done ? 'Completed' : ready ? 'Collect XP' : 'In Progress'}
+        </button>
       </div>
     `;
   }).join('');
 
-  // Delegated click handler for quest completion
-  const handlerId = 'quests-delegated';
-  if (!document.getElementById(handlerId)) {
-    const marker = document.createElement('div');
-    marker.id = handlerId;
-    marker.style.display = 'none';
-    document.body.appendChild(marker);
-
-    grid.addEventListener('click', (e) => {
-      const btn = e.target.closest('button[data-action="complete"]');
-      if (!btn) return;
-      const card = btn.closest('.quest-card');
-      if (!card) return;
-      const id = card.dataset.id;
-      completeQuest(id);
-    });
-  }
+  if (allQuestsCompleted()) grantDailyBonus();
 }
 
-function completeQuest(id) {
-  const quest = dailyQuests.find(q => q.id === id);
-  if (!quest) return;
-  if (questsCompleted.includes(id)) return;
+/* ---------- CLAIM QUEST ---------- */
 
-  // Award XP safely via GameSystem
-  GameSystem.awardXP(quest.xp, 'dailyQuest:' + id);
-  questsCompleted.push(id);
-  localStorage.setItem('questsCompleted', JSON.stringify(questsCompleted));
-  showXPToast(quest.xp, 'Daily Quest');
+document.addEventListener('click', e => {
+  const btn = e.target.closest('.quest-btn');
+  if (!btn) return;
+
+  const quest = dailyQuests.find(q => q.id === btn.dataset.id);
+  if (!quest || !isQuestComplete(quest)) return;
+
+  questsCompleted.push(quest.id);
+  localStorage.setItem('questsCompleted-' + todayKey(), JSON.stringify(questsCompleted));
+
+  GameSystem.awardXP(quest.xp, 'dailyQuest:' + quest.id);
+  showXPToast(quest.xp, quest.legendary ? 'Legendary Quest 🌟' : 'Daily Quest');
+
+  renderQuests();
   updateDisplay();
+});
+/* ---------- QUEST PROGRESS HOOKS ---------- */
+
+// Call this when user logs any progress
+function logProgressQuest() {
+  questProgress.log = true;
+  saveQuestProgress();
 }
+
+// Call this when user completes a challenge
+function completeChallengeQuest() {
+  questProgress.challenge = true;
+  saveQuestProgress();
+}
+
+// Call this when study time is added
+function addStudyMinutesQuest(minutes) {
+  questProgress.time = (questProgress.time || 0) + minutes;
+  saveQuestProgress();
+}
+
+function saveQuestProgress() {
+  localStorage.setItem(
+    'questProgress-' + todayKey(),
+    JSON.stringify(questProgress)
+  );
+  renderQuests();
+}
+
+/* ---------- REAL ACTION HOOKS ---------- */
+
+function addStudyMinutes(mins) {
+  questProgress.time = (questProgress.time || 0) + mins;
+  saveProgress();
+}
+
+function logProgress() {
+  questProgress.log = true;
+  saveProgress();
+}
+
+function completeChallenge() {
+  questProgress.challenge = true;
+  saveProgress();
+}
+
+function saveProgress() {
+  localStorage.setItem('questProgress-' + todayKey(), JSON.stringify(questProgress));
+  renderQuests();
+}
+
+/* ---------- COUNTDOWN TIMER ---------- */
+
+function startCountdown() {
+  const el = document.getElementById('quest-timer');
+  if (!el) return;
+
+  setInterval(() => {
+    let s = secondsUntilMidnight();
+    const h = Math.floor(s / 3600);
+    s %= 3600;
+    const m = Math.floor(s / 60);
+    const sec = s % 60;
+    el.textContent = `⏰ Resets in ${h}h ${m}m ${sec}s`;
+  }, 1000);
+}
+
+/* ---------- INIT ---------- */
+
+renderQuests();
+startCountdown();
+
 
 // Render rank/leaderboard summary (client-only approximation)
 function renderRank() {
   const container = document.getElementById('rank-display');
   if (!container) return;
-  const totalXP = GameSystem.getTotalXP();
+  const totalXPEarned = GameSystem.getTotalXPEarned();
+  const spendableXP = GameSystem.getSpendableXP();
   const level = GameSystem.getCurrentLevel();
   const next = GameSystem.getNextLevel();
-  const xpThis = totalXP - level.xp;
+  const xpThis = totalXPEarned - level.xp;
   const xpToNext = Math.max(1, next.xp - level.xp);
   const progress = Math.round((xpThis / xpToNext) * 100);
   const percentile = Math.min(99, Math.round((level.index / (GameSystem.levels.length - 1)) * 100));
@@ -1725,8 +1921,8 @@ function renderRank() {
     <div class="rank-percentile">Top ${100 - percentile}% of learners (approx)</div>
     <div class="rank-stats">
       <div class="rank-stat">
-        <div class="rank-stat-label">Total XP</div>
-        <div class="rank-stat-value">${totalXP}</div>
+        <div class="rank-stat-label">Total XP Earned</div>
+        <div class="rank-stat-value">${totalXPEarned}</div>
       </div>
       <div class="rank-stat">
         <div class="rank-stat-label">Level Progress</div>
@@ -1745,7 +1941,7 @@ function renderNextAchievement() {
   const container = document.getElementById('next-achievement-card');
   if (!container) return;
   const next = GameSystem.getNextAchievement();
-  const totalXP = GameSystem.getTotalXP();
+  const totalXPEarned = GameSystem.getTotalXPEarned();
   if (!next) {
     container.innerHTML = '<div class="next-achievement-card">All achievements unlocked — amazing!</div>';
     return;
@@ -1753,7 +1949,7 @@ function renderNextAchievement() {
 
   let progressPercent = 0;
   if (next.xp) {
-    progressPercent = Math.min(100, Math.round((totalXP / next.xp) * 100));
+    progressPercent = Math.min(100, Math.round((totalXPEarned / next.xp) * 100));
   } else if (next.streak) {
     const streak = GameSystem.getStreakInfo().current;
     progressPercent = Math.min(100, Math.round((streak / next.streak) * 100));

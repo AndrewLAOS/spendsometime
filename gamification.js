@@ -6,7 +6,8 @@
 const GameSystem = {
   // Default user data structure
   defaultUserData: {
-    totalXP: 0,
+    totalXP: 0, // Spendable XP (decreases when spending on themes)
+    totalXPEarned: 0, // All-time XP earned (never decreases, used for level)
     unlockedThemes: ['default'],
     activeTheme: 'default',
     xpHistory: [],
@@ -15,16 +16,15 @@ const GameSystem = {
     lastActivityDate: null,
     unlockedAchievements: [], // Array of achievement IDs
     achievementUnlockTimes: {}, // Track when achievements were unlocked to prevent re-triggering
-milestones: [50, 100, 250, 500, 1000, 2500, 5000],
-passedMilestones: []
-
+    milestones: [50, 100, 250, 500, 1000, 2500, 5000],
+    passedMilestones: []
   },
 
   // Reward amounts for different actions (SINGLE SOURCE OF TRUTH)
   rewards: {
     logOfflineSession: 10,
     completeChallenge: 25,
-    logReflection: 5,
+    logReflection: 10,
     completeQuiz: 15,
     winGame: 20,
     themeUnlock: 10,
@@ -43,7 +43,7 @@ passedMilestones: []
 
   // Debouncing: prevent XP farming from rapid refreshes/navigation
   _lastXPAwardTime: 0,
-  _xpDebounceMs: 500, // Minimum ms between XP awards for same action
+  _xpDebounceMs: 0, // Minimum ms between XP awards for same action
 
   /**
    * Initialize gamification system
@@ -103,6 +103,7 @@ passedMilestones: []
 
     const userData = this.getUserData() || this.defaultUserData;
     userData.totalXP += amount;
+    userData.totalXPEarned = (userData.totalXPEarned || 0) + amount; // Track all-time earning
 
     // Track XP history for analytics
     userData.xpHistory.push({
@@ -195,7 +196,7 @@ passedMilestones: []
 
       let unlocked = false;
 
-      if (achievement.xp && userData.totalXP >= achievement.xp) {
+      if (achievement.xp && userData.totalXPEarned >= achievement.xp) {
         unlocked = true;
       } else if (achievement.streak && userData.currentStreak >= achievement.streak) {
         unlocked = true;
@@ -224,11 +225,11 @@ passedMilestones: []
     
     userData.milestones.forEach(milestone => {
       // Only trigger once per milestone
-      if (userData.totalXP >= milestone && !userData.passedMilestones.includes(milestone)) {
+      if (userData.totalXPEarned >= milestone && !userData.passedMilestones.includes(milestone)) {
         userData.passedMilestones.push(milestone);
         
         window.dispatchEvent(new CustomEvent('milestoneCelebration', {
-          detail: { milestone, totalXP: userData.totalXP }
+          detail: { milestone, totalXP: userData.totalXPEarned }
         }));
       }
     });
@@ -329,12 +330,29 @@ passedMilestones: []
   },
 
   /**
-   * Get current XP total
+   * Get spendable XP (current balance)
+   * @returns {number} Spendable XP
+   */
+  getSpendableXP() {
+    const userData = this.getUserData();
+    return userData ? userData.totalXP : 0;
+  },
+
+  /**
+   * Get total XP earned (all-time, never decreases)
+   * @returns {number} Total XP earned
+   */
+  getTotalXPEarned() {
+    const userData = this.getUserData();
+    return userData ? (userData.totalXPEarned || userData.totalXP || 0) : 0;
+  },
+
+  /**
+   * Get current XP total (alias for getSpendableXP for backwards compatibility)
    * @returns {number} Total XP
    */
   getTotalXP() {
-    const userData = this.getUserData();
-    return userData ? userData.totalXP : 0;
+    return this.getSpendableXP();
   },
 
   /**
@@ -399,12 +417,12 @@ passedMilestones: []
   ],
 
   /**
-   * Get current level based on XP
-   * @param {number} xp - XP amount (optional, uses current if not provided)
+   * Get current level based on total XP earned (not spendable)
+   * @param {number} xp - XP amount (optional, uses current earned XP if not provided)
    * @returns {Object} Level object with index, xp, name, desc
    */
   getCurrentLevel(xp = null) {
-    const totalXP = xp !== null ? xp : this.getTotalXP();
+    const totalXP = xp !== null ? xp : this.getTotalXPEarned();
     for (let i = this.levels.length - 1; i >= 0; i--) {
       if (totalXP >= this.levels[i].xp) {
         return { index: i, ...this.levels[i] };
@@ -583,22 +601,83 @@ document.addEventListener('challengeProgress', (e) => {
 
     // Calculate XP: small reward per minutes, larger bonus for completing a challenge
     // Safe defaults to avoid large awards from bogus inputs
-    const cappedMinutes = Math.min(Math.max(0, timeSpent), 300); // cap 300 minutes
-    const xpFromTime = Math.round(cappedMinutes / 5); // 1 XP per ~5 minutes
+const cappedMinutes = Math.min(Math.max(0, timeSpent), 300); // still cap 300
+const xpFromTime = Math.round(cappedMinutes / 1); // 1 XP per minute
+let xp = xpFromTime;
 
-    let xp = xpFromTime;
-    if (progressIncreased) xp += 2; // small bonus for making daily progress
-    if (completed) xp += GameSystem.rewards.completeChallenge || 25; // completion bonus
+// Add bonuses
+if (progressIncreased) xp += (GameSystem.rewards.logReflection || 20);
+if (completed) xp += GameSystem.rewards.completeChallenge || 50;
 
-    // Apply streak multiplier
-    const userData = GameSystem.getUserData() || {};
-    const multiplier = GameSystem.getStreakMultiplier(userData) || 1.0;
-    xp = Math.max(1, Math.round(xp * multiplier));
+// Apply streak multiplier
+const userData = GameSystem.getUserData() || {};
+const multiplier = GameSystem.getStreakMultiplier(userData) || 1.0;
+xp = Math.max(1, Math.round(xp * multiplier));
 
-    // Award via centralized method (has internal debounce to reduce farming)
-    GameSystem.awardXP(xp, 'challengeProgress');
+// Award XP via centralized method (has internal debounce to reduce farming)
+GameSystem.awardXP(xp, 'challengeProgress');
   } catch (err) {
     console.warn('challengeProgress handler error', err);
+  }
+});
+/*********************************
+ * DAILY QUEST ↔ GAME SYSTEM BRIDGE
+ *********************************/
+
+function todayKey() {
+  return new Date().toISOString().split('T')[0];
+}
+
+function getQuestProgress() {
+  return JSON.parse(
+    localStorage.getItem('questProgress-' + todayKey()) || '{}'
+  );
+}
+
+function saveQuestProgress(progress) {
+  localStorage.setItem(
+    'questProgress-' + todayKey(),
+    JSON.stringify(progress)
+  );
+}
+
+/* ---- Listen to challenge progress ---- */
+document.addEventListener('challengeProgress', (e) => {
+  const d = e.detail || {};
+  const progress = getQuestProgress();
+
+  // Time-based quests
+  if (d.timeSpent) {
+    progress.time = (progress.time || 0) + Number(d.timeSpent);
+  }
+
+  // Log quest
+  if (d.progressIncreased) {
+    progress.log = true;
+  }
+
+  // Challenge completion quest
+  if (d.completed) {
+    progress.challenge = true;
+  }
+
+  saveQuestProgress(progress);
+
+  // Force quest UI to re-evaluate
+  if (typeof renderQuests === 'function') {
+    renderQuests();
+  }
+
+  // Notify the app that progress was logged and ensure streak starts immediately
+  if (d.progressIncreased) {
+    const userData = GameSystem.getUserData() || GameSystem.init();
+    // Ensure streak is updated for day-1 progress (idempotent)
+    GameSystem.updateStreak(userData);
+    GameSystem.saveUserData(userData);
+    console.log('Progress logged: streak updated, progress saved.');
+    window.dispatchEvent(new CustomEvent('progressLogged', {
+      detail: { progress, totalXP: userData.totalXPEarned, streak: userData.currentStreak }
+    }));
   }
 });
 

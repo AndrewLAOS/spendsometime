@@ -69,7 +69,6 @@ nav .logo {
   -webkit-text-fill-color: transparent;
   text-decoration: none;
 }
-
 nav .nav-links {
   display: flex;
   gap: 1.5rem;
@@ -941,6 +940,46 @@ footer a:hover {
   opacity: 0;
 }
 
+/* Progress toast and confetti styles */
+.progress-toast-container {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  z-index: 11000;
+  pointer-events: none;
+}
+.progress-toast {
+  pointer-events: auto;
+  background: linear-gradient(90deg, var(--accent2), var(--accent));
+  color: white;
+  padding: 0.8rem 1rem;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.18);
+  display: flex;
+  gap: 0.6rem;
+  align-items: center;
+  min-width: 220px;
+  font-weight: 700;
+  transform-origin: top right;
+}
+.progress-toast .xp {
+  background: rgba(255,255,255,0.15);
+  padding: 0.25rem 0.5rem;
+  border-radius: 8px;
+  font-weight: 800;
+}
+.confetti-piece {
+  position: absolute;
+  width: 8px;
+  height: 12px;
+  background: white;
+  opacity: 0.9;
+  border-radius: 2px;
+}
+
 </style>
 </head>
 <body>
@@ -957,9 +996,10 @@ footer a:hover {
             <a href="diagram.html">All Skills</a>
               <a href="xp-theme.html">Level and XP</a>
     </div>
-      <div id="nav-stats" style="margin-left:1rem; font-weight:700; color:var(--accent2);">
-        <span id="nav-xp">0</span> XP
-        <span id="nav-streak" style="display:none; margin-left:0.6rem;">🔥 <span id="streak-days">0</span></span>
+       <div id="nav-stats">
+      <span style="color: var(--accent2);">⭐ <span id="nav-xp">0</span> XP</span>
+      <span id="nav-streak" style="color: var(--accent); display: none;">🔥 <span id="streak-days">0</span> days</span>
+      
       </div>
   </div>
 </nav>
@@ -1311,6 +1351,7 @@ function updateProgress(id) {
   progressChallengeId = Number(id);
   document.getElementById('progress-form').reset();
   document.getElementById('progress-modal').classList.add('active');
+  logProgressQuest();
 }
 
 
@@ -1407,6 +1448,17 @@ document.getElementById('progress-form').addEventListener('submit', (e) => {
     }));
   } catch (err) {
     console.warn('Failed to dispatch challengeProgress event', err);
+  }
+
+  // Show a quick progress toast and confetti locally
+  try {
+    showProgressToast(challenge.name, Math.max(1, Math.round(timeSpent / 1)));
+    if (challenge.status === 'completed') {
+      // Large celebration for completion
+      showLessonCompleteAnimation(challenge.name);
+    }
+  } catch (err) {
+    console.warn('Progress UI handlers failed', err);
   }
 
   closeProgressModal();
@@ -1769,6 +1821,60 @@ function showLessonCompleteAnimation(challengeName) {
 
 
 /* Gamification-related notification and theme celebration functions removed from this page */
+
+// Toast + confetti helpers
+function createConfetti(parent, count = 18) {
+  const pieces = [];
+  for (let i = 0; i < count; i++) {
+    const p = document.createElement('div');
+    p.className = 'confetti-piece';
+    p.style.left = Math.random() * 100 + '%';
+    p.style.background = ['#ff7eb9', '#58d9ff', '#ffd166', '#4ade80'][Math.floor(Math.random() * 4)];
+    parent.appendChild(p);
+    pieces.push(p);
+
+    gsap.to(p, {
+      y: Math.random() * 120 + 80,
+      x: (Math.random() - 0.5) * 200,
+      rotation: Math.random() * 360,
+      duration: 0.9 + Math.random() * 0.6,
+      ease: 'power3.out',
+      onComplete: () => p.remove()
+    });
+  }
+}
+
+function showProgressToast(challengeName, xpAmount) {
+  if (!document.body) return;
+  let container = document.getElementById('progress-toast-container');
+  if (!container) {
+    container = document.createElement('div');
+    container.id = 'progress-toast-container';
+    container.className = 'progress-toast-container';
+    document.body.appendChild(container);
+  }
+
+  const toast = document.createElement('div');
+  toast.className = 'progress-toast';
+  toast.innerHTML = `<div style="flex:1">+${xpAmount} XP • Logged progress for <strong style="font-weight:800;">${escapeHtml(challengeName)}</strong></div><div class="xp">+${xpAmount}</div>`;
+  container.prepend(toast);
+
+  // entrance
+  gsap.fromTo(toast, {opacity:0, y:-12, scale:0.95}, {opacity:1, y:0, scale:1, duration:0.45, ease:'back.out(1.4)'});
+
+  // confetti from toast
+  createConfetti(toast, 12);
+
+  // auto dismiss
+  setTimeout(() => {
+    gsap.to(toast, {opacity:0, y:-16, duration:0.35, onComplete: () => toast.remove()});
+  }, 2200);
+}
+
+function escapeHtml(s) {
+  return String(s).replace(/[&<>"']/g, function (m) { return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":"&#39;"}[m]; });
+}
+
 </script>
 
 <div id="lesson-complete-overlay">

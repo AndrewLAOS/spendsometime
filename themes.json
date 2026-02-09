@@ -12,7 +12,9 @@
       "accent": "#ff7eb9",
       "accent2": "#58d9ff",
       "text": "#1a1a1a",
-      "muted": "#555555"
+      "muted": "#555555",
+    "notify": "#ff7eb9",
+    "notifyHover": "#616161"
     },
     "background": "linear-gradient(135deg, #d0f0ff, #fff0f8)"
   },
@@ -29,7 +31,9 @@
       "accent": "#ff6b9d",
       "accent2": "#00d4ff",
       "text": "#e2e8f0",
-      "muted": "#a0aec0"
+      "muted": "#a0aec0",
+    "notify": "#ff6b9d",
+    "notifyHover": "#616161"
     },
     "background": "#0f1419"
   },
@@ -46,7 +50,9 @@
       "accent": "#2d6a4f",
       "accent2": "#52b788",
       "text": "#1b4332",
-      "muted": "#555b4e"
+      "muted": "#555b4e",
+    "notify": "#2d6a4f",
+    "notifyHover": "#616161"
     },
     "background": "linear-gradient(135deg, #d8f3dc, #e8f5e9)"
   },
@@ -63,7 +69,9 @@
       "accent": "#ff6b35",
       "accent2": "#f7931e",
       "text": "#5a2e2e",
-      "muted": "#8b5a3c"
+      "muted": "#8b5a3c",
+    "notify": "#ff6b35",
+    "notifyHover": "#616161"
     },
     "background": "linear-gradient(135deg, #ffe4b3, #ffd699)"
   },
@@ -80,7 +88,9 @@
       "accent": "#0277bd",
       "accent2": "#00bcd4",
       "text": "#004d73",
-      "muted": "#37474f"
+      "muted": "#37474f",
+    "notify": "#0277bd",  
+    "notifyHover": "#616161"
     },
     "background": "linear-gradient(135deg, #b3e5fc, #80deea)"
   },
@@ -97,7 +107,9 @@
       "accent": "#ba68c8",
       "accent2": "#ce93d8",
       "text": "#4a148c",
-      "muted": "#7b1fa2"
+      "muted": "#7b1fa2",
+    "notify": "#ba68c8",
+    "notifyHover": "#616161"
     },
     "background": "linear-gradient(135deg, #e1bee7, #f3e5f5)"
   },
@@ -114,7 +126,9 @@
       "accent": "#ff006e",
       "accent2": "#ffbe0b",
       "text": "#3a0042",
-      "muted": "#6b0042"
+      "muted": "#6b0042",
+      "notify": "#ff006e",
+      "notifyHover": "#616161"
     },
     "background": "linear-gradient(135deg, #ffb3d9, #ffd60a)"
   },
@@ -131,8 +145,29 @@
       "accent": "#757575",
       "accent2": "#9e9e9e",
       "text": "#212121",
-      "muted": "#757575"
+      "muted": "#757575",
+         "notify": "#757575",
+    "notifyHover": "#616161"
     },
     "background": "#fafafa"
+  },
+      {
+    "id": "desert",
+    "name": "Desert Sunrise",
+    "description": "Subtle cyans and sandy tones for a warm, calming vibe",
+    "xpCost": 30,
+    "isPremium": true,
+    "cssVariables": {
+      "bg": "##1f6f73",
+      "panel": "#ffc067",
+      "border": "#ffd9b3",
+      "accent": "#ffffff",
+      "accent2": "#ffd38c",
+      "text": "#0f0607",
+      "muted": "#cc944f",
+   "notify": "#ffffff",
+    "notifyHover": "#616161"
+    },
+    "background": "#1f6f73"
   }
 ]
