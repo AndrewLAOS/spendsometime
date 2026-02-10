@@ -607,68 +607,67 @@ footer a:hover {
 <script>
 function enableNotifications() {
   const btn = document.getElementById('notifyBtn');
-  
-  // Check if Notification API is supported
+  if (!btn) return;
+
+  // Check browser support
   if (!("Notification" in window)) {
     btn.textContent = '❌ Not supported';
     btn.disabled = true;
     return;
   }
-  
-  // Check if already enabled
+
+  // Already granted
   if (Notification.permission === "granted") {
     btn.classList.add('enabled');
     btn.textContent = '✓ Reminders enabled';
     btn.disabled = true;
     return;
   }
-  
-  // If denied, show message
+
+  // Denied
   if (Notification.permission === "denied") {
     btn.textContent = '⛔ Notifications denied';
     btn.disabled = true;
     return;
   }
-  
+
   // Request permission
   btn.textContent = '⏳ Requesting...';
   btn.disabled = true;
-  
+
   Notification.requestPermission().then(permission => {
-    if (permission === "granted") {
-      // Register service worker and show confirmation
-      navigator.serviceWorker.register("sw.js").then(registration => {
-        navigator.serviceWorker.ready.then(reg => {
-          // Show confirmation notification
-          reg.showNotification("Spend Some Time", {
-            body: "🎉 Practice reminders are now enabled! You'll get tips to help you learn.",
-            icon: "/favicon/favicon-32x32.png",
-            badge: "/favicon/favicon-32x32.png",
-            tag: "sst-enabled",
-            requireInteraction: true
-          });
-          
-          // Update button state
-          btn.classList.add('enabled');
-          btn.textContent = '✓ Reminders enabled';
-          btn.disabled = true;
-          
-          // Save preference
-          localStorage.setItem('notificationsEnabled', 'true');
-        });
-      }).catch(err => {
-        console.error('Service Worker registration failed:', err);
-        btn.textContent = '⚠️ Setup failed';
-        btn.disabled = false;
-      });
-    } else if (permission === "denied") {
-      btn.textContent = '⛔ Notifications denied';
-      btn.disabled = true;
-    } else {
-      // Default permission (not yet answered)
+    if (permission !== "granted") {
       btn.textContent = '🔔 Enable Practice Reminders';
       btn.disabled = false;
+      if (permission === "denied") btn.textContent = '⛔ Notifications denied';
+      return;
     }
+
+    // Register service worker
+    navigator.serviceWorker.register("sw.js").then(() => {
+      navigator.serviceWorker.ready.then(reg => {
+        // Show confirmation notification
+        reg.showNotification("Spend Some Time", {
+          body: "🎉 Practice reminders are now enabled! You'll get tips to help you learn.",
+          icon: "/favicon/favicon-32x32.png",
+          badge: "/favicon/favicon-32x32.png",
+          tag: "sst-enabled",
+          requireInteraction: false // auto dismiss
+        });
+
+        // Update button
+        btn.classList.add('enabled');
+        btn.textContent = '✓ Reminders enabled';
+        btn.disabled = true;
+
+        // Save preference
+        localStorage.setItem('notificationsEnabled', 'true');
+      });
+    }).catch(err => {
+      console.error('Service Worker registration failed:', err);
+      btn.textContent = '⚠️ Setup failed';
+      btn.disabled = false;
+    });
   }).catch(err => {
     console.error('Notification permission error:', err);
     btn.textContent = '🔔 Enable Practice Reminders';
@@ -676,19 +675,19 @@ function enableNotifications() {
   });
 }
 
+// Helper function to show notifications later
 function showNotification(title, options) {
-  if (Notification.permission === "granted") {
-    navigator.serviceWorker.getRegistration().then(reg => {
-      if (reg) {
-        reg.showNotification(title, options);
-      }
-    });
-  }
+  if (Notification.permission !== "granted") return;
+  navigator.serviceWorker.ready.then(reg => {
+    reg.showNotification(title, options);
+  });
 }
 
-// Check notification status on page load
+// Initialize button on page load
 window.addEventListener('load', () => {
   const btn = document.getElementById('notifyBtn');
+  if (!btn) return;
+
   if (Notification.permission === "granted") {
     btn.classList.add('enabled');
     btn.textContent = '✓ Reminders enabled';
@@ -696,8 +695,12 @@ window.addEventListener('load', () => {
   } else if (Notification.permission === "denied") {
     btn.textContent = '⛔ Notifications denied';
     btn.disabled = true;
+  } else {
+    btn.textContent = '🔔 Enable Practice Reminders';
+    btn.disabled = false;
   }
 });
+
 </script>
 
   <div class="quick-actions fade-in">
