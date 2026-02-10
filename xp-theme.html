@@ -797,6 +797,8 @@ footer a {
   color: var(--accent2);
   text-decoration: none;
   font-weight: 600;
+  text-align: center;
+  border-style: justify;
 }
 
 footer a:hover {
@@ -1231,12 +1233,23 @@ footer a:hover {
 
 /* ===== RESPONSIVE ===== */
 @media (max-width: 768px) {
+  nav {
+    padding: 0.8rem 1rem;
+  }
+
+  nav .nav-content {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
   nav .nav-links {
     gap: 0.75rem;
   }
 
   main {
     padding: 7rem 1rem 3rem;
+    margin-top: 120px;
   }
 
   h1 {
@@ -1507,7 +1520,13 @@ footer a:hover {
 </div>
 
 <footer>
-  <p>SpendSomeTime © 2026 | <a href="privacy-policy.html">Privacy Policy</a> | Spend some time learning instead of scrolling 🧠✨</p>
+  <div class="footer-content">
+    <p>© 2026 SpendSomeTime: Use your time with purpose</p>
+    <div class="footer-links">
+      <a href="privacy-policy.html">Privacy Policy</a>
+      <a href="mailto:contact@spendsometime.org">Contact Us</a>
+    </div>
+  </div>
 </footer>
 
 <script>

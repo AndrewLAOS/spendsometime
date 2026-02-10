@@ -458,87 +458,28 @@ p { color: var(--muted); }
   .answers button{padding:0.9rem;}
   .skill{padding:1.2rem;}
 }
-footer {
-  background: rgba(255, 255, 255, 0.95);
-  border-top: 1px solid var(--border);
-  padding: 2rem 1.5rem;
-  text-align: center;
-  color: var(--muted);
-  font-size: 0.9rem;
-  margin-top: 4rem;
-}
-
-footer a {
-  color: var(--accent2);
-  text-decoration: none;
-  font-weight: 600;
-  text-align: center;
-  border-style: justify;
-}
-
-footer a:hover {
-  text-decoration: underline;
-}
-/* Mobile-first overrides */
+/* ===== Mobile nav fix ===== */
 @media (max-width: 768px) {
-  header h1 {
-    font-size: 2.5rem;
+  nav {
+    padding: 0.8rem 1rem;
   }
-  header p {
-    font-size: 1rem;
-    max-width: 90%;
-  }
-  .actions {
+
+  nav .nav-content {
     flex-direction: column;
-    gap: 0.8rem;
     align-items: center;
-  }
-  a.button {
-    width: 90%;
-    max-width: 250px;
-  }
-  .stats-banner, .quick-actions {
-    grid-template-columns: 1fr;
-    gap: 1rem;
-    padding: 1rem;
-  }
-  .card {
-    padding: 1.5rem;
-  }
-  .card h2 { font-size: 1.4rem; }
-  .card p { font-size: 0.95rem; }
-  footer {
-    padding: 1rem;
-    font-size: 0.85rem;
-  }
-  nav .nav-links {
-    flex-wrap: wrap;
-    justify-content: center;
     gap: 0.5rem;
   }
-}
-@media (max-width: 600px) {
-  header {
-    padding: 2rem 1rem;
+
+  nav .nav-links {
+    flex-wrap: nowrap;
+    gap: 0.8rem;
   }
-  .scroll-indicator {
-    bottom: 1rem;
-    font-size: 1.5rem;
+
+  main {
+    margin-top: 120px;
   }
-}
-.stats-banner, .quick-actions {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 2rem;
 }
 
-@media (max-width: 600px) {
-  .stats-banner, .quick-actions {
-    grid-template-columns: 1fr;
-    gap: 1rem;
-    padding: 1rem;
-  }
-}
 .close-btn {
   position: absolute;
   top: 1rem;
@@ -643,7 +584,27 @@ footer a:hover {
   from {transform: translateY(-20px); opacity: 0;}
   to {transform: translateY(0); opacity: 1;}
 }
+footer {
+  background: rgba(255, 255, 255, 0.95);
+  border-top: 1px solid var(--border);
+  padding: 2rem 1.5rem;
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.9rem;
+  margin-top: 4rem;
+}
 
+footer a {
+  color: var(--accent2);
+  text-decoration: none;
+  font-weight: 600;
+  text-align: center;
+  border-style: justify;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
 </style>
 </head>
 <body>
