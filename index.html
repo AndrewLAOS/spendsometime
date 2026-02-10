@@ -24,10 +24,10 @@
     cronitor('config', { clientKey: 'a68ff40256193f4073a5673dd7ae67de' });
 </script>
 
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-<link rel="manifest" href="/site.webmanifest">
+<link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
+<link rel="manifest" href="/favicon/site.webmanifest">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
@@ -620,23 +620,28 @@ function enableNotifications() {
   }
 
   Notification.requestPermission().then(permission => {
-    if (permission === "granted") {
-      navigator.serviceWorker.register("sw.js");
-      alert("Reminders enabled 💪");
-    }
-  });
-  if (permission === "granted") {
-  navigator.serviceWorker.register("sw.js").then(() => {
-    navigator.serviceWorker.ready.then(reg => {
-      reg.showNotification("Spend Some Time", {
-        body: "Reminders are enabled 💪",
-        icon: "icon.png",
-        badge: "badge.png"
+    if (permission !== "granted") return;
+
+    navigator.serviceWorker.register("sw.js").then(() => {
+      navigator.serviceWorker.ready.then(reg => {
+        reg.showNotification("Spend Some Time", {
+          body: "Reminders are enabled 💪",
+          icon: "icon.png",
+          badge: "badge.png",
+          tag: "sst-enabled"
+        });
       });
     });
   });
 }
-
+function showNotification(title, options) {
+  if (Notification.permission === "granted") {
+    navigator.serviceWorker.getRegistration().then(reg => {
+      if (reg) {
+        reg.showNotification(title, options);
+      }
+    });
+  }
 }
 </script>
 
