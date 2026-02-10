@@ -625,6 +625,18 @@ function enableNotifications() {
       alert("Reminders enabled 💪");
     }
   });
+  if (permission === "granted") {
+  navigator.serviceWorker.register("sw.js").then(() => {
+    navigator.serviceWorker.ready.then(reg => {
+      reg.showNotification("Spend Some Time", {
+        body: "Reminders are enabled 💪",
+        icon: "icon.png",
+        badge: "badge.png"
+      });
+    });
+  });
+}
+
 }
 </script>
 
