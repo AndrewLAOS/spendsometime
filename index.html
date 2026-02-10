@@ -24,10 +24,10 @@
     cronitor('config', { clientKey: 'a68ff40256193f4073a5673dd7ae67de' });
 </script>
 
-<link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
-<link rel="manifest" href="/favicon/site.webmanifest">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
@@ -437,51 +437,44 @@ footer a:hover {
 .notify-btn {
   width: 100%;
   max-width: 420px;
-  padding: 14px 18px;
+  padding: 14px 24px;
   margin: 20px auto;
   display: block;
-
-  background: var(--gradient);
+  background: linear-gradient(135deg, #ff7eb9 0%, #58d9ff 100%);
   color: #ffffff;
-
   font-size: 1rem;
   font-weight: 600;
   border: none;
   border-radius: 14px;
-
   cursor: pointer;
-  box-shadow: 0 14px 30px rgba(88, 217, 255, 0.2);
-  transition: transform 0.15s ease, box-shadow 0.15s ease, opacity 0.15s ease;
+  box-shadow: 0 8px 24px rgba(88, 217, 255, 0.25);
+  transition: all 0.2s ease;
+  position: relative;
+  overflow: hidden;
 }
 
-.notify-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 20px 40px var(--accent2);
-  --accent: #ff7eb9;
-  --accent2: #58d9ff; 
+.notify-btn:hover:not(:disabled) {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 32px rgba(88, 217, 255, 0.35);
 }
 
-.notify-btn:active {
-  transform: scale(0.98);
+.notify-btn:active:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 16px rgba(88, 217, 255, 0.25);
 }
 
 .notify-btn:disabled {
-  opacity: 0.5;
-  cursor: default;
-  box-shadow: none;
-}
-.notify-btn {
-  background: var(--notify);
-  color: rgb(0, 0, 0);
-  border: none;
-    --accent: #ff7eb9;
-  --accent2: #58d9ff; 
-  transition: background 0.2s ease, transform 0.15s ease;
+  opacity: 0.6;
+  cursor: not-allowed;
 }
 
-.notify-btn:hover {
-  background: var(--notifyHover);
-  transform: translateY(-1px);
+.notify-btn.enabled {
+  background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+  box-shadow: 0 8px 24px rgba(34, 197, 94, 0.25);
+}
+
+.notify-btn.enabled:hover {
+  box-shadow: 0 16px 32px rgba(34, 197, 94, 0.35);
 }
 /* ===== Mobile nav fix ===== */
 @media (max-width: 768px) {
@@ -607,33 +600,82 @@ footer a:hover {
       <span class="label">XP Earned ⭐</span>
     </div>
   </div>
-<button class="notify-btn" onclick="enableNotifications()">
-  Enable Practice Reminders
+<button class="notify-btn" id="notifyBtn" onclick="enableNotifications()">
+  🔔 Enable Practice Reminders
 </button>
-
 
 <script>
 function enableNotifications() {
+  const btn = document.getElementById('notifyBtn');
+  
+  // Check if Notification API is supported
   if (!("Notification" in window)) {
-    alert("Notifications not supported");
+    btn.textContent = '❌ Not supported';
+    btn.disabled = true;
     return;
   }
-
+  
+  // Check if already enabled
+  if (Notification.permission === "granted") {
+    btn.classList.add('enabled');
+    btn.textContent = '✓ Reminders enabled';
+    btn.disabled = true;
+    return;
+  }
+  
+  // If denied, show message
+  if (Notification.permission === "denied") {
+    btn.textContent = '⛔ Notifications denied';
+    btn.disabled = true;
+    return;
+  }
+  
+  // Request permission
+  btn.textContent = '⏳ Requesting...';
+  btn.disabled = true;
+  
   Notification.requestPermission().then(permission => {
-    if (permission !== "granted") return;
-
-    navigator.serviceWorker.register("sw.js").then(() => {
-      navigator.serviceWorker.ready.then(reg => {
-        reg.showNotification("Spend Some Time", {
-          body: "Reminders are enabled 💪",
-          icon: "icon.png",
-          badge: "badge.png",
-          tag: "sst-enabled"
+    if (permission === "granted") {
+      // Register service worker and show confirmation
+      navigator.serviceWorker.register("sw.js").then(registration => {
+        navigator.serviceWorker.ready.then(reg => {
+          // Show confirmation notification
+          reg.showNotification("Spend Some Time", {
+            body: "🎉 Practice reminders are now enabled! You'll get tips to help you learn.",
+            icon: "/favicon/favicon-32x32.png",
+            badge: "/favicon/favicon-32x32.png",
+            tag: "sst-enabled",
+            requireInteraction: true
+          });
+          
+          // Update button state
+          btn.classList.add('enabled');
+          btn.textContent = '✓ Reminders enabled';
+          btn.disabled = true;
+          
+          // Save preference
+          localStorage.setItem('notificationsEnabled', 'true');
         });
+      }).catch(err => {
+        console.error('Service Worker registration failed:', err);
+        btn.textContent = '⚠️ Setup failed';
+        btn.disabled = false;
       });
-    });
+    } else if (permission === "denied") {
+      btn.textContent = '⛔ Notifications denied';
+      btn.disabled = true;
+    } else {
+      // Default permission (not yet answered)
+      btn.textContent = '🔔 Enable Practice Reminders';
+      btn.disabled = false;
+    }
+  }).catch(err => {
+    console.error('Notification permission error:', err);
+    btn.textContent = '🔔 Enable Practice Reminders';
+    btn.disabled = false;
   });
 }
+
 function showNotification(title, options) {
   if (Notification.permission === "granted") {
     navigator.serviceWorker.getRegistration().then(reg => {
@@ -643,6 +685,19 @@ function showNotification(title, options) {
     });
   }
 }
+
+// Check notification status on page load
+window.addEventListener('load', () => {
+  const btn = document.getElementById('notifyBtn');
+  if (Notification.permission === "granted") {
+    btn.classList.add('enabled');
+    btn.textContent = '✓ Reminders enabled';
+    btn.disabled = true;
+  } else if (Notification.permission === "denied") {
+    btn.textContent = '⛔ Notifications denied';
+    btn.disabled = true;
+  }
+});
 </script>
 
   <div class="quick-actions fade-in">
