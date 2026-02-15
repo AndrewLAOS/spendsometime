@@ -49,4 +49,28 @@
     <priority>0.5</priority>
   </url>
 
+  <url>
+    <loc>https://spendsometime.org/blog.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://spendsometime.org/blog-stop-doomscrolling.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://spendsometime.org/blog-5-minute-skills.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://spendsometime.org/blog-weekly-challenge-system.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
 </urlset>
