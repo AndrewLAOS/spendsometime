@@ -68,7 +68,17 @@
   </url>
 
   <url>
+    <loc>https://spendsometime.org/blog-easy-impressive-skills.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+    <url>
     <loc>https://spendsometime.org/blog-weekly-challenge-system.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+      <url>
+    <loc>https://spendsometime.org/blog-skills-that-impress.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
