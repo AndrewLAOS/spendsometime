@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -883,6 +883,139 @@ footer a:hover {
   border-radius: 50%;
   background: #58cc02;
   opacity: 0;
+  animation: sparklePop 1.2s ease-out forwards;
+}
+
+@keyframes sparklePop {
+  0% {
+    opacity: 0;
+    transform: scale(0) rotate(0deg);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.5) rotate(180deg);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0) rotate(360deg);
+  }
+}
+
+/* Duolingo-style progress logging animation */
+.duo-progress-animation {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10001;
+  pointer-events: none;
+}
+
+.duo-progress-card {
+  background: white;
+  border-radius: 20px;
+  padding: 2rem 2.5rem;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+  text-align: center;
+  min-width: 280px;
+  position: relative;
+  overflow: hidden;
+}
+
+.duo-progress-icon {
+  font-size: 64px;
+  margin-bottom: 1rem;
+  display: inline-block;
+  transform-origin: center;
+}
+
+.duo-progress-text {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 0.5rem;
+}
+
+.duo-progress-subtext {
+  font-size: 1rem;
+  color: #666;
+  margin-bottom: 1rem;
+}
+
+.duo-xp-badge {
+  display: inline-block;
+  background: linear-gradient(135deg, #58cc02, #4caf00);
+  color: white;
+  padding: 0.6rem 1.2rem;
+  border-radius: 20px;
+  font-weight: 800;
+  font-size: 1.1rem;
+  margin-top: 0.5rem;
+  box-shadow: 0 4px 12px rgba(88, 204, 2, 0.4);
+}
+
+.duo-progress-confetti {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background: #58cc02;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+/* Daily progress stats */
+.daily-progress-card {
+  background: linear-gradient(135deg, #f0f7ff, #ffffff);
+  border: 2px solid var(--accent2);
+  border-radius: 16px;
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+  box-shadow: 0 4px 16px rgba(88, 217, 255, 0.15);
+}
+
+.daily-progress-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.daily-progress-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--accent2);
+  margin: 0;
+}
+
+.daily-progress-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.daily-stat {
+  text-align: center;
+  padding: 0.8rem;
+  background: white;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+}
+
+.daily-stat-value {
+  font-size: 1.8rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 0.3rem;
+}
+
+.daily-stat-label {
+  font-size: 0.85rem;
+  color: var(--muted);
+  font-weight: 600;
 }
 
 /* Progress toast and confetti styles */
@@ -898,17 +1031,30 @@ footer a:hover {
 }
 .progress-toast {
   pointer-events: auto;
-  background: linear-gradient(90deg, var(--accent2), var(--accent));
+  background: linear-gradient(135deg, var(--accent2), var(--accent));
   color: white;
-  padding: 0.8rem 1rem;
-  border-radius: 12px;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.18);
+  padding: 1rem 1.2rem;
+  border-radius: 16px;
+  box-shadow: 0 12px 32px rgba(0,0,0,0.2), 0 0 0 1px rgba(255,255,255,0.1);
   display: flex;
-  gap: 0.6rem;
+  gap: 0.8rem;
   align-items: center;
-  min-width: 220px;
+  min-width: 280px;
+  max-width: 400px;
   font-weight: 700;
   transform-origin: top right;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.2);
+  animation: toastShimmer 2s ease-in-out infinite;
+}
+
+@keyframes toastShimmer {
+  0%, 100% {
+    box-shadow: 0 12px 32px rgba(0,0,0,0.2), 0 0 0 1px rgba(255,255,255,0.1);
+  }
+  50% {
+    box-shadow: 0 12px 32px rgba(88, 217, 255, 0.3), 0 0 0 1px rgba(255,255,255,0.2);
+  }
 }
 .progress-toast .xp {
   background: rgba(255,255,255,0.15);
@@ -1282,10 +1428,11 @@ function loadFromQuiz() {
       challenges.push(challenge);
     });
     
-    saveChallenges();
-    updateStats();
-    renderChallenges();
-    alert(`Created ${bookmarkedSkills.length} challenges from your bookmarked skills!`);
+  saveChallenges();
+  updateStats();
+  renderChallenges();
+  updateDailyProgressDisplay();
+  alert(`Created ${bookmarkedSkills.length} challenges from your bookmarked skills!`);
   });
 }
 
@@ -1457,6 +1604,7 @@ document.getElementById('challenge-form').addEventListener('submit', (e) => {
   saveChallenges();
   updateStats();
   renderChallenges();
+  updateDailyProgressDisplay();
   closeModal();
 });
 
@@ -1464,21 +1612,40 @@ function updateProgress(id) {
   progressChallengeId = Number(id);
   document.getElementById('progress-form').reset();
   document.getElementById('progress-modal').classList.add('active');
-  logProgressQuest();
+  // logProgressQuest is handled by gamification.js event listener
 }
 
 
 function closeProgressModal() {
-  document.getElementById('progress-modal').classList.remove('active');
+  const modal = document.getElementById('progress-modal');
+  if (modal) {
+    modal.classList.remove('active');
+  }
   progressChallengeId = null;
 }
 
-document.getElementById('progress-form').addEventListener('submit', (e) => {
+// Ensure form exists before adding event listener
+const progressForm = document.getElementById('progress-form');
+if (!progressForm) {
+  console.error('Progress form not found!');
+} else {
+  progressForm.addEventListener('submit', (e) => {
   e.preventDefault();
   
   const challenge = getChallengeById(progressChallengeId);
 
-  if (!challenge) return;
+  if (!challenge) {
+    console.error('Challenge not found:', progressChallengeId);
+    alert('Error: Challenge not found. Please try again.');
+    return;
+  }
+  
+  // Validate form input
+  const timeInput = document.getElementById('progress-time');
+  if (!timeInput || !timeInput.value) {
+    alert('Please enter the time spent.');
+    return;
+  }
 
   // Anti-cheat: rate limit rapid logging per challenge (5 minutes)
   const now = Date.now();
@@ -1506,34 +1673,50 @@ document.getElementById('progress-form').addEventListener('submit', (e) => {
     challenge.progress += 1;
   }
 
-  challenge.lastUpdate = new Date().toISOString();
-
-  // Update streak based on consecutive days
-  if (today === lastUpdate) {
-    // Same day, don't change streak
-  } else {
+  // Update streak BEFORE updating lastUpdate
+  // Streak should start at 1 on first log, then increment for consecutive days
+  const currentStreak = challenge.streak || 0;
+  
+  // Check if this is the very first log ever (no notes or no previous logs)
+  const hasNoNotes = !challenge.notes || challenge.notes.length === 0;
+  const isFirstLogEver = hasNoNotes || 
+                         !challenge.lastUpdate || 
+                         lastUpdate === challenge.startDate?.split('T')[0] ||
+                         (currentStreak === 0 && hasNoNotes);
+  
+  if (today !== lastUpdate) {
+    // This is a new day (or first log ever)
     const yesterday = new Date();
     yesterday.setDate(yesterday.getDate() - 1);
     const yesterdayStr = yesterday.toISOString().split('T')[0];
     
-    if (lastUpdate === yesterdayStr) {
+    if (isFirstLogEver) {
+      // First log ever - start streak at 1
+      challenge.streak = 1;
+    } else if (lastUpdate === yesterdayStr) {
       // Consecutive day, increment streak
-      challenge.streak = (challenge.streak || 0) + 1;
+      challenge.streak = currentStreak + 1;
     } else {
-      // Day gap, reset streak to 1
+      // Day gap (but not first log), reset streak to 1
       challenge.streak = 1;
     }
+  } else {
+    // Same day - if no streak exists yet (first log of the day), set it to 1
+    if (currentStreak === 0 || isFirstLogEver) {
+      challenge.streak = 1;
+    }
+    // Otherwise keep the current streak (already logged today)
   }
   
-  // Add note only if there's text
-  if (notes) {
-    if (!challenge.notes) challenge.notes = [];
-    challenge.notes.push({
-      date: new Date().toISOString(),
-      time: timeSpent,
-      note: notes
-    });
-  }
+  challenge.lastUpdate = new Date().toISOString();
+  
+  // Always add a note entry for tracking, even if no text provided
+  if (!challenge.notes) challenge.notes = [];
+  challenge.notes.push({
+    date: new Date().toISOString(),
+    time: timeSpent,
+    note: notes || `Practiced for ${timeSpent} minutes`
+  });
   
   // Check if completed
   if (challenge.progress >= challenge.duration) {
@@ -1549,6 +1732,7 @@ document.getElementById('progress-form').addEventListener('submit', (e) => {
   saveChallenges();
   updateStats();
   renderChallenges();
+  updateDailyProgressDisplay();
   // Notify central gamification system about this progress so it can award XP
   try {
     document.dispatchEvent(new CustomEvent('challengeProgress', {
@@ -1563,20 +1747,43 @@ document.getElementById('progress-form').addEventListener('submit', (e) => {
     console.warn('Failed to dispatch challengeProgress event', err);
   }
 
-  // Show a quick progress toast and confetti locally
+  // Show Duolingo-style progress animation
   try {
-    showProgressToast(challenge.name, Math.max(1, Math.round(timeSpent / 1)));
-    if (challenge.status === 'completed') {
-      // Large celebration for completion
-      showLessonCompleteAnimation(challenge.name);
-    }
+    const xpAmount = Math.max(1, Math.round(timeSpent / 1));
+    
+    // Show animations after a brief delay to ensure DOM updates
+    setTimeout(() => {
+      try {
+        showDuolingoProgressAnimation(challenge.name, timeSpent, xpAmount, challenge.streak || 1);
+        showProgressToast(challenge.name, xpAmount);
+        
+        if (challenge.status === 'completed') {
+          // Large celebration for completion
+          setTimeout(() => {
+            showLessonCompleteAnimation(challenge.name);
+          }, 1500);
+        }
+      } catch (animErr) {
+        console.error('Animation error:', animErr);
+      }
+    }, 100);
+    
+    // Update daily progress display
+    setTimeout(() => {
+      try {
+        updateDailyProgressDisplay();
+      } catch (displayErr) {
+        console.error('Display update error:', displayErr);
+      }
+    }, 200);
   } catch (err) {
-    console.warn('Progress UI handlers failed', err);
+    console.error('Progress UI handlers failed', err);
   }
 
   closeProgressModal();
 
-});
+  });
+}
 
 function pauseChallenge(id) {
   const challenge = getChallengeById(id);
@@ -1586,6 +1793,7 @@ function pauseChallenge(id) {
   saveChallenges();
   updateStats();
   renderChallenges();
+  updateDailyProgressDisplay();
 }
 
 
@@ -1598,6 +1806,7 @@ function resumeChallenge(id) {
   saveChallenges();
   updateStats();
   renderChallenges();
+  updateDailyProgressDisplay();
 }
 
 
@@ -1609,6 +1818,7 @@ function deleteChallenge(id) {
   saveChallenges();
   updateStats();
   renderChallenges();
+  updateDailyProgressDisplay();
 }
 
 
@@ -1821,6 +2031,9 @@ Do something better than scrolling.`;
     shareLocked = false;
   }, 1000);
 }
+// Duolingo-style burst icons
+const burstIcons = ['⭐', '🎉', '🔥', '💪', '✨', '🏆', '🎯', '💎', '🌟', '🚀', '💯', '🎊'];
+
 function showLessonCompleteAnimation(challengeName) {
   const messages = [
     "BRO ACTUALLY FINISHED 😭",
@@ -1828,22 +2041,36 @@ function showLessonCompleteAnimation(challengeName) {
     "Skill unlocked.",
     "This is character development.",
     "Scrolling avoided successfully.",
-    "Rare W achieved."
+    "Rare W achieved.",
+    "Challenge completed! 🎉",
+    "You're on fire! 🔥",
+    "Incredible work! 💪"
   ];
-
 
   const overlay = document.getElementById("lesson-complete-overlay");
   const card = overlay.querySelector(".lesson-complete-card");
   const text = document.getElementById("lesson-complete-text");
   const mainIcon = document.getElementById("main-icon");
   const burst = document.getElementById("icon-burst");
+  const sparkles = document.getElementById("sparkles");
 
   overlay.style.display = "flex";
   burst.innerHTML = "";
+  sparkles.innerHTML = "";
 
   text.textContent =
     messages[Math.floor(Math.random() * messages.length)] +
     `\n"${challengeName}"`;
+
+  // Create sparkles
+  for (let i = 0; i < 20; i++) {
+    const sparkle = document.createElement("div");
+    sparkle.className = "sparkle";
+    sparkle.style.left = Math.random() * 100 + '%';
+    sparkle.style.top = Math.random() * 100 + '%';
+    sparkle.style.animationDelay = Math.random() * 0.5 + 's';
+    sparkles.appendChild(sparkle);
+  }
 
   gsap.set(card, {
     opacity: 0,
@@ -1855,7 +2082,7 @@ function showLessonCompleteAnimation(challengeName) {
   gsap.set(mainIcon, { scale: 0, rotate: -90 });
 
   // Create burst icons
-  for (let i = 0; i < 12; i++) {
+  for (let i = 0; i < 16; i++) {
     const el = document.createElement("div");
     el.className = "burst-icon";
     el.textContent = burstIcons[Math.floor(Math.random() * burstIcons.length)];
@@ -1864,7 +2091,8 @@ function showLessonCompleteAnimation(challengeName) {
     gsap.set(el, {
       x: 0,
       y: 0,
-      scale: 0.6
+      scale: 0.6,
+      opacity: 0
     });
   }
 
@@ -1877,81 +2105,170 @@ function showLessonCompleteAnimation(challengeName) {
           scale: 0.9,
           duration: 0.3,
           ease: "power2.in",
-          onComplete: () => (overlay.style.display = "none")
+          onComplete: () => {
+            overlay.style.display = "none";
+            // Clean up sparkles
+            sparkles.innerHTML = "";
+          }
         });
-      }, 900)
+      }, 2500)
   });
 
-  // Card entrance
+  // Card entrance with bounce
   tl.to(card, {
     opacity: 1,
     y: 0,
     rotateX: 0,
     scale: 1,
-    duration: 0.6,
-    ease: "back.out(1.6)"
+    duration: 0.7,
+    ease: "back.out(1.7)"
   });
 
-  // Icon pop + spin
+  // Icon pop + spin with elastic bounce
+  tl.to(mainIcon, {
+    scale: 1.2,
+    rotate: 360,
+    duration: 0.6,
+    ease: "elastic.out(1.5, 0.5)"
+  }, "-=0.4");
+
+  // Scale back down
   tl.to(mainIcon, {
     scale: 1,
-    rotate: 0,
-    duration: 0.4,
-    ease: "elastic.out(1.4, 0.6)"
-  }, "-=0.3");
-
-  // Screen punch
-  tl.fromTo(card, {
-    x: -4
-  }, {
-    x: 4,
-    duration: 0.1,
-    repeat: 5,
-    yoyo: true,
-    ease: "power1.inOut"
-  }, "-=0.2");
-
-  // Burst animation
-  tl.to(".burst-icon", {
-    opacity: 1,
-    x: () => gsap.utils.random(-80, 80),
-    y: () => gsap.utils.random(-80, 80),
-    rotation: () => gsap.utils.random(-180, 180),
-    scale: 1,
-    duration: 0.6,
-    ease: "power3.out",
-    stagger: 0.03
-  }, "-=0.3");
-
-  // Text snap-in
-  tl.from(text, {
-    y: 20,
-    opacity: 0,
     duration: 0.3,
     ease: "power2.out"
+  }, "-=0.2");
+
+  // Screen punch effect (Duolingo style)
+  tl.fromTo(card, {
+    x: -6
+  }, {
+    x: 6,
+    duration: 0.08,
+    repeat: 8,
+    yoyo: true,
+    ease: "power1.inOut"
+  }, "-=0.3");
+
+  // Sparkles animation
+  tl.to(".sparkle", {
+    opacity: [0, 1, 0],
+    scale: [0, 1.5, 0],
+    rotation: 360,
+    duration: 1.2,
+    ease: "power2.out",
+    stagger: {
+      amount: 0.8,
+      from: "random"
+    }
+  }, "-=0.5");
+
+  // Burst animation with more dynamic movement
+  tl.to(".burst-icon", {
+    opacity: 1,
+    x: () => gsap.utils.random(-120, 120),
+    y: () => gsap.utils.random(-120, 120),
+    rotation: () => gsap.utils.random(-360, 360),
+    scale: () => gsap.utils.random(0.8, 1.3),
+    duration: 0.8,
+    ease: "power3.out",
+    stagger: {
+      amount: 0.4,
+      from: "center"
+    }
   }, "-=0.4");
+
+  // Fade out burst icons
+  tl.to(".burst-icon", {
+    opacity: 0,
+    scale: 0.3,
+    duration: 0.5,
+    ease: "power2.in"
+  }, "-=0.2");
+
+  // Text snap-in with bounce
+  tl.from(text, {
+    y: 30,
+    opacity: 0,
+    scale: 0.8,
+    duration: 0.4,
+    ease: "back.out(1.4)"
+  }, "-=0.6");
+
+  // Pulse effect on card
+  tl.to(card, {
+    scale: 1.05,
+    duration: 0.2,
+    yoyo: true,
+    repeat: 1,
+    ease: "power2.inOut"
+  }, "-=0.3");
 }
 
 
 /* Gamification-related notification and theme celebration functions removed from this page */
 
-// Toast + confetti helpers
+// Enhanced confetti helpers
 function createConfetti(parent, count = 18) {
-  const pieces = [];
+  const colors = ['#ff7eb9', '#58d9ff', '#ffd166', '#4ade80', '#58cc02', '#ff6b6b'];
+  const shapes = ['circle', 'square', 'triangle'];
+  
   for (let i = 0; i < count; i++) {
     const p = document.createElement('div');
     p.className = 'confetti-piece';
-    p.style.left = Math.random() * 100 + '%';
-    p.style.background = ['#ff7eb9', '#58d9ff', '#ffd166', '#4ade80'][Math.floor(Math.random() * 4)];
+    
+    const rect = parent.getBoundingClientRect();
+    const startX = rect.width / 2;
+    const startY = rect.height / 2;
+    
+    p.style.left = startX + 'px';
+    p.style.top = startY + 'px';
+    p.style.position = 'absolute';
+    p.style.background = colors[Math.floor(Math.random() * colors.length)];
+    
+    // Random shape
+    const shape = shapes[Math.floor(Math.random() * shapes.length)];
+    if (shape === 'circle') {
+      p.style.borderRadius = '50%';
+    } else if (shape === 'triangle') {
+      p.style.width = '0';
+      p.style.height = '0';
+      p.style.borderLeft = '6px solid transparent';
+      p.style.borderRight = '6px solid transparent';
+      p.style.borderBottom = `12px solid ${colors[Math.floor(Math.random() * colors.length)]}`;
+      p.style.background = 'transparent';
+    } else {
+      p.style.borderRadius = '2px';
+    }
+    
+    if (shape !== 'triangle') {
+      p.style.width = Math.random() * 8 + 6 + 'px';
+      p.style.height = p.style.width;
+    }
+    
+    parent.style.position = 'relative';
     parent.appendChild(p);
-    pieces.push(p);
 
-    gsap.to(p, {
-      y: Math.random() * 120 + 80,
-      x: (Math.random() - 0.5) * 200,
-      rotation: Math.random() * 360,
-      duration: 0.9 + Math.random() * 0.6,
+    const angle = (Math.PI * 2 * i) / count + Math.random() * 0.5;
+    const distance = 80 + Math.random() * 60;
+    const x = Math.cos(angle) * distance;
+    const y = Math.sin(angle) * distance - 30;
+
+    gsap.fromTo(p, {
+      opacity: 0,
+      scale: 0,
+      x: 0,
+      y: 0,
+      rotation: 0
+    }, {
+      opacity: [0, 1, 0],
+      scale: [0, 1, 0.5],
+      x: x,
+      y: y,
+      rotation: Math.random() * 720 - 360,
+      duration: 1.2 + Math.random() * 0.4,
       ease: 'power3.out',
+      delay: Math.random() * 0.2,
       onComplete: () => p.remove()
     });
   }
@@ -1969,24 +2286,418 @@ function showProgressToast(challengeName, xpAmount) {
 
   const toast = document.createElement('div');
   toast.className = 'progress-toast';
-  toast.innerHTML = `<div style="flex:1">+${xpAmount} XP • Logged progress for <strong style="font-weight:800;">${escapeHtml(challengeName)}</strong></div><div class="xp">+${xpAmount}</div>`;
+  toast.innerHTML = `
+    <div style="flex:1; display:flex; align-items:center; gap:0.5rem;">
+      <span style="font-size:1.2rem;">✨</span>
+      <div>
+        <div style="font-weight:800; font-size:0.95rem;">${escapeHtml(challengeName)}</div>
+        <div style="font-size:0.8rem; opacity:0.9;">Progress logged!</div>
+      </div>
+    </div>
+    <div class="xp" style="font-size:1.1rem;">+${xpAmount} XP</div>
+  `;
   container.prepend(toast);
 
-  // entrance
-  gsap.fromTo(toast, {opacity:0, y:-12, scale:0.95}, {opacity:1, y:0, scale:1, duration:0.45, ease:'back.out(1.4)'});
+  // Enhanced entrance animation
+  gsap.fromTo(toast, {
+    opacity: 0,
+    y: -20,
+    scale: 0.8,
+    rotationX: -15
+  }, {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    rotationX: 0,
+    duration: 0.5,
+    ease: 'back.out(1.6)'
+  });
 
-  // confetti from toast
-  createConfetti(toast, 12);
+  // Pulse effect
+  gsap.to(toast, {
+    scale: 1.05,
+    duration: 0.15,
+    yoyo: true,
+    repeat: 1,
+    ease: 'power2.inOut',
+    delay: 0.3
+  });
 
-  // auto dismiss
+  // Confetti from toast
+  createConfetti(toast, 18);
+
+  // Auto dismiss with slide out
   setTimeout(() => {
-    gsap.to(toast, {opacity:0, y:-16, duration:0.35, onComplete: () => toast.remove()});
-  }, 2200);
+    gsap.to(toast, {
+      opacity: 0,
+      x: 100,
+      scale: 0.9,
+      duration: 0.4,
+      ease: 'power2.in',
+      onComplete: () => toast.remove()
+    });
+  }, 3000);
 }
 
 function escapeHtml(s) {
   return String(s).replace(/[&<>"']/g, function (m) { return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":"&#39;"}[m]; });
 }
+
+// Duolingo-style progress logging animation
+function showDuolingoProgressAnimation(challengeName, timeSpent, xpAmount, streak) {
+  // Create overlay
+  const overlay = document.createElement('div');
+  overlay.className = 'duo-progress-animation';
+  overlay.style.opacity = '0';
+  
+  const card = document.createElement('div');
+  card.className = 'duo-progress-card';
+  
+  const icon = document.createElement('div');
+  icon.className = 'duo-progress-icon';
+  icon.textContent = streak >= 7 ? '🔥' : streak >= 3 ? '⭐' : '✨';
+  
+  const text = document.createElement('div');
+  text.className = 'duo-progress-text';
+  text.textContent = 'Great job!';
+  
+  const subtext = document.createElement('div');
+  subtext.className = 'duo-progress-subtext';
+  subtext.textContent = `${timeSpent} minutes logged`;
+  
+  const xpBadge = document.createElement('div');
+  xpBadge.className = 'duo-xp-badge';
+  
+  // Calculate streak bonus XP
+  let streakBonus = 0;
+  let streakMultiplier = 1;
+  if (streak >= 7) {
+    streakBonus = Math.floor(xpAmount * 0.5); // 50% bonus for 7+ day streak
+    streakMultiplier = 1.5;
+  } else if (streak >= 3) {
+    streakBonus = Math.floor(xpAmount * 0.25); // 25% bonus for 3+ day streak
+    streakMultiplier = 1.25;
+  }
+  
+  const totalXP = xpAmount + streakBonus;
+  xpBadge.textContent = `+${totalXP} XP`;
+  if (streakBonus > 0) {
+    xpBadge.textContent += ` (+${streakBonus} streak bonus!)`;
+  }
+  
+  // Streak bonus message
+  if (streak >= 7) {
+    const streakMsg = document.createElement('div');
+    streakMsg.style.marginTop = '0.8rem';
+    streakMsg.style.fontSize = '0.95rem';
+    streakMsg.style.color = '#f59e0b';
+    streakMsg.style.fontWeight = '700';
+    streakMsg.textContent = `${streak} day streak! 🔥`;
+    streakMsg.style.animation = 'pulse 1s ease-in-out infinite';
+    card.appendChild(streakMsg);
+  } else if (streak >= 3) {
+    const streakMsg = document.createElement('div');
+    streakMsg.style.marginTop = '0.8rem';
+    streakMsg.style.fontSize = '0.9rem';
+    streakMsg.style.color = '#fbbf24';
+    streakMsg.style.fontWeight = '700';
+    streakMsg.textContent = `${streak} day streak! ⭐`;
+    card.appendChild(streakMsg);
+  }
+  
+  card.appendChild(icon);
+  card.appendChild(text);
+  card.appendChild(subtext);
+  card.appendChild(xpBadge);
+  overlay.appendChild(card);
+  document.body.appendChild(overlay);
+  
+  // Create confetti
+  createDuolingoConfetti(overlay, 30);
+  
+  // Animation timeline
+  const tl = gsap.timeline({
+    onComplete: () => {
+      setTimeout(() => {
+        gsap.to(overlay, {
+          opacity: 0,
+          scale: 0.9,
+          y: -20,
+          duration: 0.3,
+          ease: 'power2.in',
+          onComplete: () => overlay.remove()
+        });
+      }, 1200);
+    }
+  });
+  
+  // Entrance animation
+  tl.fromTo(overlay, {
+    opacity: 0,
+    scale: 0.8
+  }, {
+    opacity: 1,
+    scale: 1,
+    duration: 0.4,
+    ease: 'back.out(1.4)'
+  });
+  
+  // Icon bounce
+  tl.fromTo(icon, {
+    scale: 0,
+    rotation: -180
+  }, {
+    scale: 1.2,
+    rotation: 0,
+    duration: 0.6,
+    ease: 'elastic.out(1.5, 0.5)'
+  }, '-=0.2');
+  
+  tl.to(icon, {
+    scale: 1,
+    duration: 0.2,
+    ease: 'power2.out'
+  });
+  
+  // Text animations
+  tl.from([text, subtext], {
+    y: 20,
+    opacity: 0,
+    duration: 0.4,
+    ease: 'power2.out',
+    stagger: 0.1
+  }, '-=0.3');
+  
+  // XP badge animation
+  tl.from(xpBadge, {
+    scale: 0,
+    y: 10,
+    duration: 0.4,
+    ease: 'back.out(1.6)'
+  }, '-=0.2');
+  
+  // Pulse effect
+  tl.to(card, {
+    scale: 1.05,
+    duration: 0.15,
+    yoyo: true,
+    repeat: 1,
+    ease: 'power2.inOut'
+  }, '-=0.1');
+}
+
+// Create confetti for Duolingo animation
+function createDuolingoConfetti(container, count = 30) {
+  const colors = ['#58cc02', '#ff7eb9', '#58d9ff', '#ffd166', '#4ade80'];
+  
+  for (let i = 0; i < count; i++) {
+    const confetti = document.createElement('div');
+    confetti.className = 'duo-progress-confetti';
+    confetti.style.left = '50%';
+    confetti.style.top = '50%';
+    confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
+    confetti.style.width = Math.random() * 8 + 6 + 'px';
+    confetti.style.height = confetti.style.width;
+    container.appendChild(confetti);
+    
+    const angle = (Math.PI * 2 * i) / count;
+    const distance = 100 + Math.random() * 50;
+    const x = Math.cos(angle) * distance;
+    const y = Math.sin(angle) * distance;
+    
+    gsap.to(confetti, {
+      x: x,
+      y: y,
+      opacity: [0, 1, 0],
+      scale: [0, 1, 0],
+      rotation: Math.random() * 360,
+      duration: 1 + Math.random() * 0.5,
+      ease: 'power2.out',
+      delay: Math.random() * 0.2
+    });
+  }
+}
+
+// Daily progress tracking
+function getDailyProgress() {
+  const today = new Date().toISOString().split('T')[0];
+  const dailyData = {
+    date: today,
+    challengesLogged: 0,
+    totalMinutes: 0,
+    challengesCompleted: 0,
+    streakMaintained: 0
+  };
+  
+  // Track which challenges were already counted (to avoid double counting)
+  const challengesLoggedToday = new Set();
+  
+  challenges.forEach(challenge => {
+    // Count progress logs from notes
+    if (challenge.notes && Array.isArray(challenge.notes)) {
+      challenge.notes.forEach(note => {
+        const noteDate = new Date(note.date).toISOString().split('T')[0];
+        if (noteDate === today) {
+          if (!challengesLoggedToday.has(challenge.id)) {
+            dailyData.challengesLogged++;
+            challengesLoggedToday.add(challenge.id);
+          }
+          dailyData.totalMinutes += (note.time || 0);
+        }
+      });
+    }
+    
+    // Also check lastUpdate to catch any progress that might not have notes yet
+    if (challenge.lastUpdate) {
+      const lastUpdate = new Date(challenge.lastUpdate).toISOString().split('T')[0];
+      if (lastUpdate === today && !challengesLoggedToday.has(challenge.id)) {
+        dailyData.challengesLogged++;
+        challengesLoggedToday.add(challenge.id);
+        // If no notes exist but lastUpdate is today, estimate time from dailyTime
+        if (!challenge.notes || challenge.notes.length === 0) {
+          dailyData.totalMinutes += (challenge.dailyTime || 0);
+        }
+      }
+      
+      if (lastUpdate === today && challenge.status === 'completed') {
+        dailyData.challengesCompleted++;
+      }
+    }
+    
+    // Track best streak
+    if (challenge.streak > 0) {
+      dailyData.streakMaintained = Math.max(dailyData.streakMaintained, challenge.streak);
+    }
+  });
+  
+  return dailyData;
+}
+
+function getWeeklyProgress() {
+  const today = new Date();
+  const weekStart = new Date(today);
+  weekStart.setDate(today.getDate() - today.getDay()); // Start of week (Sunday)
+  weekStart.setHours(0, 0, 0, 0);
+  
+  const weeklyData = {
+    totalMinutes: 0,
+    challengesLogged: 0,
+    challengesCompleted: 0,
+    daysActive: new Set(),
+    averageStreak: 0
+  };
+  
+  challenges.forEach(challenge => {
+    if (challenge.notes && Array.isArray(challenge.notes)) {
+      challenge.notes.forEach(note => {
+        const noteDate = new Date(note.date);
+        if (noteDate >= weekStart) {
+          weeklyData.challengesLogged++;
+          weeklyData.totalMinutes += (note.time || 0);
+          weeklyData.daysActive.add(noteDate.toISOString().split('T')[0]);
+        }
+      });
+    }
+    
+    const lastUpdate = new Date(challenge.lastUpdate);
+    if (lastUpdate >= weekStart && challenge.status === 'completed') {
+      weeklyData.challengesCompleted++;
+    }
+    
+    if (challenge.streak > 0) {
+      weeklyData.averageStreak = Math.max(weeklyData.averageStreak, challenge.streak);
+    }
+  });
+  
+  return weeklyData;
+}
+
+function updateDailyProgressDisplay() {
+  const progress = getDailyProgress();
+  const weekly = getWeeklyProgress();
+  let progressCard = document.getElementById('daily-progress-card');
+  
+  if (!progressCard) {
+    progressCard = document.createElement('div');
+    progressCard.id = 'daily-progress-card';
+    progressCard.className = 'daily-progress-card';
+    
+    const statsBar = document.querySelector('.stats-bar');
+    if (statsBar && statsBar.nextSibling) {
+      statsBar.parentNode.insertBefore(progressCard, statsBar.nextSibling);
+    } else {
+      const container = document.getElementById('challenges-container');
+      if (container && container.parentNode) {
+        container.parentNode.insertBefore(progressCard, container);
+      }
+    }
+  }
+  
+  const today = new Date();
+  const dayName = today.toLocaleDateString('en-US', { weekday: 'long' });
+  const dateStr = today.toLocaleDateString('en-US', { month: 'long', day: 'numeric' });
+  
+  // Calculate daily goal achievement
+  const dailyGoalMet = progress.totalMinutes >= 30; // 30 minutes goal
+  const goalEmoji = dailyGoalMet ? '🎯' : '📈';
+  const goalStatus = dailyGoalMet ? 'Goal Met!' : `${30 - progress.totalMinutes} min to goal`;
+  
+  progressCard.innerHTML = `
+    <div class="daily-progress-header">
+      <h3 class="daily-progress-title">${goalEmoji} Today's Progress (${dayName}, ${dateStr})</h3>
+      <span style="font-size:0.85rem; color:var(--muted); font-weight:600;">${goalStatus}</span>
+    </div>
+    <div class="daily-progress-stats">
+      <div class="daily-stat">
+        <div class="daily-stat-value">${progress.challengesLogged}</div>
+        <div class="daily-stat-label">Challenges Logged</div>
+      </div>
+      <div class="daily-stat">
+        <div class="daily-stat-value">${Math.floor(progress.totalMinutes / 60)}h ${progress.totalMinutes % 60}m</div>
+        <div class="daily-stat-label">Time Invested</div>
+      </div>
+      <div class="daily-stat">
+        <div class="daily-stat-value">${progress.challengesCompleted}</div>
+        <div class="daily-stat-label">Completed</div>
+      </div>
+      <div class="daily-stat">
+        <div class="daily-stat-value">${progress.streakMaintained} 🔥</div>
+        <div class="daily-stat-label">Best Streak</div>
+      </div>
+    </div>
+    <div style="margin-top:1rem; padding-top:1rem; border-top:1px solid var(--border);">
+      <div style="display:flex; justify-content:space-between; align-items:center; font-size:0.9rem;">
+        <span style="color:var(--muted); font-weight:600;">📅 This Week:</span>
+        <span style="color:var(--accent2); font-weight:700;">${Math.floor(weekly.totalMinutes / 60)}h ${weekly.totalMinutes % 60}m • ${weekly.daysActive.size} days active</span>
+      </div>
+    </div>
+  `;
+  
+  // Animate the stats
+  gsap.from('.daily-stat', {
+    opacity: 0,
+    y: 20,
+    duration: 0.5,
+    stagger: 0.1,
+    ease: 'power2.out'
+  });
+  
+  // Pulse effect if goal is met
+  if (dailyGoalMet) {
+    gsap.to(progressCard, {
+      boxShadow: '0 4px 16px rgba(88, 217, 255, 0.3), 0 0 0 2px rgba(88, 217, 255, 0.2)',
+      duration: 0.3,
+      yoyo: true,
+      repeat: 1,
+      ease: 'power2.inOut'
+    });
+  }
+}
+
+// Initialize daily progress on load
+setTimeout(() => {
+  updateDailyProgressDisplay();
+}, 500);
 
 </script>
 
