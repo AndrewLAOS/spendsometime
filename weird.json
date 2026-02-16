@@ -11,7 +11,14 @@
       "structure": 0.4,
       "energy": 0.3,
       "impressiveness": 0.6
-    }
+    },
+    "tags": [
+      "time-low",
+      "type-medium",
+      "structure-medium",
+      "energy-low",
+      "impressiveness-medium"
+    ]
   },
   {
     "name": "Memorize a Deck of Cards (Beginner Method)",
@@ -25,7 +32,14 @@
       "structure": 0.7,
       "energy": 0.4,
       "impressiveness": 0.9
-    }
+    },
+    "tags": [
+      "time-high",
+      "type-medium",
+      "structure-high",
+      "energy-medium",
+      "impressiveness-high"
+    ]
   },
   {
     "name": "Ambidextrous Writing Trial",
@@ -39,7 +53,14 @@
       "structure": 0.3,
       "energy": 0.3,
       "impressiveness": 0.6
-    }
+    },
+    "tags": [
+      "time-medium",
+      "type-high",
+      "structure-low",
+      "energy-low",
+      "impressiveness-medium"
+    ]
   },
   {
     "name": "Human Reaction Benchmark",
@@ -53,7 +74,14 @@
       "structure": 0.8,
       "energy": 0.3,
       "impressiveness": 0.5
-    }
+    },
+    "tags": [
+      "time-low",
+      "type-medium",
+      "structure-high",
+      "energy-low",
+      "impressiveness-medium"
+    ]
   },
   {
     "name": "Learn to Read Upside Down",
@@ -67,12 +95,19 @@
       "structure": 0.5,
       "energy": 0.4,
       "impressiveness": 0.6
-    }
+    },
+    "tags": [
+      "time-medium",
+      "type-medium",
+      "structure-medium",
+      "energy-medium",
+      "impressiveness-medium"
+    ]
   },
   {
     "name": "Speed Stack Cups",
     "description": "Learn the fundamentals of competitive cup stacking.",
-    "reason": "Looks silly until you realize it’s pure reflex training.",
+    "reason": "Looks silly until you realize it\u2019s pure reflex training.",
     "learn_url": "https://www.speedstacks.com/",
     "traits": {
       "weirdness": 0.6,
@@ -81,7 +116,14 @@
       "structure": 0.6,
       "energy": 0.8,
       "impressiveness": 0.6
-    }
+    },
+    "tags": [
+      "time-medium",
+      "type-high",
+      "structure-medium",
+      "energy-high",
+      "impressiveness-medium"
+    ]
   },
   {
     "name": "Learn Morse Code (Survival Speed)",
@@ -95,7 +137,14 @@
       "structure": 0.8,
       "energy": 0.3,
       "impressiveness": 0.7
-    }
+    },
+    "tags": [
+      "time-medium",
+      "type-medium",
+      "structure-high",
+      "energy-low",
+      "impressiveness-high"
+    ]
   },
   {
     "name": "3D Shape Drawing (Perspective)",
@@ -109,7 +158,14 @@
       "structure": 0.7,
       "energy": 0.4,
       "impressiveness": 0.7
-    }
+    },
+    "tags": [
+      "time-medium",
+      "type-high",
+      "structure-high",
+      "energy-medium",
+      "impressiveness-high"
+    ]
   },
   {
     "name": "Mental Math Lightning Drill",
@@ -123,7 +179,14 @@
       "structure": 0.8,
       "energy": 0.4,
       "impressiveness": 0.6
-    }
+    },
+    "tags": [
+      "time-medium",
+      "type-medium",
+      "structure-high",
+      "energy-medium",
+      "impressiveness-medium"
+    ]
   },
   {
     "name": "Mirror Writing",
@@ -137,9 +200,15 @@
       "structure": 0.3,
       "energy": 0.3,
       "impressiveness": 0.8
-    }
+    },
+    "tags": [
+      "time-medium",
+      "type-high",
+      "structure-low",
+      "energy-low",
+      "impressiveness-high"
+    ]
   },
-
   {
     "name": "Blind Typing Accuracy Test",
     "description": "Type a paragraph without looking once.",
@@ -152,7 +221,14 @@
       "structure": 0.7,
       "energy": 0.3,
       "impressiveness": 0.5
-    }
+    },
+    "tags": [
+      "time-low",
+      "type-medium",
+      "structure-high",
+      "energy-low",
+      "impressiveness-medium"
+    ]
   },
   {
     "name": "Learn a Card Flourish",
@@ -166,7 +242,14 @@
       "structure": 0.6,
       "energy": 0.4,
       "impressiveness": 0.9
-    }
+    },
+    "tags": [
+      "time-medium",
+      "type-high",
+      "structure-medium",
+      "energy-medium",
+      "impressiveness-high"
+    ]
   },
   {
     "name": "Speed Reading Test",
@@ -180,7 +263,14 @@
       "structure": 0.7,
       "energy": 0.3,
       "impressiveness": 0.6
-    }
+    },
+    "tags": [
+      "time-low",
+      "type-medium",
+      "structure-high",
+      "energy-low",
+      "impressiveness-medium"
+    ]
   },
   {
     "name": "Create a Memory Palace Room",
@@ -194,8 +284,15 @@
       "structure": 0.6,
       "energy": 0.3,
       "impressiveness": 0.8
-    }
-},
+    },
+    "tags": [
+      "time-medium",
+      "type-medium",
+      "structure-medium",
+      "energy-low",
+      "impressiveness-high"
+    ]
+  },
   {
     "name": "Learn to Juggle",
     "description": "Master the famous trick.",
@@ -208,7 +305,14 @@
       "structure": 0.4,
       "energy": 0.6,
       "impressiveness": 0.5
-    }
+    },
+    "tags": [
+      "time-low",
+      "type-high",
+      "structure-medium",
+      "energy-medium",
+      "impressiveness-medium"
+    ]
   },
   {
     "name": "Peripheral Vision Test",
@@ -222,7 +326,14 @@
       "structure": 0.7,
       "energy": 0.3,
       "impressiveness": 0.5
-    }
+    },
+    "tags": [
+      "time-low",
+      "type-medium",
+      "structure-high",
+      "energy-low",
+      "impressiveness-medium"
+    ]
   },
   {
     "name": "Mental Clock Estimation",
@@ -236,7 +347,14 @@
       "structure": 0.3,
       "energy": 0.2,
       "impressiveness": 0.4
-    }
+    },
+    "tags": [
+      "time-low",
+      "type-medium",
+      "structure-low",
+      "energy-low",
+      "impressiveness-medium"
+    ]
   },
   {
     "name": "Learn the NATO Phonetic Alphabet",
@@ -250,7 +368,14 @@
       "structure": 0.8,
       "energy": 0.3,
       "impressiveness": 0.6
-    }
+    },
+    "tags": [
+      "time-medium",
+      "type-medium",
+      "structure-high",
+      "energy-low",
+      "impressiveness-medium"
+    ]
   },
   {
     "name": "Backward Alphabet Speed Test",
@@ -264,7 +389,14 @@
       "structure": 0.4,
       "energy": 0.3,
       "impressiveness": 0.5
-    }
+    },
+    "tags": [
+      "time-low",
+      "type-medium",
+      "structure-medium",
+      "energy-low",
+      "impressiveness-medium"
+    ]
   },
   {
     "name": "Learn a Coin Roll",
@@ -278,7 +410,14 @@
       "structure": 0.6,
       "energy": 0.3,
       "impressiveness": 0.8
-    }
+    },
+    "tags": [
+      "time-medium",
+      "type-high",
+      "structure-medium",
+      "energy-low",
+      "impressiveness-high"
+    ]
   },
   {
     "name": "One-Minute Breath Control",
@@ -292,7 +431,14 @@
       "structure": 0.3,
       "energy": 0.1,
       "impressiveness": 0.4
-    }
+    },
+    "tags": [
+      "time-low",
+      "type-high",
+      "structure-low",
+      "energy-low",
+      "impressiveness-medium"
+    ]
   },
   {
     "name": "Learn Binary Counting on Fingers",
@@ -306,7 +452,14 @@
       "structure": 0.7,
       "energy": 0.3,
       "impressiveness": 0.8
-    }
+    },
+    "tags": [
+      "time-medium",
+      "type-medium",
+      "structure-high",
+      "energy-low",
+      "impressiveness-high"
+    ]
   },
   {
     "name": "Learn to Snap Loudly",
@@ -320,7 +473,14 @@
       "structure": 0.2,
       "energy": 0.3,
       "impressiveness": 0.4
-    }
+    },
+    "tags": [
+      "time-low",
+      "type-high",
+      "structure-low",
+      "energy-low",
+      "impressiveness-medium"
+    ]
   },
   {
     "name": "Estimate Crowd Size",
@@ -334,7 +494,14 @@
       "structure": 0.4,
       "energy": 0.2,
       "impressiveness": 0.5
-    }
+    },
+    "tags": [
+      "time-low",
+      "type-medium",
+      "structure-medium",
+      "energy-low",
+      "impressiveness-medium"
+    ]
   },
   {
     "name": "Learn to Read Roman Numerals Instantly",
@@ -348,7 +515,14 @@
       "structure": 0.8,
       "energy": 0.2,
       "impressiveness": 0.6
-    }
+    },
+    "tags": [
+      "time-medium",
+      "type-medium",
+      "structure-high",
+      "energy-low",
+      "impressiveness-medium"
+    ]
   },
   {
     "name": "Learn to Whistle with Fingers",
@@ -362,7 +536,14 @@
       "structure": 0.5,
       "energy": 0.4,
       "impressiveness": 0.7
-    }
+    },
+    "tags": [
+      "time-medium",
+      "type-high",
+      "structure-medium",
+      "energy-medium",
+      "impressiveness-high"
+    ]
   },
   {
     "name": "Learn to Solve a Rubik's Cube",
@@ -376,7 +557,14 @@
       "structure": 0.8,
       "energy": 0.4,
       "impressiveness": 0.9
-    }
+    },
+    "tags": [
+      "time-high",
+      "type-medium",
+      "structure-high",
+      "energy-medium",
+      "impressiveness-high"
+    ]
   },
   {
     "name": "Learn to Spin a Pen Around Your Thumb",
@@ -390,7 +578,14 @@
       "structure": 0.6,
       "energy": 0.3,
       "impressiveness": 0.7
-    }
+    },
+    "tags": [
+      "time-medium",
+      "type-high",
+      "structure-medium",
+      "energy-low",
+      "impressiveness-high"
+    ]
   },
   {
     "name": "Learn Basic Sign Language (ASL)",
@@ -404,7 +599,14 @@
       "structure": 0.7,
       "energy": 0.4,
       "impressiveness": 0.8
-    }
+    },
+    "tags": [
+      "time-medium",
+      "type-high",
+      "structure-high",
+      "energy-medium",
+      "impressiveness-high"
+    ]
   },
   {
     "name": "Learn to Tie 10 Different Knots",
@@ -418,7 +620,14 @@
       "structure": 0.8,
       "energy": 0.3,
       "impressiveness": 0.6
-    }
+    },
+    "tags": [
+      "time-medium",
+      "type-high",
+      "structure-high",
+      "energy-low",
+      "impressiveness-medium"
+    ]
   },
   {
     "name": "Learn to Read Sheet Music",
@@ -432,7 +641,14 @@
       "structure": 0.8,
       "energy": 0.3,
       "impressiveness": 0.7
-    }
+    },
+    "tags": [
+      "time-medium",
+      "type-medium",
+      "structure-high",
+      "energy-low",
+      "impressiveness-high"
+    ]
   },
   {
     "name": "Learn to Identify 20 Bird Calls",
@@ -446,7 +662,14 @@
       "structure": 0.7,
       "energy": 0.2,
       "impressiveness": 0.6
-    }
+    },
+    "tags": [
+      "time-medium",
+      "type-medium",
+      "structure-high",
+      "energy-low",
+      "impressiveness-medium"
+    ]
   },
   {
     "name": "Learn to Fold a Paper Airplane That Flies Far",
@@ -460,7 +683,14 @@
       "structure": 0.6,
       "energy": 0.3,
       "impressiveness": 0.5
-    }
+    },
+    "tags": [
+      "time-low",
+      "type-high",
+      "structure-medium",
+      "energy-low",
+      "impressiveness-medium"
+    ]
   },
   {
     "name": "Learn to Calculate Tips Mentally",
@@ -474,7 +704,14 @@
       "structure": 0.8,
       "energy": 0.2,
       "impressiveness": 0.4
-    }
+    },
+    "tags": [
+      "time-low",
+      "type-medium",
+      "structure-high",
+      "energy-low",
+      "impressiveness-medium"
+    ]
   },
   {
     "name": "Learn to Do a Handstand",
@@ -488,7 +725,14 @@
       "structure": 0.6,
       "energy": 0.8,
       "impressiveness": 0.9
-    }
+    },
+    "tags": [
+      "time-medium",
+      "type-high",
+      "structure-medium",
+      "energy-high",
+      "impressiveness-high"
+    ]
   },
   {
     "name": "Learn to Solve Sudoku Efficiently",
@@ -502,7 +746,14 @@
       "structure": 0.8,
       "energy": 0.3,
       "impressiveness": 0.5
-    }
+    },
+    "tags": [
+      "time-medium",
+      "type-medium",
+      "structure-high",
+      "energy-low",
+      "impressiveness-medium"
+    ]
   },
   {
     "name": "Learn to Identify Constellations",
@@ -516,7 +767,14 @@
       "structure": 0.7,
       "energy": 0.2,
       "impressiveness": 0.7
-    }
+    },
+    "tags": [
+      "time-medium",
+      "type-medium",
+      "structure-high",
+      "energy-low",
+      "impressiveness-high"
+    ]
   },
   {
     "name": "Learn to Estimate Distances",
@@ -530,7 +788,14 @@
       "structure": 0.4,
       "energy": 0.2,
       "impressiveness": 0.4
-    }
+    },
+    "tags": [
+      "time-low",
+      "type-medium",
+      "structure-medium",
+      "energy-low",
+      "impressiveness-medium"
+    ]
   },
   {
     "name": "Learn to Do Card Tricks",
@@ -544,7 +809,14 @@
       "structure": 0.7,
       "energy": 0.4,
       "impressiveness": 0.9
-    }
+    },
+    "tags": [
+      "time-medium",
+      "type-high",
+      "structure-high",
+      "energy-medium",
+      "impressiveness-high"
+    ]
   },
   {
     "name": "Learn to Read Braille",
@@ -558,7 +830,14 @@
       "structure": 0.8,
       "energy": 0.3,
       "impressiveness": 0.8
-    }
+    },
+    "tags": [
+      "time-medium",
+      "type-high",
+      "structure-high",
+      "energy-low",
+      "impressiveness-high"
+    ]
   },
   {
     "name": "Learn to Identify Clouds",
@@ -572,7 +851,14 @@
       "structure": 0.7,
       "energy": 0.2,
       "impressiveness": 0.5
-    }
+    },
+    "tags": [
+      "time-medium",
+      "type-medium",
+      "structure-high",
+      "energy-low",
+      "impressiveness-medium"
+    ]
   },
   {
     "name": "Learn to Calculate Square Roots Mentally",
@@ -586,7 +872,14 @@
       "structure": 0.8,
       "energy": 0.3,
       "impressiveness": 0.7
-    }
+    },
+    "tags": [
+      "time-medium",
+      "type-medium",
+      "structure-high",
+      "energy-low",
+      "impressiveness-high"
+    ]
   },
   {
     "name": "Learn to Identify Trees by Leaves",
@@ -600,7 +893,14 @@
       "structure": 0.7,
       "energy": 0.2,
       "impressiveness": 0.5
-    }
+    },
+    "tags": [
+      "time-medium",
+      "type-medium",
+      "structure-high",
+      "energy-low",
+      "impressiveness-medium"
+    ]
   },
   {
     "name": "Learn to Do a Backflip (Safely)",
@@ -614,7 +914,14 @@
       "structure": 0.7,
       "energy": 0.9,
       "impressiveness": 1.0
-    }
+    },
+    "tags": [
+      "time-high",
+      "type-high",
+      "structure-high",
+      "energy-high",
+      "impressiveness-high"
+    ]
   },
   {
     "name": "Learn to Identify Poisonous Plants",
@@ -628,7 +935,14 @@
       "structure": 0.8,
       "energy": 0.2,
       "impressiveness": 0.6
-    }
+    },
+    "tags": [
+      "time-medium",
+      "type-medium",
+      "structure-high",
+      "energy-low",
+      "impressiveness-medium"
+    ]
   },
   {
     "name": "Learn to Estimate Time Without a Clock",
@@ -642,7 +956,14 @@
       "structure": 0.3,
       "energy": 0.1,
       "impressiveness": 0.5
-    }
+    },
+    "tags": [
+      "time-low",
+      "type-medium",
+      "structure-low",
+      "energy-low",
+      "impressiveness-medium"
+    ]
   },
   {
     "name": "Learn to Identify Animal Tracks",
@@ -656,7 +977,14 @@
       "structure": 0.7,
       "energy": 0.3,
       "impressiveness": 0.6
-    }
+    },
+    "tags": [
+      "time-medium",
+      "type-medium",
+      "structure-high",
+      "energy-low",
+      "impressiveness-medium"
+    ]
   },
   {
     "name": "Learn to Do the Moonwalk",
@@ -670,9 +998,16 @@
       "structure": 0.6,
       "energy": 0.6,
       "impressiveness": 0.9
-    }
+    },
+    "tags": [
+      "time-medium",
+      "type-high",
+      "structure-medium",
+      "energy-medium",
+      "impressiveness-high"
+    ]
   },
-    {
+  {
     "name": "Pop a Coin Out of Your Ear",
     "description": "Classic magic trick to pull a coin from behind your ear.",
     "reason": "Fun, simple, and always makes people laugh.",
@@ -684,9 +1019,16 @@
       "structure": 0.6,
       "energy": 0.5,
       "impressiveness": 0.85
-    }
+    },
+    "tags": [
+      "time-low",
+      "type-high",
+      "structure-medium",
+      "energy-medium",
+      "impressiveness-high"
+    ]
   },
-   {
+  {
     "name": "Do the Robot Dance",
     "description": "Learn the classic robotic dance moves for fun parties.",
     "reason": "Always gets laughs and looks cool.",
@@ -698,7 +1040,14 @@
       "structure": 0.6,
       "energy": 0.8,
       "impressiveness": 0.85
-    }
+    },
+    "tags": [
+      "time-medium",
+      "type-high",
+      "structure-medium",
+      "energy-high",
+      "impressiveness-high"
+    ]
   },
   {
     "name": "Catch a Card Behind Your Back",
@@ -712,7 +1061,14 @@
       "structure": 0.7,
       "energy": 0.7,
       "impressiveness": 0.9
-    }
+    },
+    "tags": [
+      "time-medium",
+      "type-high",
+      "structure-high",
+      "energy-high",
+      "impressiveness-high"
+    ]
   },
   {
     "name": "Snap a Towel to Pop a Bottle Cap",
@@ -726,9 +1082,16 @@
       "structure": 0.5,
       "energy": 0.7,
       "impressiveness": 0.85
-    }
+    },
+    "tags": [
+      "time-low",
+      "type-high",
+      "structure-medium",
+      "energy-high",
+      "impressiveness-high"
+    ]
   },
-    {
+  {
     "name": "Stack Dice in a Tower",
     "description": "Learn to balance dice in a perfect stack.",
     "reason": "Requires patience and precision.",
@@ -740,9 +1103,16 @@
       "structure": 0.9,
       "energy": 0.3,
       "impressiveness": 0.85
-    }
+    },
+    "tags": [
+      "time-medium",
+      "type-high",
+      "structure-high",
+      "energy-low",
+      "impressiveness-high"
+    ]
   },
-   {
+  {
     "name": "Do the Worm Dance",
     "description": "Learn the classic dance move that ripples along the floor.",
     "reason": "Fun, energetic, and eye-catching.",
@@ -754,7 +1124,14 @@
       "structure": 0.6,
       "energy": 0.9,
       "impressiveness": 0.85
-    }
+    },
+    "tags": [
+      "time-medium",
+      "type-high",
+      "structure-medium",
+      "energy-high",
+      "impressiveness-high"
+    ]
   },
   {
     "name": "Pull a Coin From Thin Air",
@@ -768,7 +1145,14 @@
       "structure": 0.8,
       "energy": 0.5,
       "impressiveness": 0.9
-    }
+    },
+    "tags": [
+      "time-medium",
+      "type-high",
+      "structure-high",
+      "energy-medium",
+      "impressiveness-high"
+    ]
   },
   {
     "name": "Do a Jump Rope Trick",
@@ -782,7 +1166,14 @@
       "structure": 0.7,
       "energy": 0.9,
       "impressiveness": 0.85
-    }
+    },
+    "tags": [
+      "time-medium",
+      "type-high",
+      "structure-high",
+      "energy-high",
+      "impressiveness-high"
+    ]
   },
   {
     "name": "Learn to Do a One-Handed Push-up",
@@ -796,7 +1187,14 @@
       "structure": 0.6,
       "energy": 0.8,
       "impressiveness": 0.9
-    }
+    },
+    "tags": [
+      "time-high",
+      "type-high",
+      "structure-medium",
+      "energy-high",
+      "impressiveness-high"
+    ]
   },
   {
     "name": "Learn to Do a Cartwheel",
@@ -810,7 +1208,14 @@
       "structure": 0.6,
       "energy": 0.7,
       "impressiveness": 0.7
-    }
+    },
+    "tags": [
+      "time-medium",
+      "type-high",
+      "structure-medium",
+      "energy-high",
+      "impressiveness-high"
+    ]
   },
   {
     "name": "Learn to Identify Stars and Planets",
@@ -824,7 +1229,14 @@
       "structure": 0.7,
       "energy": 0.2,
       "impressiveness": 0.6
-    }
+    },
+    "tags": [
+      "time-medium",
+      "type-medium",
+      "structure-high",
+      "energy-low",
+      "impressiveness-medium"
+    ]
   },
   {
     "name": "Learn to Calculate Percentages Mentally",
@@ -838,7 +1250,14 @@
       "structure": 0.8,
       "energy": 0.2,
       "impressiveness": 0.4
-    }
+    },
+    "tags": [
+      "time-low",
+      "type-medium",
+      "structure-high",
+      "energy-low",
+      "impressiveness-medium"
+    ]
   },
   {
     "name": "Learn to Do Sleight of Hand",
@@ -852,7 +1271,14 @@
       "structure": 0.7,
       "energy": 0.4,
       "impressiveness": 0.9
-    }
+    },
+    "tags": [
+      "time-high",
+      "type-high",
+      "structure-high",
+      "energy-medium",
+      "impressiveness-high"
+    ]
   },
   {
     "name": "Learn to Do a Split",
@@ -866,7 +1292,14 @@
       "structure": 0.6,
       "energy": 0.5,
       "impressiveness": 0.8
-    }
+    },
+    "tags": [
+      "time-high",
+      "type-high",
+      "structure-medium",
+      "energy-medium",
+      "impressiveness-high"
+    ]
   },
   {
     "name": "Learn to Calculate Square Feet",
@@ -880,7 +1313,14 @@
       "structure": 0.8,
       "energy": 0.2,
       "impressiveness": 0.3
-    }
+    },
+    "tags": [
+      "time-low",
+      "type-medium",
+      "structure-high",
+      "energy-low",
+      "impressiveness-low"
+    ]
   },
   {
     "name": "Learn to Do a Headstand",
@@ -894,7 +1334,14 @@
       "structure": 0.6,
       "energy": 0.6,
       "impressiveness": 0.8
-    }
+    },
+    "tags": [
+      "time-medium",
+      "type-high",
+      "structure-medium",
+      "energy-medium",
+      "impressiveness-high"
+    ]
   },
   {
     "name": "Learn to Do a Front Flip",
@@ -908,7 +1355,14 @@
       "structure": 0.7,
       "energy": 0.9,
       "impressiveness": 1.0
-    }
+    },
+    "tags": [
+      "time-high",
+      "type-high",
+      "structure-high",
+      "energy-high",
+      "impressiveness-high"
+    ]
   },
   {
     "name": "Learn to Identify Different Types of Birds",
@@ -922,7 +1376,14 @@
       "structure": 0.7,
       "energy": 0.2,
       "impressiveness": 0.5
-    }
+    },
+    "tags": [
+      "time-medium",
+      "type-medium",
+      "structure-high",
+      "energy-low",
+      "impressiveness-medium"
+    ]
   },
   {
     "name": "Learn to Do a One-Armed Push-up",
@@ -936,7 +1397,14 @@
       "structure": 0.6,
       "energy": 0.9,
       "impressiveness": 1.0
-    }
+    },
+    "tags": [
+      "time-high",
+      "type-high",
+      "structure-medium",
+      "energy-high",
+      "impressiveness-high"
+    ]
   },
   {
     "name": "Learn to Do a Muscle-Up",
@@ -950,267 +1418,792 @@
       "structure": 0.7,
       "energy": 0.9,
       "impressiveness": 1.0
-    }
     },
-    {
+    "tags": [
+      "time-high",
+      "type-high",
+      "structure-high",
+      "energy-high",
+      "impressiveness-high"
+    ]
+  },
+  {
     "name": "30-Second Shadow Drawing",
     "description": "Rapidly sketch an object's shadow to capture silhouette.",
     "reason": "Boosts observation speed and simplification skills.",
     "learn_url": "https://drawabox.com/",
-    "traits": { "weirdness": 0.4, "time": 0.1, "type": 0.5, "structure": 0.3, "energy": 0.2, "impressiveness": 0.3 }
+    "traits": {
+      "weirdness": 0.4,
+      "time": 0.1,
+      "type": 0.5,
+      "structure": 0.3,
+      "energy": 0.2,
+      "impressiveness": 0.3
+    },
+    "tags": [
+      "time-low",
+      "type-medium",
+      "structure-low",
+      "energy-low",
+      "impressiveness-low"
+    ]
   },
   {
     "name": "Left-Hand Doodle",
     "description": "Create a detailed doodle using only your non-dominant hand.",
     "reason": "Challenges motor control and creativity.",
     "learn_url": "https://en.wikipedia.org/wiki/Ambidexterity",
-    "traits": { "weirdness": 0.6, "time": 0.2, "type": 0.7, "structure": 0.2, "energy": 0.2, "impressiveness": 0.4 }
+    "traits": {
+      "weirdness": 0.6,
+      "time": 0.2,
+      "type": 0.7,
+      "structure": 0.2,
+      "energy": 0.2,
+      "impressiveness": 0.4
+    },
+    "tags": [
+      "time-low",
+      "type-high",
+      "structure-low",
+      "energy-low",
+      "impressiveness-medium"
+    ]
   },
   {
     "name": "Coin Balance on Finger",
     "description": "Balance a coin on a fingertip for one minute.",
     "reason": "Tiny-motor control and focus exercise.",
     "learn_url": "https://www.wikihow.com/Balance-a-Coin",
-    "traits": { "weirdness": 0.4, "time": 0.1, "type": 0.9, "structure": 0.2, "energy": 0.1, "impressiveness": 0.3 }
+    "traits": {
+      "weirdness": 0.4,
+      "time": 0.1,
+      "type": 0.9,
+      "structure": 0.2,
+      "energy": 0.1,
+      "impressiveness": 0.3
+    },
+    "tags": [
+      "time-low",
+      "type-high",
+      "structure-low",
+      "energy-low",
+      "impressiveness-low"
+    ]
   },
   {
     "name": "Finger Snap Clap",
     "description": "Practice a loud, crisp finger snap until consistent.",
     "reason": "Fine motor control and rhythmic skill.",
     "learn_url": "https://www.youtube.com/",
-    "traits": { "weirdness": 0.4, "time": 0.2, "type": 0.9, "structure": 0.2, "energy": 0.3, "impressiveness": 0.5 }
+    "traits": {
+      "weirdness": 0.4,
+      "time": 0.2,
+      "type": 0.9,
+      "structure": 0.2,
+      "energy": 0.3,
+      "impressiveness": 0.5
+    },
+    "tags": [
+      "time-low",
+      "type-high",
+      "structure-low",
+      "energy-low",
+      "impressiveness-medium"
+    ]
   },
   {
     "name": "Fast Finger Tapping",
     "description": "Tap alternating fingers rapidly for 30 seconds.",
     "reason": "Hand speed and coordination drill.",
     "learn_url": "https://www.humanbenchmark.com/",
-    "traits": { "weirdness": 0.3, "time": 0.1, "type": 0.8, "structure": 0.2, "energy": 0.4, "impressiveness": 0.3 }
+    "traits": {
+      "weirdness": 0.3,
+      "time": 0.1,
+      "type": 0.8,
+      "structure": 0.2,
+      "energy": 0.4,
+      "impressiveness": 0.3
+    },
+    "tags": [
+      "time-low",
+      "type-high",
+      "structure-low",
+      "energy-medium",
+      "impressiveness-low"
+    ]
   },
   {
     "name": "One-Minute Hand Mirror Drawing",
     "description": "Copy a small image by looking only at its mirror.",
     "reason": "Spatial inversion practice.",
     "learn_url": "https://drawabox.com/",
-    "traits": { "weirdness": 0.7, "time": 0.2, "type": 0.8, "structure": 0.3, "energy": 0.3, "impressiveness": 0.5 }
+    "traits": {
+      "weirdness": 0.7,
+      "time": 0.2,
+      "type": 0.8,
+      "structure": 0.3,
+      "energy": 0.3,
+      "impressiveness": 0.5
+    },
+    "tags": [
+      "time-low",
+      "type-high",
+      "structure-low",
+      "energy-low",
+      "impressiveness-medium"
+    ]
   },
   {
     "name": "Quick Morse Decoding",
     "description": "Decode short Morse snippets by ear.",
     "reason": "Pattern recognition and auditory decoding.",
     "learn_url": "https://morse.withgoogle.com/learn/",
-    "traits": { "weirdness": 0.6, "time": 0.3, "type": 0.6, "structure": 0.8, "energy": 0.2, "impressiveness": 0.6 }
+    "traits": {
+      "weirdness": 0.6,
+      "time": 0.3,
+      "type": 0.6,
+      "structure": 0.8,
+      "energy": 0.2,
+      "impressiveness": 0.6
+    },
+    "tags": [
+      "time-low",
+      "type-medium",
+      "structure-high",
+      "energy-low",
+      "impressiveness-medium"
+    ]
   },
   {
     "name": "Fast Palindrome Check",
     "description": "Spot whether a short phrase is a palindrome quickly.",
     "reason": "Linguistic pattern spotting.",
     "learn_url": "https://en.wikipedia.org/wiki/Palindrome",
-    "traits": { "weirdness": 0.3, "time": 0.1, "type": 0.5, "structure": 0.6, "energy": 0.1, "impressiveness": 0.3 }
+    "traits": {
+      "weirdness": 0.3,
+      "time": 0.1,
+      "type": 0.5,
+      "structure": 0.6,
+      "energy": 0.1,
+      "impressiveness": 0.3
+    },
+    "tags": [
+      "time-low",
+      "type-medium",
+      "structure-medium",
+      "energy-low",
+      "impressiveness-low"
+    ]
   },
   {
     "name": "Snap-Count Rhythm",
     "description": "Keep a 4-beat snap pattern for 30 seconds.",
     "reason": "Rhythmic stability practice.",
     "learn_url": "https://www.musicnotes.com/",
-    "traits": { "weirdness": 0.4, "time": 0.1, "type": 0.8, "structure": 0.3, "energy": 0.3, "impressiveness": 0.3 }
+    "traits": {
+      "weirdness": 0.4,
+      "time": 0.1,
+      "type": 0.8,
+      "structure": 0.3,
+      "energy": 0.3,
+      "impressiveness": 0.3
+    },
+    "tags": [
+      "time-low",
+      "type-high",
+      "structure-low",
+      "energy-low",
+      "impressiveness-low"
+    ]
   },
   {
     "name": "One-Handed Knot",
     "description": "Tie a simple knot using only one hand.",
     "reason": "Dexterity under constraint.",
     "learn_url": "https://www.animatedknots.com/",
-    "traits": { "weirdness": 0.6, "time": 0.3, "type": 0.9, "structure": 0.5, "energy": 0.2, "impressiveness": 0.5 }
+    "traits": {
+      "weirdness": 0.6,
+      "time": 0.3,
+      "type": 0.9,
+      "structure": 0.5,
+      "energy": 0.2,
+      "impressiveness": 0.5
+    },
+    "tags": [
+      "time-low",
+      "type-high",
+      "structure-medium",
+      "energy-low",
+      "impressiveness-medium"
+    ]
   },
   {
     "name": "Quick Tongue Twister",
     "description": "Say a tricky tongue twister three times fast.",
     "reason": "Articulation and speed practice.",
     "learn_url": "https://en.wikipedia.org/wiki/Tongue_twister",
-    "traits": { "weirdness": 0.4, "time": 0.1, "type": 0.6, "structure": 0.2, "energy": 0.3, "impressiveness": 0.3 }
+    "traits": {
+      "weirdness": 0.4,
+      "time": 0.1,
+      "type": 0.6,
+      "structure": 0.2,
+      "energy": 0.3,
+      "impressiveness": 0.3
+    },
+    "tags": [
+      "time-low",
+      "type-medium",
+      "structure-low",
+      "energy-low",
+      "impressiveness-low"
+    ]
   },
   {
     "name": "Fast Opposite-Hand Drawing",
     "description": "Draw a simple object with the opposite hand in 45 seconds.",
     "reason": "Promotes neuroplasticity and control.",
     "learn_url": "https://en.wikipedia.org/wiki/Ambidexterity",
-    "traits": { "weirdness": 0.6, "time": 0.2, "type": 0.8, "structure": 0.3, "energy": 0.2, "impressiveness": 0.5 }
+    "traits": {
+      "weirdness": 0.6,
+      "time": 0.2,
+      "type": 0.8,
+      "structure": 0.3,
+      "energy": 0.2,
+      "impressiveness": 0.5
+    },
+    "tags": [
+      "time-low",
+      "type-high",
+      "structure-low",
+      "energy-low",
+      "impressiveness-medium"
+    ]
   },
   {
     "name": "Quick Breath Counting",
     "description": "Breathe and count while maintaining steady cadence.",
     "reason": "Focus and calm practice.",
     "learn_url": "https://www.mindful.org/",
-    "traits": { "weirdness": 0.3, "time": 0.1, "type": 0.6, "structure": 0.2, "energy": 0.1, "impressiveness": 0.2 }
+    "traits": {
+      "weirdness": 0.3,
+      "time": 0.1,
+      "type": 0.6,
+      "structure": 0.2,
+      "energy": 0.1,
+      "impressiveness": 0.2
+    },
+    "tags": [
+      "time-low",
+      "type-medium",
+      "structure-low",
+      "energy-low",
+      "impressiveness-low"
+    ]
   },
   {
     "name": "Finger Weaving Sample",
     "description": "Create a short woven band using fingers.",
     "reason": "Hand coordination and patterning.",
     "learn_url": "https://www.craftsy.com/",
-    "traits": { "weirdness": 0.5, "time": 0.3, "type": 0.8, "structure": 0.5, "energy": 0.2, "impressiveness": 0.4 }
+    "traits": {
+      "weirdness": 0.5,
+      "time": 0.3,
+      "type": 0.8,
+      "structure": 0.5,
+      "energy": 0.2,
+      "impressiveness": 0.4
+    },
+    "tags": [
+      "time-low",
+      "type-high",
+      "structure-medium",
+      "energy-low",
+      "impressiveness-medium"
+    ]
   },
   {
     "name": "Quick Morse Tap",
     "description": "Tap a short Morse pattern and decode it.",
     "reason": "Auditory pattern recognition.",
     "learn_url": "https://morse.withgoogle.com/learn/",
-    "traits": { "weirdness": 0.6, "time": 0.2, "type": 0.6, "structure": 0.8, "energy": 0.2, "impressiveness": 0.5 }
+    "traits": {
+      "weirdness": 0.6,
+      "time": 0.2,
+      "type": 0.6,
+      "structure": 0.8,
+      "energy": 0.2,
+      "impressiveness": 0.5
+    },
+    "tags": [
+      "time-low",
+      "type-medium",
+      "structure-high",
+      "energy-low",
+      "impressiveness-medium"
+    ]
   },
   {
     "name": "Rapid Shadow Matching",
     "description": "Match objects to their shadows quickly.",
     "reason": "Shape recognition speed drill.",
     "learn_url": "https://www.psychologytoday.com/",
-    "traits": { "weirdness": 0.5, "time": 0.2, "type": 0.6, "structure": 0.4, "energy": 0.2, "impressiveness": 0.3 }
+    "traits": {
+      "weirdness": 0.5,
+      "time": 0.2,
+      "type": 0.6,
+      "structure": 0.4,
+      "energy": 0.2,
+      "impressiveness": 0.3
+    },
+    "tags": [
+      "time-low",
+      "type-medium",
+      "structure-medium",
+      "energy-low",
+      "impressiveness-low"
+    ]
   },
   {
     "name": "Fast Coin Flip Prediction",
     "description": "Try to predict coin flips; track accuracy for 20 trials.",
     "reason": "Probabilistic intuition practice.",
     "learn_url": "https://en.wikipedia.org/wiki/Coin_toss",
-    "traits": { "weirdness": 0.3, "time": 0.3, "type": 0.5, "structure": 0.2, "energy": 0.1, "impressiveness": 0.2 }
+    "traits": {
+      "weirdness": 0.3,
+      "time": 0.3,
+      "type": 0.5,
+      "structure": 0.2,
+      "energy": 0.1,
+      "impressiveness": 0.2
+    },
+    "tags": [
+      "time-low",
+      "type-medium",
+      "structure-low",
+      "energy-low",
+      "impressiveness-low"
+    ]
   },
   {
     "name": "One-Minute Quiet Observation",
     "description": "Observe a scene silently and list five details afterward.",
     "reason": "Attention and noticing exercise.",
     "learn_url": "https://www.mindful.org/",
-    "traits": { "weirdness": 0.3, "time": 0.2, "type": 0.4, "structure": 0.6, "energy": 0.1, "impressiveness": 0.2 }
+    "traits": {
+      "weirdness": 0.3,
+      "time": 0.2,
+      "type": 0.4,
+      "structure": 0.6,
+      "energy": 0.1,
+      "impressiveness": 0.2
+    },
+    "tags": [
+      "time-low",
+      "type-medium",
+      "structure-medium",
+      "energy-low",
+      "impressiveness-low"
+    ]
   },
   {
     "name": "Quick Hand-Back Clap",
     "description": "Clap hands behind back rapidly for 10 claps.",
     "reason": "Coordination and rhythm drill.",
     "learn_url": "https://www.youtube.com/",
-    "traits": { "weirdness": 0.6, "time": 0.1, "type": 0.9, "structure": 0.3, "energy": 0.4, "impressiveness": 0.4 }
+    "traits": {
+      "weirdness": 0.6,
+      "time": 0.1,
+      "type": 0.9,
+      "structure": 0.3,
+      "energy": 0.4,
+      "impressiveness": 0.4
+    },
+    "tags": [
+      "time-low",
+      "type-high",
+      "structure-low",
+      "energy-medium",
+      "impressiveness-medium"
+    ]
   },
   {
     "name": "Rapid Color Recall",
     "description": "Look at a color palette for 3 seconds and reproduce a target hue.",
     "reason": "Color memory practice.",
     "learn_url": "https://www.sessions.edu/",
-    "traits": { "weirdness": 0.4, "time": 0.1, "type": 0.6, "structure": 0.4, "energy": 0.1, "impressiveness": 0.3 }
+    "traits": {
+      "weirdness": 0.4,
+      "time": 0.1,
+      "type": 0.6,
+      "structure": 0.4,
+      "energy": 0.1,
+      "impressiveness": 0.3
+    },
+    "tags": [
+      "time-low",
+      "type-medium",
+      "structure-medium",
+      "energy-low",
+      "impressiveness-low"
+    ]
   },
   {
     "name": "One-Minute Handwriting Speed",
     "description": "Write a legible paragraph quickly in 60 seconds.",
     "reason": "Speed and legibility training.",
     "learn_url": "https://www.handwritingworksheets.com/",
-    "traits": { "weirdness": 0.3, "time": 0.2, "type": 0.5, "structure": 0.4, "energy": 0.2, "impressiveness": 0.3 }
+    "traits": {
+      "weirdness": 0.3,
+      "time": 0.2,
+      "type": 0.5,
+      "structure": 0.4,
+      "energy": 0.2,
+      "impressiveness": 0.3
+    },
+    "tags": [
+      "time-low",
+      "type-medium",
+      "structure-medium",
+      "energy-low",
+      "impressiveness-low"
+    ]
   },
   {
     "name": "Quick Pattern Fold",
     "description": "Fold a paper pattern precisely in under a minute.",
     "reason": "Precision and sequencing practice.",
     "learn_url": "https://origami.me/",
-    "traits": { "weirdness": 0.4, "time": 0.2, "type": 0.7, "structure": 0.6, "energy": 0.1, "impressiveness": 0.3 }
+    "traits": {
+      "weirdness": 0.4,
+      "time": 0.2,
+      "type": 0.7,
+      "structure": 0.6,
+      "energy": 0.1,
+      "impressiveness": 0.3
+    },
+    "tags": [
+      "time-low",
+      "type-high",
+      "structure-medium",
+      "energy-low",
+      "impressiveness-low"
+    ]
   },
   {
     "name": "Learn to Snap a Card",
     "description": "Snap a playing card across the table with precision.",
     "reason": "High dexterity and focus exercise.",
     "learn_url": "https://www.youtube.com/results?search_query=card+snap+tutorial",
-    "traits": { "weirdness": 0.5, "time": 0.3, "type": 0.8, "structure": 0.5, "energy": 0.4, "impressiveness": 0.7 }
+    "traits": {
+      "weirdness": 0.5,
+      "time": 0.3,
+      "type": 0.8,
+      "structure": 0.5,
+      "energy": 0.4,
+      "impressiveness": 0.7
+    },
+    "tags": [
+      "time-low",
+      "type-high",
+      "structure-medium",
+      "energy-medium",
+      "impressiveness-high"
+    ]
   },
   {
     "name": "Palm Flip Challenge",
     "description": "Flip a small object (coin or bottle cap) from your palm onto a surface accurately.",
     "reason": "Enhances hand-eye coordination and timing.",
     "learn_url": "https://www.wikihow.com/Flip-a-Coin",
-    "traits": { "weirdness": 0.4, "time": 0.2, "type": 0.7, "structure": 0.4, "energy": 0.4, "impressiveness": 0.6 }
+    "traits": {
+      "weirdness": 0.4,
+      "time": 0.2,
+      "type": 0.7,
+      "structure": 0.4,
+      "energy": 0.4,
+      "impressiveness": 0.6
+    },
+    "tags": [
+      "time-low",
+      "type-high",
+      "structure-medium",
+      "energy-medium",
+      "impressiveness-medium"
+    ]
   },
   {
     "name": "Silent Object Catch",
     "description": "Catch a small object without making any sound.",
     "reason": "Tests precision and control.",
     "learn_url": "https://www.wikihow.com/Improve-Hand-Eye-Coordination",
-    "traits": { "weirdness": 0.5, "time": 0.2, "type": 0.8, "structure": 0.3, "energy": 0.3, "impressiveness": 0.6 }
+    "traits": {
+      "weirdness": 0.5,
+      "time": 0.2,
+      "type": 0.8,
+      "structure": 0.3,
+      "energy": 0.3,
+      "impressiveness": 0.6
+    },
+    "tags": [
+      "time-low",
+      "type-high",
+      "structure-low",
+      "energy-low",
+      "impressiveness-medium"
+    ]
   },
   {
     "name": "Rapid Eye Movement Drill",
     "description": "Move eyes quickly between points to train focus shifts.",
     "reason": "Improves visual attention and tracking.",
     "learn_url": "https://www.healthline.com/health/eye-exercises",
-    "traits": { "weirdness": 0.6, "time": 0.1, "type": 0.7, "structure": 0.5, "energy": 0.2, "impressiveness": 0.5 }
+    "traits": {
+      "weirdness": 0.6,
+      "time": 0.1,
+      "type": 0.7,
+      "structure": 0.5,
+      "energy": 0.2,
+      "impressiveness": 0.5
+    },
+    "tags": [
+      "time-low",
+      "type-high",
+      "structure-medium",
+      "energy-low",
+      "impressiveness-medium"
+    ]
   },
   {
     "name": "Single-Letter Typing Race",
     "description": "Type the alphabet as fast as possible with only one finger.",
     "reason": "Enhances finger agility and patience.",
     "learn_url": "https://www.typing.com/student/games",
-    "traits": { "weirdness": 0.5, "time": 0.2, "type": 0.8, "structure": 0.4, "energy": 0.3, "impressiveness": 0.5 }
+    "traits": {
+      "weirdness": 0.5,
+      "time": 0.2,
+      "type": 0.8,
+      "structure": 0.4,
+      "energy": 0.3,
+      "impressiveness": 0.5
+    },
+    "tags": [
+      "time-low",
+      "type-high",
+      "structure-medium",
+      "energy-low",
+      "impressiveness-medium"
+    ]
   },
   {
     "name": "Rapid Origami Fold",
     "description": "Fold a simple origami figure in under a minute.",
     "reason": "Sharpens fine motor skills and focus.",
     "learn_url": "https://www.origamiway.com/easy-origami.shtml",
-    "traits": { "weirdness": 0.6, "time": 0.2, "type": 0.7, "structure": 0.6, "energy": 0.3, "impressiveness": 0.6 }
+    "traits": {
+      "weirdness": 0.6,
+      "time": 0.2,
+      "type": 0.7,
+      "structure": 0.6,
+      "energy": 0.3,
+      "impressiveness": 0.6
+    },
+    "tags": [
+      "time-low",
+      "type-high",
+      "structure-medium",
+      "energy-low",
+      "impressiveness-medium"
+    ]
   },
   {
     "name": "Finger Drumming Beat",
     "description": "Tap a simple drum beat on a table using only your fingers.",
     "reason": "Rhythm, speed, and coordination practice.",
     "learn_url": "https://www.youtube.com/results?search_query=finger+drumming+tutorial",
-    "traits": { "weirdness": 0.4, "time": 0.2, "type": 0.8, "structure": 0.3, "energy": 0.5, "impressiveness": 0.6 }
+    "traits": {
+      "weirdness": 0.4,
+      "time": 0.2,
+      "type": 0.8,
+      "structure": 0.3,
+      "energy": 0.5,
+      "impressiveness": 0.6
+    },
+    "tags": [
+      "time-low",
+      "type-high",
+      "structure-low",
+      "energy-medium",
+      "impressiveness-medium"
+    ]
   },
   {
     "name": "Instant Mirror Gesture",
-    "description": "Mimic someone’s gestures in real-time perfectly.",
+    "description": "Mimic someone\u2019s gestures in real-time perfectly.",
     "reason": "Sharpens attention to micro-movements and reflexes.",
     "learn_url": "https://www.wikihow.com/Improve-Observation-Skills",
-    "traits": { "weirdness": 0.7, "time": 0.3, "type": 0.8, "structure": 0.4, "energy": 0.4, "impressiveness": 0.7 }
+    "traits": {
+      "weirdness": 0.7,
+      "time": 0.3,
+      "type": 0.8,
+      "structure": 0.4,
+      "energy": 0.4,
+      "impressiveness": 0.7
+    },
+    "tags": [
+      "time-low",
+      "type-high",
+      "structure-medium",
+      "energy-medium",
+      "impressiveness-high"
+    ]
   },
   {
     "name": "One-Handed Bottle Cap Twist",
     "description": "Open a bottle using only one hand without spilling.",
     "reason": "Dexterity and practical coordination skill.",
     "learn_url": "https://www.youtube.com/results?search_query=one+hand+bottle+cap+trick",
-    "traits": { "weirdness": 0.5, "time": 0.2, "type": 0.9, "structure": 0.4, "energy": 0.4, "impressiveness": 0.7 }
+    "traits": {
+      "weirdness": 0.5,
+      "time": 0.2,
+      "type": 0.9,
+      "structure": 0.4,
+      "energy": 0.4,
+      "impressiveness": 0.7
+    },
+    "tags": [
+      "time-low",
+      "type-high",
+      "structure-medium",
+      "energy-medium",
+      "impressiveness-high"
+    ]
   },
   {
     "name": "Quick Shadow Tracing",
-    "description": "Trace an object’s shadow in under 60 seconds.",
+    "description": "Trace an object\u2019s shadow in under 60 seconds.",
     "reason": "Sharpens speed drawing and observation.",
     "learn_url": "https://drawabox.com/",
-    "traits": { "weirdness": 0.5, "time": 0.2, "type": 0.6, "structure": 0.3, "energy": 0.2, "impressiveness": 0.5 }
+    "traits": {
+      "weirdness": 0.5,
+      "time": 0.2,
+      "type": 0.6,
+      "structure": 0.3,
+      "energy": 0.2,
+      "impressiveness": 0.5
+    },
+    "tags": [
+      "time-low",
+      "type-medium",
+      "structure-low",
+      "energy-low",
+      "impressiveness-medium"
+    ]
   },
   {
     "name": "Fast Palms-Up Balance",
     "description": "Balance a small stack of objects on your palms.",
     "reason": "Fine motor control and stability training.",
     "learn_url": "https://www.wikihow.com/Improve-Hand-Eye-Coordination",
-    "traits": { "weirdness": 0.5, "time": 0.2, "type": 0.9, "structure": 0.5, "energy": 0.3, "impressiveness": 0.6 }
+    "traits": {
+      "weirdness": 0.5,
+      "time": 0.2,
+      "type": 0.9,
+      "structure": 0.5,
+      "energy": 0.3,
+      "impressiveness": 0.6
+    },
+    "tags": [
+      "time-low",
+      "type-high",
+      "structure-medium",
+      "energy-low",
+      "impressiveness-medium"
+    ]
   },
   {
     "name": "Quick Color Recognition Drill",
     "description": "Name the colors of random objects as fast as possible.",
     "reason": "Cognitive speed and focus practice.",
     "learn_url": "https://www.mindtools.com/pages/article/newHTE_00.htm",
-    "traits": { "weirdness": 0.3, "time": 0.1, "type": 0.6, "structure": 0.3, "energy": 0.2, "impressiveness": 0.4 }
+    "traits": {
+      "weirdness": 0.3,
+      "time": 0.1,
+      "type": 0.6,
+      "structure": 0.3,
+      "energy": 0.2,
+      "impressiveness": 0.4
+    },
+    "tags": [
+      "time-low",
+      "type-medium",
+      "structure-low",
+      "energy-low",
+      "impressiveness-medium"
+    ]
   },
   {
     "name": "Finger Walking Challenge",
     "description": "Walk fingers across a surface like tiny legs as quickly as possible.",
     "reason": "Improves dexterity and control.",
     "learn_url": "https://www.wikihow.com/Improve-Hand-Eye-Coordination",
-    "traits": { "weirdness": 0.6, "time": 0.2, "type": 0.8, "structure": 0.3, "energy": 0.4, "impressiveness": 0.5 }
+    "traits": {
+      "weirdness": 0.6,
+      "time": 0.2,
+      "type": 0.8,
+      "structure": 0.3,
+      "energy": 0.4,
+      "impressiveness": 0.5
+    },
+    "tags": [
+      "time-low",
+      "type-high",
+      "structure-low",
+      "energy-medium",
+      "impressiveness-medium"
+    ]
   },
   {
     "name": "Object Flip with Backhand",
     "description": "Flip a small object across a table using a backhand motion.",
     "reason": "Tests precision and timing.",
     "learn_url": "https://www.wikihow.com/Flip-a-Coin",
-    "traits": { "weirdness": 0.5, "time": 0.2, "type": 0.8, "structure": 0.4, "energy": 0.3, "impressiveness": 0.6 }
+    "traits": {
+      "weirdness": 0.5,
+      "time": 0.2,
+      "type": 0.8,
+      "structure": 0.4,
+      "energy": 0.3,
+      "impressiveness": 0.6
+    },
+    "tags": [
+      "time-low",
+      "type-high",
+      "structure-medium",
+      "energy-low",
+      "impressiveness-medium"
+    ]
   },
   {
     "name": "Rapid Mini-Doodles",
     "description": "Draw 10 tiny objects in 5 minutes.",
     "reason": "Quickens visual thinking and drawing speed.",
     "learn_url": "https://drawabox.com/",
-    "traits": { "weirdness": 0.5, "time": 0.3, "type": 0.7, "structure": 0.3, "energy": 0.3, "impressiveness": 0.5 }
-},
+    "traits": {
+      "weirdness": 0.5,
+      "time": 0.3,
+      "type": 0.7,
+      "structure": 0.3,
+      "energy": 0.3,
+      "impressiveness": 0.5
+    },
+    "tags": [
+      "time-low",
+      "type-high",
+      "structure-low",
+      "energy-low",
+      "impressiveness-medium"
+    ]
+  },
   {
     "name": "Make a Shadow Puppet",
     "description": "Learn to create animals and shapes using just your hands and light.",
@@ -1223,9 +2216,16 @@
       "structure": 0.6,
       "energy": 0.5,
       "impressiveness": 0.75
-    }
+    },
+    "tags": [
+      "time-low",
+      "type-high",
+      "structure-medium",
+      "energy-medium",
+      "impressiveness-high"
+    ]
   },
-   {
+  {
     "name": "Fold a T-Shirt in 2 Seconds",
     "description": "Learn the magic folding trick to fold any shirt instantly.",
     "reason": "Practical, satisfying, and mind-blowingly fast.",
@@ -1237,7 +2237,14 @@
       "structure": 0.7,
       "energy": 0.4,
       "impressiveness": 0.8
-    }
+    },
+    "tags": [
+      "time-low",
+      "type-high",
+      "structure-high",
+      "energy-medium",
+      "impressiveness-high"
+    ]
   },
   {
     "name": "Bounce a Ping Pong Ball on a Paddle",
@@ -1251,7 +2258,14 @@
       "structure": 0.7,
       "energy": 0.7,
       "impressiveness": 0.8
-    }
+    },
+    "tags": [
+      "time-medium",
+      "type-high",
+      "structure-high",
+      "energy-high",
+      "impressiveness-high"
+    ]
   },
   {
     "name": "Do a Clap With One Hand",
@@ -1265,7 +2279,14 @@
       "structure": 0.3,
       "energy": 0.5,
       "impressiveness": 0.7
-    }
+    },
+    "tags": [
+      "time-low",
+      "type-medium",
+      "structure-low",
+      "energy-medium",
+      "impressiveness-high"
+    ]
   },
   {
     "name": "Stack Coins Into a Tower",
@@ -1279,7 +2300,14 @@
       "structure": 0.9,
       "energy": 0.3,
       "impressiveness": 0.85
-    }
+    },
+    "tags": [
+      "time-medium",
+      "type-high",
+      "structure-high",
+      "energy-low",
+      "impressiveness-high"
+    ]
   },
   {
     "name": "Bounce a Ball Off Multiple Surfaces",
@@ -1293,7 +2321,14 @@
       "structure": 0.8,
       "energy": 0.7,
       "impressiveness": 0.9
-    }
+    },
+    "tags": [
+      "time-medium",
+      "type-high",
+      "structure-high",
+      "energy-high",
+      "impressiveness-high"
+    ]
   },
   {
     "name": "Flip a Card Into the Air and Catch It",
@@ -1307,7 +2342,14 @@
       "structure": 0.7,
       "energy": 0.6,
       "impressiveness": 0.85
-    }
+    },
+    "tags": [
+      "time-medium",
+      "type-high",
+      "structure-high",
+      "energy-medium",
+      "impressiveness-high"
+    ]
   },
   {
     "name": "Do a Finger Snap That Echoes",
@@ -1321,7 +2363,14 @@
       "structure": 0.3,
       "energy": 0.6,
       "impressiveness": 0.7
-    }
+    },
+    "tags": [
+      "time-low",
+      "type-high",
+      "structure-low",
+      "energy-medium",
+      "impressiveness-high"
+    ]
   },
   {
     "name": "Do a Quick Shoulder Pop Dance Move",
@@ -1335,7 +2384,14 @@
       "structure": 0.6,
       "energy": 0.8,
       "impressiveness": 0.8
-    }
+    },
+    "tags": [
+      "time-medium",
+      "type-high",
+      "structure-medium",
+      "energy-high",
+      "impressiveness-high"
+    ]
   },
   {
     "name": "Balance a Pencil on Its Tip",
@@ -1349,7 +2405,14 @@
       "structure": 0.7,
       "energy": 0.3,
       "impressiveness": 0.8
-    }
+    },
+    "tags": [
+      "time-medium",
+      "type-high",
+      "structure-high",
+      "energy-low",
+      "impressiveness-high"
+    ]
   },
   {
     "name": "Toss a Ring and Catch It on a Bottle",
@@ -1363,7 +2426,14 @@
       "structure": 0.8,
       "energy": 0.6,
       "impressiveness": 0.85
-    }
+    },
+    "tags": [
+      "time-medium",
+      "type-high",
+      "structure-high",
+      "energy-medium",
+      "impressiveness-high"
+    ]
   },
   {
     "name": "Snap a Towel to Make a Loud Pop",
@@ -1377,7 +2447,14 @@
       "structure": 0.5,
       "energy": 0.7,
       "impressiveness": 0.8
-    }
+    },
+    "tags": [
+      "time-low",
+      "type-high",
+      "structure-medium",
+      "energy-high",
+      "impressiveness-high"
+    ]
   },
   {
     "name": "Do a Quick Hand Flip With a Coin",
@@ -1391,7 +2468,14 @@
       "structure": 0.8,
       "energy": 0.6,
       "impressiveness": 0.85
-    }
+    },
+    "tags": [
+      "time-medium",
+      "type-high",
+      "structure-high",
+      "energy-medium",
+      "impressiveness-high"
+    ]
   },
   {
     "name": "Flip a Pencil Into Your Hand",
@@ -1405,7 +2489,14 @@
       "structure": 0.6,
       "energy": 0.5,
       "impressiveness": 0.8
-    }
+    },
+    "tags": [
+      "time-low",
+      "type-high",
+      "structure-medium",
+      "energy-medium",
+      "impressiveness-high"
+    ]
   },
   {
     "name": "Balance a Book on Your Head While Walking",
@@ -1419,7 +2510,14 @@
       "structure": 0.6,
       "energy": 0.4,
       "impressiveness": 0.7
-    }
+    },
+    "tags": [
+      "time-low",
+      "type-high",
+      "structure-medium",
+      "energy-medium",
+      "impressiveness-high"
+    ]
   },
   {
     "name": "Snap a Straw With Your Fingers",
@@ -1433,7 +2531,14 @@
       "structure": 0.3,
       "energy": 0.6,
       "impressiveness": 0.65
-    }
+    },
+    "tags": [
+      "time-low",
+      "type-medium",
+      "structure-low",
+      "energy-medium",
+      "impressiveness-medium"
+    ]
   },
   {
     "name": "Flip a Coin Into a Glass",
@@ -1447,7 +2552,14 @@
       "structure": 0.7,
       "energy": 0.5,
       "impressiveness": 0.8
-    }
+    },
+    "tags": [
+      "time-low",
+      "type-high",
+      "structure-high",
+      "energy-medium",
+      "impressiveness-high"
+    ]
   },
   {
     "name": "Whip a Towel Like a Pro",
@@ -1461,7 +2573,14 @@
       "structure": 0.6,
       "energy": 0.7,
       "impressiveness": 0.75
-    }
+    },
+    "tags": [
+      "time-low",
+      "type-high",
+      "structure-medium",
+      "energy-high",
+      "impressiveness-high"
+    ]
   },
   {
     "name": "Bounce a Ping Pong Ball Into a Cup",
@@ -1475,7 +2594,14 @@
       "structure": 0.7,
       "energy": 0.6,
       "impressiveness": 0.8
-    }
+    },
+    "tags": [
+      "time-medium",
+      "type-high",
+      "structure-high",
+      "energy-medium",
+      "impressiveness-high"
+    ]
   },
   {
     "name": "Pop a Balloon With Just Your Hand",
@@ -1489,7 +2615,14 @@
       "structure": 0.4,
       "energy": 0.9,
       "impressiveness": 0.75
-    }
+    },
+    "tags": [
+      "time-low",
+      "type-medium",
+      "structure-medium",
+      "energy-high",
+      "impressiveness-high"
+    ]
   },
   {
     "name": "Make a Pen Spin on a Table",
@@ -1503,21 +2636,14 @@
       "structure": 0.5,
       "energy": 0.4,
       "impressiveness": 0.7
-    }
-  },
-  {
-    "name": "Do a Quick Hand Flip",
-    "description": "Learn a one-handed flip to catch small objects.",
-    "reason": "Looks tricky and athletic.",
-    "learn_url": "https://www.youtube.com/watch?v=HuR9bwZg7n8",
-    "traits": {
-      "weirdness": 0.6,
-      "time": 0.4,
-      "type": 0.8,
-      "structure": 0.6,
-      "energy": 0.7,
-      "impressiveness": 0.85
-    }
+    },
+    "tags": [
+      "time-low",
+      "type-high",
+      "structure-medium",
+      "energy-medium",
+      "impressiveness-high"
+    ]
   },
   {
     "name": "Stack Plastic Cups Into a Pyramid",
@@ -1531,21 +2657,14 @@
       "structure": 0.9,
       "energy": 0.6,
       "impressiveness": 0.8
-    }
-  },
-  {
-    "name": "Catch a Paper Airplane Behind Your Back",
-    "description": "Develop precision to catch a flying plane without looking.",
-    "reason": "Fun dexterity trick that surprises people.",
-    "learn_url": "https://www.wikihow.com/Catch-a-Paper-Airplane",
-    "traits": {
-      "weirdness": 0.6,
-      "time": 0.3,
-      "type": 0.8,
-      "structure": 0.7,
-      "energy": 0.6,
-      "impressiveness": 0.8
-    }
+    },
+    "tags": [
+      "time-medium",
+      "type-high",
+      "structure-high",
+      "energy-medium",
+      "impressiveness-high"
+    ]
   },
   {
     "name": "Bounce a Ball Off the Wall Into a Cup",
@@ -1559,7 +2678,14 @@
       "structure": 0.7,
       "energy": 0.6,
       "impressiveness": 0.8
-    }
+    },
+    "tags": [
+      "time-low",
+      "type-high",
+      "structure-high",
+      "energy-medium",
+      "impressiveness-high"
+    ]
   },
   {
     "name": "Do a Hand Shadow of a Bird",
@@ -1573,7 +2699,14 @@
       "structure": 0.5,
       "energy": 0.5,
       "impressiveness": 0.75
-    }
+    },
+    "tags": [
+      "time-low",
+      "type-high",
+      "structure-medium",
+      "energy-medium",
+      "impressiveness-high"
+    ]
   },
   {
     "name": "Stack Dice on Edge",
@@ -1587,7 +2720,14 @@
       "structure": 0.9,
       "energy": 0.4,
       "impressiveness": 0.85
-    }
+    },
+    "tags": [
+      "time-medium",
+      "type-high",
+      "structure-high",
+      "energy-medium",
+      "impressiveness-high"
+    ]
   },
   {
     "name": "Flip a Bottle With Your Foot",
@@ -1601,7 +2741,14 @@
       "structure": 0.6,
       "energy": 0.8,
       "impressiveness": 0.8
-    }
+    },
+    "tags": [
+      "time-low",
+      "type-high",
+      "structure-medium",
+      "energy-high",
+      "impressiveness-high"
+    ]
   },
   {
     "name": "Bounce a Pen Into a Cup",
@@ -1615,21 +2762,14 @@
       "structure": 0.7,
       "energy": 0.6,
       "impressiveness": 0.8
-    }
-  },
-  {
-    "name": "Toss a Paper Ball Into a Trash Can From Afar",
-    "description": "Master the classic office trick shot.",
-    "reason": "Simple, funny, and surprisingly satisfying.",
-    "learn_url": "https://www.youtube.com/watch?v=xVff7Khu6yY",
-    "traits": {
-      "weirdness": 0.3,
-      "time": 0.2,
-      "type": 0.8,
-      "structure": 0.7,
-      "energy": 0.5,
-      "impressiveness": 0.8
-    }
+    },
+    "tags": [
+      "time-low",
+      "type-high",
+      "structure-high",
+      "energy-medium",
+      "impressiveness-high"
+    ]
   },
   {
     "name": "Do a Finger Balance Trick",
@@ -1643,9 +2783,622 @@
       "structure": 0.8,
       "energy": 0.5,
       "impressiveness": 0.85
-    }
+    },
+    "tags": [
+      "time-low",
+      "type-high",
+      "structure-high",
+      "energy-medium",
+      "impressiveness-high"
+    ]
+  },
+  {
+    "name": "Learn the 3-Coin Vanish",
+    "description": "Practice a simple coin magic vanish with three coins.",
+    "reason": "Classic sleight of hand that feels like real magic.",
+    "learn_url": "https://www.youtube.com/results?search_query=basic+coin+vanish+tutorial",
+    "traits": {
+      "weirdness": 0.7,
+      "time": 0.4,
+      "type": 0.9,
+      "structure": 0.6,
+      "energy": 0.4,
+      "impressiveness": 0.85
+    },
+    "tags": [
+      "time-medium",
+      "type-high",
+      "structure-medium",
+      "energy-medium",
+      "impressiveness-high"
+    ]
+  },
+  {
+    "name": "Tie a Bowline Knot",
+    "description": "Learn a reliable loop knot used in boating and climbing.",
+    "reason": "A practical skill that looks expert.",
+    "learn_url": "https://www.animatedknots.com/bowline-knot",
+    "traits": {
+      "weirdness": 0.3,
+      "time": 0.2,
+      "type": 0.6,
+      "structure": 0.9,
+      "energy": 0.2,
+      "impressiveness": 0.6
+    },
+    "tags": [
+      "time-low",
+      "type-medium",
+      "structure-high",
+      "energy-low",
+      "impressiveness-medium"
+    ]
+  },
+  {
+    "name": "Tie a Sheet Bend",
+    "description": "Connect two ropes of different sizes with a clean knot.",
+    "reason": "Useful and oddly satisfying to learn.",
+    "learn_url": "https://www.animatedknots.com/sheet-bend-knot",
+    "traits": {
+      "weirdness": 0.3,
+      "time": 0.2,
+      "type": 0.6,
+      "structure": 0.9,
+      "energy": 0.2,
+      "impressiveness": 0.6
+    },
+    "tags": [
+      "time-low",
+      "type-medium",
+      "structure-high",
+      "energy-low",
+      "impressiveness-medium"
+    ]
+  },
+  {
+    "name": "Basic Origami Crane",
+    "description": "Fold a clean paper crane from a square sheet.",
+    "reason": "Quietly impressive and relaxing.",
+    "learn_url": "https://www.origami-instructions.com/origami-crane.html",
+    "traits": {
+      "weirdness": 0.5,
+      "time": 0.4,
+      "type": 0.7,
+      "structure": 0.8,
+      "energy": 0.2,
+      "impressiveness": 0.7
+    },
+    "tags": [
+      "time-medium",
+      "type-high",
+      "structure-high",
+      "energy-low",
+      "impressiveness-high"
+    ]
+  },
+  {
+    "name": "Fold a Perfect Paper Airplane",
+    "description": "Make a stable glider with long, smooth flights.",
+    "reason": "Turns simple paper into a performance trick.",
+    "learn_url": "https://www.foldnfly.com/",
+    "traits": {
+      "weirdness": 0.4,
+      "time": 0.3,
+      "type": 0.7,
+      "structure": 0.7,
+      "energy": 0.3,
+      "impressiveness": 0.65
+    },
+    "tags": [
+      "time-low",
+      "type-high",
+      "structure-high",
+      "energy-low",
+      "impressiveness-medium"
+    ]
+  },
+  {
+    "name": "Spin a Basketball on Your Finger",
+    "description": "Learn to balance and spin a ball on one finger.",
+    "reason": "Looks flashy and is fun to show off.",
+    "learn_url": "https://www.wikihow.com/Spin-a-Basketball-on-Your-Finger",
+    "traits": {
+      "weirdness": 0.5,
+      "time": 0.4,
+      "type": 0.9,
+      "structure": 0.6,
+      "energy": 0.6,
+      "impressiveness": 0.85
+    },
+    "tags": [
+      "time-medium",
+      "type-high",
+      "structure-medium",
+      "energy-medium",
+      "impressiveness-high"
+    ]
+  },
+  {
+    "name": "Quick Parkour Roll",
+    "description": "Practice a safe shoulder roll for basic falls.",
+    "reason": "Makes you look athletic and capable.",
+    "learn_url": "https://www.youtube.com/results?search_query=parkour+shoulder+roll+beginner",
+    "traits": {
+      "weirdness": 0.6,
+      "time": 0.4,
+      "type": 0.8,
+      "structure": 0.7,
+      "energy": 0.7,
+      "impressiveness": 0.8
+    },
+    "tags": [
+      "time-medium",
+      "type-high",
+      "structure-high",
+      "energy-high",
+      "impressiveness-high"
+    ]
+  },
+  {
+    "name": "Palm a Coin",
+    "description": "Hold a coin invisibly in classic palm position.",
+    "reason": "Foundational skill for quick magic tricks.",
+    "learn_url": "https://www.wikihow.com/Do-a-Coin-Palm",
+    "traits": {
+      "weirdness": 0.6,
+      "time": 0.3,
+      "type": 0.9,
+      "structure": 0.6,
+      "energy": 0.2,
+      "impressiveness": 0.7
+    },
+    "tags": [
+      "time-low",
+      "type-high",
+      "structure-medium",
+      "energy-low",
+      "impressiveness-high"
+    ]
+  },
+  {
+    "name": "Basic Bottle Flair Flip",
+    "description": "Learn a simple bottle toss and catch behind the back.",
+    "reason": "Bartender-style flair in minutes.",
+    "learn_url": "https://www.youtube.com/results?search_query=bottle+flair+beginner+tricks",
+    "traits": {
+      "weirdness": 0.6,
+      "time": 0.3,
+      "type": 0.8,
+      "structure": 0.6,
+      "energy": 0.6,
+      "impressiveness": 0.8
+    },
+    "tags": [
+      "time-low",
+      "type-high",
+      "structure-medium",
+      "energy-medium",
+      "impressiveness-high"
+    ]
+  },
+  {
+    "name": "Snap a Playing Card",
+    "description": "Learn to snap a card cleanly with proper grip.",
+    "reason": "Looks dramatic and feels powerful.",
+    "learn_url": "https://www.youtube.com/results?search_query=how+to+snap+a+playing+card",
+    "traits": {
+      "weirdness": 0.7,
+      "time": 0.2,
+      "type": 0.8,
+      "structure": 0.4,
+      "energy": 0.7,
+      "impressiveness": 0.8
+    },
+    "tags": [
+      "time-low",
+      "type-high",
+      "structure-medium",
+      "energy-high",
+      "impressiveness-high"
+    ]
+  },
+  {
+    "name": "Do a Coin Flick Trick",
+    "description": "Launch a coin with a quick thumb flick and catch it.",
+    "reason": "Simple and satisfying dexterity.",
+    "learn_url": "https://www.youtube.com/results?search_query=coin+flick+trick",
+    "traits": {
+      "weirdness": 0.5,
+      "time": 0.2,
+      "type": 0.8,
+      "structure": 0.5,
+      "energy": 0.4,
+      "impressiveness": 0.65
+    },
+    "tags": [
+      "time-low",
+      "type-high",
+      "structure-medium",
+      "energy-medium",
+      "impressiveness-medium"
+    ]
+  },
+  {
+    "name": "Learn the 20-Second Handstand Wall Hold",
+    "description": "Hold a stable wall-supported handstand briefly.",
+    "reason": "Quick confidence boost and athletic vibe.",
+    "learn_url": "https://www.youtube.com/results?search_query=wall+handstand+beginner",
+    "traits": {
+      "weirdness": 0.5,
+      "time": 0.4,
+      "type": 0.9,
+      "structure": 0.7,
+      "energy": 0.8,
+      "impressiveness": 0.85
+    },
+    "tags": [
+      "time-medium",
+      "type-high",
+      "structure-high",
+      "energy-high",
+      "impressiveness-high"
+    ]
+  },
+  {
+    "name": "One-Card Color Change",
+    "description": "Learn a simple visual card color change.",
+    "reason": "Feels like real magic and looks amazing on camera.",
+    "learn_url": "https://www.youtube.com/results?search_query=beginner+card+color+change",
+    "traits": {
+      "weirdness": 0.7,
+      "time": 0.4,
+      "type": 0.9,
+      "structure": 0.6,
+      "energy": 0.3,
+      "impressiveness": 0.9
+    },
+    "tags": [
+      "time-medium",
+      "type-high",
+      "structure-medium",
+      "energy-low",
+      "impressiveness-high"
+    ]
+  },
+  {
+    "name": "Learn the Basic Shuffle (Cards)",
+    "description": "Practice a smooth riffle shuffle without bending cards.",
+    "reason": "Looks clean and professional.",
+    "learn_url": "https://www.youtube.com/results?search_query=riffle+shuffle+beginner",
+    "traits": {
+      "weirdness": 0.4,
+      "time": 0.3,
+      "type": 0.8,
+      "structure": 0.7,
+      "energy": 0.3,
+      "impressiveness": 0.7
+    },
+    "tags": [
+      "time-low",
+      "type-high",
+      "structure-high",
+      "energy-low",
+      "impressiveness-high"
+    ]
+  },
+  {
+    "name": "Basic Humming Control",
+    "description": "Hold a steady pitch hum for 15 seconds.",
+    "reason": "Simple vocal control that surprises people.",
+    "learn_url": "https://www.wikihow.com/Hum",
+    "traits": {
+      "weirdness": 0.4,
+      "time": 0.2,
+      "type": 0.6,
+      "structure": 0.4,
+      "energy": 0.2,
+      "impressiveness": 0.5
+    },
+    "tags": [
+      "time-low",
+      "type-medium",
+      "structure-medium",
+      "energy-low",
+      "impressiveness-medium"
+    ]
+  },
+  {
+    "name": "Learn the 5-Beat Shuffle (Feet)",
+    "description": "Practice a basic shuffle dance step pattern.",
+    "reason": "Looks cool fast with minimal space.",
+    "learn_url": "https://www.youtube.com/results?search_query=shuffle+dance+beginner+5+step",
+    "traits": {
+      "weirdness": 0.6,
+      "time": 0.4,
+      "type": 0.9,
+      "structure": 0.7,
+      "energy": 0.8,
+      "impressiveness": 0.8
+    },
+    "tags": [
+      "time-medium",
+      "type-high",
+      "structure-high",
+      "energy-high",
+      "impressiveness-high"
+    ]
+  },
+  {
+    "name": "Throw a Spiral (Football)",
+    "description": "Learn the grip and release for a tight spiral.",
+    "reason": "Instantly makes throws look legit.",
+    "learn_url": "https://www.wikihow.com/Throw-a-Football",
+    "traits": {
+      "weirdness": 0.4,
+      "time": 0.3,
+      "type": 0.8,
+      "structure": 0.6,
+      "energy": 0.6,
+      "impressiveness": 0.7
+    },
+    "tags": [
+      "time-low",
+      "type-high",
+      "structure-medium",
+      "energy-medium",
+      "impressiveness-high"
+    ]
+  },
+  {
+    "name": "Bounce a Basketball Through Your Legs",
+    "description": "Practice a clean between-the-legs bounce pass to yourself.",
+    "reason": "Simple move that looks advanced.",
+    "learn_url": "https://www.youtube.com/results?search_query=between+the+legs+basketball+drill",
+    "traits": {
+      "weirdness": 0.5,
+      "time": 0.4,
+      "type": 0.9,
+      "structure": 0.7,
+      "energy": 0.8,
+      "impressiveness": 0.8
+    },
+    "tags": [
+      "time-medium",
+      "type-high",
+      "structure-high",
+      "energy-high",
+      "impressiveness-high"
+    ]
+  },
+  {
+    "name": "Roll a Pencil Across Your Knuckles",
+    "description": "Learn a smooth knuckle roll with a pencil.",
+    "reason": "Desk-friendly dexterity trick.",
+    "learn_url": "https://www.youtube.com/results?search_query=knuckle+roll+pencil+tutorial",
+    "traits": {
+      "weirdness": 0.5,
+      "time": 0.4,
+      "type": 0.9,
+      "structure": 0.6,
+      "energy": 0.3,
+      "impressiveness": 0.7
+    },
+    "tags": [
+      "time-medium",
+      "type-high",
+      "structure-medium",
+      "energy-low",
+      "impressiveness-high"
+    ]
+  },
+  {
+    "name": "Learn a Simple Drum Pattern",
+    "description": "Play a basic rock beat on a desk or practice pad.",
+    "reason": "Instant rhythm skill you can show anywhere.",
+    "learn_url": "https://www.youtube.com/results?search_query=basic+drum+beat+beginner",
+    "traits": {
+      "weirdness": 0.4,
+      "time": 0.3,
+      "type": 0.8,
+      "structure": 0.7,
+      "energy": 0.5,
+      "impressiveness": 0.7
+    },
+    "tags": [
+      "time-low",
+      "type-high",
+      "structure-high",
+      "energy-medium",
+      "impressiveness-high"
+    ]
+  },
+  {
+    "name": "Solve a 3x3 Tangram",
+    "description": "Complete a basic tangram puzzle quickly.",
+    "reason": "Brainy and visual, with quick wins.",
+    "learn_url": "https://en.wikipedia.org/wiki/Tangram",
+    "traits": {
+      "weirdness": 0.5,
+      "time": 0.3,
+      "type": 0.6,
+      "structure": 0.7,
+      "energy": 0.2,
+      "impressiveness": 0.6
+    },
+    "tags": [
+      "time-low",
+      "type-medium",
+      "structure-high",
+      "energy-low",
+      "impressiveness-medium"
+    ]
+  },
+  {
+    "name": "Simple Speed Cup Flip",
+    "description": "Flip a plastic cup and land it upright repeatedly.",
+    "reason": "Quick reflex challenge anyone can watch.",
+    "learn_url": "https://www.youtube.com/results?search_query=cup+flip+challenge+tutorial",
+    "traits": {
+      "weirdness": 0.4,
+      "time": 0.2,
+      "type": 0.8,
+      "structure": 0.6,
+      "energy": 0.5,
+      "impressiveness": 0.6
+    },
+    "tags": [
+      "time-low",
+      "type-high",
+      "structure-medium",
+      "energy-medium",
+      "impressiveness-medium"
+    ]
+  },
+  {
+    "name": "Learn the 8-Count Clap Pattern",
+    "description": "Memorize and perform a rhythmic 8-count clap.",
+    "reason": "Great party trick and timing skill.",
+    "learn_url": "https://www.youtube.com/results?search_query=clap+rhythm+pattern+beginner",
+    "traits": {
+      "weirdness": 0.5,
+      "time": 0.3,
+      "type": 0.8,
+      "structure": 0.7,
+      "energy": 0.5,
+      "impressiveness": 0.65
+    },
+    "tags": [
+      "time-low",
+      "type-high",
+      "structure-high",
+      "energy-medium",
+      "impressiveness-medium"
+    ]
+  },
+  {
+    "name": "Basic Chess Opening (Italian Game)",
+    "description": "Learn the first four moves of a classic opening.",
+    "reason": "Instantly makes you look prepared.",
+    "learn_url": "https://www.chess.com/openings/Italian-Game",
+    "traits": {
+      "weirdness": 0.3,
+      "time": 0.3,
+      "type": 0.6,
+      "structure": 0.8,
+      "energy": 0.2,
+      "impressiveness": 0.6
+    },
+    "tags": [
+      "time-low",
+      "type-medium",
+      "structure-high",
+      "energy-low",
+      "impressiveness-medium"
+    ]
+  },
+  {
+    "name": "Quick Frisbee Backhand",
+    "description": "Learn a clean, flat backhand throw.",
+    "reason": "Looks effortless once it clicks.",
+    "learn_url": "https://www.wikihow.com/Throw-a-Frisbee",
+    "traits": {
+      "weirdness": 0.4,
+      "time": 0.3,
+      "type": 0.8,
+      "structure": 0.6,
+      "energy": 0.5,
+      "impressiveness": 0.7
+    },
+    "tags": [
+      "time-low",
+      "type-high",
+      "structure-medium",
+      "energy-medium",
+      "impressiveness-high"
+    ]
+  },
+  {
+    "name": "Learn the Split Finger Fidget",
+    "description": "Move a small object between fingers smoothly.",
+    "reason": "Small skill, big dexterity payoff.",
+    "learn_url": "https://www.youtube.com/results?search_query=finger+fidget+trick+beginner",
+    "traits": {
+      "weirdness": 0.6,
+      "time": 0.3,
+      "type": 0.9,
+      "structure": 0.5,
+      "energy": 0.3,
+      "impressiveness": 0.7
+    },
+    "tags": [
+      "time-low",
+      "type-high",
+      "structure-medium",
+      "energy-low",
+      "impressiveness-high"
+    ]
+  },
+  {
+    "name": "Basic Yo-Yo Sleeper",
+    "description": "Learn to throw a sleeper and return smoothly.",
+    "reason": "Foundational trick that looks clean.",
+    "learn_url": "https://www.yo-yo.com/learn/1a/yoyo-tricks/sleeper",
+    "traits": {
+      "weirdness": 0.5,
+      "time": 0.3,
+      "type": 0.9,
+      "structure": 0.7,
+      "energy": 0.5,
+      "impressiveness": 0.75
+    },
+    "tags": [
+      "time-low",
+      "type-high",
+      "structure-high",
+      "energy-medium",
+      "impressiveness-high"
+    ]
+  },
+  {
+    "name": "Learn the 4-Beat Box Clap",
+    "description": "Create a basic beatbox clap using lips and tongue.",
+    "reason": "Unexpected skill that turns heads.",
+    "learn_url": "https://www.youtube.com/results?search_query=beatbox+clap+beginner",
+    "traits": {
+      "weirdness": 0.6,
+      "time": 0.3,
+      "type": 0.8,
+      "structure": 0.6,
+      "energy": 0.5,
+      "impressiveness": 0.7
+    },
+    "tags": [
+      "time-low",
+      "type-high",
+      "structure-medium",
+      "energy-medium",
+      "impressiveness-high"
+    ]
+  },
+  {
+    "name": "Learn a Simple Ribbon Curl",
+    "description": "Curl a gift ribbon with scissors cleanly and fast.",
+    "reason": "Small skill that looks surprisingly pro.",
+    "learn_url": "https://www.wikihow.com/Curl-Ribbon",
+    "traits": {
+      "weirdness": 0.4,
+      "time": 0.2,
+      "type": 0.7,
+      "structure": 0.6,
+      "energy": 0.2,
+      "impressiveness": 0.6
+    },
+    "tags": [
+      "time-low",
+      "type-high",
+      "structure-medium",
+      "energy-low",
+      "impressiveness-medium"
+    ]
   }
 ]
-
-
-
