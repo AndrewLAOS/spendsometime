@@ -207,5 +207,518 @@
     "notifyHover": "#616161"
   },
   "background": "linear-gradient(135deg, #0f2027, #203a43, #2c5364)"
+},
+{
+  "id": "neon",
+  "name": "Neon Glow",
+  "description": "Electric neon colors with dark background",
+  "xpCost": 130,
+  "isPremium": true,
+  "cssVariables": {
+    "bg": "#0a0e27",
+    "panel": "#1a1f3aee",
+    "border": "#2a2f5a",
+    "accent": "#00ff88",
+    "accent2": "#ff006e",
+    "text": "#00ffff",
+    "muted": "#00ff88",
+    "notify": "#ff006e",
+    "notifyHover": "#00ff88"
+  },
+  "background": "linear-gradient(135deg, #0a0e27, #1a0033)"
+},
+{
+  "id": "emerald",
+  "name": "Emerald Luxury",
+  "description": "Rich emerald green with gold accents",
+  "xpCost": 140,
+  "isPremium": true,
+  "cssVariables": {
+    "bg": "#0d3d2c",
+    "panel": "#1a5c45cc",
+    "border": "#2d8659",
+    "accent": "#1caf68",
+    "accent2": "#ffd700",
+    "text": "#e8f5e9",
+    "muted": "#81c784",
+    "notify": "#ffd700",
+    "notifyHover": "#1caf68"
+  },
+  "background": "linear-gradient(135deg, #0d3d2c, #1a5c45)"
+},
+{
+  "id": "coral",
+  "name": "Coral Reef",
+  "description": "Vibrant corals and ocean blues",
+  "xpCost": 100,
+  "isPremium": true,
+  "cssVariables": {
+    "bg": "#fff0ed",
+    "panel": "#ffebe0cc",
+    "border": "#ffb3a7",
+    "accent": "#ff6b6b",
+    "accent2": "#4ecdc4",
+    "text": "#d63031",
+    "muted": "#f78e69",
+    "notify": "#ff6b6b",
+    "notifyHover": "#4ecdc4"
+  },
+  "background": "linear-gradient(135deg, #ffcccb, #fff0ed)"
+},
+{
+  "id": "cyberpunk",
+  "name": "Cyberpunk Edge",
+  "description": "Dark futuristic with bright electric accents",
+  "xpCost": 150,
+  "isPremium": true,
+  "cssVariables": {
+    "bg": "#0d0221",
+    "panel": "#1d0033cc",
+    "border": "#3d0066",
+    "accent": "#ff006e",
+    "accent2": "#00f5ff",
+    "text": "#ff006e",
+    "muted": "#00f5ff",
+    "notify": "#ff006e",
+    "notifyHover": "#00f5ff"
+  },
+  "background": "linear-gradient(135deg, #0d0221, #1d0033)"
+},
+{
+  "id": "rose",
+  "name": "Rose Garden",
+  "description": "Soft romantic pinks and magentas",
+  "xpCost": 85,
+  "isPremium": true,
+  "cssVariables": {
+    "bg": "#ffd6e8",
+    "panel": "#ffe0eccc",
+    "border": "#ffb3d9",
+    "accent": "#e75480",
+    "accent2": "#f24e79",
+    "text": "#831d63",
+    "muted": "#c2185b",
+    "notify": "#e75480",
+    "notifyHover": "#f24e79"
+  },
+  "background": "linear-gradient(135deg, #ffd6e8, #ffe0ec)"
+},
+{
+  "id": "tropical",
+  "name": "Tropical Paradise",
+  "description": "Bright tropical greens and sunshine yellows",
+  "xpCost": 95,
+  "isPremium": true,
+  "cssVariables": {
+    "bg": "#fef9e7",
+    "panel": "#fffef0cc",
+    "border": "#ffe066",
+    "accent": "#ff9800",
+    "accent2": "#26a69a",
+    "text": "#2d6a4f",
+    "muted": "#ff6f00",
+    "notify": "#ff9800",
+    "notifyHover": "#26a69a"
+  },
+  "background": "linear-gradient(135deg, #fffde7, #fff9c4)"
+},
+{
+  "id": "storm",
+  "name": "Storm Cloud",
+  "description": "Dark grays with electric blue highlights",
+  "xpCost": 125,
+  "isPremium": true,
+  "cssVariables": {
+    "bg": "#263238",
+    "panel": "#37474fcc",
+    "border": "#455a64",
+    "accent": "#00bcd4",
+    "accent2": "#64b5f6",
+    "text": "#eceff1",
+    "muted": "#90caf9",
+    "notify": "#00bcd4",
+    "notifyHover": "#64b5f6"
+  },
+  "background": "linear-gradient(135deg, #263238, #37474f)"
+},
+{
+  "id": "matcha",
+  "name": "Matcha Latte",
+  "description": "Soft matcha green and cream whites",
+  "xpCost": 70,
+  "isPremium": true,
+  "cssVariables": {
+    "bg": "#e8f5e9",
+    "panel": "#f1faf0cc",
+    "border": "#c8e6c9",
+    "accent": "#558b2f",
+    "accent2": "#9ccc65",
+    "text": "#1b5e20",
+    "muted": "#689f38",
+    "notify": "#558b2f",
+    "notifyHover": "#9ccc65"
+  },
+  "background": "linear-gradient(135deg, #f1faf0, #e8f5e9)"
+},
+{
+  "id": "bluebell",
+  "name": "Bluebell Fields",
+  "description": "Soft blues and delicate purples",
+  "xpCost": 75,
+  "isPremium": true,
+  "cssVariables": {
+    "bg": "#e3f2fd",
+    "panel": "#edddf2cc",
+    "border": "#bbdefb",
+    "accent": "#5e35b1",
+    "accent2": "#9575cd",
+    "text": "#1a237e",
+    "muted": "#7986cb",
+    "notify": "#5e35b1",
+    "notifyHover": "#9575cd"
+  },
+  "background": "linear-gradient(135deg, #e3f2fd, #ede7f6)"
+},
+{
+  "id": "magma",
+  "name": "Magma Flow",
+  "description": "Hot reds and deep oranges with dark background",
+  "xpCost": 110,
+  "isPremium": true,
+  "cssVariables": {
+    "bg": "#3e1e1e",
+    "panel": "#5c2c2ccc",
+    "border": "#8b3a3a",
+    "accent": "#ff6b35",
+    "accent2": "#ff9500",
+    "text": "#ffccb3",
+    "muted": "#ff8a50",
+    "notify": "#ff6b35",
+    "notifyHover": "#ff9500"
+  },
+  "background": "linear-gradient(135deg, #3e1e1e, #5c2c2c)"
+},
+{
+  "id": "galaxy",
+  "name": "Galaxy Night",
+  "description": "Deep space colors with purple nebula",
+  "xpCost": 135,
+  "isPremium": true,
+  "cssVariables": {
+    "bg": "#0a0a1a",
+    "panel": "#16102bcc",
+    "border": "#2d1b6d",
+    "accent": "#c77dff",
+    "accent2": "#e0aaff",
+    "text": "#e0aaff",
+    "muted": "#b8a0d0",
+    "notify": "#c77dff",
+    "notifyHover": "#e0aaff"
+  },
+  "background": "linear-gradient(135deg, #0a0a1a, #16102b, #2d1b6d)"
+},
+{
+  "id": "cotton",
+  "name": "Cotton Candy",
+  "description": "Pastel pinks, blues, and soft purples",
+  "xpCost": 65,
+  "isPremium": true,
+  "cssVariables": {
+    "bg": "#fff0f7",
+    "panel": "#fff5fbcc",
+    "border": "#ffc4e1",
+    "accent": "#ff69b4",
+    "accent2": "#87ceeb",
+    "text": "#d63384",
+    "muted": "#e091e3",
+    "notify": "#ff69b4",
+    "notifyHover": "#87ceeb"
+  },
+  "background": "linear-gradient(135deg, #ffc4e1, #87ceeb)"
+},
+{
+  "id": "peacock",
+  "name": "Peacock Pride",
+  "description": "Rich teals with golden accents",
+  "xpCost": 120,
+  "isPremium": true,
+  "cssVariables": {
+    "bg": "#0a3d3d",
+    "panel": "#1e5f5fcc",
+    "border": "#2d9999",
+    "accent": "#00b4a6",
+    "accent2": "#ffd700",
+    "text": "#b8e6e3",
+    "muted": "#4dd0c1",
+    "notify": "#ffd700",
+    "notifyHover": "#00b4a6"
+  },
+  "background": "linear-gradient(135deg, #0a3d3d, #1e5f5f)"
+},
+{
+  "id": "monochrome",
+  "name": "Monochrome Black",
+  "description": "Classic black and white with minimal gray",
+  "xpCost": 40,
+  "isPremium": true,
+  "cssVariables": {
+    "bg": "#ffffff",
+    "panel": "#f5f5f5cc",
+    "border": "#e0e0e0",
+    "accent": "#000000",
+    "accent2": "#666666",
+    "text": "#000000",
+    "muted": "#999999",
+    "notify": "#000000",
+    "notifyHover": "#333333"
+  },
+  "background": "#ffffff"
+},
+{
+  "id": "flamingo",
+  "name": "Flamingo Sunset",
+  "description": "Bright coral pinks and tropical orange",
+  "xpCost": 105,
+  "isPremium": true,
+  "cssVariables": {
+    "bg": "#ffe5e5",
+    "panel": "#ffeae8cc",
+    "border": "#ffc9c4",
+    "accent": "#ff4757",
+    "accent2": "#ffa502",
+    "text": "#8b3a3a",
+    "muted": "#ff7e6b",
+    "notify": "#ff4757",
+    "notifyHover": "#ffa502"
+  },
+  "background": "linear-gradient(135deg, #ffc9c4, #ffb8a3)"
+},
+{
+  "id": "midnight_purple",
+  "name": "Midnight Purple",
+  "description": "Deep purples with soft amethyst highlights",
+  "xpCost": 115,
+  "isPremium": true,
+  "cssVariables": {
+    "bg": "#1a0033",
+    "panel": "#2d0052cc",
+    "border": "#4d0099",
+    "accent": "#cc66ff",
+    "accent2": "#ff66ff",
+    "text": "#e6ccff",
+    "muted": "#bb99ff",
+    "notify": "#cc66ff",
+    "notifyHover": "#ff66ff"
+  },
+  "background": "linear-gradient(135deg, #1a0033, #2d0052)"
+},
+{
+  "id": "mint",
+  "name": "Mint Fresh",
+  "description": "Refreshing mint with cool cyans",
+  "xpCost": 80,
+  "isPremium": true,
+  "cssVariables": {
+    "bg": "#e0f9f7",
+    "panel": "#e8fcfbcc",
+    "border": "#b3e5db",
+    "accent": "#00897b",
+    "accent2": "#26c6da",
+    "text": "#004d40",
+    "muted": "#00695c",
+    "notify": "#00897b",
+    "notifyHover": "#26c6da"
+  },
+  "background": "linear-gradient(135deg, #b3e5db, #a8d8d8)"
+},
+{
+  "id": "sunflower",
+  "name": "Sunflower Field",
+  "description": "Golden yellows and warm honey tones",
+  "xpCost": 90,
+  "isPremium": true,
+  "cssVariables": {
+    "bg": "#fffef5",
+    "panel": "#ffffefcc",
+    "border": "#ffe082",
+    "accent": "#f9a825",
+    "accent2": "#fbc02d",
+    "text": "#8b5a00",
+    "muted": "#f57f17",
+    "notify": "#f9a825",
+    "notifyHover": "#fbc02d"
+  },
+  "background": "linear-gradient(135deg, #ffe082, #ffed4e)"
+},
+{
+  "id": "bluenight",
+  "name": "Blue Night",
+  "description": "Deep navy blues with silver accents",
+  "xpCost": 100,
+  "isPremium": true,
+  "cssVariables": {
+    "bg": "#0f1f4f",
+    "panel": "#1a3a7aee",
+    "border": "#2d5ed9",
+    "accent": "#7fc9e8",
+    "accent2": "#4da6ff",
+    "text": "#b3d9ff",
+    "muted": "#7fc9e8",
+    "notify": "#4da6ff",
+    "notifyHover": "#7fc9e8"
+  },
+  "background": "linear-gradient(135deg, #0f1f4f, #1a3a7a)"
+},
+{
+  "id": "amethyst",
+  "name": "Amethyst Geode",
+  "description": "Rich purples with crystalline sparkle effects",
+  "xpCost": 125,
+  "isPremium": true,
+  "cssVariables": {
+    "bg": "#2d0a4f",
+    "panel": "#4a1a75cc",
+    "border": "#6d2f9f",
+    "accent": "#d946ef",
+    "accent2": "#f472b6",
+    "text": "#f0e4ff",
+    "muted": "#c084fc",
+    "notify": "#d946ef",
+    "notifyHover": "#f472b6"
+  },
+  "background": "linear-gradient(135deg, #2d0a4f, #4a1a75)"
+},
+{
+  "id": "forest_dark",
+  "name": "Dark Forest",
+  "description": "Deep forest greens with moss accents",
+  "xpCost": 105,
+  "isPremium": true,
+  "cssVariables": {
+    "bg": "#1a3a1a",
+    "panel": "#264626cc",
+    "border": "#3d5c3d",
+    "accent": "#76ff03",
+    "accent2": "#64dd17",
+    "text": "#c8e6c9",
+    "muted": "#81c784",
+    "notify": "#76ff03",
+    "notifyHover": "#64dd17"
+  },
+  "background": "linear-gradient(135deg, #1a3a1a, #264626)"
+},
+{
+  "id": "grape",
+  "name": "Grape Juice",
+  "description": "Vibrant purples with berry tones",
+  "xpCost": 95,
+  "isPremium": true,
+  "cssVariables": {
+    "bg": "#f3e5f5",
+    "panel": "#f8e5facc",
+    "border": "#e1bee7",
+    "accent": "#7b1fa2",
+    "accent2": "#9c27b0",
+    "text": "#4a148c",
+    "muted": "#af2cc5",
+    "notify": "#7b1fa2",
+    "notifyHover": "#9c27b0"
+  },
+  "background": "linear-gradient(135deg, #e1bee7, #f3e5f5)"
+},
+{
+  "id": "cyberpunk_pink",
+  "name": "Cyberpunk Pink",
+  "description": "Hot pink and cyan on dark background",
+  "xpCost": 140,
+  "isPremium": true,
+  "cssVariables": {
+    "bg": "#220033",
+    "panel": "#330066cc",
+    "border": "#660099",
+    "accent": "#ff10f0",
+    "accent2": "#00ffff",
+    "text": "#fff0ff",
+    "muted": "#ff10f0",
+    "notify": "#ff10f0",
+    "notifyHover": "#00ffff"
+  },
+  "background": "linear-gradient(135deg, #220033, #330066)"
+},
+{
+  "id": "ocean_deep",
+  "name": "Deep Ocean",
+  "description": "Dark ocean blues with bioluminescent accents",
+  "xpCost": 115,
+  "isPremium": true,
+  "cssVariables": {
+    "bg": "#0a1b2e",
+    "panel": "#0f3460cc",
+    "border": "#16527e",
+    "accent": "#00d4ff",
+    "accent2": "#00ffff",
+    "text": "#58cff3",
+    "muted": "#3aa3e3",
+    "notify": "#00d4ff",
+    "notifyHover": "#00ffff"
+  },
+  "background": "linear-gradient(135deg, #0a1b2e, #0f3460)"
+},
+{
+  "id": "firefly",
+  "name": "Firefly Glow",
+  "description": "Dark with glowing yellow-green accents",
+  "xpCost": 110,
+  "isPremium": true,
+  "cssVariables": {
+    "bg": "#1a1a2e",
+    "panel": "#292945cc",
+    "border": "#3d3d5c",
+    "accent": "#ccff00",
+    "accent2": "#ffff00",
+    "text": "#ffff99",
+    "muted": "#ccff00",
+    "notify": "#ccff00",
+    "notifyHover": "#ffff00"
+  },
+  "background": "linear-gradient(135deg, #1a1a2e, #292945)"
+},
+{
+  "id": "rose_dark",
+  "name": "Dark Rose",
+  "description": "Deep magentas with soft rose highlights",
+  "xpCost": 108,
+  "isPremium": true,
+  "cssVariables": {
+    "bg": "#3d1f2d",
+    "panel": "#5c2e45cc",
+    "border": "#8b4a6d",
+    "accent": "#ff69b4",
+    "accent2": "#ff1493",
+    "text": "#ffb3d9",
+    "muted": "#ff69b4",
+    "notify": "#ff1493",
+    "notifyHover": "#ff69b4"
+  },
+  "background": "linear-gradient(135deg, #3d1f2d, #5c2e45)"
+},
+{
+  "id": "lime",
+  "name": "Lime Punch",
+  "description": "Bright lime greens with dark background",
+  "xpCost": 100,
+  "isPremium": true,
+  "cssVariables": {
+    "bg": "#1a1a0f",
+    "panel": "#2d2d1acc",
+    "border": "#4d4d2d",
+    "accent": "#ccff00",
+    "accent2": "#66ff00",
+    "text": "#ccff00",
+    "muted": "#99cc00",
+    "notify": "#ccff00",
+    "notifyHover": "#66ff00"
+  },
+  "background": "linear-gradient(135deg, #1a1a0f, #2d2d1a)"
 }
 ]
