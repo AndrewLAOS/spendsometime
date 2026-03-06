@@ -40,7 +40,7 @@
 <link rel="manifest" href="/site.webmanifest">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Sora:wght@600;700&display=swap" rel="stylesheet">
 <script src="gamification.js" defer></script>
 <style>
 :root {
@@ -57,7 +57,7 @@
 
 * {
   box-sizing:border-box;
-  font-family:'Inter', system-ui, sans-serif;
+  font-family:'Space Grotesk', system-ui, sans-serif;
   scroll-behavior: smooth;
 }
 
@@ -65,6 +65,41 @@ body {
   margin:0;
   background: var(--bg);
   color: var(--text);
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 10% 10%, rgba(88, 217, 255, 0.2), transparent 35%),
+    radial-gradient(circle at 88% 18%, rgba(255, 126, 185, 0.2), transparent 30%),
+    radial-gradient(circle at 70% 80%, rgba(255, 205, 112, 0.18), transparent 35%),
+    var(--bg);
+  position: relative;
+  overflow-x: hidden;
+}
+
+body::before,
+body::after {
+  content: "";
+  position: fixed;
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+  filter: blur(10px);
+  opacity: 0.45;
+  animation: floatDrift 18s ease-in-out infinite;
+}
+
+body::before {
+  background: radial-gradient(circle, rgba(88, 217, 255, 0.5) 0%, transparent 70%);
+  top: -80px;
+  left: -120px;
+}
+
+body::after {
+  background: radial-gradient(circle, rgba(255, 126, 185, 0.55) 0%, transparent 70%);
+  bottom: -100px;
+  right: -100px;
+  animation-delay: -7s;
 }
 
 nav {
@@ -121,15 +156,166 @@ main {
   margin:0 auto;
   padding:3rem 1.5rem;
   margin-top: 80px;
+  position: relative;
+  z-index: 1;
 }
 
 h1 {
+  font-family:'Sora', 'Space Grotesk', sans-serif;
   font-size:2.8rem;
   margin-bottom:1rem;
   background: linear-gradient(135deg, var(--accent), var(--accent2));
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+
+.hero-subtitle {
+  max-width: 760px;
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+
+.player-hub {
+  margin: 1.3rem 0 2.2rem;
+  padding: 1rem;
+  border-radius: 18px;
+  border: 1px solid var(--border);
+  background: linear-gradient(125deg, rgba(255,255,255,0.9), rgba(243,250,255,0.9));
+  box-shadow: 0 12px 28px rgba(34, 76, 120, 0.11);
+}
+
+.player-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 0.8rem;
+  align-items: end;
+}
+
+.player-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.player-field label {
+  font-size: 0.82rem;
+  color: var(--muted);
+  font-weight: 700;
+  letter-spacing: 0.03em;
+}
+
+.player-input,
+.player-select {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 0.7rem 0.8rem;
+  background: #fff;
+  font-size: 0.95rem;
+}
+
+.focus-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.45rem 0.75rem;
+  border-radius: 999px;
+  background: linear-gradient(140deg, rgba(255,126,185,0.14), rgba(88,217,255,0.18));
+  color: #245268;
+  font-weight: 700;
+  font-size: 0.85rem;
+  border: 1px solid rgba(88,217,255,0.3);
+}
+
+.coach-line {
+  margin-top: 0.85rem;
+  font-size: 0.95rem;
+  color: #365162;
+  font-weight: 600;
+}
+
+.percentile-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.92rem;
+  color: #0f3c54;
+  border-radius: 999px;
+  padding: 0.3rem 0.65rem;
+  background: linear-gradient(150deg, rgba(88,217,255,0.25), rgba(255,126,185,0.22));
+  border: 1px solid rgba(88,217,255,0.38);
+}
+
+.stat-value.percentile-animated {
+  animation: percentilePop 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.percentile-celebration {
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+  width: min(320px, calc(100vw - 2rem));
+  border-radius: 18px;
+  padding: 1rem;
+  background: linear-gradient(145deg, rgba(16, 32, 48, 0.95), rgba(34, 82, 122, 0.9));
+  border: 1px solid rgba(88, 217, 255, 0.55);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
+  color: #f5fbff;
+  z-index: 11000;
+  display: none;
+  transform: translateY(14px) scale(0.98);
+}
+
+.percentile-celebration.show {
+  display: flex;
+  gap: 0.9rem;
+  align-items: center;
+  animation: percentileToastIn 0.45s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.percentile-ring {
+  width: 84px;
+  height: 84px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: conic-gradient(var(--accent2) 0deg, rgba(255,255,255,0.16) 0deg);
+  position: relative;
+}
+
+.percentile-ring::before {
+  content: "";
+  position: absolute;
+  inset: 8px;
+  border-radius: 50%;
+  background: #10283d;
+}
+
+.percentile-ring-value {
+  position: relative;
+  font-weight: 700;
+  font-size: 1.05rem;
+}
+
+.percentile-meta h4 {
+  margin: 0 0 0.22rem;
+  font-size: 1rem;
+}
+
+.percentile-meta p {
+  margin: 0;
+  color: rgba(245, 251, 255, 0.9);
+  font-size: 0.88rem;
+  line-height: 1.35;
+}
+
+.leaderboard-value {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  justify-content: flex-end;
+  flex-wrap: wrap;
 }
 
 .games-grid {
@@ -148,6 +334,17 @@ h1 {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   cursor: pointer;
   text-align: center;
+  position: relative;
+  overflow: hidden;
+  animation: fadeLift 0.55s ease both;
+}
+
+.game-card::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  background: linear-gradient(110deg, transparent 20%, rgba(255,255,255,0.7) 45%, transparent 70%);
+  transform: translateX(-130%);
 }
 
 .game-card:hover {
@@ -155,6 +352,19 @@ h1 {
   box-shadow: 0 12px 32px var(--shadow);
   border-color: var(--accent2);
 }
+
+.game-card:hover::before {
+  animation: cardSheen 0.95s ease;
+}
+
+.games-grid .game-card:nth-child(2) { animation-delay: 0.05s; }
+.games-grid .game-card:nth-child(3) { animation-delay: 0.1s; }
+.games-grid .game-card:nth-child(4) { animation-delay: 0.15s; }
+.games-grid .game-card:nth-child(5) { animation-delay: 0.2s; }
+.games-grid .game-card:nth-child(6) { animation-delay: 0.25s; }
+.games-grid .game-card:nth-child(7) { animation-delay: 0.3s; }
+.games-grid .game-card:nth-child(8) { animation-delay: 0.35s; }
+.games-grid .game-card:nth-child(9) { animation-delay: 0.4s; }
 
 .game-icon {
   font-size: 4rem;
@@ -185,6 +395,12 @@ h1 {
 
 .game-container.active {
   display: block;
+  animation: panelReveal 0.35s ease;
+}
+
+@keyframes panelReveal {
+  from { opacity: 0; transform: translateY(10px) scale(0.99); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
 }
 
 .game-header {
@@ -405,10 +621,149 @@ h1 {
   min-width: 50px;
 }
 
+.stroop-word {
+  font-size: clamp(2rem, 8vw, 3.4rem);
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin: 1.4rem 0;
+  text-shadow: 0 8px 18px rgba(0,0,0,0.08);
+}
+
+.stroop-choices {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 0.8rem;
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+.stroop-btn {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: #fff;
+  padding: 0.75rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.16s ease, box-shadow 0.16s ease;
+}
+
+.stroop-btn:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 8px 20px rgba(88, 217, 255, 0.2);
+}
+
+.schulte-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(44px, 86px));
+  gap: 0.55rem;
+  justify-content: center;
+  margin: 1.3rem auto;
+}
+
+.schulte-cell {
+  aspect-ratio: 1;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: linear-gradient(145deg, #ffffff, #eef7ff);
+  font-size: 1.15rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.14s ease, box-shadow 0.18s ease;
+}
+
+.schulte-cell:hover {
+  transform: scale(1.04);
+  box-shadow: 0 6px 14px rgba(88, 217, 255, 0.2);
+}
+
+.schulte-cell.correct {
+  background: linear-gradient(145deg, #8ceba9, #4ade80);
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(74, 222, 128, 0.35);
+}
+
+.odd-grid {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(42px, 76px));
+  gap: 0.65rem;
+  justify-content: center;
+  margin: 1.4rem auto;
+}
+
+.odd-cell {
+  aspect-ratio: 1;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  font-size: 2rem;
+  cursor: pointer;
+  background: linear-gradient(150deg, #ffffff, #f5fbff);
+  transition: transform 0.16s ease, filter 0.16s ease;
+}
+
+.odd-cell:hover {
+  transform: scale(1.08);
+  filter: brightness(1.03);
+}
+
+.odd-cell.odd {
+  animation: oddPulse 1.3s ease-in-out infinite;
+}
+
+.game-hint {
+  color: var(--muted);
+  text-align: center;
+  margin-top: 0.6rem;
+}
+
+@keyframes oddPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(255, 126, 185, 0.45); }
+  50% { box-shadow: 0 0 0 8px rgba(255, 126, 185, 0); }
+}
+
+@keyframes percentilePop {
+  0% { transform: scale(0.9); opacity: 0.7; }
+  45% { transform: scale(1.15); opacity: 1; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes percentileToastIn {
+  from { transform: translateY(14px) scale(0.98); opacity: 0; }
+  to { transform: translateY(0) scale(1); opacity: 1; }
+}
+
+@keyframes fadeLift {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes cardSheen {
+  from { transform: translateX(-130%); }
+  to { transform: translateX(130%); }
+}
+
+@keyframes floatDrift {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(24px, -14px); }
+}
+
 @media (max-width:600px){
   h1{font-size:2rem;}
   .games-grid{grid-template-columns:1fr;}
   .memory-grid{grid-template-columns:repeat(3,1fr);}
+  .odd-grid {
+    grid-template-columns: repeat(6, minmax(36px, 52px));
+    gap: 0.45rem;
+  }
+  .odd-cell {
+    font-size: 1.45rem;
+  }
 }
 footer {
   background: rgba(255, 255, 255, 0.95);
@@ -617,7 +972,32 @@ nav {
 
 <main>
   <h1>Brain Training Games</h1>
-  <p>Sharpen your mind with these quick, engaging games. Track your progress and beat your records!</p>
+  <p class="hero-subtitle">Sharpen your mind with fast, high-energy games. Track your records, earn percentile ranks, and get coaching tuned to your focus style.</p>
+
+  <section class="player-hub">
+    <div class="player-grid">
+      <div class="player-field">
+        <label for="player-name">Player Name</label>
+        <input id="player-name" class="player-input" type="text" maxlength="20" placeholder="Enter your name">
+      </div>
+      <div class="player-field">
+        <label for="player-focus">Focus Mode</label>
+        <select id="player-focus" class="player-select">
+          <option value="balanced">Balanced</option>
+          <option value="speed">Speed Demon</option>
+          <option value="memory">Memory Builder</option>
+          <option value="logic">Logic Mode</option>
+        </select>
+      </div>
+      <div class="player-field">
+        <button class="btn btn-primary" onclick="savePlayerProfile()">Save Profile</button>
+      </div>
+      <div class="player-field" style="align-self:center;">
+        <span class="focus-pill" id="focus-pill">Focus: Balanced</span>
+      </div>
+    </div>
+    <div class="coach-line" id="coach-line">Set your profile for personalized prompts and smarter game variety.</div>
+  </section>
 
   <div class="games-grid">
     <div class="game-card" onclick="startGame('reaction')">
@@ -650,6 +1030,21 @@ nav {
       <h3>Mental Math</h3>
       <p>Solve arithmetic problems quickly</p>
     </div>
+    <div class="game-card" onclick="startGame('stroop')">
+      <div class="game-icon">🎨</div>
+      <h3>Stroop Sprint</h3>
+      <p>Tap the color of the word, not the word itself</p>
+    </div>
+    <div class="game-card" onclick="startGame('schulte')">
+      <div class="game-icon">🔎</div>
+      <h3>Schulte Grid</h3>
+      <p>Find numbers 1 to 25 in order as fast as possible</p>
+    </div>
+    <div class="game-card" onclick="startGame('odd')">
+      <div class="game-icon">🧩</div>
+      <h3>Odd-One-Out Rush</h3>
+      <p>Spot the different icon before the timer ends</p>
+    </div>
   </div>
   <div class="game-card" onclick="startGame('screentime')">
   <img src="screentime.png" class="game-icon" alt="Where Did My Time Go? - Screen time tracking game" style="width:104px;">
@@ -676,10 +1071,18 @@ nav {
         <div class="stat-value" id="reaction-count">0</div>
         <div class="stat-label">Tests</div>
       </div>
+      <div class="stat">
+        <div class="stat-value" id="reaction-percentile">--</div>
+        <div class="stat-label">Percentile</div>
+      </div>
     </div>
     <div class="reaction-game">
       <div class="reaction-box waiting" id="reaction-box" onclick="handleReactionClick()">
-        Click when the box turns green!
+        Press Start to begin.
+      </div>
+      <div style="margin-top:0.8rem;">
+        <button class="btn btn-primary" onclick="startReactionRound()">Start</button>
+        <button class="btn btn-secondary" onclick="stopReactionRound()">Stop</button>
       </div>
       <p style="color:var(--muted); margin-top:1rem;">Wait for green, then click as fast as you can!</p>
     </div>
@@ -702,6 +1105,10 @@ nav {
       <div class="stat">
         <div class="stat-value" id="memory-best">--</div>
         <div class="stat-label">Best Time</div>
+      </div>
+      <div class="stat">
+        <div class="stat-value" id="memory-percentile">--</div>
+        <div class="stat-label">Percentile</div>
       </div>
     </div>
     <div class="memory-grid" id="memory-grid"></div>
@@ -728,6 +1135,10 @@ nav {
         <div class="stat-value" id="typing-best">--</div>
         <div class="stat-label">Best WPM</div>
       </div>
+      <div class="stat">
+        <div class="stat-value" id="typing-percentile">--</div>
+        <div class="stat-label">Percentile</div>
+      </div>
     </div>
     <div class="typing-game">
       <div class="typing-text" id="typing-text"></div>
@@ -752,6 +1163,10 @@ nav {
         <div class="stat-value" id="number-best">--</div>
         <div class="stat-label">Best Level</div>
       </div>
+      <div class="stat">
+        <div class="stat-value" id="number-percentile">--</div>
+        <div class="stat-label">Percentile</div>
+      </div>
     </div>
     <div style="text-align:center; padding:2rem;">
       <div id="number-display" style="font-size:3rem; font-weight:700; color:var(--accent2); margin:2rem 0; min-height:100px; display:flex; align-items:center; justify-content:center;"></div>
@@ -775,6 +1190,10 @@ nav {
       <div class="stat">
         <div class="stat-value" id="sequence-best">--</div>
         <div class="stat-label">Best Level</div>
+      </div>
+      <div class="stat">
+        <div class="stat-value" id="sequence-percentile">--</div>
+        <div class="stat-label">Percentile</div>
       </div>
     </div>
     <div style="text-align:center; padding:2rem;">
@@ -802,6 +1221,10 @@ nav {
         <div class="stat-value" id="math-best">--</div>
         <div class="stat-label">Best Score</div>
       </div>
+      <div class="stat">
+        <div class="stat-value" id="math-percentile">--</div>
+        <div class="stat-label">Percentile</div>
+      </div>
     </div>
     <div style="text-align:center; padding:2rem;">
       <div id="math-problem" style="font-size:3rem; font-weight:700; color:var(--accent2); margin:2rem 0; min-height:100px;"></div>
@@ -809,6 +1232,103 @@ nav {
       <div style="margin-top:1rem;">
         <button class="btn btn-primary" onclick="startMathGame()">Start</button>
       </div>
+    </div>
+  </div>
+
+  <div id="stroop-game" class="game-container">
+    <div class="game-header">
+      <h2>🎨 Stroop Sprint</h2>
+      <button class="btn btn-secondary" onclick="closeGame()">← Back to Games</button>
+    </div>
+    <div class="game-stats">
+      <div class="stat">
+        <div class="stat-value" id="stroop-score">0</div>
+        <div class="stat-label">Score</div>
+      </div>
+      <div class="stat">
+        <div class="stat-value" id="stroop-time">45</div>
+        <div class="stat-label">Time Left</div>
+      </div>
+      <div class="stat">
+        <div class="stat-value" id="stroop-best">--</div>
+        <div class="stat-label">Best Score</div>
+      </div>
+      <div class="stat">
+        <div class="stat-value" id="stroop-streak">0</div>
+        <div class="stat-label">Streak</div>
+      </div>
+      <div class="stat">
+        <div class="stat-value" id="stroop-percentile">--</div>
+        <div class="stat-label">Percentile</div>
+      </div>
+    </div>
+    <div style="text-align:center; padding:1rem 0 0.3rem;">
+      <p class="game-hint" id="stroop-task">Choose the <strong>ink color</strong>, not the written word.</p>
+      <div id="stroop-word" class="stroop-word">Press Start</div>
+      <div id="stroop-choices" class="stroop-choices"></div>
+      <div style="margin-top:1rem;">
+        <button class="btn btn-primary" onclick="startStroopGame()">Start</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="schulte-game" class="game-container">
+    <div class="game-header">
+      <h2>🔎 Schulte Grid</h2>
+      <button class="btn btn-secondary" onclick="closeGame()">← Back to Games</button>
+    </div>
+    <div class="game-stats">
+      <div class="stat">
+        <div class="stat-value" id="schulte-target">1</div>
+        <div class="stat-label">Next Number</div>
+      </div>
+      <div class="stat">
+        <div class="stat-value" id="schulte-time">0.0s</div>
+        <div class="stat-label">Time</div>
+      </div>
+      <div class="stat">
+        <div class="stat-value" id="schulte-best">--</div>
+        <div class="stat-label">Best Time</div>
+      </div>
+      <div class="stat">
+        <div class="stat-value" id="schulte-percentile">--</div>
+        <div class="stat-label">Percentile</div>
+      </div>
+    </div>
+    <p class="game-hint">Tap numbers from 1 to 25 in order.</p>
+    <div id="schulte-grid" class="schulte-grid"></div>
+    <div style="text-align:center; margin-top:0.7rem;">
+      <button class="btn btn-primary" onclick="startSchulteGame()">New Grid</button>
+    </div>
+  </div>
+
+  <div id="odd-game" class="game-container">
+    <div class="game-header">
+      <h2>🧩 Odd-One-Out Rush</h2>
+      <button class="btn btn-secondary" onclick="closeGame()">← Back to Games</button>
+    </div>
+    <div class="game-stats">
+      <div class="stat">
+        <div class="stat-value" id="odd-score">0</div>
+        <div class="stat-label">Score</div>
+      </div>
+      <div class="stat">
+        <div class="stat-value" id="odd-time">45</div>
+        <div class="stat-label">Time Left</div>
+      </div>
+      <div class="stat">
+        <div class="stat-value" id="odd-best">--</div>
+        <div class="stat-label">Best Score</div>
+      </div>
+      <div class="stat">
+        <div class="stat-value" id="odd-percentile">--</div>
+        <div class="stat-label">Percentile</div>
+      </div>
+    </div>
+    <p class="game-hint" id="odd-hint">Find the one icon that is different.</p>
+    <div id="odd-grid" class="odd-grid"></div>
+    <div style="text-align:center; margin-top:0.8rem;">
+      <button class="btn btn-primary" onclick="startOddGame()">Start</button>
     </div>
   </div>
 
@@ -843,6 +1363,16 @@ nav {
   <h2>Leaderboard</h2>
   <div id="leaderboard-content"></div>
 </div>
+
+<div id="percentile-celebration" class="percentile-celebration" aria-live="polite">
+  <div class="percentile-ring" id="percentile-ring">
+    <span class="percentile-ring-value" id="percentile-ring-value">0%</span>
+  </div>
+  <div class="percentile-meta">
+    <h4 id="percentile-title">Percentile Upgraded</h4>
+    <p id="percentile-body">Great run.</p>
+  </div>
+</div>
 </main>
 
 <script>
@@ -859,17 +1389,352 @@ document.querySelectorAll("#navLinks a").forEach(link => {
   });
 });
 
-const quotes = [
-  "The only way to do great work is to love what you do.",
-  "Innovation distinguishes between a leader and a follower.",
-  "Life is what happens to you while you're busy making other plans.",
-  "The future belongs to those who believe in the beauty of their dreams.",
-  "It is during our darkest moments that we must focus to see the light."
-];
+const quoteBank = {
+  balanced: [
+    "Small daily wins become massive momentum over time.",
+    "Focus is built through repetition, not motivation.",
+    "You do not need more time, just cleaner intent.",
+    "Every round is practice for your future self.",
+    "Progress hides inside consistent effort.",
+    "Discipline becomes freedom when repeated daily.",
+    "The quality of your attention shapes your day.",
+    "Confidence is earned through reps.",
+    "Train the mind and the rest follows.",
+    "Momentum starts with one focused minute."
+  ],
+  speed: [
+    "Fast hands, calm mind, clean execution.",
+    "Quick decisions beat perfect hesitation.",
+    "Train first, then trust your reflexes.",
+    "Velocity is a skill you can practice.",
+    "Smooth is fast once the pattern is learned.",
+    "Win the first second and the rest follows.",
+    "Speed rewards clarity, not panic.",
+    "Stay loose, stay sharp, stay fast.",
+    "Your reaction window can be trained.",
+    "Quick eyes, quick hands, smart choices."
+  ],
+  memory: [
+    "Attention is the front door to memory.",
+    "Chunk it, link it, repeat it, own it.",
+    "Your memory grows where your focus stays.",
+    "Recall is repetition with intention.",
+    "Memory loves structure and rhythm.",
+    "If you can picture it, you can remember it.",
+    "Retention improves when distractions drop.",
+    "Patterns are memory shortcuts.",
+    "Learn slower now to recall faster later.",
+    "Consistency is your best mnemonic."
+  ],
+  logic: [
+    "Patterns reward patient observation.",
+    "Logic is clarity under pressure.",
+    "Break the problem down, then move fast.",
+    "Strong reasoning is practiced, not gifted.",
+    "The best solvers reduce noise first.",
+    "Precision beats guesswork every time.",
+    "A good system outperforms brute force.",
+    "Reasoning improves when steps are explicit.",
+    "Test assumptions before committing.",
+    "Think in structures, execute in order."
+  ]
+};
 
 let gameScores = JSON.parse(localStorage.getItem('gameScores') || '{}');
+let playerProfile = JSON.parse(localStorage.getItem('playerProfile') || '{"name":"Player","focus":"balanced"}');
+let gameHistory = JSON.parse(localStorage.getItem('gameHistory') || '{}');
+const lowerIsBetterGames = new Set(['reaction', 'memory', 'schulte']);
+const lastXPAwardByGame = {};
+
+// Benchmark distribution approximations for a global player base.
+const percentileBenchmarks = {
+  reaction: { mean: 280, std: 75, lowerIsBetter: true },
+  memory: { mean: 85, std: 28, lowerIsBetter: true },
+  typing: { mean: 48, std: 18, lowerIsBetter: false },
+  number: { mean: 7, std: 2.4, lowerIsBetter: false },
+  sequence: { mean: 7, std: 2.2, lowerIsBetter: false },
+  math: { mean: 16, std: 7, lowerIsBetter: false },
+  stroop: { mean: 15, std: 7, lowerIsBetter: false },
+  schulte: { mean: 32, std: 9, lowerIsBetter: true },
+  odd: { mean: 18, std: 8, lowerIsBetter: false }
+};
+
+function normalCdf(x) {
+  // Logistic approximation to normal CDF; smooth and continuous for exact percentiles.
+  return 1 / (1 + Math.exp(-1.702 * x));
+}
+
+function getPlayerName() {
+  return (playerProfile.name || 'Player').trim() || 'Player';
+}
+
+function getFocusLabel(focus) {
+  const labels = {
+    balanced: 'Balanced',
+    speed: 'Speed Demon',
+    memory: 'Memory Builder',
+    logic: 'Logic Mode'
+  };
+  return labels[focus] || 'Balanced';
+}
+
+function savePlayerProfile() {
+  const nameInput = document.getElementById('player-name');
+  const focusInput = document.getElementById('player-focus');
+  playerProfile = {
+    name: (nameInput?.value || 'Player').trim().slice(0, 20) || 'Player',
+    focus: focusInput?.value || 'balanced'
+  };
+  localStorage.setItem('playerProfile', JSON.stringify(playerProfile));
+  applyProfileUI();
+  updateCoachLine(`Profile saved. ${getPlayerName()}, let's chase a higher percentile.`);
+}
+
+function applyProfileUI() {
+  const nameInput = document.getElementById('player-name');
+  const focusInput = document.getElementById('player-focus');
+  const focusPill = document.getElementById('focus-pill');
+  if (nameInput) nameInput.value = getPlayerName();
+  if (focusInput) focusInput.value = playerProfile.focus || 'balanced';
+  if (focusPill) focusPill.textContent = `Focus: ${getFocusLabel(playerProfile.focus)}`;
+}
+
+function updateCoachLine(msg) {
+  const el = document.getElementById('coach-line');
+  if (el) el.textContent = msg;
+}
+
+function calculatePerformancePercentile(gameKey, rawValue) {
+  const value = Number(rawValue);
+  if (!Number.isFinite(value)) return null;
+  const bench = percentileBenchmarks[gameKey];
+  if (!bench || !bench.std) return null;
+
+  const zRaw = (value - bench.mean) / bench.std;
+  const z = bench.lowerIsBetter ? -zRaw : zRaw;
+  const percentile = Math.round(normalCdf(z) * 100);
+  return Math.max(1, Math.min(99, percentile));
+}
+
+function animatePercentileStat(gameKey, percentile) {
+  const stat = document.getElementById(`${gameKey}-percentile`);
+  if (!stat) return;
+  stat.classList.remove('percentile-animated');
+  void stat.offsetWidth;
+  stat.classList.add('percentile-animated');
+  stat.textContent = percentile ? `${percentile}%` : '--';
+}
+
+function showPercentileCelebration(gameLabel, percentile, scoreValue, unit = '') {
+  const shell = document.getElementById('percentile-celebration');
+  const ring = document.getElementById('percentile-ring');
+  const ringValue = document.getElementById('percentile-ring-value');
+  const title = document.getElementById('percentile-title');
+  const body = document.getElementById('percentile-body');
+  if (!shell || !ring || !ringValue || !title || !body || !percentile) return;
+
+  const start = Number(ringValue.dataset.current || 0);
+  const end = percentile;
+  const duration = 900;
+  const started = performance.now();
+
+  title.textContent = `${gameLabel}: New Percentile`;
+  body.textContent = `${getPlayerName()}, your latest result (${scoreValue}${unit}) places you at ${end}% against global benchmarks.`;
+  shell.classList.add('show');
+
+  const tick = (now) => {
+    const t = Math.min((now - started) / duration, 1);
+    const eased = 1 - Math.pow(1 - t, 3);
+    const current = Math.round(start + (end - start) * eased);
+    const degrees = Math.round((current / 100) * 360);
+    ring.style.background = `conic-gradient(var(--accent2) ${degrees}deg, rgba(255,255,255,0.16) 0deg)`;
+    ringValue.textContent = `${current}%`;
+    ringValue.dataset.current = String(current);
+    if (t < 1) requestAnimationFrame(tick);
+  };
+  requestAnimationFrame(tick);
+
+  clearTimeout(showPercentileCelebration._hideTimer);
+  showPercentileCelebration._hideTimer = setTimeout(() => {
+    shell.classList.remove('show');
+  }, 3200);
+}
+
+function recordGameResult(gameKey, rawValue, gameLabel, unit = '') {
+  const value = Number(rawValue);
+  if (!Number.isFinite(value)) return null;
+
+  const percentile = calculatePerformancePercentile(gameKey, value);
+  const previousBest = Number(gameScores[`${gameKey}BestPercentile`] || 0);
+
+  gameScores[`${gameKey}LastPercentile`] = percentile;
+  gameScores[`${gameKey}BestPercentile`] = Math.max(previousBest, percentile || 0);
+  localStorage.setItem('gameScores', JSON.stringify(gameScores));
+
+  if (!Array.isArray(gameHistory[gameKey])) gameHistory[gameKey] = [];
+  gameHistory[gameKey].push(value);
+  if (gameHistory[gameKey].length > 200) {
+    gameHistory[gameKey] = gameHistory[gameKey].slice(-200);
+  }
+  localStorage.setItem('gameHistory', JSON.stringify(gameHistory));
+
+  if (percentile && percentile > previousBest) {
+    localStorage.setItem('gameScores', JSON.stringify(gameScores));
+    showPercentileCelebration(gameLabel, percentile, value, unit);
+  }
+
+  // Award XP scaled by percentile so better performance earns more.
+  if (percentile && typeof GameSystem !== 'undefined') {
+    const now = Date.now();
+    const last = lastXPAwardByGame[gameKey] || 0;
+    if (now - last > 15000) {
+      const percentileBonus = Math.max(4, Math.round(percentile / 10));
+      const milestoneBonus = percentile >= 90 ? 8 : percentile >= 75 ? 4 : 0;
+      const xpAward = percentileBonus + milestoneBonus;
+      GameSystem.awardXP(xpAward, 'winGame');
+      lastXPAwardByGame[gameKey] = now;
+      updateCoachLine(`${getPlayerName()} earned +${xpAward} XP from ${gameLabel} (${percentile}% percentile).`);
+    }
+  }
+  return percentile;
+}
+
+function updatePercentile(gameKey, scoreValue) {
+  const fallbackFromScore = calculatePerformancePercentile(gameKey, scoreValue);
+  const p = Number(gameScores[`${gameKey}LastPercentile`] || 0) || fallbackFromScore || null;
+  const stat = document.getElementById(`${gameKey}-percentile`);
+  if (stat) animatePercentileStat(gameKey, p);
+  return p;
+}
+
+function updateAllPercentiles() {
+  updatePercentile('reaction', gameScores.reactionBest);
+  updatePercentile('memory', gameScores.memoryBest);
+  updatePercentile('typing', gameScores.typingBest);
+  updatePercentile('number', gameScores.numberBest);
+  updatePercentile('sequence', gameScores.sequenceBest);
+  updatePercentile('math', gameScores.mathBest);
+  updatePercentile('stroop', gameScores.stroopBest);
+  updatePercentile('schulte', gameScores.schulteBest);
+  updatePercentile('odd', gameScores.oddBest);
+}
+
+function personalizedQuote() {
+  const focus = playerProfile.focus || 'balanced';
+  const set = quoteBank[focus] || quoteBank.balanced;
+  return set[Math.floor(Math.random() * set.length)];
+}
+
+let reactionRunning = false;
+let reactionResetTimeout = null;
+let memoryPreviewTimeout = null;
+let numberHideTimeout = null;
+let sequencePlaybackInterval = null;
+let oddNextRoundTimeout = null;
+
+function stopAllRunningGames() {
+  reactionRunning = false;
+  if (reactionTimeout) clearTimeout(reactionTimeout);
+  if (reactionResetTimeout) clearTimeout(reactionResetTimeout);
+  if (memoryPreviewTimeout) clearTimeout(memoryPreviewTimeout);
+  if (numberHideTimeout) clearTimeout(numberHideTimeout);
+  if (sequencePlaybackInterval) clearInterval(sequencePlaybackInterval);
+  if (mathInterval) clearInterval(mathInterval);
+  if (stroopInterval) clearInterval(stroopInterval);
+  if (schulteTimer) clearInterval(schulteTimer);
+  if (oddInterval) clearInterval(oddInterval);
+  if (oddNextRoundTimeout) clearTimeout(oddNextRoundTimeout);
+
+  reactionTimeout = null;
+  reactionResetTimeout = null;
+  memoryPreviewTimeout = null;
+  numberHideTimeout = null;
+  sequencePlaybackInterval = null;
+  mathInterval = null;
+  stroopInterval = null;
+  schulteTimer = null;
+  oddInterval = null;
+  oddNextRoundTimeout = null;
+  sequenceShowing = false;
+}
+
+function prepareTypingGame() {
+  const textDiv = document.getElementById('typing-text');
+  const input = document.getElementById('typing-input');
+  if (textDiv) textDiv.innerHTML = '<span style="color:var(--muted)">Press New Quote to start a run.</span>';
+  if (input) {
+    input.value = '';
+    input.oninput = null;
+  }
+  document.getElementById('typing-wpm').textContent = '0';
+  document.getElementById('typing-accuracy').textContent = '100%';
+  document.getElementById('typing-best').textContent = gameScores.typingBest ? gameScores.typingBest + ' WPM' : '--';
+  updatePercentile('typing', gameScores.typingBest);
+}
+
+function prepareNumberGame() {
+  document.getElementById('number-level').textContent = '1';
+  document.getElementById('number-best').textContent = gameScores.numberBest || '--';
+  document.getElementById('number-display').textContent = 'Press Start';
+  document.getElementById('number-input').value = '';
+  updatePercentile('number', gameScores.numberBest);
+}
+
+function prepareSequenceGame() {
+  document.getElementById('sequence-level').textContent = '1';
+  document.getElementById('sequence-best').textContent = gameScores.sequenceBest || '--';
+  document.getElementById('sequence-display').innerHTML = '<span style="color:var(--muted)">Press Start to play.</span>';
+  document.getElementById('sequence-buttons').innerHTML = '';
+  updatePercentile('sequence', gameScores.sequenceBest);
+}
+
+function prepareMathGame() {
+  document.getElementById('math-score').textContent = '0';
+  document.getElementById('math-time').textContent = playerProfile.focus === 'speed' ? '45' : '60';
+  document.getElementById('math-best').textContent = gameScores.mathBest ? gameScores.mathBest : '--';
+  document.getElementById('math-problem').textContent = 'Press Start';
+  document.getElementById('math-answer').value = '';
+  document.getElementById('math-answer').oninput = null;
+  updatePercentile('math', gameScores.mathBest);
+}
+
+function prepareStroopGame() {
+  stroopScore = 0;
+  stroopTimeLeft = 45;
+  stroopCombo = 0;
+  document.getElementById('stroop-score').textContent = '0';
+  document.getElementById('stroop-time').textContent = '45';
+  document.getElementById('stroop-streak').textContent = '0';
+  document.getElementById('stroop-best').textContent = gameScores.stroopBest || '--';
+  document.getElementById('stroop-task').innerHTML = 'Choose the <strong>ink color</strong>, not the written word.';
+  document.getElementById('stroop-word').textContent = 'Press Start';
+  document.getElementById('stroop-choices').innerHTML = '';
+  updatePercentile('stroop', gameScores.stroopBest);
+}
+
+function prepareSchulteGame() {
+  document.getElementById('schulte-target').textContent = '1';
+  document.getElementById('schulte-time').textContent = '0.0s';
+  document.getElementById('schulte-best').textContent = gameScores.schulteBest ? gameScores.schulteBest + 's' : '--';
+  document.getElementById('schulte-grid').innerHTML = '';
+  updatePercentile('schulte', gameScores.schulteBest);
+}
+
+function prepareOddGame() {
+  oddScore = 0;
+  oddTimeLeft = 45;
+  oddCombo = 0;
+  document.getElementById('odd-score').textContent = '0';
+  document.getElementById('odd-time').textContent = '45';
+  document.getElementById('odd-best').textContent = gameScores.oddBest || '--';
+  document.getElementById('odd-hint').textContent = 'Press Start to begin.';
+  document.getElementById('odd-grid').innerHTML = '';
+  updatePercentile('odd', gameScores.oddBest);
+}
 
  function startGame(gameType) {
+  stopAllRunningGames();
+
   // Hide all games
   document.querySelectorAll('.game-container').forEach(g => {
     g.classList.remove('active');
@@ -885,19 +1750,41 @@ let gameScores = JSON.parse(localStorage.getItem('gameScores') || '{}');
     game.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
 
-  // Initialize the specific game
+  // Prepare the specific game; nothing starts until user clicks Start/New Game.
   if (gameType === 'reaction') initReactionGame();
-  else if (gameType === 'memory') initMemoryGame();
-  else if (gameType === 'typing') newTypingGame();
-  else if (gameType === 'number') startNumberGame();
-  else if (gameType === 'sequence') startSequenceGame();
-  else if (gameType === 'math') startMathGame();
+  else if (gameType === 'memory') updateMemoryStats();
+  else if (gameType === 'typing') prepareTypingGame();
+  else if (gameType === 'number') prepareNumberGame();
+  else if (gameType === 'sequence') prepareSequenceGame();
+  else if (gameType === 'math') prepareMathGame();
+  else if (gameType === 'stroop') prepareStroopGame();
+  else if (gameType === 'schulte') prepareSchulteGame();
+  else if (gameType === 'odd') prepareOddGame();
   else if (gameType === 'screentime') updateScreenTime();
+
+  const gameNames = {
+    reaction: 'Reaction Time',
+    memory: 'Memory Match',
+    typing: 'Speed Typing',
+    number: 'Number Memory',
+    sequence: 'Sequence Master',
+    math: 'Mental Math',
+    stroop: 'Stroop Sprint',
+    schulte: 'Schulte Grid',
+    odd: 'Odd-One-Out Rush',
+    screentime: 'Where Did My Time Go'
+  };
+  updateCoachLine(`${getPlayerName()}, you're in ${gameNames[gameType] || 'Game'} mode. ${personalizedQuote()}`);
 }
 
 function closeGame() {
-  document.querySelectorAll('.game-container').forEach(g => g.classList.remove('active'));
+  stopAllRunningGames();
+  document.querySelectorAll('.game-container').forEach(g => {
+    g.classList.remove('active');
+    g.style.display = 'none';
+  });
   updateLeaderboard();
+  updateCoachLine(`${getPlayerName()}, pick your next challenge and push your percentile higher.`);
 }
 
 // Reaction Time Game
@@ -906,9 +1793,10 @@ let reactionStartTime = null;
 let reactionTimeout = null;
 
 function initReactionGame() {
+  reactionRunning = false;
   const box = document.getElementById('reaction-box');
   box.className = 'reaction-box waiting';
-  box.textContent = 'Click when the box turns green!';
+  box.textContent = 'Press Start to begin.';
   box.onclick = handleReactionClick;
   
   const best = gameScores.reactionBest || null;
@@ -917,16 +1805,40 @@ function initReactionGame() {
   document.getElementById('reaction-best').textContent = best ? best + 'ms' : '--';
   document.getElementById('reaction-avg').textContent = avg ? avg + 'ms' : '--';
   document.getElementById('reaction-count').textContent = reactionTimes.length;
+  updatePercentile('reaction', best);
+}
+
+function startReactionRound() {
+  const box = document.getElementById('reaction-box');
+  if (reactionRunning) return;
+  reactionRunning = true;
+  box.className = 'reaction-box waiting';
+  box.textContent = 'Wait for green...';
+  scheduleReaction();
+}
+
+function stopReactionRound() {
+  reactionRunning = false;
+  if (reactionTimeout) clearTimeout(reactionTimeout);
+  if (reactionResetTimeout) clearTimeout(reactionResetTimeout);
+  reactionTimeout = null;
+  reactionResetTimeout = null;
+  const box = document.getElementById('reaction-box');
+  if (box) {
+    box.className = 'reaction-box waiting';
+    box.textContent = 'Stopped. Press Start to continue.';
+  }
 }
 
 function handleReactionClick() {
+  if (!reactionRunning) return;
   const box = document.getElementById('reaction-box');
   const now = Date.now();
   
   if(box.classList.contains('waiting')) {
     box.className = 'reaction-box too-early';
     box.textContent = 'Too early! Wait for green.';
-    setTimeout(() => {
+    reactionResetTimeout = setTimeout(() => {
       box.className = 'reaction-box waiting';
       box.textContent = 'Click when the box turns green!';
       scheduleReaction();
@@ -939,21 +1851,32 @@ function handleReactionClick() {
       gameScores.reactionBest = reactionTime;
     }
     localStorage.setItem('gameScores', JSON.stringify(gameScores));
+    recordGameResult('reaction', reactionTime, 'Reaction Time', 'ms');
+    updateLeaderboard();
+    updatePercentile('reaction', gameScores.reactionBest);
+    if (reactionTime <= 220) {
+      updateCoachLine(`Lightning fast, ${getPlayerName()}! ${reactionTime}ms puts you in elite territory.`);
+    }
     
     box.textContent = `${reactionTime}ms - Click to try again!`;
     box.className = 'reaction-box waiting';
-    initReactionGame();
+    document.getElementById('reaction-best').textContent = gameScores.reactionBest ? gameScores.reactionBest + 'ms' : '--';
+    document.getElementById('reaction-avg').textContent = reactionTimes.length > 0 ? Math.round(reactionTimes.reduce((a,b)=>a+b,0)/reactionTimes.length) + 'ms' : '--';
+    document.getElementById('reaction-count').textContent = reactionTimes.length;
     scheduleReaction();
   }
 }
 
 function scheduleReaction() {
+  if (!reactionRunning) return;
+  const focusBoost = playerProfile.focus === 'speed' ? -350 : 0;
   reactionTimeout = setTimeout(() => {
+    if (!reactionRunning) return;
     const box = document.getElementById('reaction-box');
     box.className = 'reaction-box ready';
     box.textContent = 'CLICK NOW!';
     reactionStartTime = Date.now();
-  }, Math.random() * 3000 + 1000);
+  }, Math.max(500, Math.random() * 3000 + 1000 + focusBoost));
 }
 
 // Memory Game
@@ -989,6 +1912,18 @@ function initMemoryGame() {
     card.onclick = () => flipCard(index);
     grid.appendChild(card);
   });
+
+  // Short preview phase to make rounds feel more strategic and dynamic.
+  grid.querySelectorAll('.memory-card').forEach(c => {
+    c.classList.add('flipped');
+    c.textContent = c.dataset.symbol;
+  });
+  memoryPreviewTimeout = setTimeout(() => {
+    grid.querySelectorAll('.memory-card').forEach(c => {
+      c.classList.remove('flipped');
+      c.textContent = '';
+    });
+  }, playerProfile.focus === 'memory' ? 2400 : 1700);
   
   updateMemoryStats();
 }
@@ -1023,16 +1958,18 @@ function checkMatch() {
         gameScores.memoryBest = time;
       }
       localStorage.setItem('gameScores', JSON.stringify(gameScores));
+      recordGameResult('memory', time, 'Memory Match', 's');
+      updateLeaderboard();
+      updatePercentile('memory', gameScores.memoryBest);
       
       // Award XP for winning memory game
       if (typeof GameSystem !== 'undefined') {
-        GameSystem.awardXP(GameSystem.rewards.winGame, 'winGame');
         showGameWinCelebration('Memory Match', `${time}s - ${memoryMoves} moves! 🎮`);
       } else {
         alert(`🎉 You won in ${time} seconds with ${memoryMoves} moves!`);
       }
-      
-      initMemoryGame();
+
+      updateCoachLine(`${getPlayerName()}, strong memory round. Press New Game when ready.`);
     }
   } else {
     card1.element.classList.remove('flipped');
@@ -1049,6 +1986,7 @@ function updateMemoryStats() {
   document.getElementById('memory-moves').textContent = memoryMoves;
   document.getElementById('memory-pairs').textContent = matchedPairs;
   document.getElementById('memory-best').textContent = gameScores.memoryBest ? gameScores.memoryBest + 's' : '--';
+  updatePercentile('memory', gameScores.memoryBest);
 }
 
 // Typing Game
@@ -1057,7 +1995,7 @@ let typingStartTime = null;
 let typingCurrentIndex = 0;
 
 function newTypingGame() {
-  typingQuote = quotes[Math.floor(Math.random() * quotes.length)];
+  typingQuote = personalizedQuote();
   typingCurrentIndex = 0;
   typingStartTime = null;
   
@@ -1073,6 +2011,7 @@ function newTypingGame() {
   
   document.getElementById('typing-wpm').textContent = '0';
   document.getElementById('typing-accuracy').textContent = '100%';
+  updatePercentile('typing', gameScores.typingBest);
 }
 
 function handleTyping(e) {
@@ -1104,11 +2043,14 @@ function handleTyping(e) {
       gameScores.typingBest = wpm;
     }
     localStorage.setItem('gameScores', JSON.stringify(gameScores));
+    recordGameResult('typing', wpm, 'Typing Speed', ' WPM');
+    updateLeaderboard();
+    updatePercentile('typing', gameScores.typingBest);
     
     document.getElementById('typing-wpm').textContent = wpm;
     document.getElementById('typing-accuracy').textContent = accuracy + '%';
     alert(`🎉 Finished! ${wpm} WPM with ${accuracy}% accuracy!`);
-    newTypingGame();
+    prepareTypingGame();
   } else {
     const time = (Date.now() - typingStartTime) / 1000 / 60;
     const wpm = time > 0 ? Math.round(input.length / 5 / time) : 0;
@@ -1120,6 +2062,7 @@ function handleTyping(e) {
   }
   
   document.getElementById('typing-best').textContent = gameScores.typingBest ? gameScores.typingBest + ' WPM' : '--';
+  updatePercentile('typing', gameScores.typingBest);
 }
 function updateScreenTime() {
   const dailyHours = Number(document.getElementById("screenSlider").value);
@@ -1128,41 +2071,27 @@ function updateScreenTime() {
 
   document.getElementById("screenHours").textContent = `${totalHours.toFixed(1)} hours in ${periodDays} day(s)`;
 
-  // Full list of potential life-impact activities
-  const allStats = [
-    { label: "Books You Could Have Read 📚", value: Math.floor(totalHours / 6.5), min: 1 },
-    { label: "Miles You Could Have Walked 🚶‍♂️", value: Math.floor(totalHours * 2), min: 1 },
-    { label: "Skills You Could Have Learned 🛠️", value: Math.floor(totalHours / 2), min: 1 },
-    { label: "Creative Projects 🎨", value: Math.floor(totalHours / 1), min: 1 },
-    { label: "Sleep Recovered 😴", value: Math.floor(totalHours / 1), min: 1 },
-    { label: "Hours in Nature 🌳", value: Math.floor(totalHours * 1), min: 1 },
-    { label: "Coding / Side Projects 💻", value: Math.floor(totalHours * 0.7), min: 1 },
-    { label: "Volunteering / Helping Others 🤝", value: Math.floor(totalHours * 0.5), min: 1 },
-    { label: "Meditation / Mindfulness 🧘", value: Math.floor(totalHours * 0.5), min: 1 },
-    { label: "Social Time / Friends 👫", value: Math.floor(totalHours * 0.5), min: 1 },
-    { label: "Exercise / Workouts 💪", value: Math.floor(totalHours * 0.75), min: 1 },
-    { label: "Music Practice 🎵", value: Math.floor(totalHours * 0.6), min: 1 },
-    { label: "Learn a Language 🌍", value: Math.floor(totalHours * 0.4), min: 1 },
-    { label: "Write Stories / Journal ✍️", value: Math.floor(totalHours * 0.5), min: 1 },
-    { label: "Cooking / Baking 🍳", value: Math.floor(totalHours * 0.6), min: 1 },
-    { label: "Art / Drawing 🎨", value: Math.floor(totalHours * 0.5), min: 1 },
-    { label: "DIY / Building Projects 🏗️", value: Math.floor(totalHours * 0.5), min: 1 },
-    { label: "Photography 📸", value: Math.floor(totalHours * 0.4), min: 1 },
-    { label: "Gardening 🌱", value: Math.floor(totalHours * 0.5), min: 1 },
-    { label: "Board Games / Puzzles 🧩", value: Math.floor(totalHours * 0.4), min: 1 },
-    { label: "Podcasts / Learning 🎧", value: Math.floor(totalHours * 0.6), min: 1 },
-    { label: "Community Events 🎉", value: Math.floor(totalHours * 0.3), min: 1 },
+  // Display realistic alternatives in hours instead of mixed units.
+  const allocations = [
+    { label: "Deep Work Hours 💻", ratio: 0.75 },
+    { label: "Exercise Hours 💪", ratio: 0.55 },
+    { label: "Sleep Recovery Hours 😴", ratio: 0.90 },
+    { label: "Reading Hours 📚", ratio: 0.60 },
+    { label: "Skill Practice Hours 🛠️", ratio: 0.70 },
+    { label: "Outdoor Hours 🌳", ratio: 0.50 },
+    { label: "Creative Build Hours 🎨", ratio: 0.65 },
+    { label: "Family / Friend Hours 👫", ratio: 0.58 },
+    { label: "Mindfulness Hours 🧘", ratio: 0.35 },
+    { label: "Learning Project Hours 🎧", ratio: 0.62 }
   ];
 
-  // Filter out stats below threshold
-  const validStats = allStats.filter(stat => stat.value >= stat.min);
-
-  // Randomize order for variety
-  validStats.sort(() => Math.random() - 0.5);
-
-  // Only show top N stats
-  const maxVisible = 6;
-  const statsToShow = validStats.slice(0, maxVisible);
+  const statsToShow = allocations
+    .map(a => ({
+      label: a.label,
+      hours: Number((totalHours * a.ratio).toFixed(1))
+    }))
+    .filter(a => a.hours >= 0.5)
+    .slice(0, 6);
 
   const container = document.getElementById("lifeStats");
   container.innerHTML = "";
@@ -1171,22 +2100,22 @@ function updateScreenTime() {
     const div = document.createElement("div");
     div.className = "stat dramatic";
     div.innerHTML = `
-      <div class="stat-value">0</div>
+      <div class="stat-value">0.0h</div>
       <div class="stat-label">${stat.label}</div>
     `;
     container.appendChild(div);
 
-    // Animate number from 0 → value
+    // Animate number from 0.0h to target hours.
     const valueDiv = div.querySelector(".stat-value");
     let current = 0;
-    const increment = Math.ceil(stat.value / 50);
+    const increment = Math.max(0.1, stat.hours / 45);
     const interval = setInterval(() => {
       current += increment;
-      if(current >= stat.value) {
-        current = stat.value;
+      if(current >= stat.hours) {
+        current = stat.hours;
         clearInterval(interval);
       }
-      valueDiv.textContent = current;
+      valueDiv.textContent = `${current.toFixed(1)}h`;
     }, 15);
   });
 }
@@ -1202,6 +2131,7 @@ let numberShowing = true;
 function startNumberGame() {
   numberLevel = 1;
   numberSequence = '';
+  updatePercentile('number', gameScores.numberBest);
   nextNumberLevel();
 }
 
@@ -1212,7 +2142,7 @@ function nextNumberLevel() {
   document.getElementById('number-input').value = '';
   numberShowing = true;
   
-  setTimeout(() => {
+  numberHideTimeout = setTimeout(() => {
     document.getElementById('number-display').textContent = '?';
     numberShowing = false;
     document.getElementById('number-input').focus();
@@ -1225,15 +2155,19 @@ function nextNumberLevel() {
         gameScores.numberBest = numberLevel;
       }
       localStorage.setItem('gameScores', JSON.stringify(gameScores));
+      updateLeaderboard();
       document.getElementById('number-best').textContent = gameScores.numberBest || '--';
+      updatePercentile('number', gameScores.numberBest);
       nextNumberLevel();
     } else if(!numberShowing && e.target.value.length === numberSequence.length && e.target.value !== numberSequence) {
+      recordGameResult('number', numberLevel, 'Number Memory', ' level');
       alert(`Game Over! You reached level ${numberLevel}. The sequence was: ${numberSequence}`);
-      startNumberGame();
+      prepareNumberGame();
     }
   };
   
   document.getElementById('number-best').textContent = gameScores.numberBest || '--';
+  updatePercentile('number', gameScores.numberBest);
 }
 
 // Sequence Game
@@ -1255,27 +2189,39 @@ function nextSequenceLevel() {
   sequencePattern.push(Math.floor(Math.random() * 4));
   document.getElementById('sequence-level').textContent = sequenceLevel;
   document.getElementById('sequence-best').textContent = gameScores.sequenceBest || '--';
+  updatePercentile('sequence', gameScores.sequenceBest);
   
   showSequence();
 }
 
 function showSequence() {
   const display = document.getElementById('sequence-display');
-  display.innerHTML = '';
+  display.innerHTML = '<span class="focus-pill">Watch the sequence...</span>';
+  setupSequenceButtons();
   sequenceShowing = true;
+  const buttons = Array.from(document.querySelectorAll('#sequence-buttons button'));
   
   let i = 0;
-  const interval = setInterval(() => {
+  sequencePlaybackInterval = setInterval(() => {
     if(i < sequencePattern.length) {
-      display.innerHTML = `<div style="width:80px;height:80px;border-radius:50%;background:${sequenceColors[sequencePattern[i]]};"></div>`;
+      const target = buttons[sequencePattern[i]];
+      if (target) {
+        target.style.transform = 'scale(1.14)';
+        target.style.boxShadow = '0 0 0 8px rgba(88,217,255,0.25), 0 10px 30px rgba(0,0,0,0.12)';
+        setTimeout(() => {
+          target.style.transform = 'scale(1)';
+          target.style.boxShadow = 'none';
+        }, 320);
+      }
       i++;
     } else {
       display.innerHTML = '';
-      clearInterval(interval);
+      clearInterval(sequencePlaybackInterval);
+      sequencePlaybackInterval = null;
       sequenceShowing = false;
-      setupSequenceButtons();
+      updateCoachLine(`${getPlayerName()}, your turn. Replay from memory.`);
     }
-  }, 600);
+  }, 520);
 }
 
 function setupSequenceButtons() {
@@ -1299,14 +2245,17 @@ function handleSequenceClick(colorIndex) {
   setTimeout(() => btn.style.transform = 'scale(1)', 100);
   
   if(sequenceUserInput[sequenceUserInput.length - 1] !== sequencePattern[sequenceUserInput.length - 1]) {
+    recordGameResult('sequence', sequenceLevel, 'Sequence Master', ' level');
     alert(`Game Over! You reached level ${sequenceLevel}.`);
-    startSequenceGame();
+    prepareSequenceGame();
   } else if(sequenceUserInput.length === sequencePattern.length) {
     sequenceLevel++;
     if(!gameScores.sequenceBest || sequenceLevel > gameScores.sequenceBest) {
       gameScores.sequenceBest = sequenceLevel;
     }
     localStorage.setItem('gameScores', JSON.stringify(gameScores));
+    updateLeaderboard();
+    updatePercentile('sequence', gameScores.sequenceBest);
     setTimeout(nextSequenceLevel, 500);
   }
 }
@@ -1319,10 +2268,11 @@ let mathCurrentProblem = null;
 
 function startMathGame() {
   mathScore = 0;
-  mathTimeLeft = 60;
+  mathTimeLeft = playerProfile.focus === 'speed' ? 45 : 60;
   document.getElementById('math-score').textContent = '0';
-  document.getElementById('math-time').textContent = '60';
+  document.getElementById('math-time').textContent = String(mathTimeLeft);
   document.getElementById('math-best').textContent = gameScores.mathBest ? gameScores.mathBest : '--';
+  updatePercentile('math', gameScores.mathBest);
   
   if(mathInterval) clearInterval(mathInterval);
   mathInterval = setInterval(() => {
@@ -1334,8 +2284,11 @@ function startMathGame() {
         gameScores.mathBest = mathScore;
       }
       localStorage.setItem('gameScores', JSON.stringify(gameScores));
+      recordGameResult('math', mathScore, 'Mental Math', ' points');
+      updateLeaderboard();
+      updatePercentile('math', gameScores.mathBest);
       alert(`Time's up! Final score: ${mathScore}`);
-      startMathGame();
+      prepareMathGame();
     }
   }, 1000);
   
@@ -1352,21 +2305,27 @@ function startMathGame() {
 }
 
 function generateMathProblem() {
-  const ops = ['+', '-', '*'];
+  const focus = playerProfile.focus || 'balanced';
+  const ops = focus === 'logic'
+    ? ['+', '-', '*', '*']
+    : focus === 'speed'
+      ? ['+', '+', '-', '*']
+      : ['+', '-', '*'];
   const op = ops[Math.floor(Math.random() * ops.length)];
   let a, b, answer;
+  const scale = Math.min(1 + Math.floor(mathScore / 8), 5);
   
   if(op === '+') {
-    a = Math.floor(Math.random() * 50) + 1;
-    b = Math.floor(Math.random() * 50) + 1;
+    a = Math.floor(Math.random() * (20 + scale * 12)) + 1;
+    b = Math.floor(Math.random() * (20 + scale * 12)) + 1;
     answer = a + b;
   } else if(op === '-') {
-    a = Math.floor(Math.random() * 50) + 25;
+    a = Math.floor(Math.random() * (20 + scale * 14)) + 15;
     b = Math.floor(Math.random() * a) + 1;
     answer = a - b;
   } else {
-    a = Math.floor(Math.random() * 10) + 1;
-    b = Math.floor(Math.random() * 10) + 1;
+    a = Math.floor(Math.random() * (4 + scale * 2)) + 1;
+    b = Math.floor(Math.random() * (4 + scale * 2)) + 1;
     answer = a * b;
   }
   
@@ -1374,15 +2333,300 @@ function generateMathProblem() {
   document.getElementById('math-problem').textContent = `${a} ${op} ${b} = ?`;
 }
 
+// Stroop Sprint Game
+let stroopScore = 0;
+let stroopTimeLeft = 45;
+let stroopInterval = null;
+let stroopCombo = 0;
+let stroopMode = 'ink';
+let stroopChoices = [];
+
+const stroopColors = [
+  { name: 'RED', color: '#ef4444' },
+  { name: 'BLUE', color: '#3b82f6' },
+  { name: 'GREEN', color: '#22c55e' },
+  { name: 'ORANGE', color: '#f59e0b' },
+  { name: 'PURPLE', color: '#8b5cf6' },
+  { name: 'PINK', color: '#ec4899' },
+  { name: 'CYAN', color: '#06b6d4' },
+  { name: 'LIME', color: '#84cc16' }
+];
+
+function startStroopGame() {
+  stroopScore = 0;
+  stroopTimeLeft = 45;
+  stroopCombo = 0;
+  stroopMode = 'ink';
+  document.getElementById('stroop-score').textContent = '0';
+  document.getElementById('stroop-time').textContent = '45';
+  document.getElementById('stroop-best').textContent = gameScores.stroopBest || '--';
+  document.getElementById('stroop-streak').textContent = '0';
+  updatePercentile('stroop', gameScores.stroopBest);
+
+  if (stroopInterval) clearInterval(stroopInterval);
+  stroopInterval = setInterval(() => {
+    stroopTimeLeft--;
+    document.getElementById('stroop-time').textContent = stroopTimeLeft;
+    if (stroopTimeLeft <= 0) {
+      clearInterval(stroopInterval);
+      if (!gameScores.stroopBest || stroopScore > gameScores.stroopBest) {
+        gameScores.stroopBest = stroopScore;
+      }
+      localStorage.setItem('gameScores', JSON.stringify(gameScores));
+      recordGameResult('stroop', stroopScore, 'Stroop Sprint', ' points');
+      updatePercentile('stroop', gameScores.stroopBest);
+      updateLeaderboard();
+      showGameWinCelebration('Stroop Sprint', `Final score: ${stroopScore}`);
+      prepareStroopGame();
+      updateCoachLine(`${getPlayerName()}, great sprint. Hit Start to run another round.`);
+    }
+  }, 1000);
+
+  renderStroopRound();
+}
+
+function renderStroopRound() {
+  const word = stroopColors[Math.floor(Math.random() * stroopColors.length)];
+  let ink = stroopColors[Math.floor(Math.random() * stroopColors.length)];
+
+  // Alternate challenge mode for engagement: mostly ink-color, occasional word-meaning round.
+  stroopMode = Math.random() < 0.78 ? 'ink' : 'word';
+  const task = document.getElementById('stroop-task');
+  if (task) {
+    task.innerHTML = stroopMode === 'ink'
+      ? 'Choose the <strong>ink color</strong>, not the written word.'
+      : 'Switch! Choose the <strong>word meaning</strong>, ignore the ink color.';
+  }
+
+  if (Math.random() < 0.8) {
+    while (ink.name === word.name) {
+      ink = stroopColors[Math.floor(Math.random() * stroopColors.length)];
+    }
+  }
+
+  const wordEl = document.getElementById('stroop-word');
+  wordEl.textContent = word.name;
+  wordEl.style.color = ink.color;
+  wordEl.dataset.answer = stroopMode === 'ink' ? ink.name : word.name;
+
+  stroopChoices = [...stroopColors].sort(() => Math.random() - 0.5).slice(0, 6);
+  const answerName = wordEl.dataset.answer;
+  if (!stroopChoices.some(c => c.name === answerName)) {
+    stroopChoices[Math.floor(Math.random() * stroopChoices.length)] = stroopColors.find(c => c.name === answerName);
+  }
+
+  const choices = stroopChoices
+    .sort(() => Math.random() - 0.5)
+    .map((c, idx) => `<button class="stroop-btn" onclick="handleStroopAnswer('${c.name}')" title="Press ${idx + 1}"><span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:${c.color};margin-right:0.4rem;"></span>${c.name}</button>`)
+    .join('');
+
+  document.getElementById('stroop-choices').innerHTML = choices;
+}
+
+function handleStroopAnswer(selected) {
+  const answer = document.getElementById('stroop-word').dataset.answer;
+  if (selected === answer) {
+    stroopCombo++;
+    stroopScore++;
+    document.getElementById('stroop-streak').textContent = String(stroopCombo);
+    if (stroopCombo > 0 && stroopCombo % 5 === 0) {
+      stroopScore += 2;
+      if (stroopTimeLeft < 45) stroopTimeLeft += 1;
+      updateCoachLine(`${getPlayerName()} combo x${stroopCombo}! Bonus points + extra second.`);
+    }
+  } else {
+    stroopCombo = 0;
+    document.getElementById('stroop-streak').textContent = '0';
+    stroopScore = Math.max(0, stroopScore - 1);
+  }
+  document.getElementById('stroop-score').textContent = stroopScore;
+  renderStroopRound();
+}
+
+// Schulte Grid Game
+let schulteNext = 1;
+let schulteStartTime = null;
+let schulteTimer = null;
+
+function startSchulteGame() {
+  schulteNext = 1;
+  schulteStartTime = null;
+  if (schulteTimer) clearInterval(schulteTimer);
+
+  document.getElementById('schulte-target').textContent = '1';
+  document.getElementById('schulte-time').textContent = '0.0s';
+  document.getElementById('schulte-best').textContent = gameScores.schulteBest ? gameScores.schulteBest + 's' : '--';
+  updatePercentile('schulte', gameScores.schulteBest);
+
+  const nums = Array.from({ length: 25 }, (_, i) => i + 1).sort(() => Math.random() - 0.5);
+  const grid = document.getElementById('schulte-grid');
+  grid.innerHTML = '';
+
+  nums.forEach(num => {
+    const cell = document.createElement('button');
+    cell.className = 'schulte-cell';
+    cell.textContent = String(num);
+    cell.onclick = () => handleSchulteClick(num, cell);
+    grid.appendChild(cell);
+  });
+}
+
+function handleSchulteClick(num, cell) {
+  if (num !== schulteNext) {
+    cell.animate(
+      [
+        { transform: 'translateX(0)' },
+        { transform: 'translateX(-4px)' },
+        { transform: 'translateX(4px)' },
+        { transform: 'translateX(0)' }
+      ],
+      { duration: 160, easing: 'ease-in-out' }
+    );
+    if (schulteStartTime) {
+      schulteStartTime -= 650; // time penalty for wrong click
+      updateCoachLine(`${getPlayerName()}, accuracy first. Wrong taps add time pressure.`);
+    }
+    return;
+  }
+
+  if (!schulteStartTime) {
+    schulteStartTime = Date.now();
+    schulteTimer = setInterval(() => {
+      const elapsed = (Date.now() - schulteStartTime) / 1000;
+      document.getElementById('schulte-time').textContent = elapsed.toFixed(1) + 's';
+    }, 100);
+  }
+
+  cell.classList.add('correct');
+  cell.disabled = true;
+  schulteNext++;
+  document.getElementById('schulte-target').textContent = schulteNext <= 25 ? String(schulteNext) : 'Done';
+
+  if (schulteNext === 26) {
+    clearInterval(schulteTimer);
+    const finalTime = ((Date.now() - schulteStartTime) / 1000).toFixed(1);
+    if (!gameScores.schulteBest || Number(finalTime) < Number(gameScores.schulteBest)) {
+      gameScores.schulteBest = finalTime;
+    }
+    localStorage.setItem('gameScores', JSON.stringify(gameScores));
+    recordGameResult('schulte', Number(finalTime), 'Schulte Grid', 's');
+    updatePercentile('schulte', gameScores.schulteBest);
+    updateLeaderboard();
+    showGameWinCelebration('Schulte Grid', `${finalTime}s clear time!`);
+    document.getElementById('schulte-best').textContent = gameScores.schulteBest + 's';
+  }
+}
+
+// Odd-One-Out Rush
+let oddScore = 0;
+let oddTimeLeft = 45;
+let oddInterval = null;
+let oddCombo = 0;
+
+const oddPairs = [
+  ['😀', '😃'], ['🌙', '🌛'], ['🍎', '🍏'], ['🚗', '🚙'], ['🐶', '🐕'],
+  ['🎵', '🎶'], ['⚽', '🏀'], ['🌸', '🌺'], ['⭐', '✨'], ['🦊', '🐺']
+];
+
+function startOddGame() {
+  oddScore = 0;
+  oddTimeLeft = 45;
+  oddCombo = 0;
+  document.getElementById('odd-score').textContent = '0';
+  document.getElementById('odd-time').textContent = '45';
+  document.getElementById('odd-best').textContent = gameScores.oddBest || '--';
+  updatePercentile('odd', gameScores.oddBest);
+  document.getElementById('odd-hint').textContent = 'Find the one icon that is different.';
+
+  if (oddInterval) clearInterval(oddInterval);
+  oddInterval = setInterval(() => {
+    oddTimeLeft--;
+    document.getElementById('odd-time').textContent = oddTimeLeft;
+    if (oddTimeLeft <= 0) {
+      clearInterval(oddInterval);
+      if (!gameScores.oddBest || oddScore > gameScores.oddBest) {
+        gameScores.oddBest = oddScore;
+      }
+      localStorage.setItem('gameScores', JSON.stringify(gameScores));
+      recordGameResult('odd', oddScore, 'Odd-One-Out Rush', ' points');
+      updatePercentile('odd', gameScores.oddBest);
+      updateLeaderboard();
+      showGameWinCelebration('Odd-One-Out Rush', `Final score: ${oddScore}`);
+      prepareOddGame();
+      updateCoachLine(`${getPlayerName()}, solid run. Press Start for another round.`);
+    }
+  }, 1000);
+
+  renderOddRound();
+}
+
+function renderOddRound() {
+  const grid = document.getElementById('odd-grid');
+  grid.innerHTML = '';
+  const [base, odd] = oddPairs[Math.floor(Math.random() * oddPairs.length)];
+  const cellCount = 36;
+  const oddIndex = Math.floor(Math.random() * cellCount);
+
+  for (let i = 0; i < cellCount; i++) {
+    const cell = document.createElement('button');
+    cell.className = 'odd-cell';
+    if (i === oddIndex) cell.classList.add('odd');
+    cell.textContent = i === oddIndex ? odd : base;
+    cell.onclick = () => handleOddClick(i === oddIndex, cell);
+    grid.appendChild(cell);
+  }
+}
+
+function handleOddClick(isCorrect, cell) {
+  if (isCorrect) {
+    oddCombo++;
+    oddScore++;
+    if (oddCombo > 0 && oddCombo % 4 === 0) {
+      oddScore += 1;
+      if (oddTimeLeft < 45) oddTimeLeft += 1;
+      document.getElementById('odd-hint').textContent = `Hot streak x${oddCombo}! Bonus +1 and +1s.`;
+    } else {
+      document.getElementById('odd-hint').textContent = 'Nice find! Keep going.';
+    }
+    document.getElementById('odd-score').textContent = String(oddScore);
+    cell.animate(
+      [
+        { transform: 'scale(1)', offset: 0 },
+        { transform: 'scale(1.18)', offset: 0.5 },
+        { transform: 'scale(1)', offset: 1 }
+      ],
+      { duration: 220, easing: 'ease-out' }
+    );
+    oddNextRoundTimeout = setTimeout(renderOddRound, 180);
+  } else {
+    oddCombo = 0;
+    oddScore = Math.max(0, oddScore - 1);
+    document.getElementById('odd-score').textContent = String(oddScore);
+    document.getElementById('odd-hint').textContent = 'Close. Find the odd icon.';
+    cell.animate(
+      [
+        { transform: 'translateX(0)' },
+        { transform: 'translateX(-6px)' },
+        { transform: 'translateX(6px)' },
+        { transform: 'translateX(0)' }
+      ],
+      { duration: 180, easing: 'ease-in-out' }
+    );
+  }
+}
+
 function updateLeaderboard() {
   const container = document.getElementById('leaderboard-content');
   const scores = [
-    {name: 'Reaction Time', value: gameScores.reactionBest, unit: 'ms'},
-    {name: 'Memory Match', value: gameScores.memoryBest, unit: 's'},
-    {name: 'Typing Speed', value: gameScores.typingBest, unit: ' WPM'},
-    {name: 'Number Memory', value: gameScores.numberBest, unit: ' level'},
-    {name: 'Sequence Master', value: gameScores.sequenceBest, unit: ' level'},
-    {name: 'Mental Math', value: gameScores.mathBest, unit: ' points'}
+    {key: 'reaction', name: 'Reaction Time', value: gameScores.reactionBest, unit: 'ms'},
+    {key: 'memory', name: 'Memory Match', value: gameScores.memoryBest, unit: 's'},
+    {key: 'typing', name: 'Typing Speed', value: gameScores.typingBest, unit: ' WPM'},
+    {key: 'number', name: 'Number Memory', value: gameScores.numberBest, unit: ' level'},
+    {key: 'sequence', name: 'Sequence Master', value: gameScores.sequenceBest, unit: ' level'},
+    {key: 'math', name: 'Mental Math', value: gameScores.mathBest, unit: ' points'},
+    {key: 'stroop', name: 'Stroop Sprint', value: gameScores.stroopBest, unit: ' points'},
+    {key: 'schulte', name: 'Schulte Grid', value: gameScores.schulteBest, unit: 's'},
+    {key: 'odd', name: 'Odd-One-Out Rush', value: gameScores.oddBest, unit: ' points'}
   ];
   
   container.innerHTML = scores.map((s, i) => `
@@ -1391,14 +2635,46 @@ function updateLeaderboard() {
         <span class="rank">${i + 1}</span>
         <span style="margin-left:1rem;">${s.name}</span>
       </div>
-      <div style="font-weight:600; color:var(--accent2);">
-        ${s.value ? s.value + s.unit : 'Not set'}
+      <div class="leaderboard-value" style="font-weight:600; color:var(--accent2);">
+        <span>${s.value ? s.value + s.unit : 'Not set'}</span>
+        <span class="percentile-pill">${Number(gameScores[`${s.key}BestPercentile`] || 0) ? `${gameScores[`${s.key}BestPercentile`]}%` : '--'}</span>
       </div>
     </div>
   `).join('');
 }
 
+applyProfileUI();
+updateAllPercentiles();
 updateLeaderboard();
+updateCoachLine(`Welcome ${getPlayerName()}. Your ${getFocusLabel(playerProfile.focus)} profile is active.`);
+
+const profileNameInput = document.getElementById('player-name');
+const profileFocusInput = document.getElementById('player-focus');
+if (profileNameInput) {
+  profileNameInput.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') savePlayerProfile();
+  });
+}
+if (profileFocusInput) {
+  profileFocusInput.addEventListener('change', () => {
+    playerProfile.focus = profileFocusInput.value;
+    localStorage.setItem('playerProfile', JSON.stringify(playerProfile));
+    applyProfileUI();
+    updateCoachLine(`${getPlayerName()}, switched to ${getFocusLabel(playerProfile.focus)}.`);
+  });
+}
+
+document.addEventListener('keydown', (e) => {
+  const activeStroop = document.getElementById('stroop-game')?.classList.contains('active');
+  if (!activeStroop || !stroopInterval) return;
+  const n = Number(e.key);
+  if (!Number.isFinite(n) || n < 1 || n > stroopChoices.length) return;
+  const choice = stroopChoices[n - 1];
+  if (choice) {
+    e.preventDefault();
+    handleStroopAnswer(choice.name);
+  }
+});
 
 // Game win celebration notification
 function showGameWinCelebration(gameName, stats) {
