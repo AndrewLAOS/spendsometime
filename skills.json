@@ -1,4 +1,4 @@
-[
+﻿[
     {
         "name":  "Creative Writing",
         "description":  "Writing fiction, poetry, or essays.",
@@ -3577,6 +3577,526 @@
                      "hands_on-high",
                      "solo-high",
                      "time_commitment-high"
+                 ]
+    },
+    {
+        "name":  "Python Automation Projects",
+        "description":  "Automate repetitive tasks with practical Python scripts.",
+        "reason":  "You enjoy building useful tools that save time.",
+        "learn_url":  "https://automatetheboringstuff.com/",
+        "traits":  {
+                       "creative":  0.5,
+                       "analytical":  0.9,
+                       "hands_on":  0.8,
+                       "solo":  0.8,
+                       "time_commitment":  0.7
+                   },
+        "tags":  [
+                     "creative-medium",
+                     "analytical-high",
+                     "hands_on-high",
+                     "solo-high",
+                     "time_commitment-high"
+                 ]
+    },
+    {
+        "name":  "Interactive Data Dashboards",
+        "description":  "Build simple interactive dashboards from real datasets.",
+        "reason":  "You enjoy turning numbers into visual insights.",
+        "learn_url":  "https://www.tableau.com/learn/training",
+        "traits":  {
+                       "creative":  0.7,
+                       "analytical":  0.8,
+                       "hands_on":  0.7,
+                       "solo":  0.7,
+                       "time_commitment":  0.7
+                   },
+        "tags":  [
+                     "creative-high",
+                     "analytical-high",
+                     "hands_on-high",
+                     "solo-high",
+                     "time_commitment-high"
+                 ]
+    },
+    {
+        "name":  "Blender 3D Basics",
+        "description":  "Model, light, and render beginner 3D scenes in Blender.",
+        "reason":  "You enjoy technical creativity and visual worldbuilding.",
+        "learn_url":  "https://www.youtube.com/watch?v=nIoXOplUvAw",
+        "traits":  {
+                       "creative":  0.9,
+                       "analytical":  0.6,
+                       "hands_on":  0.8,
+                       "solo":  0.8,
+                       "time_commitment":  0.8
+                   },
+        "tags":  [
+                     "creative-high",
+                     "analytical-medium",
+                     "hands_on-high",
+                     "solo-high",
+                     "time_commitment-high"
+                 ]
+    },
+    {
+        "name":  "Creative Coding with p5.js",
+        "description":  "Make interactive art and animations using JavaScript.",
+        "reason":  "You enjoy blending code, motion, and design.",
+        "learn_url":  "https://p5js.org/tutorials/",
+        "traits":  {
+                       "creative":  0.9,
+                       "analytical":  0.7,
+                       "hands_on":  0.8,
+                       "solo":  0.8,
+                       "time_commitment":  0.6
+                   },
+        "tags":  [
+                     "creative-high",
+                     "analytical-high",
+                     "hands_on-high",
+                     "solo-high",
+                     "time_commitment-medium"
+                 ]
+    },
+    {
+        "name":  "Pixel Art Fundamentals",
+        "description":  "Design clean pixel sprites and small game assets.",
+        "reason":  "You enjoy stylized art with clear constraints.",
+        "learn_url":  "https://lospec.com/pixel-art-tutorials",
+        "traits":  {
+                       "creative":  0.9,
+                       "analytical":  0.5,
+                       "hands_on":  0.8,
+                       "solo":  0.8,
+                       "time_commitment":  0.5
+                   },
+        "tags":  [
+                     "creative-high",
+                     "analytical-medium",
+                     "hands_on-high",
+                     "solo-high",
+                     "time_commitment-medium"
+                 ]
+    },
+    {
+        "name":  "Game Audio Design",
+        "description":  "Create sound effects and ambience for games.",
+        "reason":  "You enjoy shaping emotion through sound.",
+        "learn_url":  "https://www.soundonsound.com/techniques",
+        "traits":  {
+                       "creative":  0.8,
+                       "analytical":  0.5,
+                       "hands_on":  0.7,
+                       "solo":  0.7,
+                       "time_commitment":  0.6
+                   },
+        "tags":  [
+                     "creative-high",
+                     "analytical-medium",
+                     "hands_on-high",
+                     "solo-high",
+                     "time_commitment-medium"
+                 ]
+    },
+    {
+        "name":  "Audacity Audio Editing",
+        "description":  "Edit voice and music tracks for cleaner sound.",
+        "reason":  "You enjoy producing polished audio projects.",
+        "learn_url":  "https://support.audacityteam.org/basics/recording-desktop-audio",
+        "traits":  {
+                       "creative":  0.7,
+                       "analytical":  0.6,
+                       "hands_on":  0.7,
+                       "solo":  0.8,
+                       "time_commitment":  0.5
+                   },
+        "tags":  [
+                     "creative-high",
+                     "analytical-medium",
+                     "hands_on-high",
+                     "solo-high",
+                     "time_commitment-medium"
+                 ]
+    },
+    {
+        "name":  "DaVinci Resolve Editing",
+        "description":  "Learn cutting, color grading, and export basics.",
+        "reason":  "You enjoy cinematic storytelling and polished visuals.",
+        "learn_url":  "https://www.blackmagicdesign.com/products/davinciresolve/training",
+        "traits":  {
+                       "creative":  0.8,
+                       "analytical":  0.6,
+                       "hands_on":  0.8,
+                       "solo":  0.7,
+                       "time_commitment":  0.8
+                   },
+        "tags":  [
+                     "creative-high",
+                     "analytical-medium",
+                     "hands_on-high",
+                     "solo-high",
+                     "time_commitment-high"
+                 ]
+    },
+    {
+        "name":  "OBS Studio Streaming",
+        "description":  "Set up scenes, audio, and live stream workflows.",
+        "reason":  "You enjoy live content creation and technical setup.",
+        "learn_url":  "https://obsproject.com/wiki/OBS-Studio-Quickstart",
+        "traits":  {
+                       "creative":  0.6,
+                       "analytical":  0.8,
+                       "hands_on":  0.8,
+                       "solo":  0.7,
+                       "time_commitment":  0.6
+                   },
+        "tags":  [
+                     "creative-medium",
+                     "analytical-high",
+                     "hands_on-high",
+                     "solo-high",
+                     "time_commitment-medium"
+                 ]
+    },
+    {
+        "name":  "Figma Prototyping",
+        "description":  "Build clickable UI prototypes and transitions.",
+        "reason":  "You enjoy turning interface ideas into testable flows.",
+        "learn_url":  "https://help.figma.com/hc/en-us/articles/360040314193-Guide-to-prototyping-in-Figma",
+        "traits":  {
+                       "creative":  0.8,
+                       "analytical":  0.7,
+                       "hands_on":  0.7,
+                       "solo":  0.7,
+                       "time_commitment":  0.6
+                   },
+        "tags":  [
+                     "creative-high",
+                     "analytical-high",
+                     "hands_on-high",
+                     "solo-high",
+                     "time_commitment-medium"
+                 ]
+    },
+    {
+        "name":  "Canva Design Studio",
+        "description":  "Design social graphics, posters, and branded visuals.",
+        "reason":  "You enjoy making clean visual content quickly.",
+        "learn_url":  "https://www.youtube.com/watch?v=un50Bs4BvD4",
+        "traits":  {
+                       "creative":  0.8,
+                       "analytical":  0.4,
+                       "hands_on":  0.7,
+                       "solo":  0.8,
+                       "time_commitment":  0.4
+                   },
+        "tags":  [
+                     "creative-high",
+                     "analytical-low",
+                     "hands_on-high",
+                     "solo-high",
+                     "time_commitment-medium"
+                 ]
+    },
+    {
+        "name":  "SQL Query Practice",
+        "description":  "Write practical SQL queries for analysis and reporting.",
+        "reason":  "You enjoy structured logic and data exploration.",
+        "learn_url":  "https://sqlzoo.net/wiki/SQL_Tutorial",
+        "traits":  {
+                       "creative":  0.3,
+                       "analytical":  0.9,
+                       "hands_on":  0.7,
+                       "solo":  0.8,
+                       "time_commitment":  0.6
+                   },
+        "tags":  [
+                     "creative-low",
+                     "analytical-high",
+                     "hands_on-high",
+                     "solo-high",
+                     "time_commitment-medium"
+                 ]
+    },
+    {
+        "name":  "Power BI Basics",
+        "description":  "Build reports and dashboards with filtered insights.",
+        "reason":  "You enjoy communicating data with interactive visuals.",
+        "learn_url":  "https://learn.microsoft.com/en-us/training/powerplatform/power-bi/",
+        "traits":  {
+                       "creative":  0.6,
+                       "analytical":  0.9,
+                       "hands_on":  0.8,
+                       "solo":  0.7,
+                       "time_commitment":  0.7
+                   },
+        "tags":  [
+                     "creative-medium",
+                     "analytical-high",
+                     "hands_on-high",
+                     "solo-high",
+                     "time_commitment-high"
+                 ]
+    },
+    {
+        "name":  "Linux Command Line",
+        "description":  "Navigate files, processes, and shell basics confidently.",
+        "reason":  "You enjoy efficient technical workflows.",
+        "learn_url":  "https://ryanstutorials.net/linuxtutorial/",
+        "traits":  {
+                       "creative":  0.3,
+                       "analytical":  0.8,
+                       "hands_on":  0.8,
+                       "solo":  0.8,
+                       "time_commitment":  0.6
+                   },
+        "tags":  [
+                     "creative-low",
+                     "analytical-high",
+                     "hands_on-high",
+                     "solo-high",
+                     "time_commitment-medium"
+                 ]
+    },
+    {
+        "name":  "GitHub Actions CI",
+        "description":  "Automate tests and deployment with workflow files.",
+        "reason":  "You enjoy reliable and scalable development pipelines.",
+        "learn_url":  "https://docs.github.com/en/actions/learn-github-actions",
+        "traits":  {
+                       "creative":  0.3,
+                       "analytical":  0.9,
+                       "hands_on":  0.8,
+                       "solo":  0.7,
+                       "time_commitment":  0.7
+                   },
+        "tags":  [
+                     "creative-low",
+                     "analytical-high",
+                     "hands_on-high",
+                     "solo-high",
+                     "time_commitment-high"
+                 ]
+    },
+    {
+        "name":  "JavaScript DOM Projects",
+        "description":  "Build interactive browser features using vanilla JavaScript.",
+        "reason":  "You enjoy seeing immediate visual results from code.",
+        "learn_url":  "https://www.youtube.com/watch?v=5fb2aPlgoys",
+        "traits":  {
+                       "creative":  0.7,
+                       "analytical":  0.8,
+                       "hands_on":  0.8,
+                       "solo":  0.8,
+                       "time_commitment":  0.7
+                   },
+        "tags":  [
+                     "creative-high",
+                     "analytical-high",
+                     "hands_on-high",
+                     "solo-high",
+                     "time_commitment-high"
+                 ]
+    },
+    {
+        "name":  "Python for Beginners (Project Tutorial)",
+        "description":  "Learn Python syntax and mini projects in one course.",
+        "reason":  "You enjoy structured progression with practical examples.",
+        "learn_url":  "https://www.youtube.com/watch?v=rfscVS0vtbw",
+        "traits":  {
+                       "creative":  0.5,
+                       "analytical":  0.9,
+                       "hands_on":  0.8,
+                       "solo":  0.8,
+                       "time_commitment":  0.8
+                   },
+        "tags":  [
+                     "creative-medium",
+                     "analytical-high",
+                     "hands_on-high",
+                     "solo-high",
+                     "time_commitment-high"
+                 ]
+    },
+    {
+        "name":  "HTML and CSS Crash Course",
+        "description":  "Build modern static pages with responsive layout basics.",
+        "reason":  "You enjoy visual building blocks of the web.",
+        "learn_url":  "https://www.youtube.com/watch?v=mU6anWqZJcc",
+        "traits":  {
+                       "creative":  0.7,
+                       "analytical":  0.7,
+                       "hands_on":  0.8,
+                       "solo":  0.8,
+                       "time_commitment":  0.6
+                   },
+        "tags":  [
+                     "creative-high",
+                     "analytical-high",
+                     "hands_on-high",
+                     "solo-high",
+                     "time_commitment-medium"
+                 ]
+    },
+    {
+        "name":  "React Fundamentals",
+        "description":  "Build component-based web apps with modern React.",
+        "reason":  "You enjoy modular UI development and interactive apps.",
+        "learn_url":  "https://react.dev/learn",
+        "traits":  {
+                       "creative":  0.7,
+                       "analytical":  0.8,
+                       "hands_on":  0.8,
+                       "solo":  0.7,
+                       "time_commitment":  0.8
+                   },
+        "tags":  [
+                     "creative-high",
+                     "analytical-high",
+                     "hands_on-high",
+                     "solo-high",
+                     "time_commitment-high"
+                 ]
+    },
+    {
+        "name":  "TypeScript Essentials",
+        "description":  "Add type safety and better tooling to JavaScript projects.",
+        "reason":  "You enjoy robust code and cleaner debugging.",
+        "learn_url":  "https://www.typescriptlang.org/docs/handbook/intro.html",
+        "traits":  {
+                       "creative":  0.4,
+                       "analytical":  0.9,
+                       "hands_on":  0.8,
+                       "solo":  0.7,
+                       "time_commitment":  0.7
+                   },
+        "tags":  [
+                     "creative-low",
+                     "analytical-high",
+                     "hands_on-high",
+                     "solo-high",
+                     "time_commitment-high"
+                 ]
+    },
+    {
+        "name":  "Godot Game Scripting",
+        "description":  "Create gameplay mechanics with GDScript in Godot.",
+        "reason":  "You enjoy making playable systems quickly.",
+        "learn_url":  "https://docs.godotengine.org/en/stable/getting_started/step_by_step/",
+        "traits":  {
+                       "creative":  0.8,
+                       "analytical":  0.8,
+                       "hands_on":  0.9,
+                       "solo":  0.7,
+                       "time_commitment":  0.8
+                   },
+        "tags":  [
+                     "creative-high",
+                     "analytical-high",
+                     "hands_on-high",
+                     "solo-high",
+                     "time_commitment-high"
+                 ]
+    },
+    {
+        "name":  "OpenCV Computer Vision",
+        "description":  "Detect faces, objects, and motion in video streams.",
+        "reason":  "You enjoy advanced problem-solving with visual data.",
+        "learn_url":  "https://www.youtube.com/watch?v=oXlwWbU8l2o",
+        "traits":  {
+                       "creative":  0.5,
+                       "analytical":  0.9,
+                       "hands_on":  0.8,
+                       "solo":  0.8,
+                       "time_commitment":  0.8
+                   },
+        "tags":  [
+                     "creative-medium",
+                     "analytical-high",
+                     "hands_on-high",
+                     "solo-high",
+                     "time_commitment-high"
+                 ]
+    },
+    {
+        "name":  "Chess Tactics Training",
+        "description":  "Sharpen pattern recognition with tactical puzzles.",
+        "reason":  "You enjoy strategic games and measurable improvement.",
+        "learn_url":  "https://lichess.org/training",
+        "traits":  {
+                       "creative":  0.4,
+                       "analytical":  0.9,
+                       "hands_on":  0.4,
+                       "solo":  0.8,
+                       "time_commitment":  0.5
+                   },
+        "tags":  [
+                     "creative-low",
+                     "analytical-high",
+                     "hands_on-low",
+                     "solo-high",
+                     "time_commitment-medium"
+                 ]
+    },
+    {
+        "name":  "Guitar Chord Progressions",
+        "description":  "Learn common chord shapes and strumming patterns.",
+        "reason":  "You enjoy musical creativity with quick wins.",
+        "learn_url":  "https://www.youtube.com/watch?v=2ftoOlViaZM",
+        "traits":  {
+                       "creative":  0.8,
+                       "analytical":  0.4,
+                       "hands_on":  0.9,
+                       "solo":  0.7,
+                       "time_commitment":  0.6
+                   },
+        "tags":  [
+                     "creative-high",
+                     "analytical-low",
+                     "hands_on-high",
+                     "solo-high",
+                     "time_commitment-medium"
+                 ]
+    },
+    {
+        "name":  "Canva Animated Reels",
+        "description":  "Create short vertical videos with transitions and text.",
+        "reason":  "You enjoy fast visual storytelling for social platforms.",
+        "learn_url":  "https://www.youtube.com/watch?v=mv3N1LzX4yk",
+        "traits":  {
+                       "creative":  0.9,
+                       "analytical":  0.4,
+                       "hands_on":  0.8,
+                       "solo":  0.8,
+                       "time_commitment":  0.4
+                   },
+        "tags":  [
+                     "creative-high",
+                     "analytical-low",
+                     "hands_on-high",
+                     "solo-high",
+                     "time_commitment-medium"
+                 ]
+    },
+    {
+        "name":  "Photography Composition Drills",
+        "description":  "Practice framing, leading lines, and rule-of-thirds shots.",
+        "reason":  "You enjoy improving your eye for strong visuals.",
+        "learn_url":  "https://digital-photography-school.com/rule-of-thirds/",
+        "traits":  {
+                       "creative":  0.8,
+                       "analytical":  0.5,
+                       "hands_on":  0.8,
+                       "solo":  0.7,
+                       "time_commitment":  0.5
+                   },
+        "tags":  [
+                     "creative-high",
+                     "analytical-medium",
+                     "hands_on-high",
+                     "solo-high",
+                     "time_commitment-medium"
                  ]
     }
 ]
