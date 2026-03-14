@@ -872,7 +872,8 @@ async function finishQuiz(){
         matches++;
       }
     }
-    const matchPercent = Math.round((score/matches)*100);
+    const rawMatchPercent = matches > 0 ? Math.round((score / matches) * 100) : 0;
+    const matchPercent = Math.max(0, Math.min(100, rawMatchPercent));
     return {...s,score,matchPercent};
   }).sort((a,b)=>b.score-a.score);
 
