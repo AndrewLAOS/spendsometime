@@ -35,13 +35,13 @@ const GameSystem = {
 
   // Achievement definitions
   achievements: {
-    firstSteps: { id: 'firstSteps', name: '🚀 First Steps', desc: 'Earn your first XP', xp: 10 },
-    earlyBird: { id: 'earlyBird', name: '🌅 Early Bird', desc: 'Earn 50 XP', xp: 50 },
-    grinder: { id: 'grinder', name: '⚡ Grinder', desc: 'Earn 250 XP', xp: 250 },
-    legend: { id: 'legend', name: '👑 Legend', desc: 'Earn 1000 XP', xp: 1000 },
-    streakStarter: { id: 'streakStarter', name: '🔥 Streak Starter', desc: 'Build a 3-day streak', streak: 3 },
-    collectorFirst: { id: 'collectorFirst', name: '🎨 Collector', desc: 'Unlock your first theme', theme: 1 },
-    collectorMaster: { id: 'collectorMaster', name: '🌈 Master Collector', desc: 'Unlock 5 themes', theme: 5 },
+    firstSteps: { id: 'firstSteps', name: 'First Steps', desc: 'Earn your first XP', xp: 10 },
+    earlyBird: { id: 'earlyBird', name: 'Early Bird', desc: 'Earn 50 XP', xp: 50 },
+    grinder: { id: 'grinder', name: 'Grinder', desc: 'Earn 250 XP', xp: 250 },
+    legend: { id: 'legend', name: 'Legend', desc: 'Earn 1000 XP', xp: 1000 },
+    streakStarter: { id: 'streakStarter', name: 'Streak Starter', desc: 'Build a 3-day streak', streak: 3 },
+    collectorFirst: { id: 'collectorFirst', name: 'Collector', desc: 'Unlock your first theme', theme: 1 },
+    collectorMaster: { id: 'collectorMaster', name: 'Master Collector', desc: 'Unlock 5 themes', theme: 5 },
   },
 
   // Debouncing: prevent XP farming from rapid refreshes/navigation
@@ -703,4 +703,3 @@ document.addEventListener('challengeProgress', (e) => {
     }));
   }
 });
-
