@@ -74,15 +74,14 @@
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-
   gtag('config', 'G-W69283V9G5');
 </script>
 
 <!-- Cronitor RUM -->
 <script async src="https://rum.cronitor.io/script.js"></script>
 <script>
-    window.cronitor = window.cronitor || function() { (window.cronitor.q = window.cronitor.q || []).push(arguments); };
-    cronitor('config', { clientKey: 'a68ff40256193f4073a5673dd7ae67de' });
+  window.cronitor = window.cronitor || function() { (window.cronitor.q = window.cronitor.q || []).push(arguments); };
+  cronitor('config', { clientKey: 'a68ff40256193f4073a5673dd7ae67de' });
 </script>
 
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
@@ -91,957 +90,208 @@
 <link rel="manifest" href="/site.webmanifest">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
 <script src="gamification.js" defer></script>
+
 <style>
-:root {
-  --bg: #f0f7ff;
-  --panel: #ffffffcc;
-  --border: #d0e4ff;
-  --accent: #ff7eb9;
-  --accent2: #58d9ff;
-  --text: #1a1a1a;
-  --muted: #555555;
-  --gradient: linear-gradient(135deg, #ff7eb9, #58d9ff);
-  --shadow: rgba(0,0,0,0.1);
-}
-
-* {
-  box-sizing: border-box;
-  font-family: 'Inter', system-ui, sans-serif;
-  scroll-behavior: smooth;
-}
-
-
-body {
-  margin: 0;
-  background: var(--bg);
-  color: var(--text);
-}
-
-nav {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid var(--border);
-  padding: 1rem 2rem;
-  z-index: 1000;
-  box-shadow: 0 2px 10px var(--shadow);
-}
-
-nav .nav-content {
-  max-width: 1200px;
-  margin: 0 auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-nav .logo {
-  font-size: 1.8rem;
-  font-weight: 700;
-  background: linear-gradient(135deg, var(--accent), var(--accent2));
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  text-decoration: none;
-}
-
-nav .nav-links {
-  display: flex;
-  gap: 1.5rem;
-  align-items: center;
-}
-
-nav .nav-links a {
-  color: var(--text);
-  text-decoration: none;
-  font-weight: 600;
-  font-size: 0.9rem;
-  transition: color 0.3s ease;
-}
-
-nav .nav-links a:hover {
-  color: var(--accent2);
-}
-
-.nav-links a {
-  position: relative;
-  transition: color 0.25s ease;
-}
-
-.nav-links a::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  bottom: -4px;
-  width: 0;
-  height: 2px;
-  background: var(--accent2);
-  transition: width 0.3s ease;
-}
-
-.nav-links a:hover::after {
-  width: 100%;
-}
-
-
-.stats-banner {
-  background: var(--panel);
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  padding: 2rem;
-  margin: 2rem auto;
-  max-width: 1000px;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 2rem;
-  box-shadow: 0 4px 16px var(--shadow);
-}
-
-.stat-item {
-  text-align: center;
-}
-
-.stat-item .number {
-  font-size: 2.5rem;
-  font-weight: 700;
-  background: var(--gradient);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  display: block;
-}
-
-.stat-item .label {
-  color: var(--muted);
-  font-size: 0.9rem;
-  margin-top: 0.5rem;
-}
-
-.quick-actions {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1.5rem;
-  margin: 3rem 0;
-}
-
-.quick-action-card {
-  background: var(--panel);
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  padding: 2rem;
-  text-align: center;
-  box-shadow: 0 4px 16px var(--shadow);
-  transition: all 0.3s ease;
-  cursor: pointer;
-  text-decoration: none;
-  color: inherit;
-  display: block;
-}
-
-.quick-action-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 12px 32px var(--shadow);
-  border-color: var(--accent2);
-}
-
-.quick-action-card .icon {
-  font-size: 3rem;
-  margin-bottom: 1rem;
-  display: block;
-}
-
-.quick-action-card h3 {
-  margin: 0 0 0.5rem 0;
-  color: var(--accent2);
-  font-size: 1.3rem;
-}
-
-.quick-action-card p {
-  margin: 0;
-  font-size: 0.9rem;
-  color: var(--muted);
-}
-
-.testimonial {
-  background: var(--panel);
-  border-left: 4px solid var(--accent);
-  border-radius: 12px;
-  padding: 2rem;
-  margin: 2rem 0;
-  box-shadow: 0 4px 16px var(--shadow);
-}
-
-.testimonial .quote {
-  font-style: italic;
-  color: var(--muted);
-  font-size: 1.1rem;
-  margin-bottom: 1rem;
-  line-height: 1.6;
-}
-
-.testimonial .author {
-  font-weight: 600;
-  color: var(--accent2);
-}
-
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
+  /* Page-specific layout only — everything shared lives in styles.css */
+  .hero {
+    padding: calc(var(--nav-height) + 4.5rem) 1.5rem 4rem;
+    max-width: 760px;
+    margin: 0 auto;
+    text-align: left;
   }
-  to {
-    opacity: 1;
-    transform: translateY(0);
+  .hero h1 {
+    font-size: clamp(2.2rem, 4.5vw, 3.1rem);
+    max-width: 14ch;
   }
-}
-
-.fade-in {
-  animation: fadeInUp 0.6s ease-out;
-}
-
-.scroll-indicator {
-  position: absolute;
-  bottom: 2rem;
-  left: 50%;
-  transform: translateX(-50%);
-  animation: bounce 2s infinite;
-}
-
-@keyframes bounce {
-  0%, 20%, 50%, 80%, 100% {
-    transform: translateX(-50%) translateY(0);
-  }
-  40% {
-    transform: translateX(-50%) translateY(-10px);
-  }
-  60% {
-    transform: translateX(-50%) translateY(-5px);
-  }
-}
-
-header {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  padding: 3rem 1.5rem;
-  background: linear-gradient(135deg, var(--bg), var(--panel));
-  position: relative;
-  overflow: hidden;
-  color: var(--text);
-}
-
-h1 {
-  font-size: 3.5rem;
-  font-weight: 700;
-  margin-bottom: 1rem;
-  background: var(--gradient);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  color: transparent;
-}
-
-p {
-  color: var(--muted);
-  max-width: 700px;
-  font-size: 1.15rem;
-  line-height: 1.6;
-}
-
-.actions {
-  margin-top: 3rem;
-  display: flex;
-  gap: 1.25rem;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-a.button {
-  padding: 1rem 2rem;
-  background: var(--accent2);
-  border-radius: 14px;
-  color: #fff;
-  text-decoration: none;
-  font-size: 1.1rem;
-  font-weight: 600;
-  box-shadow: 0 8px 24px var(--shadow);
-}
-
-a.button:hover {
-  transform: translateY(-4px) scale(1.03);
-  box-shadow: 0 12px 40px var(--shadow);
-  background: var(--accent);
-}
-
-section {
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 5rem 2rem;
-  display: grid;
-  gap: 3rem;
-}
-
-.card {
-  background: var(--panel);
-  border: 1px solid var(--border);
-  border-radius: 20px;
-  padding: 2.5rem;
-  box-shadow: 0 8px 24px var(--shadow);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 16px 48px var(--shadow);
-}
-
-.card h2 {
-  font-size: 1.8rem;
-  margin-bottom: 1rem;
-  color: var(--accent2);
-}
-
-.card p {
-  color: var(--muted);
-  line-height: 1.65;
-  font-size: 1.05rem;
-}
-
-footer {
-  background: rgba(255, 255, 255, 0.95);
-  border-top: 1px solid var(--border);
-  padding: 2rem 1.5rem;
-  text-align: center;
-  color: var(--muted);
-  font-size: 0.9rem;
-  margin-top: 4rem;
-}
-
-footer a {
-  color: var(--accent2);
-  text-decoration: none;
-  font-weight: 600;
-  text-align: center;
-  border-style: justify;
-}
-
-footer a:hover {
-  text-decoration: underline;
-}
-
-@media (max-width: 600px) {
-  h1 { font-size: 2.5rem; }
-  .card { padding: 2rem; }
-  a.button { font-size: 1rem; padding: 0.9rem 1.6rem; }
-}
-/* Mobile-first overrides */
-@media (max-width: 768px) {
-  header h1 {
-    font-size: 2.5rem;
-  }
-  header p {
-    font-size: 1rem;
-    max-width: 90%;
-  }
-  .actions {
-    flex-direction: column;
-    gap: 0.8rem;
-    align-items: center;
-  }
-  a.button {
-    width: 90%;
-    max-width: 250px;
-  }
-  .stats-banner, .quick-actions {
-    grid-template-columns: 1fr;
-    gap: 1rem;
-    padding: 1rem;
-  }
-  .card {
-    padding: 1.5rem;
-  }
-  .card h2 { font-size: 1.4rem; }
-  .card p { font-size: 0.95rem; }
-  footer {
-    padding: 1rem;
-    font-size: 0.85rem;
-  }
-  nav .nav-links {
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 0.5rem;
-  }
-}
-@media (max-width: 600px) {
-  header {
-    padding: 2rem 1rem;
-  }
-  .scroll-indicator {
-    bottom: 1rem;
-    font-size: 1.5rem;
-  }
-}
-
-@media (max-width: 600px) {
-  .stats-banner, .quick-actions {
-    grid-template-columns: 1fr;
-    gap: 1rem;
-    padding: 1rem;
-  }
-}
-.actions {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 1rem;
-  margin-top: 2rem;
-}
-
-.image-button img {
-  width: 240px;  /* adjust size */
-  max-width: 90vw; /* responsive on phones */
-  border-radius: 32px;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.image-button img:hover {
-  transform: translateY(-8px) scale(1.23);
-  box-shadow: 0 12px 30px rgba(0,0,0,0.2);
-}
-.notify-btn {
-  width: 100%;
-  max-width: 420px;
-  padding: 14px 24px;
-  margin: 20px auto;
-  display: block;
-  background: linear-gradient(135deg, #ff7eb9 0%, #58d9ff 100%);
-  color: #ffffff;
-  font-size: 1rem;
-  font-weight: 600;
-  border: none;
-  border-radius: 14px;
-  cursor: pointer;
-  box-shadow: 0 8px 24px rgba(88, 217, 255, 0.25);
-  transition: all 0.2s ease;
-  position: relative;
-  overflow: hidden;
-}
-
-.notify-btn:hover:not(:disabled) {
-  transform: translateY(-3px);
-  box-shadow: 0 16px 32px rgba(88, 217, 255, 0.35);
-}
-
-.notify-btn:active:not(:disabled) {
-  transform: translateY(-1px);
-  box-shadow: 0 8px 16px rgba(88, 217, 255, 0.25);
-}
-
-.notify-btn:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
-}
-
-.notify-btn.enabled {
-  background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
-  box-shadow: 0 8px 24px rgba(34, 197, 94, 0.25);
-}
-
-.notify-btn.enabled:hover {
-  box-shadow: 0 16px 32px rgba(34, 197, 94, 0.35);
-}
-/* ===== Mobile nav fix ===== */
-@media (max-width: 768px) {
-  nav {
-    padding: 0.8rem 1rem;
-  }
-
-  nav .nav-content {
-    flex-direction: column;
-    align-items: center;
-    gap: 0.5rem;
-  }
-
-  nav .nav-links {
-    flex-wrap: nowrap; /* overrides earlier wrap */
-    gap: 0.8rem;
-  }
-
-  main {
-    margin-top: 120px; /* fixes content under fixed nav */
-  }
-
-  header {
-    padding-top: 2.5rem;
-  }
-}
-footer {
-  background: rgba(255, 255, 255, 0.95);
-  border-top: 1px solid var(--border);
-  padding: 2rem 1.5rem;
-  text-align: center;
-  color: var(--muted);
-  font-size: 0.9rem;
-  margin-top: 4rem;
-}
-
-footer a {
-  color: var(--accent2);
-  text-decoration: none;
-  font-weight: 600;
-  text-align: center;
-  border-style: justify;
-}
-
-footer a:hover {
-  text-decoration: underline;
-}
-/* ===== Hamburger ===== */
-.menu-toggle {
-  display: none;
-  flex-direction: column;
-  gap: 5px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 6px;
-}
-
-.menu-toggle span {
-  width: 24px;
-  height: 3px;
-  background: #333;
-  display: block;
-  border-radius: 2px;
-}
-.menu-toggle span {
-  transition: all 0.3s ease;
-}
-
-.menu-toggle.active span:nth-child(1) {
-  transform: translateY(8px) rotate(45deg);
-}
-
-.menu-toggle.active span:nth-child(2) {
-  opacity: 0;
-}
-
-.menu-toggle.active span:nth-child(3) {
-  transform: translateY(-8px) rotate(-45deg);
-}
-
-/* Desktop nav */
-.nav-links {
-  display: flex;
-  gap: 20px;
-}
-
-/* Nav base */
-nav {
-  background: white;
-  border-bottom: 1px solid #eee;
-}
-
-.nav-content {
-  max-width: 1100px;
-  margin: auto;
-  padding: 12px 16px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 10px;
-}
-
-/* ===== MOBILE ===== */
-@media (max-width: 768px) {
-
-  /* show hamburger */
-  .menu-toggle {
-    display: flex;
-    z-index: 1100;
-  }
-
-  /* compact logo */
-  .logo {
+  .hero .lede {
     font-size: 1.1rem;
+    max-width: 56ch;
+    color: var(--color-text-muted);
   }
-
-
-  /* dropdown menu */
-  .nav-links {
-    position: fixed;
-    top: 60px;
-    left: 12px;
-    right: 12px;
-    width: auto;
-
+  .hero .actions {
     display: flex;
-    flex-direction: column;
-
-    background: white;
-    border-radius: 14px;
-    padding: 18px;
-    gap: 14px;
-
-    box-shadow: 0 18px 40px rgba(0,0,0,0.12);
-    border: 1px solid #eee;
-
-    transform: translateY(-10px) scale(0.98);
-    opacity: 0;
-    pointer-events: none;
-    transition: all 0.25s ease;
-    z-index: 999;
+    flex-wrap: wrap;
+    gap: 0.9rem;
+    margin-top: 2rem;
   }
-
-  .nav-links.open {
-    transform: translateY(0) scale(1);
-    opacity: 1;
-    pointer-events: auto;
+  .section-heading {
+    max-width: 640px;
+    margin-bottom: 2.25rem;
   }
-}
+  .section-heading h2 { font-size: 1.6rem; }
+  .section-heading p { margin: 0; }
 
-.menu-toggle {
-  padding: 6px;
-}
-/* Animated gradient background */
-header {
-  background-size: 400% 400%;
-  animation: gradientShift 15s ease infinite;
-}
+  .value-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem;
+  }
+  .value-grid .card h3 {
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+  }
+  .value-grid .card p { margin: 0; font-size: 0.95rem; }
 
-@keyframes gradientShift {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
+  .notify-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: 1.25rem 1.5rem;
+    margin-top: 2.5rem;
+  }
+  .notify-row p { margin: 0; }
+  .notify-row .btn { flex-shrink: 0; }
 
+  @media (max-width: 640px) {
+    .hero { text-align: left; padding-top: calc(var(--nav-height) + 2.5rem); }
+    .notify-row { flex-direction: column; align-items: stretch; text-align: left; }
+  }
 </style>
 </head>
 <body>
 
-<nav>
+<nav class="site-nav">
   <div class="nav-content">
-  <a href="index.html" class="logo">SpendSomeTime</a>
-      <!-- Hamburger -->
-    <button class="menu-toggle" id="menuToggle">
-      <span></span>
-      <span></span>
-      <span></span>
+    <a href="index.html" class="logo">SpendSomeTime</a>
+
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation" aria-expanded="false">
+      <span></span><span></span><span></span>
     </button>
-<div class="nav-links" id="navLinks">
-  <a href="index.html">Home</a>
-<a href="skills.html">Skills</a>
-<a href="challenges.html">Track Challenges</a>
-<a href="weird.html">Quick Skills</a>
-<a href="games.html">Games</a>
-<a href="diagram.html">All Skills</a>
-            <a href="xp-theme.html">Level and XP</a>
-            <a href="blog.html">Blog</a>
-            
-    </div>
-   <div id="nav-stats">
-      <span style="color: var(--accent2);">⭐ <span id="nav-xp">0</span> XP</span>
-      <span id="nav-streak" style="color: var(--accent); display: none;">🔥 <span id="streak-days">0</span> days</span>
+
+    <div class="nav-links" id="navLinks">
+      <a href="index.html">Home</a>
+      <a href="skills.html">Skills</a>
+      <a href="challenges.html">Challenges</a>
+      <a href="weird.html">Quick Skills</a>
+      <a href="games.html">Games</a>
+      <a href="diagram.html">All Skills</a>
+      <a href="blog.html">Blog</a>
+      <div class="nav-stats" id="nav-stats">
+        <span class="stat-pill"><strong id="nav-xp">0</strong>&nbsp;XP</span>
+        <span class="stat-pill" id="nav-streak" style="display:none;"><strong id="streak-days">0</strong>&nbsp;day streak</span>
+      </div>
     </div>
   </div>
 </nav>
 
-<header>
-<h1>Stop Doomscrolling. Build Real Skills.</h1>
-  <p>
-    Most people don’t waste time because they want to.  
-    They waste it because they don’t know what else to do.
-    <br><br>
-    SpendSomeTime is the answer: quick skills to learn in 5 minutes, daily challenges that build real momentum, and brain games that sharpen focus. Practical things to do instead of scrolling that are genuinely more fun than your feed — free, no sign-up required.
-  </p>
-
-<div class="actions">
-  <a class="image-button" href="skills.html">
-    <img src="skill.png" alt="Find Skills That Fit You">
-  </a>
-  <a class="image-button" href="games.html">
-    <img src="games.png" alt="Play Games">
-  </a>
-  <a class="image-button" href="weird.html">
-    <img src="quick.png" alt="Quick Skills">
-  </a>
-  <a class="image-button" href="challenges.html">
-    <img src="challenges.png" alt="Track My Challenges">
-  </a>
-  <a class="image-button" href="diagram.html">
-    <img src="diagram.png" alt="All Skills">
-  </a>
-</div>
-
-  
-  <div class="scroll-indicator">↓</div>
-</header>
-
-<section>
-  <div class="stats-banner fade-in" id="stats-banner">
-    <div class="stat-item">
-      <span class="number" id="total-skills">0</span>
-      <span class="label">Skills Discovered</span>
-    </div>
-    <div class="stat-item">
-      <span class="number" id="active-challenges">0</span>
-      <span class="label">Active Challenges</span>
-    </div>
-    <div class="stat-item">
-      <span class="number" id="completed-challenges">0</span>
-      <span class="label">Completed</span>
-    </div>
-    <div class="stat-item">
-      <span class="number" id="total-time">0</span>
-      <span class="label">Hours Invested</span>
-    </div>
-    <div class="stat-item">
-      <span class="number" id="total-xp">0</span>
-      <span class="label">XP Earned ⭐</span>
-    </div>
-  </div>
-<button class="notify-btn" id="notifyBtn" onclick="enableNotifications()">
-  🔔 Enable Practice Reminders
-</button>
-
-<script>
-  
-  const toggle = document.getElementById("menuToggle");
-  const nav = document.getElementById("navLinks");
-
-toggle.addEventListener("click", () => {
-  nav.classList.toggle("open");
-  toggle.classList.toggle("active"); // 👈 add this line
-});
-
-document.querySelectorAll("#navLinks a").forEach(link => {
-  link.addEventListener("click", () => {
-    nav.classList.remove("open");
-  });
-});
-
-function enableNotifications() {
-  const btn = document.getElementById('notifyBtn');
-  if (!btn) return;
-
-  // Check browser support
-  if (!("Notification" in window)) {
-    btn.textContent = '❌ Not supported';
-    btn.disabled = true;
-    return;
-  }
-
-  // Already granted
-  if (Notification.permission === "granted") {
-    btn.classList.add('enabled');
-    btn.textContent = '✓ Reminders enabled';
-    btn.disabled = true;
-    return;
-  }
-
-  // Denied
-  if (Notification.permission === "denied") {
-    btn.textContent = '⛔ Notifications denied';
-    btn.disabled = true;
-    return;
-  }
-
-  // Request permission
-  btn.textContent = '⏳ Requesting...';
-  btn.disabled = true;
-
-  Notification.requestPermission().then(permission => {
-    if (permission !== "granted") {
-      btn.textContent = '🔔 Enable Practice Reminders';
-      btn.disabled = false;
-      if (permission === "denied") btn.textContent = '⛔ Notifications denied';
-      return;
-    }
-
-    // Register service worker
-    navigator.serviceWorker.register("sw.js").then(() => {
-      navigator.serviceWorker.ready.then(reg => {
-        // Show confirmation notification
-        reg.showNotification("Spend Some Time", {
-          body: "🎉 Practice reminders are now enabled! You'll get tips to help you learn.",
-          icon: "/favicon/favicon-32x32.png",
-          badge: "/favicon/favicon-32x32.png",
-          tag: "sst-enabled",
-          requireInteraction: false // auto dismiss
-        });
-
-        // Update button
-        btn.classList.add('enabled');
-        btn.textContent = '✓ Reminders enabled';
-        btn.disabled = true;
-
-        // Save preference
-        localStorage.setItem('notificationsEnabled', 'true');
-      });
-    }).catch(err => {
-      console.error('Service Worker registration failed:', err);
-      btn.textContent = '⚠️ Setup failed';
-      btn.disabled = false;
-    });
-  }).catch(err => {
-    console.error('Notification permission error:', err);
-    btn.textContent = '🔔 Enable Practice Reminders';
-    btn.disabled = false;
-  });
-}
-
-// Helper function to show notifications later
-function showNotification(title, options) {
-  if (Notification.permission !== "granted") return;
-  navigator.serviceWorker.ready.then(reg => {
-    reg.showNotification(title, options);
-  });
-}
-
-// Initialize button on page load
-window.addEventListener('load', () => {
-  const btn = document.getElementById('notifyBtn');
-  if (!btn) return;
-
-  if (Notification.permission === "granted") {
-    btn.classList.add('enabled');
-    btn.textContent = '✓ Reminders enabled';
-    btn.disabled = true;
-  } else if (Notification.permission === "denied") {
-    btn.textContent = '⛔ Notifications denied';
-    btn.disabled = true;
-  } else {
-    btn.textContent = '🔔 Enable Practice Reminders';
-    btn.disabled = false;
-  }
-});
-
-</script>
-
-  <div class="quick-actions fade-in">
-    <a href="skills.html" class="quick-action-card">
-      <span class="icon">🎯</span>
-      <h3>Skill Matcher</h3>
-      <p>Find skills that match your personality</p>
-    </a>
-    <a href="weird.html" class="quick-action-card">
-      <span class="icon">🤪</span>
-      <h3>Quick Skills</h3>
-      <p>Unusual skills to learn today</p>
-    </a>
-    <a href="challenges.html" class="quick-action-card">
-      <span class="icon">🔥</span>
-      <h3>My Challenges</h3>
-      <p>Track your learning progress</p>
-    </a>
-    <a href="games.html" class="quick-action-card">
-      <span class="icon">🎮</span>
-      <h3>Brain Games</h3>
-      <p>Train your mind with games</p>
-    </a>
-  </div>
-
-  <div class="card fade-in">
-    <h2>What this isn't</h2>
-    <p>
-      A boring productivity app that nags you to "stop wasting time."
-      Not another to-do list that buries you in tasks.  
-      Not a bland learning platform that feels like homework.
-      <br><br>
-      SpendSomeTime doesn't tell you to "stop scrolling."  
-      It gives you something better to do instead.
+<main>
+  <header class="hero">
+    <h1>Stop doomscrolling. Build real skills.</h1>
+    <p class="lede">
+      Most people don't waste time because they want to — they waste it because they don't know what
+      else to do. SpendSomeTime gives you something better: skills you can learn in five minutes,
+      daily challenges that build momentum, and brain games that sharpen focus. It's free, and there's
+      nothing to sign up for.
     </p>
-  </div>
+    <div class="actions">
+      <a class="btn btn-primary" href="skills.html">Find a skill to learn</a>
+      <a class="btn btn-secondary" href="challenges.html">Track a challenge</a>
+    </div>
+  </header>
 
-  <div class="card fade-in">
-    <h2>How to Stop Doomscrolling for Good</h2>
-    <p>
-      A place where your free time turns into progress.
-      <br><br>
-      Where games sharpen reaction time and focus.  
-      Where quizzes recommend skills that actually match your personality.  
-      Where boredom becomes exploration instead of regret.
-    </p>
-  </div>
+  <section class="section" aria-label="Your progress">
+    <div class="stats-banner" id="stats-banner">
+      <div class="stat-item">
+        <span class="number" id="total-skills">0</span>
+        <span class="label">Skills discovered</span>
+      </div>
+      <div class="stat-item">
+        <span class="number" id="active-challenges">0</span>
+        <span class="label">Active challenges</span>
+      </div>
+      <div class="stat-item">
+        <span class="number" id="completed-challenges">0</span>
+        <span class="label">Completed</span>
+      </div>
+      <div class="stat-item">
+        <span class="number" id="total-time">0</span>
+        <span class="label">Hours invested</span>
+      </div>
+      <div class="stat-item">
+        <span class="number" id="total-xp">0</span>
+        <span class="label">XP earned</span>
+      </div>
+    </div>
 
-  <div class="card fade-in">
-    <h2>Why It Works Better Than Willpower</h2>
-    <p>
-      SpendSomeTime uses <strong>personalized quizzes</strong>, <strong>fun mini-games</strong>, and <strong>curated short skills</strong>  
-      to give your brain something it actually wants to engage with.
-      <br><br>
-      Every skill is quick, impressive, or valuable, so the moment you finish, you feel accomplished.
-    </p>
-  </div>
+    <div class="notify-row">
+      <p>Get the occasional nudge to practice, instead of another feed pulling you back in.</p>
+      <button class="btn btn-secondary" id="notifyBtn" onclick="enableNotifications()">Enable practice reminders</button>
+    </div>
+  </section>
 
-<script>
-// Load and display stats
-function updateStats() {
-  const challenges = JSON.parse(localStorage.getItem('challenges') || '[]');
-  const bookmarked = JSON.parse(localStorage.getItem('bookmarkedSkills') || '[]');
-  
-  const active = challenges.filter(c => c.status === 'active').length;
-  const completed = challenges.filter(c => c.status === 'completed').length;
-  const totalTime = challenges.reduce((sum, c) => sum + (c.totalTime || 0), 0);
-  const hours = Math.round(totalTime / 60);
-  
-  // Get XP from gamification system (if available)
-  if (typeof GameSystem !== 'undefined') {
-    const totalXP = GameSystem.getTotalXP();
-    document.getElementById('total-xp').textContent = totalXP;
-  }
-  
-  document.getElementById('total-skills').textContent = bookmarked.length || challenges.length;
-  document.getElementById('active-challenges').textContent = active;
-  document.getElementById('completed-challenges').textContent = completed;
-  document.getElementById('total-time').textContent = hours;
-}
+  <section class="section" aria-label="Get started">
+    <div class="section-heading">
+      <h2>Pick a place to start</h2>
+      <p>Four ways in — each takes less than a minute to try.</p>
+    </div>
+    <div class="quick-actions">
+      <a href="skills.html" class="quick-action-card">
+        <span class="icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></svg>
+        </span>
+        <h3>Skill matcher</h3>
+        <p>Find skills that match your personality and interests.</p>
+      </a>
+      <a href="weird.html" class="quick-action-card">
+        <span class="icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8z"/></svg>
+        </span>
+        <h3>Quick skills</h3>
+        <p>Unusual, genuinely useful skills you can learn today.</p>
+      </a>
+      <a href="challenges.html" class="quick-action-card">
+        <span class="icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+        </span>
+        <h3>My challenges</h3>
+        <p>Track progress on the skills you're actually building.</p>
+      </a>
+      <a href="games.html" class="quick-action-card">
+        <span class="icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>
+        </span>
+        <h3>Brain games</h3>
+        <p>Short games that train reaction time and focus.</p>
+      </a>
+    </div>
+  </section>
 
-// Call updateStats immediately if GameSystem exists, otherwise wait for it
-if (typeof GameSystem !== 'undefined') {
-  updateStats();
-}
+  <section class="section" aria-label="Why it works">
+    <div class="section-heading">
+      <h2>Why this works better than willpower</h2>
+      <p>Telling yourself to "just stop scrolling" rarely works. Replacing the habit does.</p>
+    </div>
+    <div class="value-grid">
+      <div class="card">
+        <h3>Not another to-do list</h3>
+        <p>No nagging, no guilt, no pile of tasks. Just short, specific things to try when you'd otherwise be scrolling.</p>
+      </div>
+      <div class="card">
+        <h3>Matched to you</h3>
+        <p>A short quiz points you toward skills that fit your interests, so you're not guessing where to start.</p>
+      </div>
+      <div class="card">
+        <h3>Built for five minutes</h3>
+        <p>Every skill and challenge is sized to fit into the pockets of time you'd otherwise spend on your phone.</p>
+      </div>
+    </div>
+  </section>
+</main>
 
-// Listen for when GameSystem is ready and update stats
-window.addEventListener('gamificationReady', updateStats);
-window.addEventListener('gamificationUpdate', updateStats);
-window.addEventListener('xpGained', updateStats);
-
-// Fade in on scroll
-const observerOptions = {
-  threshold: 0.1,
-  rootMargin: '0px 0px -50px 0px'
-};
-
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if(entry.isIntersecting) {
-      entry.target.style.opacity = '1';
-      entry.target.style.transform = 'translateY(0)';
-    }
-  });
-}, observerOptions);
-
-document.querySelectorAll('.fade-in').forEach(el => {
-  el.style.opacity = '0';
-  el.style.transform = 'translateY(30px)';
-  el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-  observer.observe(el);
-});
-
-</script>
-
-<footer>
+<footer class="site-footer">
   <div class="footer-content">
-    <p>© 2026 SpendSomeTime: Use your time with purpose</p>
+    <p>&copy; 2026 SpendSomeTime — use your time with purpose.</p>
     <div class="footer-links">
       <a href="privacy-policy.html">Privacy Policy</a>
       <a href="/cdn-cgi/l/email-protection#a5c6cacbd1c4c6d1e5d6d5c0cbc1d6cac8c0d1ccc8c08bcad7c2">Contact Us</a>
@@ -1049,7 +299,135 @@ document.querySelectorAll('.fade-in').forEach(el => {
   </div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"version":"2024.11.0","token":"240b2929dba748aab47b0ca16671e1f7","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
-<script defer src="https://static.cloudflareinsights.com/beacon.min.js/v8c78df7c7c0f484497ecbca7046644da1771523124516" integrity="sha512-8DS7rgIrAmghBFwoOTujcf6D9rXvH8xm8JQ1Ja01h9QX8EzXldiszufYa4IFfKdLUKTTrnSFXLDkUEOTrZQ8Qg==" data-cf-beacon='{"version":"2024.11.0","token":"240b2929dba748aab47b0ca16671e1f7","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
+<script>
+  // Mobile nav toggle
+  const toggle = document.getElementById('menuToggle');
+  const nav = document.getElementById('navLinks');
+  toggle.addEventListener('click', () => {
+    const open = nav.classList.toggle('open');
+    toggle.classList.toggle('active', open);
+    toggle.setAttribute('aria-expanded', String(open));
+  });
+  document.querySelectorAll('#navLinks a').forEach(link => {
+    link.addEventListener('click', () => {
+      nav.classList.remove('open');
+      toggle.classList.remove('active');
+      toggle.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  // Practice reminders
+  function enableNotifications() {
+    const btn = document.getElementById('notifyBtn');
+    if (!btn) return;
+
+    if (!('Notification' in window)) {
+      btn.textContent = 'Not supported on this browser';
+      btn.disabled = true;
+      return;
+    }
+
+    if (Notification.permission === 'granted') {
+      btn.textContent = 'Reminders enabled';
+      btn.disabled = true;
+      return;
+    }
+
+    if (Notification.permission === 'denied') {
+      btn.textContent = 'Notifications blocked';
+      btn.disabled = true;
+      return;
+    }
+
+    btn.textContent = 'Requesting…';
+    btn.disabled = true;
+
+    Notification.requestPermission().then(permission => {
+      if (permission !== 'granted') {
+        btn.textContent = 'Enable practice reminders';
+        btn.disabled = false;
+        if (permission === 'denied') {
+          btn.textContent = 'Notifications blocked';
+        }
+        return;
+      }
+
+      navigator.serviceWorker.register('sw.js').then(() => {
+        navigator.serviceWorker.ready.then(reg => {
+          reg.showNotification('SpendSomeTime', {
+            body: 'Practice reminders are on. We\'ll send the occasional nudge to keep momentum going.',
+            icon: '/favicon-32x32.png',
+            badge: '/favicon-32x32.png',
+            tag: 'sst-enabled',
+            requireInteraction: false
+          });
+          btn.textContent = 'Reminders enabled';
+          btn.disabled = true;
+          localStorage.setItem('notificationsEnabled', 'true');
+        });
+      }).catch(err => {
+        console.error('Service worker registration failed:', err);
+        btn.textContent = 'Setup failed — try again';
+        btn.disabled = false;
+      });
+    }).catch(err => {
+      console.error('Notification permission error:', err);
+      btn.textContent = 'Enable practice reminders';
+      btn.disabled = false;
+    });
+  }
+
+  window.addEventListener('load', () => {
+    const btn = document.getElementById('notifyBtn');
+    if (!btn) return;
+    if (Notification.permission === 'granted') {
+      btn.textContent = 'Reminders enabled';
+      btn.disabled = true;
+    } else if (Notification.permission === 'denied') {
+      btn.textContent = 'Notifications blocked';
+      btn.disabled = true;
+    }
+  });
+
+  // Stats
+  function updateStats() {
+    const challenges = JSON.parse(localStorage.getItem('challenges') || '[]');
+    const bookmarked = JSON.parse(localStorage.getItem('bookmarkedSkills') || '[]');
+
+    const active = challenges.filter(c => c.status === 'active').length;
+    const completed = challenges.filter(c => c.status === 'completed').length;
+    const totalTime = challenges.reduce((sum, c) => sum + (c.totalTime || 0), 0);
+    const hours = Math.round(totalTime / 60);
+
+    if (typeof GameSystem !== 'undefined') {
+      document.getElementById('total-xp').textContent = GameSystem.getTotalXP();
+    }
+
+    document.getElementById('total-skills').textContent = bookmarked.length || challenges.length;
+    document.getElementById('active-challenges').textContent = active;
+    document.getElementById('completed-challenges').textContent = completed;
+    document.getElementById('total-time').textContent = hours;
+  }
+
+  if (typeof GameSystem !== 'undefined') updateStats();
+  window.addEventListener('gamificationReady', updateStats);
+  window.addEventListener('gamificationUpdate', updateStats);
+  window.addEventListener('xpGained', updateStats);
+
+  // Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) entry.target.classList.add('is-visible');
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.card, .quick-action-card, .stats-banner').forEach(el => {
+    el.classList.add('reveal');
+    observer.observe(el);
+  });
+</script>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"version":"2024.11.0","token":"240b2929dba748aab47b0ca16671e1f7","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
 </body>
 </html>
